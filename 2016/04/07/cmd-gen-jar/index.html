@@ -7,13 +7,15 @@
 
     
 
-    <title>归档：2016 | </title>
+    <title>在android studio生成jar包 | </title>
     <meta name="author" content="Plucky">
+    
+    <meta name="description" content="简介">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="在android studio生成jar包"/>
     <meta property="og:site_name" content="安妮的仙境"/>
 
     
@@ -193,52 +195,95 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（归档）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/技术/">技术</a><a class="breadcrumb" href="/categories/技术/Android/">Android</a>
+
+
         
 
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>在android studio生成jar包</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
+            </div>
+            <time class="pink-link-context" datetime="2016-04-07T15:28:50.000Z"><a href="/2016/04/07/cmd-gen-jar/">2016-04-07</a></time>
+
+            
+    <div class="tags-row">
         
+            <a href="/tags/生成jar包/" class="chip pink lighten-1">生成jar包</a>
         
-            <li>
-                <div class="collapsible-header active">
-                    <i class="fa fa-archive"></i>2016
-                </div>
-                <div class="collapsible-body">
-                    <div class="collection">
-                        
-                            <a href="/2016/04/07/cmd-gen-jar/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-04-07T15:28:50.000Z">2016-04-07</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                在android studio生成jar包
-                            </a>
-                        
-                            <a href="/2016/04/07/sundial-dreams/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-04-07T13:41:35.000Z">2016-04-07</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                钢琴曲《Sundial Dreams》（日晷之梦）
-                            </a>
-                        
-                            <a href="/2016/04/05/annie-wonderland/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2016-04-05T15:37:04.000Z">2016-04-05</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                安妮的仙境
-                            </a>
-                        
-                    </div>
-                </div>
-            </li>
-        
-    </ul>
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#方法一-jar命令"><span class="section table-of-contents-text">方法一 jar命令</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#方法二-gradle脚本"><span class="section table-of-contents-text">方法二 gradle脚本</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#步骤一"><span class="section table-of-contents-text">步骤一</span></a></li><li class="section table-of-contents-item section table-of-contents-level-4"><a class="section table-of-contents-link" href="#步骤二"><span class="section table-of-contents-text">步骤二</span></a></li></ol></li></ol>
+</div>
+
+
+            <div class="entry pink-link-context">
+                <p>简介<br><a id="more"></a></p>
+<h3 id="方法一-jar命令"><a href="#方法一-jar命令" class="headerlink" title="方法一 jar命令"></a>方法一 <strong>jar</strong>命令</h3><p>jar命令的用法</p>
+<blockquote>
+<p>用法：jar {ctxui}[vfm0Me] [jar-file] [manifest-file] [entry-point] [-C dir] files …<br>选项包括：<br>    -c  创建新的归档文件<br>    -t  列出归档目录<br>    -x  解压缩已归档的指定（或所有）文件<br>    -u  更新现有的归档文件<br>    -v  在标准输出中生成详细输出<br>    -f  指定归档文件名<br>    -m  包含指定清单文件中的清单信息<br>    -e  为捆绑到可执行 jar 文件的独立应用程序<br>        指定应用程序入口点<br>    -0  仅存储；不使用任何 ZIP 压缩<br>    -M  不创建条目的清单文件<br>    -i  为指定的 jar 文件生成索引信息<br>    -C  更改为指定的目录并包含其中的文件<br>如果有任何目录文件，则对其进行递归处理。<br>清单文件名、归档文件名和入口点名的指定顺序<br>与 “m”、”f” 和 “e” 标志的指定顺序相同。</p>
+</blockquote>
+<p>终端执行如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd aPath                 //切换至类库目录</span><br><span class="line">jar cvf sdk.jar .          //在当前目录生成jar</span><br></pre></td></tr></table></figure></p>
+<h3 id="方法二-gradle脚本"><a href="#方法二-gradle脚本" class="headerlink" title="方法二 gradle脚本"></a>方法二 <strong>gradle</strong>脚本</h3><h4 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h4><p>在类库的build.gradle中添加如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//定义一个函数，target是生成jar包的文件名，classDir是class文件所在的文件夹</span><br><span class="line">def makeJar(String target, String classDir) &#123;</span><br><span class="line">    exec &#123;</span><br><span class="line">        executable &quot;jar&quot;   //调用jar</span><br><span class="line">        args &quot;cvf&quot;, target</span><br><span class="line">        args &quot;-C&quot;, classDir</span><br><span class="line">        args &quot;&quot;, &quot;.&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//新建一个task,名为buildLib,依赖build(build是一个自带的task)</span><br><span class="line">task buildLib(dependsOn: [&apos;build&apos;]) &lt;&lt; &#123;</span><br><span class="line">    makeJar(&quot;volley.jar&quot;, &quot;build/intermediates/classes/release&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h4><p>在终端执行以下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd aPath                //切换至类库目录</span><br><span class="line">../gradlew buildLib     //执行gradle脚本</span><br></pre></td></tr></table></figure></p>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2016/04/07/cmd-gen-jar/" data-title="在android studio生成jar包" data-url="http://echo.engineer/2016/04/07/cmd-gen-jar/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'echo-engineer'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
