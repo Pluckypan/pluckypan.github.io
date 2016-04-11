@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://echo.engineer/"/>
-  <updated>2016-04-10T16:01:10.000Z</updated>
+  <updated>2016-04-11T13:15:50.000Z</updated>
   <id>http://echo.engineer/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我追求的价值</title>
+    <link href="http://echo.engineer/2016/04/11/what-i-must-do/"/>
+    <id>http://echo.engineer/2016/04/11/what-i-must-do/</id>
+    <published>2016-04-11T13:04:59.000Z</published>
+    <updated>2016-04-11T13:15:50.000Z</updated>
+    
+    <content type="html">&lt;p&gt;当内心的平静被打乱，人就开始有点迷茫。人们总说，欲戴皇冠，必承其重，可是有的人从来没想戴过皇冠，也从不想戴皇冠，只想安静地做个手艺人，很厌倦阶级关系和权力的游戏。就以下面这张图自勉吧。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://upload.chinaz.com/2016/0104/1451872802187.jpg&quot; alt=&quot;do&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当内心的平静被打乱，人就开始有点迷茫。人们总说，欲戴皇冠，必承其重，可是有的人从来没想戴过皇冠，也从不想戴皇冠，只想安静地做个手艺人，很厌倦阶级关系和权力的游戏。就以下面这张图自勉吧。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="杂文" scheme="http://echo.engineer/categories/%E6%9D%82%E6%96%87/"/>
+    
+    
+      <category term="目标" scheme="http://echo.engineer/tags/%E7%9B%AE%E6%A0%87/"/>
+    
+  </entry>
   
   <entry>
     <title>android studio导出jar包</title>
