@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://echo.engineer/"/>
-  <updated>2016-04-11T13:15:50.000Z</updated>
+  <updated>2016-04-15T14:46:20.000Z</updated>
   <id>http://echo.engineer/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自掘坟墓</title>
+    <link href="http://echo.engineer/2016/04/15/self-defeating/"/>
+    <id>http://echo.engineer/2016/04/15/self-defeating/</id>
+    <published>2016-04-15T14:40:11.000Z</published>
+    <updated>2016-04-15T14:46:20.000Z</updated>
+    
+    <content type="html">&lt;p&gt;想想现在的处境、置身度外地看周边的人，于是我看到了这幅图。我们奋不顾身很有可能在自掘坟墓。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://img1.cache.netease.com/catchpic/6/6A/6AA150E838A67D40B0EFCACF2429C7D4.jpg&quot; alt=&quot;自掘坟墓&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;想想现在的处境、置身度外地看周边的人，于是我看到了这幅图。我们奋不顾身很有可能在自掘坟墓。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="杂文" scheme="http://echo.engineer/categories/%E6%9D%82%E6%96%87/"/>
+    
+    
+      <category term="感想" scheme="http://echo.engineer/tags/%E6%84%9F%E6%83%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>我追求的价值</title>
