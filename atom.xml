@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://echo.engineer/"/>
-  <updated>2016-04-17T08:51:37.000Z</updated>
+  <updated>2016-05-05T14:03:42.000Z</updated>
   <id>http://echo.engineer/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>愿望清单之15寸MacBook Pro</title>
+    <link href="http://echo.engineer/2016/05/05/buy-macbookpro-14k/"/>
+    <id>http://echo.engineer/2016/05/05/buy-macbookpro-14k/</id>
+    <published>2016-05-05T13:49:47.000Z</published>
+    <updated>2016-05-05T14:03:42.000Z</updated>
+    
+    <content type="html">&lt;p&gt;3、4个月前开始使用MacBook Pro(13英寸 2015初期),整体的感觉挺好、使用简单,不会像windows一样太多的选择反而造成了很多困扰，还有个很明显的缺点是屏幕小。使用习惯和之前使用的Ubuntu很像，包括命令。另外Mac预装了Ruby、Python,感觉不能再好了。Unix系统最大的好处就是方便，很适合程序猿。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;所以，开始想办法赚钱（不是没有钱,要通过其他途径获取，听起来很刺激）买15寸的。配置如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CPU：2.2GHz 四核 Intel Core i7，Turbo Boost 高达 3.4GHz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;内存：16GB 1600MHz DDR3L SDRAM&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;硬盘: 基于 PCIe 的 256GB 闪存&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://store.storeimages.cdn-apple.com/8748/as-images.apple.com/is/image/AppleInc/aos/published/images/M/E2/ME293/ME293?wid=440&amp;amp;hei=312&amp;amp;fmt=jpeg&amp;amp;qlt=80&amp;amp;op_sharpen=0&amp;amp;resMode=bicub&amp;amp;op_usm=0.5,1.5,0,0&amp;amp;iccEmbed=0&amp;amp;layer=comp&amp;amp;.v=iBflR2&quot; alt=&quot;MacPro15&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DRY=don’t repeat yourself&lt;br&gt;  做一些贴近实际生活的事，让你觉得写代码还有意义。    &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;3、4个月前开始使用MacBook Pro(13英寸 2015初期),整体的感觉挺好、使用简单,不会像windows一样太多的选择反而造成了很多困扰，还有个很明显的缺点是屏幕小。使用习惯和之前使用的Ubuntu很像，包括命令。另外Mac预装了Ruby、Python,感觉不能再好了。Unix系统最大的好处就是方便，很适合程序猿。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="愿望清单" scheme="http://echo.engineer/categories/%E6%84%BF%E6%9C%9B%E6%B8%85%E5%8D%95/"/>
+    
+    
+      <category term="MacPro" scheme="http://echo.engineer/tags/MacPro/"/>
+    
+      <category term="14K" scheme="http://echo.engineer/tags/14K/"/>
+    
+  </entry>
   
   <entry>
     <title>自掘坟墓</title>
