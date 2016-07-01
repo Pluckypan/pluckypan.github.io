@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://echo.engineer/"/>
-  <updated>2016-05-05T14:03:42.000Z</updated>
+  <updated>2016-04-17T08:51:37.000Z</updated>
   <id>http://echo.engineer/</id>
   
   <author>
@@ -14,35 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>愿望清单之15寸MacBook Pro</title>
-    <link href="http://echo.engineer/2016/05/05/buy-macbookpro-14k/"/>
-    <id>http://echo.engineer/2016/05/05/buy-macbookpro-14k/</id>
-    <published>2016-05-05T13:49:47.000Z</published>
-    <updated>2016-05-05T14:03:42.000Z</updated>
-    
-    <content type="html">&lt;p&gt;3、4个月前开始使用MacBook Pro(13英寸 2015初期),整体的感觉挺好、使用简单,不会像windows一样太多的选择反而造成了很多困扰，还有个很明显的缺点是屏幕小。使用习惯和之前使用的Ubuntu很像，包括命令。另外Mac预装了Ruby、Python,感觉不能再好了。Unix系统最大的好处就是方便，很适合程序猿。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;所以，开始想办法赚钱（不是没有钱,要通过其他途径获取，听起来很刺激）买15寸的。配置如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CPU：2.2GHz 四核 Intel Core i7，Turbo Boost 高达 3.4GHz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;内存：16GB 1600MHz DDR3L SDRAM&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;硬盘: 基于 PCIe 的 256GB 闪存&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://store.storeimages.cdn-apple.com/8748/as-images.apple.com/is/image/AppleInc/aos/published/images/M/E2/ME293/ME293?wid=440&amp;amp;hei=312&amp;amp;fmt=jpeg&amp;amp;qlt=80&amp;amp;op_sharpen=0&amp;amp;resMode=bicub&amp;amp;op_usm=0.5,1.5,0,0&amp;amp;iccEmbed=0&amp;amp;layer=comp&amp;amp;.v=iBflR2&quot; alt=&quot;MacPro15&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;DRY=don’t repeat yourself&lt;br&gt;  做一些贴近实际生活的事，让你觉得写代码还有意义。    &lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;3、4个月前开始使用MacBook Pro(13英寸 2015初期),整体的感觉挺好、使用简单,不会像windows一样太多的选择反而造成了很多困扰，还有个很明显的缺点是屏幕小。使用习惯和之前使用的Ubuntu很像，包括命令。另外Mac预装了Ruby、Python,感觉不能再好了。Unix系统最大的好处就是方便，很适合程序猿。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="愿望清单" scheme="http://echo.engineer/categories/%E6%84%BF%E6%9C%9B%E6%B8%85%E5%8D%95/"/>
-    
-    
-      <category term="MacPro" scheme="http://echo.engineer/tags/MacPro/"/>
-    
-      <category term="14K" scheme="http://echo.engineer/tags/14K/"/>
-    
-  </entry>
   
   <entry>
     <title>自掘坟墓</title>
@@ -87,36 +58,6 @@
     
     
       <category term="目标" scheme="http://echo.engineer/tags/%E7%9B%AE%E6%A0%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android studio导出jar包</title>
-    <link href="http://echo.engineer/2016/04/07/cmd-gen-jar/"/>
-    <id>http://echo.engineer/2016/04/07/cmd-gen-jar/</id>
-    <published>2016-04-07T15:28:50.000Z</published>
-    <updated>2016-04-10T16:01:10.000Z</updated>
-    
-    <content type="html">&lt;p&gt;随着项目的共同协作以及模块化思想的发展,项目的相互依赖必不可少,而且越发明显。jar包就是解决这种需求而诞生的，Android可以通过Eclipse和studio两种IDE导出jar包，以下教程提供的是不包含资源教程的jar包生成方式。如果需要导出带资源的依赖包,studio一般会生成.aar文件，包含资源文件以提供第三方项目使用。如果使用Eclipse，则export的时候可选择资源文件导出，方法这里不介绍。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;方法一-jar命令&quot;&gt;&lt;a href=&quot;#方法一-jar命令&quot; class=&quot;headerlink&quot; title=&quot;方法一 jar命令&quot;&gt;&lt;/a&gt;方法一 &lt;strong&gt;jar&lt;/strong&gt;命令&lt;/h3&gt;&lt;p&gt;jar命令的用法&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;用法：jar &amp;#123;ctxui&amp;#125;[vfm0Me] [jar-file] [manifest-file] [entry-point] [-C dir] files ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;选项包括：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -c  创建新的归档文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -t  列出归档目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -x  解压缩已归档的指定（或所有）文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -u  更新现有的归档文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -v  在标准输出中生成详细输出&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -f  指定归档文件名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -m  包含指定清单文件中的清单信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -e  为捆绑到可执行 jar 文件的独立应用程序&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        指定应用程序入口点&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -0  仅存储；不使用任何 ZIP 压缩&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -M  不创建条目的清单文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -i  为指定的 jar 文件生成索引信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -C  更改为指定的目录并包含其中的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;如果有任何目录文件，则对其进行递归处理。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;清单文件名、归档文件名和入口点名的指定顺序&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;与 &amp;quot;m&amp;quot;、&amp;quot;f&amp;quot; 和 &amp;quot;e&amp;quot; 标志的指定顺序相同。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;终端执行如下代码&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cd aPath                 //切换至类库目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;jar cvf sdk.jar .          //在当前目录生成jar&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;方法二-gradle脚本&quot;&gt;&lt;a href=&quot;#方法二-gradle脚本&quot; class=&quot;headerlink&quot; title=&quot;方法二 gradle脚本&quot;&gt;&lt;/a&gt;方法二 &lt;strong&gt;gradle&lt;/strong&gt;脚本&lt;/h3&gt;&lt;h4 id=&quot;步骤一&quot;&gt;&lt;a href=&quot;#步骤一&quot; class=&quot;headerlink&quot; title=&quot;步骤一&quot;&gt;&lt;/a&gt;步骤一&lt;/h4&gt;&lt;p&gt;在类库的build.gradle中添加如下代码：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;task makeJar(type: Copy) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    delete &amp;apos;build/libs/fhsdk.jar&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    from(&amp;apos;build/intermediates/bundles/release/&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    into(&amp;apos;build/libs/&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    include(&amp;apos;classes.jar&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    rename (&amp;apos;classes.jar&amp;apos;, &amp;apos;fhsdk.jar&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;makeJar.dependsOn(build)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//在终端执行生成JAR包&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// .gradlew makeJar&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h4 id=&quot;步骤二&quot;&gt;&lt;a href=&quot;#步骤二&quot; class=&quot;headerlink&quot; title=&quot;步骤二&quot;&gt;&lt;/a&gt;步骤二&lt;/h4&gt;&lt;p&gt;在终端执行以下代码:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;.gradlew makeJar//第一次执行代码会下载依赖类库的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# 终端提示BUILD SUCCESSFUL在build/libs/文件夹生成的&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# fhsdk.jar就是我们最终需要的文件&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;随着项目的共同协作以及模块化思想的发展,项目的相互依赖必不可少,而且越发明显。jar包就是解决这种需求而诞生的，Android可以通过Eclipse和studio两种IDE导出jar包，以下教程提供的是不包含资源教程的jar包生成方式。如果需要导出带资源的依赖包,studio一般会生成.aar文件，包含资源文件以提供第三方项目使用。如果使用Eclipse，则export的时候可选择资源文件导出，方法这里不介绍。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://echo.engineer/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="Android" scheme="http://echo.engineer/categories/%E6%8A%80%E6%9C%AF/Android/"/>
-    
-    
-      <category term="生成jar包" scheme="http://echo.engineer/tags/%E7%94%9F%E6%88%90jar%E5%8C%85/"/>
     
   </entry>
   
