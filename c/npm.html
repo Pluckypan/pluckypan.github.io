@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="eedoc:基于Markdown、搜索引擎的文档管理系统 - ">
-    <meta name="keywords" content=",eedoc">
-    <title>eedoc - 无忧杂货铺</title>
+    <meta name="description" content="npm:npm常用指令详解 - ">
+    <meta name="keywords" content=",npm">
+    <title>npm - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483511737351">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483511737328">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\sample.html">
+			<input type="hidden" id="current_path" value="c\npm.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,37 +139,43 @@
 
 <div class="markdown-body">
 
-<!--command\sample.md-->
+<!--command\npm.md-->
 
-<h1 id="eedoc">eedoc</h1><p>基于Markdown、搜索引擎的文档管理系统</p>
-<h3 id="安装">安装</h3><pre><code>npm install eedoc -g  <span class="hljs-comment">#创建全局eedoc</span>
-sudo npm install eedoc -g  <span class="hljs-comment">#mac下以root权限运行</span>
-</code></pre><h3 id="使用方法">使用方法</h3><pre><code>eedoc -V <span class="hljs-comment">#查看版本</span>
-eedoc -i <span class="hljs-comment">#初始化文档</span>
-eedoc -b <span class="hljs-comment">#创建静态</span>
-eedoc <span class="hljs-_">-s</span> <span class="hljs-comment">#运行服务</span>
-</code></pre><h3 id="注意事项: markdown格式如下">注意事项: markdown格式如下</h3><pre><code>标题
-===
-描述
+<h1 id="npm">npm</h1><p>npm常用指令详解</p>
+<h3 id="什么是npm">什么是NPM</h3><blockquote>
+<p>NPM的全称是Node Package Manager，是随同NodeJS一起安装的包管理和分发工具，它很方便让JavaScript开发者下载、安装、上传以及管理已经安装的包。</p>
+</blockquote>
+<h3 id="站点">站点</h3><pre><code><span class="hljs-comment">#设置淘宝仓库</span>
+npm config <span class="hljs-built_in">set</span> registry https://registry.npm.taobao.org
 
-<span class="hljs-comment">### 以下都是内容</span>
-</code></pre><h3 id="测试javascript">测试javascript</h3><pre><code>var url = <span class="hljs-string">'ws://127.0.0.1:8000/'</span>;
-socket = new WebSocket(url);
-socket.onopen = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'连接成功'</span>)
-}
-socket.onmessage = <span class="hljs-keyword">function</span>(msg) {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'获得消息:'</span> + msg.data);
-    console.log(msg);
-}
-socket.onclose = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'断开连接'</span>)
-}
+<span class="hljs-comment">#设置原始仓库地址(提交代码的时候需要重新设置成原始站点否则error:403)</span>
+npm config <span class="hljs-built_in">set</span> registry http://registry.npmjs.org
+</code></pre><h3 id="查看">查看</h3><pre><code><span class="hljs-comment">#查看版本</span>
+npm -v
+
+<span class="hljs-comment">#查看配置(全部)</span>
+npm config ls <span class="hljs-_">-l</span> 
+npm config list
+</code></pre><h3 id="创建npm工程">创建npm工程</h3><pre><code>npm init
+<span class="hljs-comment"># bin 文件夹下创建命令</span>
+<span class="hljs-comment"># index.js默认入口文件</span>
+<span class="hljs-comment"># lib 文件夹下创建子模块</span>
+</code></pre><h3 id="提交代码">提交代码</h3><pre><code><span class="hljs-comment">#npm注册</span>
+npm adduser
+
+<span class="hljs-comment">#登录</span>
+npm login
+
+<span class="hljs-comment">#发布 (发布时要确保version大于前一个版本)</span>
+npm publish
+
+<span class="hljs-comment">#取消发布</span>
+npm unpublish
 </code></pre>
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483511737352"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483511737352"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483511737329"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483511737329"></script>
 </body>
 
 </html>

@@ -1,1 +1,1 @@
-var linux_commands=[{"n":"eedoc\r","p":"\\sample","d":"基于Markdown、搜索引擎的文档管理系统\r"}]
+var linux_commands=[{"n":"npm\r","p":"\\npm","d":"npm常用指令详解\r"},{"n":"arch\r","p":"\\arch","d":"显示当前主机的硬件架构类型\r"},{"n":"关于\r","p":"\\about","d":"一段个人简介\r"},{"n":"常用网址","p":"\\sites","d":"日常学习网址备份"},{"n":"jQuery插件\r","p":"\\jquery","d":"强大的jQuery插件\r"},{"n":"eedoc\r","p":"\\sample","d":"基于Markdown、搜索引擎的文档管理系统\r"},{"n":"github访问缓慢\r","p":"\\slow-github","d":"设置host文件解决github访问缓慢的问题\r"}]

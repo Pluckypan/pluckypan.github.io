@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="eedoc:基于Markdown、搜索引擎的文档管理系统 - ">
-    <meta name="keywords" content=",eedoc">
-    <title>eedoc - 无忧杂货铺</title>
+    <meta name="description" content="github访问缓慢:设置host文件解决github访问缓慢的问题 - ">
+    <meta name="keywords" content=",github访问缓慢">
+    <title>github访问缓慢 - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483511737351">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483511737354">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\sample.html">
+			<input type="hidden" id="current_path" value="c\slow-github.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,37 +139,47 @@
 
 <div class="markdown-body">
 
-<!--command\sample.md-->
+<!--command\slow-github.md-->
 
-<h1 id="eedoc">eedoc</h1><p>基于Markdown、搜索引擎的文档管理系统</p>
-<h3 id="安装">安装</h3><pre><code>npm install eedoc -g  <span class="hljs-comment">#创建全局eedoc</span>
-sudo npm install eedoc -g  <span class="hljs-comment">#mac下以root权限运行</span>
-</code></pre><h3 id="使用方法">使用方法</h3><pre><code>eedoc -V <span class="hljs-comment">#查看版本</span>
-eedoc -i <span class="hljs-comment">#初始化文档</span>
-eedoc -b <span class="hljs-comment">#创建静态</span>
-eedoc <span class="hljs-_">-s</span> <span class="hljs-comment">#运行服务</span>
-</code></pre><h3 id="注意事项: markdown格式如下">注意事项: markdown格式如下</h3><pre><code>标题
-===
-描述
+<h1 id="github访问缓慢">github访问缓慢</h1><p>设置host文件解决github访问缓慢的问题</p>
+<blockquote>
+<p>github已经成为程序员日常生活不可分割的一部分，在公司访问github很快，但是回家（长城宽带），看视频很快，访问github却异常的慢。</p>
+</blockquote>
+<h3 id="解决方法">解决方法</h3><h4 id="第一步：使用ip查找工具，找出对应的ip地址">第一步：使用IP查找工具，找出对应的ip地址</h4><p><a href="http://ipaddress.com/ip-lookup/">http://ipaddress.com</a></p>
+<h4 id="第二步：主要查找以下几个域名的ip地址">第二步：主要查找以下几个域名的ip地址</h4><table>
+<thead>
+<tr>
+<th>域名</th>
+<th style="text-align:right">ip</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>github.global.ssl.fastly.net</td>
+<td style="text-align:right">151.101.44.249</td>
+</tr>
+<tr>
+<td>assets-cdn.github.com</td>
+<td style="text-align:right">151.101.44.133</td>
+</tr>
+<tr>
+<td>font-src.github.com</td>
+<td style="text-align:right">151.101.112.133</td>
+</tr>
+</tbody>
+</table>
+<h4 id="第三步：更改hosts文件">第三步：更改hosts文件</h4><pre><code><span class="hljs-comment"># github</span>
+151.101.44.249 github.global.ssl.fastly.net
+151.101.44.133 assets-cdn.github.com
+151.101.112.133 font-src.github.com
+</code></pre><h4 id="第四步：更新dns">第四步：更新dns</h4><pre><code><span class="hljs-comment">#win下</span>
+ipconfig/flushdns
+</code></pre><p>然后体验下，是不是快多了（有的电脑可能需要等几分钟）</p>
 
-<span class="hljs-comment">### 以下都是内容</span>
-</code></pre><h3 id="测试javascript">测试javascript</h3><pre><code>var url = <span class="hljs-string">'ws://127.0.0.1:8000/'</span>;
-socket = new WebSocket(url);
-socket.onopen = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'连接成功'</span>)
-}
-socket.onmessage = <span class="hljs-keyword">function</span>(msg) {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'获得消息:'</span> + msg.data);
-    console.log(msg);
-}
-socket.onclose = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'断开连接'</span>)
-}
-</code></pre>
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483511737352"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483511737352"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483511737354"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483511737354"></script>
 </body>
 
 </html>

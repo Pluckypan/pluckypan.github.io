@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="eedoc:基于Markdown、搜索引擎的文档管理系统 - ">
-    <meta name="keywords" content=",eedoc">
-    <title>eedoc - 无忧杂货铺</title>
+    <meta name="description" content="arch:显示当前主机的硬件架构类型 - ">
+    <meta name="keywords" content=",arch">
+    <title>arch - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483511737351">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483511737338">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\sample.html">
+			<input type="hidden" id="current_path" value="c\arch.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,37 +139,18 @@
 
 <div class="markdown-body">
 
-<!--command\sample.md-->
+<!--command\arch.md-->
 
-<h1 id="eedoc">eedoc</h1><p>基于Markdown、搜索引擎的文档管理系统</p>
-<h3 id="安装">安装</h3><pre><code>npm install eedoc -g  <span class="hljs-comment">#创建全局eedoc</span>
-sudo npm install eedoc -g  <span class="hljs-comment">#mac下以root权限运行</span>
-</code></pre><h3 id="使用方法">使用方法</h3><pre><code>eedoc -V <span class="hljs-comment">#查看版本</span>
-eedoc -i <span class="hljs-comment">#初始化文档</span>
-eedoc -b <span class="hljs-comment">#创建静态</span>
-eedoc <span class="hljs-_">-s</span> <span class="hljs-comment">#运行服务</span>
-</code></pre><h3 id="注意事项: markdown格式如下">注意事项: markdown格式如下</h3><pre><code>标题
-===
-描述
-
-<span class="hljs-comment">### 以下都是内容</span>
-</code></pre><h3 id="测试javascript">测试javascript</h3><pre><code>var url = <span class="hljs-string">'ws://127.0.0.1:8000/'</span>;
-socket = new WebSocket(url);
-socket.onopen = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'连接成功'</span>)
-}
-socket.onmessage = <span class="hljs-keyword">function</span>(msg) {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'获得消息:'</span> + msg.data);
-    console.log(msg);
-}
-socket.onclose = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'断开连接'</span>)
-}
-</code></pre>
+<h1 id="arch">arch</h1><p>显示当前主机的硬件架构类型</p>
+<h2 id="补充说明">补充说明</h2><p><strong>arch命令</strong> 用于显示当前主机的硬件架构类型。arch命令等同于<code>命令name -m</code>在当前的Linux系统下,arch命令输出结果有:i386、i486、i586、alpha、sparc、arm、m68k、mips、ppc、i686等</p>
+<h3 id="语法">语法</h3><pre><code>arch
+</code></pre><h3 id="实例">实例</h3><pre><code>arch
+x86_64
+</code></pre><!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483511737352"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483511737352"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483511737339"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483511737339"></script>
 </body>
 
 </html>

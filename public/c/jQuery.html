@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="eedoc:基于Markdown、搜索引擎的文档管理系统 - ">
-    <meta name="keywords" content=",eedoc">
-    <title>eedoc - 无忧杂货铺</title>
-    <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483511737351">
+    <meta name="description" content="jQuery插件:强大的jQuery插件 - ">
+    <meta name="keywords" content=",jQuery插件">
+    <title>jQuery插件 - 无忧杂货铺</title>
+    <link rel="shortcut icon" href="..\..\..\..\..\..\img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\..\css/index.css?v=1483508598909">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\sample.html">
+			<input type="hidden" id="current_path" value="c\jQuery.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,37 +139,38 @@
 
 <div class="markdown-body">
 
-<!--command\sample.md-->
+<!--command\jQuery.md-->
 
-<h1 id="eedoc">eedoc</h1><p>基于Markdown、搜索引擎的文档管理系统</p>
-<h3 id="安装">安装</h3><pre><code>npm install eedoc -g  <span class="hljs-comment">#创建全局eedoc</span>
-sudo npm install eedoc -g  <span class="hljs-comment">#mac下以root权限运行</span>
-</code></pre><h3 id="使用方法">使用方法</h3><pre><code>eedoc -V <span class="hljs-comment">#查看版本</span>
-eedoc -i <span class="hljs-comment">#初始化文档</span>
-eedoc -b <span class="hljs-comment">#创建静态</span>
-eedoc <span class="hljs-_">-s</span> <span class="hljs-comment">#运行服务</span>
-</code></pre><h3 id="注意事项: markdown格式如下">注意事项: markdown格式如下</h3><pre><code>标题
-===
-描述
-
-<span class="hljs-comment">### 以下都是内容</span>
-</code></pre><h3 id="测试javascript">测试javascript</h3><pre><code>var url = <span class="hljs-string">'ws://127.0.0.1:8000/'</span>;
-socket = new WebSocket(url);
-socket.onopen = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'连接成功'</span>)
-}
-socket.onmessage = <span class="hljs-keyword">function</span>(msg) {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'获得消息:'</span> + msg.data);
-    console.log(msg);
-}
-socket.onclose = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-    <span class="hljs-built_in">log</span>(<span class="hljs-string">'断开连接'</span>)
-}
+<h1 id="jquery插件">jQuery插件</h1><p>强大的jQuery插件</p>
+<h3 id="图片处理">图片处理</h3><h4 id="一、qrcode.js二维码">一、qrcode.js二维码</h4><pre><code class="lang-javascript">&lt;script src=<span class="hljs-string">"http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+&lt;script src=<span class="hljs-string">"http://jqweui.com/assets/js/qrcode.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+<span class="hljs-keyword">var</span> qrcode=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"qrcode"</span>);
+<span class="hljs-keyword">var</span> coder = <span class="hljs-keyword">new</span> QRCode(qrcode, {<span class="hljs-attr">width</span>: <span class="hljs-number">200</span>,<span class="hljs-attr">height</span>: <span class="hljs-number">200</span>,});
+coder.makeCode(<span class="hljs-string">"hello"</span>);
 </code></pre>
+<h4 id="二、holder.js占位图">二、holder.js占位图</h4><blockquote>
+<p>html5中，input标-签可以根据placeholder来设定默认占位文字，但是img标签并没有该属性。由于img图片的渲染是一个耗时操作，在网络状态较差的情况下，可能长时间显示不出图片来。使用holder.js给图片添加
+占位图能提高用户体验。</p>
+</blockquote>
+<pre><code class="lang-javascript">&lt;script src=<span class="hljs-string">"holder.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+&lt;img data-src=<span class="hljs-string">"example.com/100x100?theme=simple"</span> id=<span class="hljs-string">"new"</span>&gt;
+Holder.run({
+  <span class="hljs-attr">domain</span>: <span class="hljs-string">"example.com"</span>,
+  <span class="hljs-attr">themes</span>: {
+    <span class="hljs-string">"simple"</span>: {
+      <span class="hljs-attr">bg</span>: <span class="hljs-string">"#eee"</span>,
+      <span class="hljs-attr">fg</span>: <span class="hljs-string">"#000"</span>,
+      <span class="hljs-attr">size</span>: <span class="hljs-number">17</span>
+    }
+  },
+  <span class="hljs-attr">images</span>: <span class="hljs-string">"#new"</span>
+});
+</code></pre>
+
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483511737352"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483511737352"></script>
+<script type="text/javascript" src="..\..\..\..\..\..\js/dt.js?v=1483508598909"></script>
+<script type="text/javascript" src="..\..\..\..\..\..\js/index.js?v=1483508598909"></script>
 </body>
 
 </html>
