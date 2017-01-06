@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="arch:显示当前主机的硬件架构类型 - ">
-    <meta name="keywords" content=",arch">
-    <title>arch - 无忧杂货铺</title>
+    <meta name="description" content="Android BuildConfig文件:同步Android Library与App的BuildConfig文件 - ">
+    <meta name="keywords" content=",Android BuildConfig文件">
+    <title>Android BuildConfig文件 - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483691903498">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483691903525">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\arch.html">
+			<input type="hidden" id="current_path" value="c\android-buildconfig.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,18 +139,28 @@
 
 <div class="markdown-body">
 
-<!--command\arch.md-->
+<!--command\android-buildconfig.md-->
 
-<h1 id="arch">arch</h1><p>显示当前主机的硬件架构类型</p>
-<h2 id="补充说明">补充说明</h2><p><strong>arch命令</strong> 用于显示当前主机的硬件架构类型。arch命令等同于<code>命令name -m</code>在当前的Linux系统下,arch命令输出结果有:i386、i486、i586、alpha、sparc、arm、m68k、mips、ppc、i686等</p>
-<h3 id="语法">语法</h3><pre><code>arch
-</code></pre><h3 id="实例">实例</h3><pre><code>arch
-x86_64
-</code></pre><!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+<h1 id="android buildconfig文件">Android BuildConfig文件</h1><p>同步Android Library与App的BuildConfig文件</p>
+<h3 id="概述">概述</h3><blockquote>
+<p>在Android的实际开发中，一般会有这样的需求，debug版本打印日志，release版本禁用日志。平时直接运行代码的时候BuildConfig.DEBUG的值自动为true, 
+在发布后BuildConfig.DEBUG的值自动为false, 
+可以说是非常方便。 但是，在App依赖类库B的情况下，不论App是debug还是release，B的BuildConfig.DEBUG的值都是false！这是因为，gradle默认项目依赖的类库均以
+release形式build。</p>
+</blockquote>
+<h3 id="解决方案">解决方案</h3><h4 id="library的build.gradle">Library的build.gradle</h4><pre><code>android {    
+    publishNonDefault <span class="hljs-literal">true</span>  
+}
+</code></pre><h4 id="app的build.gradle">App的build.gradle</h4><pre><code>dependencies {    
+    releaseCompile project(path: <span class="hljs-string">':library'</span>, configuration: <span class="hljs-string">'release'</span>)    
+    debugCompile project(path: <span class="hljs-string">':library'</span>, configuration: <span class="hljs-string">'debug'</span>)
+}
+</code></pre><p>亲测好用！</p>
+
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483691903498"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483691903498"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483691903526"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483691903526"></script>
 </body>
 
 </html>
