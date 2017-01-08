@@ -10,7 +10,7 @@
     <meta name="keywords" content=",eedoc">
     <title>eedoc - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483543675789">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483844018241">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -142,12 +142,16 @@
 <!--command\sample.md-->
 
 <h1 id="eedoc">eedoc</h1><p>基于Markdown、搜索引擎的文档管理系统</p>
+<p><a href="https://pluckypan.github.io">预览界面</a></p>
 <h3 id="安装">安装</h3><pre><code>npm install eedoc -g  <span class="hljs-comment">#创建全局eedoc</span>
 sudo npm install eedoc -g  <span class="hljs-comment">#mac下以root权限运行</span>
 </code></pre><h3 id="使用方法">使用方法</h3><pre><code>eedoc -V <span class="hljs-comment">#查看版本</span>
-eedoc -i <span class="hljs-comment">#初始化文档</span>
-eedoc -b <span class="hljs-comment">#创建静态</span>
-eedoc <span class="hljs-_">-s</span> <span class="hljs-comment">#运行服务</span>
+eedoc -i <span class="hljs-comment">#初始化文档(init a documentation.)</span>
+eedoc -b <span class="hljs-comment">#创建静态页(build static html page.)</span>
+eedoc <span class="hljs-_">-s</span> <span class="hljs-comment">#运行服务(run the page at http://127.0.0.1:1991.)</span>
+eedoc <span class="hljs-_">-d</span> <span class="hljs-comment">#发布至git版本库(publish static page to git repo.)</span>
+eedoc <span class="hljs-_">-f</span> <span class="hljs-comment">#发布至ftp服务器(publish static page to ftp server.)</span>
+eedoc -c <span class="hljs-comment">#清除缓存及静态页(clean the public floder.)</span>
 </code></pre><h3 id="注意事项: markdown格式如下">注意事项: markdown格式如下</h3><pre><code>标题
 ===
 描述
@@ -168,8 +172,8 @@ socket.onclose = <span class="hljs-function"><span class="hljs-title">function</
 </code></pre>
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483543675789"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483543675789"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483844018243"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483844018243"></script>
 </body>
 
 </html>
