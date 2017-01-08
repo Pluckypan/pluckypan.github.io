@@ -46,7 +46,7 @@
 		},
 		isSreachIndexOF: function(oldstr, kw) {
 			var istrue = false;
-			if(oldstr && toString.call(oldstr) === '[object Array]') {
+			if(oldstr && Object.prototype.toString.call(oldstr) === '[object Array]') {
 				for(var i = 0; i < oldstr.length; i++) {
 					oldstr[i].toLowerCase() === kw.toLowerCase() ? istrue = true : null;
 				}
