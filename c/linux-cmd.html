@@ -10,7 +10,7 @@
     <meta name="keywords" content=",linux指令大全">
     <title>linux指令大全 - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483870981739">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1483883686018">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -143,11 +143,104 @@
 
 <h1 id="linux指令大全">linux指令大全</h1><p>常用linux指令解析</p>
 <h3 id="改变文件夹dir权限">改变文件夹dir权限</h3><pre><code>sudo chmod -r 777 dir
-</code></pre><h3 id="ln">ln</h3><h3 id="fc-list">fc-list</h3><h3 id="fc-cache">fc-cache</h3><h3 id="cp">cp</h3><h3 id="halt-poweroff">halt poweroff</h3><h3 id="reboot">reboot</h3>
+</code></pre><h3 id="ln">ln</h3><h3 id="fc-list">fc-list</h3><h3 id="fc-cache">fc-cache</h3><h3 id="cp">cp</h3><h3 id="halt-poweroff">halt poweroff</h3><h3 id="reboot">reboot</h3><h3 id="tar">tar</h3><pre><code>tar -xvf node-v6.2.0.tar.gz
+<span class="hljs-comment"># x 从档案文件中释放文件</span>
+<span class="hljs-comment"># v 执行过程中显示信息 verbose</span>
+<span class="hljs-comment"># f 使用档名，在 f之后要立即接档名！不要再加其他参数！</span>
+<span class="hljs-comment"># c 创建新的档案文件</span>
+<span class="hljs-comment"># z 是否需要用 gzip压缩或解压（xx.tar.gz、xx. tgz）</span>
+</code></pre><h3 id="wget">wget</h3><pre><code><span class="hljs-comment">#下载文件</span>
+wget http://nodejs.org/dist/v0.8.7/node-v0.8.7.tar.gz
+</code></pre><h3 id="curl">curl</h3><h4 id="参数">参数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数（option）</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-A/--user-agent <string></td>
+<td style="text-align:center">设置用户代理发送给服务器</td>
+</tr>
+<tr>
+<td style="text-align:center">-b/--cookie <name=string/file></td>
+<td style="text-align:center">cookie字符串或文件读取位置</td>
+</tr>
+<tr>
+<td style="text-align:center">-c/--cookie-jar <file></td>
+<td style="text-align:center">操作结束后把cookie写入到这个文件中</td>
+</tr>
+<tr>
+<td style="text-align:center">-C/--continue-at <offset></td>
+<td style="text-align:center">断点续转</td>
+</tr>
+<tr>
+<td style="text-align:center">-D/--dump-header <file></td>
+<td style="text-align:center">把header信息写入到该文件中</td>
+</tr>
+<tr>
+<td style="text-align:center">-e/--referer</td>
+<td style="text-align:center">来源网址</td>
+</tr>
+<tr>
+<td style="text-align:center">-f/--fail</td>
+<td style="text-align:center">连接失败时不显示http错误</td>
+</tr>
+<tr>
+<td style="text-align:center">-o/--output</td>
+<td style="text-align:center">把输出写到该文件中</td>
+</tr>
+<tr>
+<td style="text-align:center">-O/--remote-name</td>
+<td style="text-align:center">把输出写到该文件中，保留远程文件的文件名</td>
+</tr>
+<tr>
+<td style="text-align:center">-r/--range <range></td>
+<td style="text-align:center">检索来自HTTP/1.1或FTP服务器字节范围</td>
+</tr>
+<tr>
+<td style="text-align:center">-s/--silent</td>
+<td style="text-align:center">静音模式。不输出任何东西</td>
+</tr>
+<tr>
+<td style="text-align:center">-T/--upload-file <file></td>
+<td style="text-align:center">上传文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-u/--user <user[:password]></td>
+<td style="text-align:center">设置服务器的用户和密码</td>
+</tr>
+<tr>
+<td style="text-align:center">-w/--write-out [format]</td>
+<td style="text-align:center">什么输出完成后</td>
+</tr>
+<tr>
+<td style="text-align:center">-x/--proxy <host[:port]></td>
+<td style="text-align:center">在给定的端口上使用HTTP代理</td>
+</tr>
+<tr>
+<td style="text-align:center">-#/--progress-bar</td>
+<td style="text-align:center">进度条显示当前的传送状态</td>
+</tr>
+</tbody>
+</table>
+<h4 id="示例">示例</h4><pre><code>curl http://www.linux.com <span class="hljs-comment">#执行后，www.linux.com 的html就会显示在屏幕上了</span>
+curl http://www.linux.com &gt;&gt; linux.html   <span class="hljs-comment">#重定向功能保存</span>
+curl -o linux.html http://www.linux.com   <span class="hljs-comment">#-o/--output 把输出写到该文件中</span>
+curl -c cookiec.txt  http://www.linux.com <span class="hljs-comment">#保存http的response里面的cookie信息。内置option:-c（小写）</span>
+curl -D header.txt http://www.linux.com   <span class="hljs-comment">#保存http的response里面的header信息。内置option: -D</span>
+curl -b cookiec.txt http://www.linux.com  <span class="hljs-comment">#读取保存的cookie信息访问。内置option: -b</span>
+curl -A <span class="hljs-string">"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)"</span> http://www.linux.com <span class="hljs-comment">#设置UserAgent</span>
+<span class="hljs-comment">#下载文件</span>
+curl -o dodo1.jpg http:www.linux.com/dodo1.JPG 
+curl -O http://www.linux.com/dodo1.JPG
+curl -O http://www.linux.com/dodo[1-5].JPG <span class="hljs-comment">#循环下载</span>
+</code></pre>
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483870981740"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483870981740"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1483883686019"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1483883686019"></script>
 </body>
 
 </html>
