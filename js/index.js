@@ -136,6 +136,7 @@
 		init: function() {
 			var self = this;
 			var kw = self.getQueryString('kw');
+			kw = kw && kw.length > 0 ? kw : '';
 			var timer = null
 			this.elm_query.value = kw;
 			this.query = kw || '';
