@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="npm:npm常用指令详解 - ">
-    <meta name="keywords" content=",npm">
-    <title>npm - 无忧杂货铺</title>
+    <meta name="description" content="git指令大全:git常用指令详解 - ">
+    <meta name="keywords" content=",git指令大全">
+    <title>git指令大全 - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1484055623420">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1484055623416">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\npm.html">
+			<input type="hidden" id="current_path" value="c\git.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,62 +139,20 @@
 
 <div class="markdown-body">
 
-<!--command\npm.md-->
+<!--command\git.md-->
 
-<h1 id="npm">npm</h1><p>npm常用指令详解</p>
-<h3 id="什么是npm">什么是NPM</h3><blockquote>
-<p>NPM的全称是Node Package Manager，是随同NodeJS一起安装的包管理和分发工具，它很方便让JavaScript开发者下载、安装、上传以及管理已经安装的包。</p>
-</blockquote>
-<h3 id="站点">站点</h3><pre><code><span class="hljs-comment">#设置淘宝仓库</span>
-npm config <span class="hljs-built_in">set</span> registry https://registry.npm.taobao.org
-
-<span class="hljs-comment">#设置原始仓库地址(提交代码的时候需要重新设置成原始站点否则error:403)</span>
-npm config <span class="hljs-built_in">set</span> registry https://registry.npmjs.org
-</code></pre><h3 id="cnpm">cnpm</h3><pre><code><span class="hljs-comment">#如果实在很慢的话，可以安装cnpm代替npm</span>
-npm install cnpm -g
-<span class="hljs-comment">#使用cnpm</span>
-cnpm install eedoc -g
-</code></pre><h3 id="关闭https">关闭https</h3><blockquote>
-<p>如果是卡的原因导致慢的话，可以关闭https试试 </p>
-</blockquote>
-<pre><code>npm config <span class="hljs-built_in">set</span> strict-ssl <span class="hljs-literal">false</span>
-npm config <span class="hljs-built_in">set</span> registry <span class="hljs-string">"http://registry.npmjs.org/"</span>
-</code></pre><h3 id="查看">查看</h3><pre><code><span class="hljs-comment">#查看版本</span>
-npm -v
-
-<span class="hljs-comment">#查看配置(全部)</span>
-npm config ls <span class="hljs-_">-l</span> 
-npm config list
-</code></pre><h3 id="创建npm工程">创建npm工程</h3><pre><code>npm init
-<span class="hljs-comment"># bin 文件夹下创建命令</span>
-<span class="hljs-comment"># index.js默认入口文件</span>
-<span class="hljs-comment"># lib 文件夹下创建子模块</span>
-</code></pre><h3 id="提交代码">提交代码</h3><pre><code><span class="hljs-comment">#npm注册</span>
-npm adduser
-
-<span class="hljs-comment">#登录</span>
-npm login
-
-<span class="hljs-comment">#发布 (发布时要确保version大于前一个版本)</span>
-npm publish
-
-<span class="hljs-comment">#取消发布</span>
-npm unpublish
-</code></pre><h3 id="安装与卸载">安装与卸载</h3><pre><code><span class="hljs-comment">#安装（-g全局安装,sudo以管理员权限安装，eedoc@1.3.1安装指定版本）</span>
-npm install 
-npm install -g
-sudo npm install -g
-npm install eedoc@1.3.1
-<span class="hljs-comment">#卸载（-g全局卸载）</span>
-npm uninstall eedoc
-npm uninstall eedoc -g
-</code></pre><h3 id="全局库路径及缓存库路径（get查看，set设置）">全局库路径及缓存库路径（get查看，set设置）</h3><pre><code>npm config get cache  <span class="hljs-comment">#缓存库</span>
-npm config get prefix <span class="hljs-comment">#全局库</span>
+<h1 id="git指令大全">git指令大全</h1><p>git常用指令详解</p>
+<h3 id="config">config</h3><pre><code>$ git config <span class="hljs-_">-l</span>       <span class="hljs-comment">#查看配置</span>
+$ git config --global <span class="hljs-comment">#全局配置</span>
+$ git config --global core.autocrlf input <span class="hljs-comment">#这样即可保证仓库中永远都是LF. 而且在Windows工作空间都是CRLF, 在Mac/Linux工作空间都是LF.</span>
+</code></pre><h3 id="fetch">fetch</h3><pre><code>$ git fetch -p <span class="hljs-comment">#同步分支（如果远程有删除执行）</span>
+$ git remote prune origin
+$ git pull --all
 </code></pre>
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1484055623421"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1484055623421"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1484055623417"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1484055623417"></script>
 </body>
 
 </html>
