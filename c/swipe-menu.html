@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="puppy linux:puppy linux 安装及使用说明 - ">
-    <meta name="keywords" content=",puppy linux">
-    <title>puppy linux - 无忧杂货铺</title>
+    <meta name="description" content="Android自定义侧滑按钮:结合ViewDragHelper自定义控件侧滑按钮 - ">
+    <meta name="keywords" content=",Android自定义侧滑按钮">
+    <title>Android自定义侧滑按钮 - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1485156805499">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1485156805484">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\linux-puppy.html">
+			<input type="hidden" id="current_path" value="c\swipe-menu.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,22 +139,170 @@
 
 <div class="markdown-body">
 
-<!--command\linux-puppy.md-->
+<!--command\swipe-menu.md-->
 
-<h1 id="puppy-linux">puppy linux</h1><p>puppy linux 安装及使用说明</p>
-<h3 id="安装步骤">安装步骤</h3><h4 id="分区">分区</h4><h4 id="硬盘安装">硬盘安装</h4><h4 id="grub-dos启动项">grub-dos启动项</h4><h4 id="设置：语言、时区、分辨率、机器名">设置：语言、时区、分辨率、机器名</h4><h4 id="字体">字体</h4><pre><code><span class="hljs-comment"># linux系统目录 usr/share/fonts</span>
-<span class="hljs-comment"># 拷贝字体</span>
-$ cp yahei.ttf usr/share/fonts
-<span class="hljs-comment"># 刷新字体库</span>
-$ <span class="hljs-built_in">fc</span>-cache
-<span class="hljs-comment"># 查看当前系统安装的字体</span>
-$ <span class="hljs-built_in">fc</span>-list
-</code></pre><h3 id="一个网址">一个网址</h3><p><a href="http://dotpups.de/">http://dotpups.de/</a></p>
+<h1 id="android自定义侧滑按钮">Android自定义侧滑按钮</h1><p>结合ViewDragHelper自定义控件侧滑按钮</p>
+<pre><code>package com.fanglin.fhui;
+import android.content.Context;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.ViewDragHelper;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
 
+/**
+ * author:Created by Plucky on 2016/12/12-下午6:12.
+ * 功能描述:自定义侧滑按钮
+ */
+public class FHSwipeLayout extends LinearLayout {
+
+    private ViewDragHelper viewDragHelper;
+    private View contentView;
+    private View actionView;
+    private int dragDistance;
+    private final double AUTO_OPEN_SPEED_LIMIT = 800.0;
+    private int draggedX;
+
+    public FHSwipeLayout(Context context) {
+        this(context, null);
+    }
+
+    public FHSwipeLayout(Context context, AttributeSet attrs) {
+        this(context, attrs, -1);
+    }
+
+    public FHSwipeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        viewDragHelper = ViewDragHelper.create(this, new DragHelperCallback());
+    }
+
+    @Override
+    protected void <span class="hljs-function"><span class="hljs-title">onFinishInflate</span></span>() {
+        super.onFinishInflate();
+        contentView = getChildAt(0);
+        actionView = getChildAt(1);
+        actionView.setVisibility(GONE);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        dragDistance = actionView.getMeasuredWidth();
+    }
+
+    private class DragHelperCallback extends ViewDragHelper.Callback {
+
+        @Override
+        public boolean tryCaptureView(View view, int i) {
+            <span class="hljs-built_in">return</span> view == contentView || view == actionView;
+        }
+
+        @Override
+        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+            draggedX = left;
+            <span class="hljs-keyword">if</span> (changedView == contentView) {
+                actionView.offsetLeftAndRight(dx);
+            } <span class="hljs-keyword">else</span> {
+                contentView.offsetLeftAndRight(dx);
+            }
+            <span class="hljs-keyword">if</span> (actionView.getVisibility() == View.GONE) {
+                actionView.setVisibility(View.VISIBLE);
+            }
+            invalidate();
+        }
+
+        @Override
+        public int clampViewPositionHorizontal(View child, int left, int dx) {
+            <span class="hljs-keyword">if</span> (child == contentView) {
+                final int leftBound = getPaddingLeft();
+                final int minLeftBound = -leftBound - dragDistance;
+                final int newLeft = Math.min(Math.max(minLeftBound, left), 0);
+                <span class="hljs-built_in">return</span> newLeft;
+            } <span class="hljs-keyword">else</span> {
+                final int minLeftBound = getPaddingLeft() + contentView.getMeasuredWidth() - dragDistance;
+                final int maxLeftBound = getPaddingLeft() + contentView.getMeasuredWidth() + getPaddingRight();
+                final int newLeft = Math.min(Math.max(left, minLeftBound), maxLeftBound);
+                <span class="hljs-built_in">return</span> newLeft;
+            }
+        }
+
+        @Override
+        public int getViewHorizontalDragRange(View child) {
+            <span class="hljs-built_in">return</span> dragDistance;
+        }
+
+        @Override
+        public void onViewReleased(View releasedChild, <span class="hljs-built_in">float</span> xvel, <span class="hljs-built_in">float</span> yvel) {
+            super.onViewReleased(releasedChild, xvel, yvel);
+            boolean settleToOpen = <span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">if</span> (xvel &gt; AUTO_OPEN_SPEED_LIMIT) {
+                settleToOpen = <span class="hljs-literal">false</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (xvel &lt; -AUTO_OPEN_SPEED_LIMIT) {
+                settleToOpen = <span class="hljs-literal">true</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (draggedX &lt;= -dragDistance / 2) {
+                settleToOpen = <span class="hljs-literal">true</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (draggedX &gt; -dragDistance / 2) {
+                settleToOpen = <span class="hljs-literal">false</span>;
+            }
+
+            final int settleDestX = settleToOpen ? -dragDistance : 0;
+            viewDragHelper.smoothSlideViewTo(contentView, settleDestX, 0);
+            ViewCompat.postInvalidateOnAnimation(FHSwipeLayout.this);
+        }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        <span class="hljs-keyword">if</span> (viewDragHelper.shouldInterceptTouchEvent(ev)) {
+            <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-built_in">return</span> super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        viewDragHelper.processTouchEvent(event);
+        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    @Override
+    public void <span class="hljs-function"><span class="hljs-title">computeScroll</span></span>() {
+        super.computeScroll();
+        <span class="hljs-keyword">if</span> (viewDragHelper.continueSettling(<span class="hljs-literal">true</span>)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
+    }
+}
+</code></pre><h3 id="使用案例">使用案例</h3><pre><code>&lt;com.fanglin.fhui.FHSwipeLayout
+        android:layout_width=<span class="hljs-string">"match_parent"</span>
+        android:layout_height=<span class="hljs-string">"wrap_content"</span>&gt;
+
+    &lt;LinearLayout
+        android:layout_width=<span class="hljs-string">"match_parent"</span>
+        android:layout_height=<span class="hljs-string">"106dp"</span>
+        android:gravity=<span class="hljs-string">"center"</span>
+        android:background=<span class="hljs-string">"#333333"</span>
+        android:orientation=<span class="hljs-string">"horizontal"</span>&gt;
+
+    &lt;/LinearLayout&gt;
+
+    &lt;TextView
+        android:id=<span class="hljs-string">"@+id/tvDelete"</span>
+        android:layout_width=<span class="hljs-string">"75dp"</span>
+        android:layout_height=<span class="hljs-string">"106dp"</span>
+        android:background=<span class="hljs-string">"#FA2855"</span>
+        android:gravity=<span class="hljs-string">"center"</span>
+        android:text=<span class="hljs-string">"delete"</span>
+        android:textColor=<span class="hljs-string">"#FFFFFF"</span>
+        android:textSize=<span class="hljs-string">"16sp"</span> /&gt;
+&lt;/com.fanglin.fhui.FHSwipeLayout&gt;
+</code></pre>
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1485156805501"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1485156805501"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1485156805486"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1485156805486"></script>
 </body>
 
 </html>

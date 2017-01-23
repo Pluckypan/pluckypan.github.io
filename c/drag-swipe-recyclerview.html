@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="puppy linux:puppy linux 安装及使用说明 - ">
-    <meta name="keywords" content=",puppy linux">
-    <title>puppy linux - 无忧杂货铺</title>
+    <meta name="description" content="RecyclerView拖动排序及侧滑删除:不依赖第三方类库实现RecyclerView拖动排序及侧滑删除功能  2016年9月18日 15:26 - ">
+    <meta name="keywords" content=",RecyclerView拖动排序及侧滑删除">
+    <title>RecyclerView拖动排序及侧滑删除 - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1485156805499">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1485156805588">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\linux-puppy.html">
+			<input type="hidden" id="current_path" value="c\drag-swipe-recyclerview.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,22 +139,118 @@
 
 <div class="markdown-body">
 
-<!--command\linux-puppy.md-->
+<!--command\drag-swipe-recyclerview.md-->
 
-<h1 id="puppy-linux">puppy linux</h1><p>puppy linux 安装及使用说明</p>
-<h3 id="安装步骤">安装步骤</h3><h4 id="分区">分区</h4><h4 id="硬盘安装">硬盘安装</h4><h4 id="grub-dos启动项">grub-dos启动项</h4><h4 id="设置：语言、时区、分辨率、机器名">设置：语言、时区、分辨率、机器名</h4><h4 id="字体">字体</h4><pre><code><span class="hljs-comment"># linux系统目录 usr/share/fonts</span>
-<span class="hljs-comment"># 拷贝字体</span>
-$ cp yahei.ttf usr/share/fonts
-<span class="hljs-comment"># 刷新字体库</span>
-$ <span class="hljs-built_in">fc</span>-cache
-<span class="hljs-comment"># 查看当前系统安装的字体</span>
-$ <span class="hljs-built_in">fc</span>-list
-</code></pre><h3 id="一个网址">一个网址</h3><p><a href="http://dotpups.de/">http://dotpups.de/</a></p>
+<h1 id="recyclerview拖动排序及侧滑删除">RecyclerView拖动排序及侧滑删除</h1><p>不依赖第三方类库实现RecyclerView拖动排序及侧滑删除功能  2016年9月18日 15:26</p>
+<blockquote>
+<p>在安卓中，有许多关于如何使用RecyclerView实现“drag &amp; drop”与swipe-to-dismiss”的教程，库和例子。即使现在已经有了新的，更优的实现方式，大多数仍然是使用老旧的View.OnDragListener以及Roman Nurik在SwipeToDismiss中所使用的方法。很少有人使用新的api，反而要么经常依赖于GestureDetectors和onInterceptTouchEvent，要么实现方式很复杂。实际上，在RecyclerView上添加拖动特性有一个非常简单的方法。这个方法只需要一个类，并且它也是Android 兼容包的一部分，它就是：<code>ItemTouchHelper</code></p>
+</blockquote>
+<h3 id="itemtouchhelper">ItemTouchHelper</h3><p>ItemTouchHelper是一个强大的工具，它处理好了关于在RecyclerView上添加拖动排序与滑动删除的所有事情。它是
+<a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.ItemDecoration.html">RecyclerView.ItemDecoration</a>的子类，也就是说它可以轻易的添加到几乎所有的LayoutManager和Adapter中。它还可以和现有的item动画一起工作，提供受类型限制的拖放动画等等。</p>
+<h3 id="实现效果">实现效果</h3><p><img src="http://7xs20s.com1.z0.glb.clouddn.com/tuchongeter/素材/1435641365165672.gif" alt="RecyclerView"></p>
+<h3 id="代码实现">代码实现</h3><h4 id="第一步：定义item拖拽和删除接口">第一步：定义Item拖拽和删除接口</h4><pre><code>public interface DragSwipeListener {
+    void onItemDismiss(int position);
+    void onDrag(int from, int to);
+}
+</code></pre><h4 id="第二步：定义adapter并实现上述接口方法">第二步：定义Adapter并实现上述接口方法</h4><pre><code>public class DragSwipeAdapter extends RecyclerView.Adapter&lt;DragSwipeAdapter.ItemViewHolder&gt; implements DragSwipeListener {
+
+    private Context mContext;
+
+    public DragSwipeAdapter(Context mContext) {
+        this.mContext = mContext;
+    }
+
+    @Override
+    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = View.inflate(mContext, R.layout.item_msg, null);
+        <span class="hljs-built_in">return</span> new ItemViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(ItemViewHolder holder, int position) {
+        holder.tvDesc.setText(<span class="hljs-string">"xx00 --&gt;"</span> + position + <span class="hljs-string">"&lt;-- 00xx"</span>);
+    }
+
+    @Override
+    public int <span class="hljs-function"><span class="hljs-title">getItemCount</span></span>() {
+        <span class="hljs-built_in">return</span> 6;
+    }
+
+    class ItemViewHolder extends RecyclerView.ViewHolder {
+
+        TextView tvName, tvDesc;
+
+        public ItemViewHolder(View itemView) {
+            super(itemView);
+            tvName = (TextView) itemView.findViewById(R.id.tvName);
+            tvDesc = (TextView) itemView.findViewById(R.id.tvDesc);
+        }
+    }
+
+    @Override
+    public void onItemDismiss(int position) {
+        notifyItemRemoved(position);
+    }
+
+    @Override
+    public void onDrag(int from, int to) {
+        notifyItemMoved(from, to);
+    }
+}
+</code></pre><h4 id="第三步：设置回调，当拖拽、侧滑删除时触发">第三步：设置回调，当拖拽、侧滑删除时触发</h4><pre><code>public class SimpleTouchCallback extends ItemTouchHelper.Callback {
+
+    private DragSwipeListener listener;
+
+    public SimpleTouchCallback(DragSwipeListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+        int swipFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+
+        <span class="hljs-built_in">return</span> makeMovementFlags(dragFlags, swipFlags);
+    }
+
+    @Override
+    public boolean <span class="hljs-function"><span class="hljs-title">isLongPressDragEnabled</span></span>() {
+        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    @Override
+    public boolean <span class="hljs-function"><span class="hljs-title">isItemViewSwipeEnabled</span></span>() {
+        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    @Override
+    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+        listener.onDrag(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+        listener.onItemDismiss(viewHolder.getAdapterPosition());
+    }
+}
+</code></pre><h4 id="第四步：itemtouchhelper关联至recyclerview">第四步：ItemTouchHelper关联至RecyclerView</h4><pre><code>LinearLayoutManager manager = new LinearLayoutManager(this);
+manager.setOrientation(LinearLayoutManager.VERTICAL);
+
+recyclerView.setLayoutManager(manager);
+
+DragSwipeAdapter adapter = new DragSwipeAdapter(this);
+recyclerView.setAdapter(adapter);
+
+SimpleTouchCallback callback = new SimpleTouchCallback(adapter);
+ItemTouchHelper helper = new ItemTouchHelper(callback);
+helper.attachToRecyclerView(recyclerView);
+</code></pre><h3 id="项目地址">项目地址</h3><p><a href="https://github.com/Pluckypan/bigAndroid.git">github</a></p>
 
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1485156805501"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1485156805501"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1485156805590"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1485156805590"></script>
 </body>
 
 </html>

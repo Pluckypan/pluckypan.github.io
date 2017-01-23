@@ -6,11 +6,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="puppy linux:puppy linux 安装及使用说明 - ">
-    <meta name="keywords" content=",puppy linux">
-    <title>puppy linux - 无忧杂货铺</title>
+    <meta name="description" content="iOS正则表达式RegexKitLite:iOS中使用RegexKitLite来简化正则表达式的使用 - ">
+    <meta name="keywords" content=",iOS正则表达式RegexKitLite">
+    <title>iOS正则表达式RegexKitLite - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1485156805499">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1485156805510">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -128,7 +128,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\linux-puppy.html">
+			<input type="hidden" id="current_path" value="c\regexkitlite.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -139,22 +139,48 @@
 
 <div class="markdown-body">
 
-<!--command\linux-puppy.md-->
+<!--command\regexkitlite.md-->
 
-<h1 id="puppy-linux">puppy linux</h1><p>puppy linux 安装及使用说明</p>
-<h3 id="安装步骤">安装步骤</h3><h4 id="分区">分区</h4><h4 id="硬盘安装">硬盘安装</h4><h4 id="grub-dos启动项">grub-dos启动项</h4><h4 id="设置：语言、时区、分辨率、机器名">设置：语言、时区、分辨率、机器名</h4><h4 id="字体">字体</h4><pre><code><span class="hljs-comment"># linux系统目录 usr/share/fonts</span>
-<span class="hljs-comment"># 拷贝字体</span>
-$ cp yahei.ttf usr/share/fonts
-<span class="hljs-comment"># 刷新字体库</span>
-$ <span class="hljs-built_in">fc</span>-cache
-<span class="hljs-comment"># 查看当前系统安装的字体</span>
-$ <span class="hljs-built_in">fc</span>-list
-</code></pre><h3 id="一个网址">一个网址</h3><p><a href="http://dotpups.de/">http://dotpups.de/</a></p>
+<h1 id="ios正则表达式regexkitlite">iOS正则表达式RegexKitLite</h1><p>iOS中使用RegexKitLite来简化正则表达式的使用</p>
+<blockquote>
+<p>在iOS中系统自带的<strong> NSRegularExpression </strong>可用于正则表达式的匹配，但是使用相对麻烦，使用第三方框架RegexKitLite能大大简化对正则表达式的使用。具体使用方法如下：</p>
+</blockquote>
+<h3 id="常用方法">常用方法</h3><pre><code>NSString *searchString = @<span class="hljs-string">"我正在#话题#吃饭@zhangsan 你@lisi 吃了没?"</span>;
+NSString *regexString = @<span class="hljs-string">"@\\w+"</span>;
+
+//1、返回所有匹配成功的结果，并存放到一个数组里
+NSArray *array = [searchString componentsMatchedByRegex:regexString];
+NSLog(@<span class="hljs-string">"array:%@"</span>,array); // 输出结果: (<span class="hljs-string">"@zhangsan"</span>,<span class="hljs-string">"@lisi"</span>)
+
+//2、判断字符串是否与Regex配对
+BOOL isMatched = [@<span class="hljs-string">"@zhangsan"</span> isMatchedByRegex:regexString];
+<span class="hljs-keyword">if</span> (isMatched) {
+   NSLog(@<span class="hljs-string">"配对成功"</span>);
+}
+
+//3、 取得配对出来的第一個完整字串
+NSString *matchedString1 = [searchString stringByMatching:regexString];
+NSLog(@<span class="hljs-string">"matchedString1:%@"</span>,matchedString1); // 输出结果: @zhangsan
+
+//4、 将字符串中与Regex配对的结果进行替换
+NSString *replaceString = @<span class="hljs-string">"wangwu"</span>;
+NSString *matchedString2 = [searchString stringByReplacingOccurrencesOfRegex:regexString withString:replaceString];
+NSLog(@<span class="hljs-string">"matchedString2:%@"</span>,matchedString2); // 输出结果: 我正在<span class="hljs-comment">#话题#吃饭wangwu 你wangwu 吃了没?</span>
+
+//5、 如果是NSMutableString，则可以直接替换，并返回替换的次数
+NSMutableString *mutSearchString = [NSMutableString stringWithString:@<span class="hljs-string">"我正在#话题#吃放@zhangsan 你@lisi 吃了没?"</span>];
+NSInteger mutMatchedString2 = [mutSearchString replaceOccurrencesOfRegex:regexString withString:replaceString];
+NSLog(@<span class="hljs-string">"mutMatchedString2:%ld"</span>,mutMatchedString2); // 输出结果: 2
+
+//6、 返回一个拆分后的字符串数组
+NSArray *array3 = [searchString componentsSeparatedByRegex:regexString];
+NSLog(@<span class="hljs-string">"array3:%@"</span>,array3); // 输出结果: (<span class="hljs-string">"我正在#话题#吃饭"</span>,<span class="hljs-string">" 你"</span>,<span class="hljs-string">" 吃了没?"</span>)
+</code></pre><h3 id="正则参考">正则参考</h3><p><a href="http://www.runoob.com/regexp/regexp-tutorial.html">正则表达式学习参考</a></p>
 
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1485156805501"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1485156805501"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1485156805512"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1485156805512"></script>
 </body>
 
 </html>

@@ -10,7 +10,7 @@
     <meta name="keywords" content=",npm">
     <title>npm - 无忧杂货铺</title>
     <link rel="shortcut icon" href="..\..\..\..\..\img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1484055623420">
+    <link rel="stylesheet" type="text/css" href="..\..\..\..\..\css/index.css?v=1485156805353">
 </head>
 <body>
 <a href="https://www.github.com/pluckypan" target="_blank" class="github-corner">
@@ -154,8 +154,12 @@ npm config <span class="hljs-built_in">set</span> registry https://registry.npmj
 npm install cnpm -g
 <span class="hljs-comment">#使用cnpm</span>
 cnpm install eedoc -g
+</code></pre><h3 id="nrm">nrm</h3><pre><code><span class="hljs-variable">$npm</span> install -g nrm
+<span class="hljs-variable">$nrm</span> ls  <span class="hljs-comment">#列出可用源</span>
+nrm use  <span class="hljs-comment">#切换</span>
+nrm <span class="hljs-built_in">test</span> <span class="hljs-comment">#测速（响应速度）</span>
 </code></pre><h3 id="关闭https">关闭https</h3><blockquote>
-<p>如果是卡的原因导致慢的话，可以关闭https试试 </p>
+<p>如果是卡的原因导致慢的话，可以关闭https试试</p>
 </blockquote>
 <pre><code>npm config <span class="hljs-built_in">set</span> strict-ssl <span class="hljs-literal">false</span>
 npm config <span class="hljs-built_in">set</span> registry <span class="hljs-string">"http://registry.npmjs.org/"</span>
@@ -163,7 +167,7 @@ npm config <span class="hljs-built_in">set</span> registry <span class="hljs-str
 npm -v
 
 <span class="hljs-comment">#查看配置(全部)</span>
-npm config ls <span class="hljs-_">-l</span> 
+npm config ls <span class="hljs-_">-l</span>
 npm config list
 </code></pre><h3 id="创建npm工程">创建npm工程</h3><pre><code>npm init
 <span class="hljs-comment"># bin 文件夹下创建命令</span>
@@ -181,7 +185,7 @@ npm publish
 <span class="hljs-comment">#取消发布</span>
 npm unpublish
 </code></pre><h3 id="安装与卸载">安装与卸载</h3><pre><code><span class="hljs-comment">#安装（-g全局安装,sudo以管理员权限安装，eedoc@1.3.1安装指定版本）</span>
-npm install 
+npm install
 npm install -g
 sudo npm install -g
 npm install eedoc@1.3.1
@@ -190,11 +194,12 @@ npm uninstall eedoc
 npm uninstall eedoc -g
 </code></pre><h3 id="全局库路径及缓存库路径（get查看，set设置）">全局库路径及缓存库路径（get查看，set设置）</h3><pre><code>npm config get cache  <span class="hljs-comment">#缓存库</span>
 npm config get prefix <span class="hljs-comment">#全局库</span>
+</code></pre><h3 id="清除本地缓存">清除本地缓存</h3><pre><code>npm cache clean
 </code></pre>
 </div>
 
-<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1484055623421"></script>
-<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1484055623421"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/dt.js?v=1485156805355"></script>
+<script type="text/javascript" src="..\..\..\..\..\js/index.js?v=1485156805355"></script>
 </body>
 
 </html>
