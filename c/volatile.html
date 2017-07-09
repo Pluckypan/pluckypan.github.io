@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="atom - atom安装及使用 - 无忧杂货铺">
-		<meta name="keywords" content="atom - 无忧杂货铺">
+		<meta name="description" content="volatile - volatile用法 - 无忧杂货铺">
+		<meta name="keywords" content="volatile - 无忧杂货铺">
 		<title>
-			atom - 无忧杂货铺
+			volatile - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725232">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725261">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/atom.html">
+			<input type="hidden" id="current_path" value="c/volatile.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,16 +143,16 @@
 
 <div class="markdown-body">
 
-<!--command/atom.md-->
+<!--command/volatile.md-->
 
-<h1 id="atom">atom</h1><p>atom安装及使用</p>
-<h3 id="安装路径(自动)">安装路径(自动)</h3><pre><code>C:\Users\Administrator\AppData\Local\atom
-</code></pre><h3 id="apm指令无法识别">apm指令无法识别</h3><blockquote>
-<p>将<code>atom\app-1.12.9\resources\cli</code>目录添加进环境变量即可</p>
+<h1 id="volatile">volatile</h1><p>volatile用法</p>
+<blockquote>
+<p>volatile让变量每次在使用的时候，都从主存中取。而不是从各个线程的“工作内存”。volatile具有synchronized关键字的“可见性”，但是没有synchronized关键字的“并发正确性”，也就是说不保证线程执行的有序性。也就是说，volatile变量对于每次使用，线程都能得到当前volatile变量的最新值。但是volatile变量并不保证并发的正确性。</p>
 </blockquote>
-<h3 id="插件">插件</h3><ul>
-<li>platformio-ide-termina(终端)</li>
-<li>atom-beautify</li>
+<h3 id="正确使用 volatile 变量的条件">正确使用 volatile 变量的条件</h3><p>在有限的一些情形下使用 volatile 变量替代锁。要使 volatile 变量提供理想的线程安全，必须同时满足下面两个条件：</p>
+<ul>
+<li>对变量的写操作不依赖于当前值。</li>
+<li>该变量没有包含在具有其他变量的不变式中。</li>
 </ul>
 
 </div>
@@ -160,19 +160,19 @@
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c/atom.html";
+	var curPath = "c/volatile.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
-	var wumiiTitle = "atom - 无忧杂货铺";
+	var wumiiTitle = "volatile - 无忧杂货铺";
 	var wumiiSitePrefix = siteUrl;
 	var wumiiCommentParams = "&pf=JAVASCRIPT";
 </script>
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725233"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725233"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725262"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725262"></script>
 </body>
 
 </html>

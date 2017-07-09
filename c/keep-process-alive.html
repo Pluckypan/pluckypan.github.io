@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="atom - atom安装及使用 - 无忧杂货铺">
-		<meta name="keywords" content="atom - 无忧杂货铺">
+		<meta name="description" content="进程保活 - Android 进程保活招式大全 - 无忧杂货铺">
+		<meta name="keywords" content="进程保活 - 无忧杂货铺">
 		<title>
-			atom - 无忧杂货铺
+			进程保活 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725232">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725316">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/atom.html">
+			<input type="hidden" id="current_path" value="c/keep-process-alive.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,36 +143,51 @@
 
 <div class="markdown-body">
 
-<!--command/atom.md-->
+<!--command/keep-process-alive.md-->
 
-<h1 id="atom">atom</h1><p>atom安装及使用</p>
-<h3 id="安装路径(自动)">安装路径(自动)</h3><pre><code>C:\Users\Administrator\AppData\Local\atom
-</code></pre><h3 id="apm指令无法识别">apm指令无法识别</h3><blockquote>
-<p>将<code>atom\app-1.12.9\resources\cli</code>目录添加进环境变量即可</p>
-</blockquote>
-<h3 id="插件">插件</h3><ul>
-<li>platformio-ide-termina(终端)</li>
-<li>atom-beautify</li>
+<h1 id="进程保活">进程保活</h1><p>Android 进程保活招式大全</p>
+<h3 id="android 进程拉活包括两个层面">Android 进程拉活包括两个层面</h3><ul>
+<li>提供进程优先级，降低进程被杀死的概率</li>
+<li>在进程被杀死后，进行拉活</li>
 </ul>
+<h3 id="进程的优先级">进程的优先级</h3><ul>
+<li>前台进程 (Foreground process)</li>
+<li>可见进程 (Visible process)</li>
+<li>服务进程 (Service process)</li>
+<li>后台进程 (Background process)</li>
+<li>空进程 (Empty process)</li>
+</ul>
+<h3 id="提升进程优先级的方案">提升进程优先级的方案</h3><h4 id="利用 activity 提升权限">利用 Activity 提升权限</h4><blockquote>
+<p>方案设计思想：监控手机锁屏解锁事件，在屏幕锁屏时启动1个像素的 Activity，在用户解锁时将 Activity 销毁掉。注意该 Activity 需设计成用户无感知。通过该方案，可以使进程的优先级在屏幕锁屏时间由4提升为最高优先级1。</p>
+</blockquote>
+<h3 id="androidmanifest-xml">AndroidManifest.xml</h3><pre><code><span class="hljs-comment"># 排除 Activity 在 RecentTask 中的显示</span>
+&lt;activity
+     android:name=<span class="hljs-string">".KeepAliveActivity"</span>
+     android:exported=<span class="hljs-string">"false"</span>
+     android:excludeFromRecents=<span class="hljs-string">"true"</span>
+     android:finishOnTaskLaunch=<span class="hljs-string">"false"</span>&gt;
+</code></pre><h3 id="进程死后拉活的方案">进程死后拉活的方案</h3><h4 id="利用系统广播拉活">利用系统广播拉活</h4><blockquote>
+<p>方案设计思想：在发生特定系统事件时，系统会发出响应的广播，通过在 AndroidManifest 中“静态”注册对应的广播监听器，即可在发生响应事件时拉活。</p>
+</blockquote>
 
 </div>
 
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c/atom.html";
+	var curPath = "c/keep-process-alive.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
-	var wumiiTitle = "atom - 无忧杂货铺";
+	var wumiiTitle = "进程保活 - 无忧杂货铺";
 	var wumiiSitePrefix = siteUrl;
 	var wumiiCommentParams = "&pf=JAVASCRIPT";
 </script>
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725233"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725233"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725317"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725317"></script>
 </body>
 
 </html>

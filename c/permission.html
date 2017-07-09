@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="atom - atom安装及使用 - 无忧杂货铺">
-		<meta name="keywords" content="atom - 无忧杂货铺">
+		<meta name="description" content="Permission - Android6.0动态权限适配方案，权限组的概念 - 无忧杂货铺">
+		<meta name="keywords" content="Permission - 无忧杂货铺">
 		<title>
-			atom - 无忧杂货铺
+			Permission - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725232">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725278">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/atom.html">
+			<input type="hidden" id="current_path" value="c/permission.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,16 +143,73 @@
 
 <div class="markdown-body">
 
-<!--command/atom.md-->
+<!--command/permission.md-->
 
-<h1 id="atom">atom</h1><p>atom安装及使用</p>
-<h3 id="安装路径(自动)">安装路径(自动)</h3><pre><code>C:\Users\Administrator\AppData\Local\atom
-</code></pre><h3 id="apm指令无法识别">apm指令无法识别</h3><blockquote>
-<p>将<code>atom\app-1.12.9\resources\cli</code>目录添加进环境变量即可</p>
+<h1 id="permission">Permission</h1><p>Android6.0动态权限适配方案，权限组的概念</p>
+<h2 id="适配android6.0动态权限管理">适配Android6.0动态权限管理</h2><h3 id="权限管理系统的变化">权限管理系统的变化</h3><p>在Android6.0（M）之前，在用户安装应用的时候会产生一个权限列表，只有用户允许这些权限后，应用才可以正常的安装，这就会产生一个问题，这些权限对用户是不具有感知性的，也就是说用户都不知道你要这些权限干什么，我明明装的是一个阅读类型的应用，你却要我拨打电话的权限，你想干嘛呢？当然绝大部分的开发者是善意的，但也避免不了一些特殊人群利用这些“漏洞”做一些不好的事情。
+而在Android6.0（M）之后，用户是可以不管权限直接安装应用的，当应用需要调用某些权限的时候，会给予用户一个通知与说明，我要这些权限干什么，这样下来可以让用户有更加清醒的权限分配意识，也在一定程度上更加人性化的保护了用户的隐私，避免了“权限一刀切”。</p>
+<h3 id="权限的分组">权限的分组</h3><p>在Android6.0（M）之后，对权限进行了分类，大致有这三种：</p>
+<ul>
+<li><h4 id="普通权限">普通权限</h4><blockquote>
+<p>也就是正常权限，是对手机的一些正常操作，对用户的隐私没有太大影响的权限，比如手机的震动，网络访问，蓝牙等权限，这些权限会在应用被安装的时候默认授予，用户不能拒绝，也不能取消.对于这些权限，需要和Android6.0（M）之前的系统，在AndroidManifest.xml声明即可。</p>
 </blockquote>
-<h3 id="插件">插件</h3><ul>
-<li>platformio-ide-termina(终端)</li>
-<li>atom-beautify</li>
+</li>
+</ul>
+<pre><code><span class="hljs-comment">#普通权限列表</span>
+ACCESS_LOCATION_EXTRA_COMMANDS
+ACCESS_NETWORK_STATE
+ACCESS_NOTIFICATION_POLICY
+ACCESS_WIFI_STATE
+BLUETOOTH
+BLUETOOTH_ADMIN
+BROADCAST_STICKY
+CHANGE_NETWORK_STATE
+CHANGE_WIFI_MULTICAST_STATE
+CHANGE_WIFI_STATE
+DISABLE_KEYGUARD
+EXPAND_STATUS_BAR
+GET_PACKAGE_SIZE
+INTERNET
+KILL_BACKGROUND_PROCESSES
+MODIFY_AUDIO_SETTINGS
+NFC
+READ_SYNC_SETTINGS
+READ_SYNC_STATS
+RECEIVE_BOOT_COMPLETED
+REORDER_TASKS
+REQUEST_INSTALL_PACKAGES
+SET_TIME_ZONE
+SET_WALLPAPER
+SET_WALLPAPER_HINTS
+TRANSMIT_IR
+USE_FINGERPRINT
+VIBRATE
+WAKE_LOCK
+WRITE_SYNC_SETTINGS
+SET_ALARM
+INSTALL_SHORTCUT
+UNINSTALL_SHORTCUT
+</code></pre><ul>
+<li><h4 id="危险权限">危险权限</h4><blockquote>
+<p>其实就是运行中需要处理的权限，也是我们最需要注意的权限，这些权限会关系到用户的隐私或影响到其他应用的运行，这些危险权限，谷歌还做了一个权限组，以分组的形式来呈现。由于运行权限机制的出现，变得我们需要对新开发的应用去做适配，当然有人会问，那我之前开发的老应用不就完蛋了，是不是运行到6.0系统上就会发生各种崩溃？
+其实不会的，谷歌做了良好的适配：当你的应用targetSdkVersion小于23的时候，就算你运行在Android6.0系统上，它也会默认采用以前的权限管理机制，也就是一刀切。当你的targetSdkVersion大于等于23的时候且在Andorid6.0（M）系统上，它才会采用新的这套权限管理机制。所以如果你想逃开这个“麻烦”，只要把targetSdkVersion的版本设置为低于23就可以了，不过不建议采用这种方案，该来的总是要来的，随着国产手机ROM的更新，比如小米，华为等也开始有部分机型进行了系统升级，所以这是种趋势。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="http://7xs20s.com1.z0.glb.clouddn.com/tuchongeter/Android/1240" alt="危险权限"></p>
+<h5 id="android6.0（m）的权限api(api23之后提供)">Android6.0（M）的权限API(API23之后提供)</h5><pre><code><span class="hljs-comment"># 用来检测应用是否已经具有权限</span>
+int checkSelfPermission(String permission) 
+<span class="hljs-comment"># 进行请求单个或多个权限</span>
+void requestPermissions(String[] permissions, int requestCode) 
+<span class="hljs-comment"># 请求权限结果回调</span>
+void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+<span class="hljs-comment"># 如果用户勾选了不再提醒，则返回false</span>
+shouldShowRequestPermissionRationale
+</code></pre><ul>
+<li><h4 id="特殊权限">特殊权限</h4><blockquote>
+<p>特殊权限，比如：系统级别对话框：SYSTEM_ALERT_WINDOW;修改系统设置：WRITE_SETTINGS;这里需要另外提到的一个权限：READ_PHONE_STATE,我们可以通过这个权限来获取机器的唯一标识码.</p>
+</blockquote>
+</li>
 </ul>
 
 </div>
@@ -160,19 +217,19 @@
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c/atom.html";
+	var curPath = "c/permission.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
-	var wumiiTitle = "atom - 无忧杂货铺";
+	var wumiiTitle = "Permission - 无忧杂货铺";
 	var wumiiSitePrefix = siteUrl;
 	var wumiiCommentParams = "&pf=JAVASCRIPT";
 </script>
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725233"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725233"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725279"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725279"></script>
 </body>
 
 </html>

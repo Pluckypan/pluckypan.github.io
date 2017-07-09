@@ -13,7 +13,7 @@
 			adb使用笔记 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499356761444">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725218">
 	</head>
 
 	<body>
@@ -146,18 +146,29 @@
 <!--command/adb.md-->
 
 <h1 id="adb使用笔记">adb使用笔记</h1><p>adb 常用指令大全</p>
-<h3 id="adb-install">adb install</h3><pre><code>adb install re.apk
+<h3 id="adb-install">adb install</h3><pre><code>$ adb install re.apk
 <span class="hljs-comment"># more than one device</span>
-adb -s 1858c81e install re.apk
+$ adb -s 1858c81e install re.apk
 <span class="hljs-comment"># force</span>
-adb install -r
+$ adb install -r
 </code></pre><h3 id="read-apk-package-name">read apk package name</h3><blockquote>
 <p>aapt path : /sdk/build-tools/25.0.2</p>
 </blockquote>
-<pre><code>aapt dump badging re.apk
-</code></pre><h3 id="adb-uninstall">adb uninstall</h3><pre><code>adb uninstall com.re
-</code></pre><h3 id="reboot-laucher">reboot laucher</h3><pre><code>adb shell am force-stop com.ubnt.fr.launcher
-adb shell monkey -p com.ubnt.fr.launcher -c android.intent.category.LAUNCHER 1
+<pre><code>$ aapt dump badging re.apk
+</code></pre><h3 id="adb-uninstall">adb uninstall</h3><pre><code>$ adb uninstall com.re
+</code></pre><h3 id="reboot-laucher">reboot laucher</h3><pre><code>$ adb shell am force-stop com.facebook.fresco
+$ adb shell monkey -p com.facebook.fresco -c android.intent.category.LAUNCHER 1
+</code></pre><h3 id="adb-pull-push">adb pull/push</h3><pre><code>$ adb pull xxx.jpg yyy.jpg
+$ adb push yyy.jpg xxx.jpg
+</code></pre><h3 id="进入adb shell">进入adb shell</h3><blockquote>
+<p>进入手机shell，前提手机已经获得root权限</p>
+</blockquote>
+<pre><code>$ adb shell
+$ su
+$ ps|grep <span class="hljs-string">'facebook'</span>
+$ <span class="hljs-built_in">kill</span> 10086
+$ pm list package <span class="hljs-comment">#查看所有包名</span>
+$ cat string.xml <span class="hljs-comment">#查看文件内容</span>
 </code></pre>
 </div>
 
@@ -175,8 +186,8 @@ adb shell monkey -p com.ubnt.fr.launcher -c android.intent.category.LAUNCHER 1
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499356761444"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1499356761444"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725224"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725224"></script>
 </body>
 
 </html>

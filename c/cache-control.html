@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="atom - atom安装及使用 - 无忧杂货铺">
-		<meta name="keywords" content="atom - 无忧杂货铺">
+		<meta name="description" content="OkHttp Cache-Control - Android okHttp网络请求之缓存控制Cache-Control - 无忧杂货铺">
+		<meta name="keywords" content="OkHttp Cache-Control - 无忧杂货铺">
 		<title>
-			atom - 无忧杂货铺
+			OkHttp Cache-Control - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725232">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1499615725293">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/atom.html">
+			<input type="hidden" id="current_path" value="c/cache-control.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,36 +143,59 @@
 
 <div class="markdown-body">
 
-<!--command/atom.md-->
+<!--command/cache-control.md-->
 
-<h1 id="atom">atom</h1><p>atom安装及使用</p>
-<h3 id="安装路径(自动)">安装路径(自动)</h3><pre><code>C:\Users\Administrator\AppData\Local\atom
-</code></pre><h3 id="apm指令无法识别">apm指令无法识别</h3><blockquote>
-<p>将<code>atom\app-1.12.9\resources\cli</code>目录添加进环境变量即可</p>
+<h1 id="okhttp-cache-control">OkHttp Cache-Control</h1><p>Android okHttp网络请求之缓存控制Cache-Control</p>
+<blockquote>
+<p>okhttp只会对get请求进行缓存，post请求是不会进行缓存，这也是有道理的，因为get请求的数据一般是比较持久的，而post一般是交互操作，没太大意义进行缓存。</p>
 </blockquote>
-<h3 id="插件">插件</h3><ul>
-<li>platformio-ide-termina(终端)</li>
-<li>atom-beautify</li>
-</ul>
+<h3 id="cachecontrol.java类介绍">CacheControl.java类介绍</h3><pre><code>final CacheControl.Builder builder = new CacheControl.Builder();
+builder.noCache();//不使用缓存，全部走网络
+builder.noStore();//不使用缓存，也不存储缓存
+builder.onlyIfCached();//只使用缓存
+builder.noTransform();
+builder.maxAge(10, TimeUnit.MILLISECONDS);//有效期为10秒
+builder.maxStale(10, TimeUnit.SECONDS);//指示客户机可以接收超出超时期间的响应消息
+builder.minFresh(10, TimeUnit.SECONDS);//指示客户机可以接收响应时间小于当前时间加上指定时间的响应。
+CacheControl cache = builder.build();//cacheControl
+</code></pre><h3 id="interceptor拦截器中使用cachecontrol">Interceptor拦截器中使用CacheControl</h3><pre><code>private static final long cacheSize = 1024*1024*20;//缓存文件最大限制大小20M  
+private static String cachedirectory = FilePathroot + <span class="hljs-string">"/caches"</span>;  //设置缓存文件路径  
+private static Cache cache = new Cache(new File(cachedirectory), cacheSize);
 
+OkHttpClient.Builder newBuilder = mOkHttpClient.newBuilder();
+newBuilder.cache(cache);//设置缓存
+newBuilder.addInterceptor(new <span class="hljs-function"><span class="hljs-title">Interceptor</span></span>() {
+@Override
+public Response intercept(Chain chain) throws IOException {
+    Request request = chain.request();
+    boolean connected = NetworkUtil.isConnected(context);
+    <span class="hljs-keyword">if</span> (!connected) {
+        request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
+    }
+    Response response = chain.proceed(request);
+
+    <span class="hljs-built_in">return</span> response;
+    }
+});
+</code></pre>
 </div>
 
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c/atom.html";
+	var curPath = "c/cache-control.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
-	var wumiiTitle = "atom - 无忧杂货铺";
+	var wumiiTitle = "OkHttp Cache-Control - 无忧杂货铺";
 	var wumiiSitePrefix = siteUrl;
 	var wumiiCommentParams = "&pf=JAVASCRIPT";
 </script>
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725233"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725233"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1499615725293"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1499615725293"></script>
 </body>
 
 </html>
