@@ -13,7 +13,7 @@
 			面试题 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1501476716310">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1501564591010">
 	</head>
 
 	<body>
@@ -213,8 +213,8 @@ LinearLayout易用，效率高，表达能力有限。RelativeLayout复杂，表
 <h3 id="12.什么是intentservice?">12.什么是IntentService?</h3><p>简单说，IntentService是继承于Service并处理异步请求的一个类，在IntentService内有一个工作线程来处理耗时操作，启动IntentService的方式和启动传统Service一样，同时，当任务执行完后，IntentService会自动停止，而不需要我们去手动控制。另外，可以启动IntentService多次，而每一个耗时操作会以工作队列的方式在IntentService的onHandleIntent回调方法中执行，并且，每次只会执行一个工作线程，执行完第一个再执行第二个，以此类推。
 所有请求都在一个单线程中，不会阻塞应用程序的主线程（UI Thread），同一时间只处理一个请求。<a href="http://blog.csdn.net/ryantang03/article/details/8146154/">引用</a></p>
 <h3 id="13.tcp和udp的区别，以及简单说了一下tcp三次握手协议">13.TCP和UDP的区别，以及简单说了一下TCP三次握手协议</h3><ul>
-<li>TCP协议是面向连接、保证高可靠性(数据无丢失、数据无失序、数据无错误、数据无重复到达)传输层协议。(20Bytes)</li>
-<li>UDP协议也是传输层协议，它是无连接，不保证可靠的传输层协议。(8Bytes)</li>
+<li>TCP协议是面向连接、保证高可靠性(数据无丢失、数据无失序、数据无错误、数据无重复到达)传输层协议。(20Bytes) FTP/SMTP/TELNET/</li>
+<li>UDP协议也是传输层协议，它是无连接，不保证可靠的传输层协议。(8Bytes) DNS/QICQ</li>
 <li>三次握手建立连接<ul>
 <li>请求端(通常称为客户)发送一个SYN段指明客户打算连接的服务器的端口，以及初始序号(ISN,在这个例子中为1415531521)。这个SYN段为报文段1。</li>
 <li>服务器发回包含服务器的初始序号的SYN报文段(报文段2)作为应答。同时，将确认序号设置为客户的ISN加1以对客户的SYN报文段进行确认。一个SYN将占用一个序号</li>
@@ -350,6 +350,48 @@ Thread.setDefaultUncaughtExceptionHandler(new Thread.<span class="hljs-function"
 4.解除死锁。当检测到系统中已发生死锁时，就采取相应的措施，将进程从死锁状态中解脱出来。常用方法是---撤销一些进程，回收他们的资源，将他们分配给已处于阻塞状态的进程，使其能继续运行。</p>
 </li>
 </ul>
+<h3 id="28.string、stringbuffer与stringbuilder之间区别">28.String、StringBuffer与StringBuilder之间区别</h3><ul>
+<li>三者在执行速度方面的比较：StringBuilder &gt;  StringBuffer  &gt;  String<blockquote>
+<p>String是字符串常量,StringBuffer和StringBuilder是字符串变量。</p>
+<pre><code>String s = <span class="hljs-string">"abcd"</span>;
+s = s+1;
+System.out.print(s);
+</code></pre><p>我们明明就是改变了String型的变量s的，为什么说是没有改变呢? 其实这是一种欺骗，JVM是这样解析这段代码的：首先创建对象s，赋予一个abcd，然后再创建一个新的对象s用来执行第二行代码，也就是说我们之前对象s并没有变化，所以我们说String类型是不可改变的对象了，由于这种机制，每当用String操作字符串时，实际上是在不断的创建新的对象，而原来的对象就会变为垃圾被ＧＣ回收掉，可想而知这样执行效率会有多底。而StringBuffer与StringBuilder就不一样了，他们是字符串变量，是可改变的对象，每当我们用它们对字符串做操作时，实际上是在一个对象上操作的，这样就不会像String一样创建一些而外的对象进行操作了，当然速度就快了。</p>
+</blockquote>
+</li>
+<li>StringBuilder 线程非安全的<blockquote>
+<p>在单线程下进行的操作，大多数情况下是建议用StringBuilder而不用StringBuffer的，就是速度的原因。</p>
+</blockquote>
+</li>
+<li>StringBuffer  线程安全的</li>
+</ul>
+<h3 id="29.android内存优化（使用sparsearray和arraymap代替hashmap）">29.Android内存优化（使用SparseArray和ArrayMap代替HashMap）</h3><ul>
+<li>HashMap<blockquote>
+<p>HashMap内部是使用一个默认容量为16的数组来存储数据的，而数组中每一个元素却又是一个链表的头结点，所以，更准确的来说，HashMap内部存储结构是使用哈希表的拉链结构（数组+链表）.我们知道HashMap中默认的存储大小就是一个容量为16的数组，所以当我们创建出一个HashMap对象时，即使里面没有任何元素，也要分别一块内存空间给它.</p>
+</blockquote>
+</li>
+<li>SparseArray<blockquote>
+<p>SparseArray比HashMap更省内存，在某些条件下性能更好，主要是因为它避免了对key的自动装箱（int转为Integer类型），它内部则是通过两个数组来进行数据存储的，一个存储key，另外一个存储value，为了优化性能，它内部对数据还采取了压缩的方式来表示稀疏数组的数据，从而节约内存空间.SparseArray的Key为int类型的；SparseArray在存储和读取数据时候，使用的是二分查找法；SparseArray存储的元素都是按元素的key值从小到大排列好的；</p>
+<ul>
+<li>SparseArray应用场景
+虽说SparseArray性能比较好，但是由于其添加、查找、删除数据都需要先进行一次二分查找，所以在数据量大的情况下性能并不明显，将降低至少50%。满足下面两个条件我们可以使用SparseArray代替HashMap:</li>
+<li>数据量不大，最好在千级以内</li>
+<li>key必须为int类型</li>
+</ul>
+</blockquote>
+</li>
+<li>ArrayMap<blockquote>
+<p>应用场景和SparseArray的一样,ArrayMap应用场景：</p>
+<ul>
+<li>数据量不大，最好在千级以内</li>
+<li>数据结构类型为Map类型</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="烧一根不均匀的绳,从头烧到尾总共需要1小时.现在有若干条材质相同的绳子,问如何用烧绳的方法来计时一个小时十五分钟呢?">烧一根不均匀的绳,从头烧到尾总共需要1小时.现在有若干条材质相同的绳子,问如何用烧绳的方法来计时一个小时十五分钟呢?</h3><blockquote>
+<p>需要三根绳子：第一根和第二根同时点,第一根点一头,第二根点两头;在第二根燃完后（30分钟）,点燃第一根的另一头前两根燃完后（15分钟）,点燃第三根的两头,全部燃完后（30分钟,一共就是1小时15分钟.</p>
+</blockquote>
 
 </div>
 
@@ -367,8 +409,8 @@ Thread.setDefaultUncaughtExceptionHandler(new Thread.<span class="hljs-function"
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1501476716310"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1501476716310"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1501564591017"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1501564591017"></script>
 </body>
 
 </html>

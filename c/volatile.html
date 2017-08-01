@@ -13,7 +13,7 @@
 			volatile - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1501476716297">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1501564590992">
 	</head>
 
 	<body>
@@ -154,6 +154,95 @@
 <li>对变量的写操作不依赖于当前值。</li>
 <li>该变量没有包含在具有其他变量的不变式中。</li>
 </ul>
+<h3 id="volatile关键字的两层语义">volatile关键字的两层语义</h3><p>1.保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。
+2.禁止进行指令重排序。</p>
+<h3 id="特性">特性</h3><ul>
+<li>volatile也无法保证对变量的任何操作都是原子性的。</li>
+<li>使用volatile关键字会强制将修改的值立即写入主存。</li>
+</ul>
+<h3 id="保证原子性的方法">保证原子性的方法</h3><ul>
+<li><p>synchronized</p>
+<pre><code>public class Test {
+  public  int inc = 0;
+
+  public synchronized void <span class="hljs-function"><span class="hljs-title">increase</span></span>() {
+      inc++;
+  }
+
+  public static void main(String[] args) {
+      final Test <span class="hljs-built_in">test</span> = new Test();
+      <span class="hljs-keyword">for</span>(int i=0;i&lt;10;i++){
+          new <span class="hljs-function"><span class="hljs-title">Thread</span></span>(){
+              public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
+                  <span class="hljs-keyword">for</span>(int j=0;j&lt;1000;j++)
+                      test.increase();
+              };
+          }.start();
+      }
+
+      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;1)  //保证前面的线程都执行完
+          Thread.yield();
+      System.out.println(test.inc);
+  }
+}
+</code></pre></li>
+<li><p>Lock</p>
+<pre><code>public class Test {
+  public  int inc = 0;
+  Lock lock = new ReentrantLock();
+
+  public  void <span class="hljs-function"><span class="hljs-title">increase</span></span>() {
+      lock.lock();
+      try {
+          inc++;
+      } finally{
+          lock.unlock();
+      }
+  }
+
+  public static void main(String[] args) {
+      final Test <span class="hljs-built_in">test</span> = new Test();
+      <span class="hljs-keyword">for</span>(int i=0;i&lt;10;i++){
+          new <span class="hljs-function"><span class="hljs-title">Thread</span></span>(){
+              public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
+                  <span class="hljs-keyword">for</span>(int j=0;j&lt;1000;j++)
+                      test.increase();
+              };
+          }.start();
+      }
+
+      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;1)  //保证前面的线程都执行完
+          Thread.yield();
+      System.out.println(test.inc);
+  }
+}
+</code></pre></li>
+<li><p>AtomicInteger</p>
+<pre><code>public class Test {
+  public  AtomicInteger inc = new AtomicInteger();
+
+  public  void <span class="hljs-function"><span class="hljs-title">increase</span></span>() {
+      inc.getAndIncrement();
+  }
+
+  public static void main(String[] args) {
+      final Test <span class="hljs-built_in">test</span> = new Test();
+      <span class="hljs-keyword">for</span>(int i=0;i&lt;10;i++){
+          new <span class="hljs-function"><span class="hljs-title">Thread</span></span>(){
+              public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
+                  <span class="hljs-keyword">for</span>(int j=0;j&lt;1000;j++)
+                      test.increase();
+              };
+          }.start();
+      }
+
+      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;1)  //保证前面的线程都执行完
+          Thread.yield();
+      System.out.println(test.inc);
+  }
+}
+</code></pre></li>
+</ul>
 
 </div>
 
@@ -171,8 +260,8 @@
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1501476716298"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1501476716298"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1501564590994"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1501564590994"></script>
 </body>
 
 </html>
