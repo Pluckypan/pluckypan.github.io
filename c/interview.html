@@ -13,7 +13,7 @@
 			面试题 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1501564591010">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1514128237136">
 	</head>
 
 	<body>
@@ -367,7 +367,8 @@ System.out.print(s);
 </ul>
 <h3 id="29.android内存优化（使用sparsearray和arraymap代替hashmap）">29.Android内存优化（使用SparseArray和ArrayMap代替HashMap）</h3><ul>
 <li>HashMap<blockquote>
-<p>HashMap内部是使用一个默认容量为16的数组来存储数据的，而数组中每一个元素却又是一个链表的头结点，所以，更准确的来说，HashMap内部存储结构是使用哈希表的拉链结构（数组+链表）.我们知道HashMap中默认的存储大小就是一个容量为16的数组，所以当我们创建出一个HashMap对象时，即使里面没有任何元素，也要分别一块内存空间给它.</p>
+<p>HashMap内部是使用一个默认容量为16的数组来存储数据的，而数组中每一个元素却又是一个链表的头结点，所以，更准确的来说，HashMap内部存储结构是使用哈希表的拉链结构（数组+链表）.我们知道HashMap中默认的存储大小就是一个容量为16的数组，所以当我们创建出一个HashMap对象时，即使里面没有任何元素，也要分别一块内存空间给它.
+HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是Hashtable是使用synchronized的，所有线程竞争同一把锁；而ConcurrentHashMap不仅线程安全而且效率高；还有一个是SynchronizedMap；</p>
 </blockquote>
 </li>
 <li>SparseArray<blockquote>
@@ -389,8 +390,11 @@ System.out.print(s);
 </blockquote>
 </li>
 </ul>
-<h3 id="烧一根不均匀的绳,从头烧到尾总共需要1小时.现在有若干条材质相同的绳子,问如何用烧绳的方法来计时一个小时十五分钟呢?">烧一根不均匀的绳,从头烧到尾总共需要1小时.现在有若干条材质相同的绳子,问如何用烧绳的方法来计时一个小时十五分钟呢?</h3><blockquote>
+<h3 id="30.烧一根不均匀的绳,从头烧到尾总共需要1小时.现在有若干条材质相同的绳子,问如何用烧绳的方法来计时一个小时十五分钟呢?">30.烧一根不均匀的绳,从头烧到尾总共需要1小时.现在有若干条材质相同的绳子,问如何用烧绳的方法来计时一个小时十五分钟呢?</h3><blockquote>
 <p>需要三根绳子：第一根和第二根同时点,第一根点一头,第二根点两头;在第二根燃完后（30分钟）,点燃第一根的另一头前两根燃完后（15分钟）,点燃第三根的两头,全部燃完后（30分钟,一共就是1小时15分钟.</p>
+</blockquote>
+<h3 id="31.什么是线程安全和线程不安全">31.什么是线程安全和线程不安全</h3><blockquote>
+<p>首先要明白线程的工作原理，jvm有一个main   memory，而每个线程有自己的working   memory，一个线程对一个variable进行操作时，都要在自己的working   memory里面建立一个copy，操作完之后再写入main   memory。多个线程同时操作同一个variable，就可能会出现不可预知的结果。</p>
 </blockquote>
 
 </div>
@@ -409,8 +413,8 @@ System.out.print(s);
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1501564591017"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1501564591017"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1514128237137"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1514128237137"></script>
 </body>
 
 </html>
