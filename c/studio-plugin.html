@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="git指令大全 - git常用指令详解 - 无忧杂货铺">
-		<meta name="keywords" content="git指令大全 - 无忧杂货铺">
+		<meta name="description" content="Android Studio 插件 - Android Studio 插件集锦 - 无忧杂货铺">
+		<meta name="keywords" content="Android Studio 插件 - 无忧杂货铺">
 		<title>
-			git指令大全 - 无忧杂货铺
+			Android Studio 插件 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1515156558121">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1515156558285">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/git.html">
+			<input type="hidden" id="current_path" value="c/studio-plugin.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,65 +143,32 @@
 
 <div class="markdown-body">
 
-<!--command/git.md-->
+<!--command/studio-plugin.md-->
 
-<h1 id="git指令大全">git指令大全</h1><p>git常用指令详解</p>
-<h3 id="config">config</h3><pre><code>$ git config -l       <span class="hljs-comment">#查看配置</span>
-$ git config --global <span class="hljs-comment">#全局配置</span>
-$ git config --global core.autocrlf input <span class="hljs-comment">#这样即可保证仓库中永远都是LF. 而且在Windows工作空间都是CRLF, 在Mac/Linux工作空间都是LF.</span>
-</code></pre><h3 id="fetch">fetch</h3><pre><code>$ git fetch -p <span class="hljs-comment">#同步分支（如果远程有删除执行）</span>
-$ git remote prune origin
-$ git pull --all
-</code></pre><h3 id="cache">cache</h3><blockquote>
-<p>我们用Git提交版本的时候，忽略文件有可能并不是不变的。但是对于后来加入到.gitignore中的文件，GIT默认还是不理睬它们的。因为GIT有一个缓存的机制。</p>
-</blockquote>
-<pre><code>$ git rm -r --cached .
-$ git add .
-$ git commit -m <span class="hljs-string">".gitignore is now working"</span>
-</code></pre><h3 id="撤销操作">撤销操作</h3><pre><code>撤销未提交的修改
-撤销对xxx.java的修改
-$ git checkout xxx.java
-撤销所有.java文件
-$ git checkout *.java
-撤销所有修改
-$ git checkout .
-</code></pre><h3 id="revert">revert</h3><blockquote>
-<p>git revert是提交一个新的版本，将需要revert的版本的内容再反向修改回去，版本会递增，不影响之前提交的内容</p>
-</blockquote>
-<pre><code>$ git revert HEAD             撤销前一次 commit
-$ git revert HEAD^            撤销前前一次 commit
-$ git revert commit-id （比如：fa042ce57ebbe5bb9c8db709f719cec2c58ee7ff）撤销指定的版本，撤销也会作为一次提交进行保存。
-</code></pre><h3 id=".ssh/id_rsa are too open 解决">.ssh/id_rsa are too open 解决</h3><pre><code>chmod 600 id_rsa
-</code></pre><h3 id="rebase">rebase</h3><blockquote>
-<p>git一般的流程是先拉取最新代码（git pull）,再向服务器提交自己的代码(git push),当然如果有冲突先解决冲突。但是执行git pull的时候会执行一个merge操作，这样从git log中看 git提交记录线会比较乱。这个时候rebase就派上用场了。git pull --rebase的作用是先把当前工作分支的代码同步成最新的 再merge我们修改的代码，如果有冲突需先修改冲突。修改完冲突 再 git rebase continue .然后再提交代码。</p>
-</blockquote>
-<pre><code>git pull --rebase
-git rebase <span class="hljs-built_in">continue</span>
-git push
-</code></pre><h3 id="stash">stash</h3><blockquote>
-<p><code>git stash</code> 应用的场景是，你的修改进行了一半，还不想提交记录。比如，你正在开发一个功能，还没开发结束，你还不能commit,这个时候经理告诉你，有个线上BUG需要先去处理。按照流程，你需要切换分支，但切换分支的前提是，你要commit 当前修改的内容。为了解决这个问题。<code>git stash</code> 派上用场了。<code>git stash</code> 会暂存你的修改记录，存进一个stash目录里面。当你处理完别的任务，回来的时候执行下 <code>git stash apply</code> 就可以继续开发工作了。</p>
-</blockquote>
-<pre><code>git stash
-git stash apply
-</code></pre>
+<h1 id="android studio 插件">Android Studio 插件</h1><p>Android Studio 插件集锦</p>
+<ul>
+<li>1.SQLScout
+SQLite数据库插件</li>
+</ul>
+
 </div>
 
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c/git.html";
+	var curPath = "c/studio-plugin.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
-	var wumiiTitle = "git指令大全 - 无忧杂货铺";
+	var wumiiTitle = "Android Studio 插件 - 无忧杂货铺";
 	var wumiiSitePrefix = siteUrl;
 	var wumiiCommentParams = "&pf=JAVASCRIPT";
 </script>
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1515156558123"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1515156558123"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1515156558285"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1515156558285"></script>
 </body>
 
 </html>

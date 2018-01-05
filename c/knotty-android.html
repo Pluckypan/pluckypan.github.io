@@ -13,7 +13,7 @@
 			Knotty - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1514128237190">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1515156558286">
 	</head>
 
 	<body>
@@ -151,6 +151,13 @@
 <li>[ ] 在安装ES文件管理器的手机上，zip4j和zt-zip高概率出现解压失败。</li>
 <li>[ ] RecyclerView在滑动过程中设置itemView的alpha值会导致屏幕出现一条透明的线。<a href="https://github.com/leochuan/ViewPagerLayoutManager">ViewPagerLayoutManager</a> 的 <code>setItemViewProperty</code>方法</li>
 <li>[x] <code>@Transient</code>集合<code>GreenDao</code>内存缓存策略，会有一个让人产生错觉的问题。被<code>@Transient</code>标记的字段从 <strong>数据库</strong> 取出时尽然有值。使用 xxxDao.detachAll()可解决该问题。</li>
+<li>[ ] 共享元素动画在做退出动画时，会截取控件的Canvas画布的内容，然后通过ImageView的形式放在OverLay上去执行退出动画，而且图片最大尺寸会控制在1024*1024，但在含有圆角遮罩控件的时候会出现捕获的内容显示不全的BUG。其实系统并没有问题，网上现存的大多数圆角控件的都存在这个问题，解决方案很简单：在执行裁剪前记录下画布状态 <code>int index=canvas.save();</code> 然后执行裁剪(方式有多种,clipPath,XferMode) 最后需要重置画布状态 <code>canvas.restoreToCount(index);</code></li>
+<li>[ ] Android4.4兼容性问题<ul>
+<li>在xml设置 onClick无效</li>
+<li>CheckBox 无法显示 使用 AppCompatCheckBox代替</li>
+<li>PaddingEnd 无效 需使用 PaddingRight</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -169,8 +176,8 @@
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1514128237190"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1514128237190"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1515156558287"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1515156558287"></script>
 </body>
 
 </html>
