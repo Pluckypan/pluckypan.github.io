@@ -13,7 +13,7 @@
 			gradle jcenter - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1515156558310">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1516432853568">
 	</head>
 
 	<body>
@@ -200,7 +200,6 @@ install {
     }
 }
 
-
 task javadoc(<span class="hljs-built_in">type</span>: Javadoc) {
     <span class="hljs-built_in">source</span> = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
@@ -216,6 +215,17 @@ task sourcesJar(<span class="hljs-built_in">type</span>: Jar) {
 artifacts {
     archives javadocJar
     archives sourcesJar
+}
+
+javadoc {
+    options{
+        //如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码
+        encoding <span class="hljs-string">"UTF-8"</span>
+        charSet <span class="hljs-string">'UTF-8'</span>
+        author <span class="hljs-literal">true</span>
+        version <span class="hljs-literal">true</span>
+        links <span class="hljs-string">"http://docs.oracle.com/javase/7/docs/api"</span>
+    }
 }
 
 Properties properties = new Properties()
@@ -256,8 +266,8 @@ chmod 755 gradlew
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1515156558311"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1515156558311"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1516432853569"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1516432853569"></script>
 </body>
 
 </html>

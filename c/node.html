@@ -13,7 +13,7 @@
 			node - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1515156558164">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1516432853359">
 	</head>
 
 	<body>
@@ -155,6 +155,12 @@
 <span class="hljs-comment"># z 是否需要用 gzip压缩或解压（xx.tar.gz、xx. tgz）</span>
 </code></pre><h4 id="3、设置全局变量">3、设置全局变量</h4><pre><code>ln -s ext_path/node-v6.2.0/bin/node /usr/<span class="hljs-built_in">local</span>/bin/node
 ln -s ext_path/node-v6.2.0/bin/npm /usr/<span class="hljs-built_in">local</span>/bin/npm
+</code></pre><h4 id="4.mac上设置node_path">4.Mac上设置NODE_PATH</h4><pre><code><span class="hljs-comment">#查看配置</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-variable">$NODE_PATH</span>
+<span class="hljs-comment">#在用户目录中 找到.bash_profile并在结尾加入</span>
+<span class="hljs-built_in">export</span> NODE_PATH=/usr/<span class="hljs-built_in">local</span>/lib/node_modules
+<span class="hljs-comment">#刷新配置</span>
+<span class="hljs-built_in">source</span> .bash_profile
 </code></pre>
 </div>
 
@@ -172,8 +178,8 @@ ln -s ext_path/node-v6.2.0/bin/npm /usr/<span class="hljs-built_in">local</span>
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1515156558165"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1515156558165"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1516432853360"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1516432853360"></script>
 </body>
 
 </html>
