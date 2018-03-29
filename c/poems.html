@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="FTP协议 - FTP协议的指令与 响应码详解   - 无忧杂货铺">
-		<meta name="keywords" content="FTP协议 - 无忧杂货铺">
+		<meta name="description" content="还不错的诗 - 用过的几首诗 - 无忧杂货铺">
+		<meta name="keywords" content="还不错的诗 - 无忧杂货铺">
 		<title>
-			FTP协议 - 无忧杂货铺
+			还不错的诗 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="..\..\..\..\img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="..\..\..\..\css/index.css?v=1522289951652">
+		<link rel="stylesheet" type="text/css" href="..\..\..\..\css/index.css?v=1522289951693">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\ftp.html">
+			<input type="hidden" id="current_path" value="c\poems.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,336 +143,37 @@
 
 <div class="markdown-body">
 
-<!--command\ftp.md-->
+<!--command\poems.md-->
 
-<h1 id="ftp协议">FTP协议</h1><p>FTP协议的指令与 响应码详解  </p>
-<h3 id="指令">指令</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">指令</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">ABOR</td>
-<td style="text-align:center">中断数据连接程序</td>
-</tr>
-<tr>
-<td style="text-align:center">ACCT <account></td>
-<td style="text-align:center">系统特权帐号</td>
-</tr>
-<tr>
-<td style="text-align:center">ALLO <bytes></td>
-<td style="text-align:center">为服务器上的文件存储器分配字节</td>
-</tr>
-<tr>
-<td style="text-align:center">APPE <filename></td>
-<td style="text-align:center">添加文件到服务器同名文件</td>
-</tr>
-<tr>
-<td style="text-align:center">CDUP <dir path></td>
-<td style="text-align:center">改变服务器上的父目录</td>
-</tr>
-<tr>
-<td style="text-align:center">CWD <dir path></td>
-<td style="text-align:center">改变服务器上的工作目录</td>
-</tr>
-<tr>
-<td style="text-align:center">DELE <filename></td>
-<td style="text-align:center">删除服务器上的指定文件</td>
-</tr>
-<tr>
-<td style="text-align:center">HELP <command></td>
-<td style="text-align:center">返回指定命令信息</td>
-</tr>
-<tr>
-<td style="text-align:center">LIST <name></td>
-<td style="text-align:center">如果是文件名列出文件信息，如果是目录则列出文件列表</td>
-</tr>
-<tr>
-<td style="text-align:center">MODE <mode></td>
-<td style="text-align:center">传输模式（S=流模式，B=块模式，C=压缩模式）</td>
-</tr>
-<tr>
-<td style="text-align:center">MKD <directory></td>
-<td style="text-align:center">在服务器上建立指定目录</td>
-</tr>
-<tr>
-<td style="text-align:center">NLST <directory></td>
-<td style="text-align:center">列出指定目录内容</td>
-</tr>
-<tr>
-<td style="text-align:center">NOOP</td>
-<td style="text-align:center">无动作，除了来自服务器上的承认</td>
-</tr>
-<tr>
-<td style="text-align:center">PASS <password></td>
-<td style="text-align:center">系统登录密码</td>
-</tr>
-<tr>
-<td style="text-align:center">PASV</td>
-<td style="text-align:center">请求服务器等待数据连接</td>
-</tr>
-<tr>
-<td style="text-align:center">PORT <address></td>
-<td style="text-align:center">IP地址和两字节的端口ID</td>
-</tr>
-<tr>
-<td style="text-align:center">PWD</td>
-<td style="text-align:center">显示当前工作目录</td>
-</tr>
-<tr>
-<td style="text-align:center">QUIT</td>
-<td style="text-align:center">从FTP服务器上退出登录</td>
-</tr>
-<tr>
-<td style="text-align:center">REIN</td>
-<td style="text-align:center">重新初始化登录状态连接</td>
-</tr>
-<tr>
-<td style="text-align:center">REST <offset></td>
-<td style="text-align:center">由特定偏移量重启文件传递</td>
-</tr>
-<tr>
-<td style="text-align:center">RETR <filename></td>
-<td style="text-align:center">从服务器上找回（复制）文件</td>
-</tr>
-<tr>
-<td style="text-align:center">RMD <directory></td>
-<td style="text-align:center">在服务器上删除指定目录</td>
-</tr>
-<tr>
-<td style="text-align:center">RNFR <old path></td>
-<td style="text-align:center">对旧路径重命名</td>
-</tr>
-<tr>
-<td style="text-align:center">RNTO <new path></td>
-<td style="text-align:center">对新路径重命名</td>
-</tr>
-<tr>
-<td style="text-align:center">SITE <params></td>
-<td style="text-align:center">由服务器提供的站点特殊参数</td>
-</tr>
-<tr>
-<td style="text-align:center">SIZE <FILENAME></td>
-<td style="text-align:center">文件大小，执行成功返回 213</td>
-</tr>
-<tr>
-<td style="text-align:center">SMNT <pathname></td>
-<td style="text-align:center">挂载指定文件结构</td>
-</tr>
-<tr>
-<td style="text-align:center">STAT <directory></td>
-<td style="text-align:center">在当前程序或目录上返回信息</td>
-</tr>
-<tr>
-<td style="text-align:center">STOR <filename></td>
-<td style="text-align:center">储存（复制）文件到服务器上</td>
-</tr>
-<tr>
-<td style="text-align:center">STOU <filename></td>
-<td style="text-align:center">储存文件到服务器名称上</td>
-</tr>
-<tr>
-<td style="text-align:center">STRU <type></td>
-<td style="text-align:center">数据结构（F=文件，R=记录，P=页面）</td>
-</tr>
-<tr>
-<td style="text-align:center">SYST</td>
-<td style="text-align:center">返回服务器使用的操作系统</td>
-</tr>
-<tr>
-<td style="text-align:center">TYPE <data type></td>
-<td style="text-align:center">数据类型（A=ASCII，E=EBCDIC，I=binary）</td>
-</tr>
-</tbody>
-</table>
-<h3 id="响应码">响应码</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">响应码</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">110</td>
-<td style="text-align:center">新文件指示器上的重启标记</td>
-</tr>
-<tr>
-<td style="text-align:center">120</td>
-<td style="text-align:center">服务器准备就绪的时间（分钟数）</td>
-</tr>
-<tr>
-<td style="text-align:center">125</td>
-<td style="text-align:center">打开数据连接，开始传输</td>
-</tr>
-<tr>
-<td style="text-align:center">150</td>
-<td style="text-align:center">打开连接</td>
-</tr>
-<tr>
-<td style="text-align:center">200</td>
-<td style="text-align:center">成功</td>
-</tr>
-<tr>
-<td style="text-align:center">202</td>
-<td style="text-align:center">命令没有执行</td>
-</tr>
-<tr>
-<td style="text-align:center">211</td>
-<td style="text-align:center">系统状态回复</td>
-</tr>
-<tr>
-<td style="text-align:center">212</td>
-<td style="text-align:center">目录状态回复</td>
-</tr>
-<tr>
-<td style="text-align:center">213</td>
-<td style="text-align:center">文件状态回复</td>
-</tr>
-<tr>
-<td style="text-align:center">214</td>
-<td style="text-align:center">帮助信息回复</td>
-</tr>
-<tr>
-<td style="text-align:center">215</td>
-<td style="text-align:center">系统类型回复</td>
-</tr>
-<tr>
-<td style="text-align:center">220</td>
-<td style="text-align:center">服务就绪</td>
-</tr>
-<tr>
-<td style="text-align:center">221</td>
-<td style="text-align:center">退出网络</td>
-</tr>
-<tr>
-<td style="text-align:center">225</td>
-<td style="text-align:center">打开数据连接</td>
-</tr>
-<tr>
-<td style="text-align:center">226</td>
-<td style="text-align:center">结束数据连接</td>
-</tr>
-<tr>
-<td style="text-align:center">227</td>
-<td style="text-align:center">进入被动模式（IP 地址、ID 端口）</td>
-</tr>
-<tr>
-<td style="text-align:center">230</td>
-<td style="text-align:center">登录完成</td>
-</tr>
-<tr>
-<td style="text-align:center">250</td>
-<td style="text-align:center">文件行为完成</td>
-</tr>
-<tr>
-<td style="text-align:center">257</td>
-<td style="text-align:center">路径名建立</td>
-</tr>
-<tr>
-<td style="text-align:center">331</td>
-<td style="text-align:center">要求密码</td>
-</tr>
-<tr>
-<td style="text-align:center">332</td>
-<td style="text-align:center">要求帐号</td>
-</tr>
-<tr>
-<td style="text-align:center">350</td>
-<td style="text-align:center">文件行为暂停</td>
-</tr>
-<tr>
-<td style="text-align:center">421</td>
-<td style="text-align:center">服务关闭</td>
-</tr>
-<tr>
-<td style="text-align:center">425</td>
-<td style="text-align:center">无法打开数据连接</td>
-</tr>
-<tr>
-<td style="text-align:center">426</td>
-<td style="text-align:center">结束连接</td>
-</tr>
-<tr>
-<td style="text-align:center">450</td>
-<td style="text-align:center">文件不可用</td>
-</tr>
-<tr>
-<td style="text-align:center">451</td>
-<td style="text-align:center">遇到本地错误</td>
-</tr>
-<tr>
-<td style="text-align:center">452</td>
-<td style="text-align:center">磁盘空间不足</td>
-</tr>
-<tr>
-<td style="text-align:center">500</td>
-<td style="text-align:center">无效命令</td>
-</tr>
-<tr>
-<td style="text-align:center">501</td>
-<td style="text-align:center">错误参数</td>
-</tr>
-<tr>
-<td style="text-align:center">502</td>
-<td style="text-align:center">命令没有执行</td>
-</tr>
-<tr>
-<td style="text-align:center">503</td>
-<td style="text-align:center">错误指令序列</td>
-</tr>
-<tr>
-<td style="text-align:center">504</td>
-<td style="text-align:center">无效命令参数</td>
-</tr>
-<tr>
-<td style="text-align:center">530</td>
-<td style="text-align:center">未登录网络</td>
-</tr>
-<tr>
-<td style="text-align:center">532</td>
-<td style="text-align:center">存储文件需要帐号</td>
-</tr>
-<tr>
-<td style="text-align:center">550</td>
-<td style="text-align:center">文件不可用</td>
-</tr>
-<tr>
-<td style="text-align:center">551</td>
-<td style="text-align:center">不知道的页类型</td>
-</tr>
-<tr>
-<td style="text-align:center">552</td>
-<td style="text-align:center">超过存储分配</td>
-</tr>
-<tr>
-<td style="text-align:center">553</td>
-<td style="text-align:center">文件名不允许</td>
-</tr>
-</tbody>
-</table>
-
+<h1 id="还不错的诗">还不错的诗</h1><p>用过的几首诗</p>
+<h3 id="0.夜宿山寺">0.夜宿山寺</h3><pre><code>李白
+危楼高百尺，手可摘星辰。
+不敢高声语，恐惊天上人。
+</code></pre><h3 id="1.题都城南庄">1.题都城南庄</h3><pre><code>崔护
+去年今日此门中，人面桃花相映红。
+人面只今何处去，桃花依旧笑春风。
+</code></pre><h3 id="2.咏柳">2.咏柳</h3><pre><code>贺知章
+碧玉妆成一树高，万条垂下绿丝绦。
+不知细叶谁裁出，二月春风似剪刀。
+</code></pre>
 </div>
 
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c\ftp.html";
+	var curPath = "c\poems.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
-	var wumiiTitle = "FTP协议 - 无忧杂货铺";
+	var wumiiTitle = "还不错的诗 - 无忧杂货铺";
 	var wumiiSitePrefix = siteUrl;
 	var wumiiCommentParams = "&pf=JAVASCRIPT";
 </script>
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="..\..\..\..\js/dt.js?v=1522289951652"></script>
-<script type="text/javascript" src="..\..\..\..\js/index.js?v=1522289951652"></script>
+<script type="text/javascript" src="..\..\..\..\js/dt.js?v=1522289951694"></script>
+<script type="text/javascript" src="..\..\..\..\js/index.js?v=1522289951694"></script>
 </body>
 
 </html>

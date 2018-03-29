@@ -12,8 +12,8 @@
 		<title>
 			adb使用笔记 - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1521265189979">
+		<link rel="shortcut icon" href="..\..\..\..\img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="..\..\..\..\css/index.css?v=1522289951661">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/adb.html">
+			<input type="hidden" id="current_path" value="c\adb.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,15 +143,15 @@
 
 <div class="markdown-body">
 
-<!--command/adb.md-->
+<!--command\adb.md-->
 
 <h1 id="adb使用笔记">adb使用笔记</h1><p>adb 常用指令大全</p>
 <h3 id="adb-install">adb install</h3><pre><code>$ adb install re.apk
 <span class="hljs-comment"># more than one device</span>
 $ adb -s 1858c81e install re.apk
 <span class="hljs-comment"># force</span>
-$ adb install -r //保留
-$ adb install -k //卸载
+$ adb install   -r //保留（replace覆盖安装）
+$ adb uninstall -k //保留（keep卸载时保留data和cache目录）
 </code></pre><h3 id="read-apk-package-name">read apk package name</h3><blockquote>
 <p>aapt path : /sdk/build-tools/25.0.2</p>
 </blockquote>
@@ -190,7 +190,7 @@ adb shell input swipe x1 y1 x2 y2
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c/adb.html";
+	var curPath = "c\adb.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
@@ -201,8 +201,8 @@ adb shell input swipe x1 y1 x2 y2
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1521265189980"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1521265189980"></script>
+<script type="text/javascript" src="..\..\..\..\js/dt.js?v=1522289951662"></script>
+<script type="text/javascript" src="..\..\..\..\js/index.js?v=1522289951662"></script>
 </body>
 
 </html>
