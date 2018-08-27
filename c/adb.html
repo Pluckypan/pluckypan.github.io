@@ -13,7 +13,7 @@
 			adb使用笔记 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1535361587271">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1535364861016">
 	</head>
 
 	<body>
@@ -179,6 +179,9 @@ ANDROID_HOME=/Users/YourUsername/Library/Android/sdk
 <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/tools
 <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/platform-tools
 6.source .bash_profile
+</code></pre><h3 id="解决每次打开终端都需要重新执行 <code>source .bash_profile</code>">解决每次打开终端都需要重新执行 <code>source .bash_profile</code></h3><p>如果有替换过oh_my_zsh,可能会导致用户配置无效 可以通过如下方法解决</p>
+<pre><code>1.打开文件 `open ~/.zshrc`
+2.在文件最后一行加入 `<span class="hljs-built_in">source</span> ~/.bash_profile`
 </code></pre><h3 id="adb 重启 关机">adb 重启 关机</h3><pre><code>adb reboot //重启
 adb shell reboot -p//关机
 </code></pre><h3 id="adb 获取设备id">adb 获取设备id</h3><pre><code>adb get-serialno
@@ -210,8 +213,8 @@ adb shell getprop | grep build
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1535361587272"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1535361587272"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1535364861016"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1535364861016"></script>
 </body>
 
 </html>
