@@ -12,8 +12,8 @@
 		<title>
 			synchronize用法 - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="..\..\..\..\img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="..\..\..\..\css/index.css?v=1531708089326">
+		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1535361587340">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\synchronize.html">
+			<input type="hidden" id="current_path" value="c/synchronize.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,17 +143,17 @@
 
 <div class="markdown-body">
 
-<!--command\synchronize.md-->
+<!--command/synchronize.md-->
 
 <h1 id="synchronize用法">synchronize用法</h1><p>synchronize类锁和对象锁详解</p>
 <h3 id="java内置锁">java内置锁</h3><blockquote>
+</blockquote>
 <p>每个java对象都可以用做一个实现同步的锁，这些锁成为内置锁。线程进入同步代码块或方法的时候会自动获得该锁，在退出同步代码块或方法时会释放该锁。获得内置锁的唯一途径就是进入这个锁的保护的同步代码块或方法。
 java内置锁是一个互斥锁，这就是意味着最多只有一个线程能够获得该锁，当线程A尝试去获得线程B持有的内置锁时，线程A必须等待或者阻塞，知道线程B释放这个锁，如果B线程不释放这个锁，那么A线程将永远等待下去。</p>
-</blockquote>
 <h3 id="java的对象锁和类锁">java的对象锁和类锁</h3><blockquote>
+</blockquote>
 <p>java的对象锁和类锁在锁的概念上基本上和内置锁是一致的，但是，两个锁实际是有很大的区别的，对象锁是用于对象实例方法，或者一个对象实例上的，类锁是用于类的静态方法或者一个类的class对象上的。我们知道，类的对象实例可以有很多个，但是每个类只有一个class对象，所以不同对象实例的对象锁是互不干扰的，但是每个类只有一个类锁。
 <code>但是有一点必须注意的是，其实类锁只是一个概念上的东西，并不是真实存在的，它只是用来帮助我们理解锁定实例方法和静态方法的区别的</code></p>
-</blockquote>
 <h3 id="对象锁">对象锁</h3><h4 id="synchronized修饰方法和代码块">synchronized修饰方法和代码块</h4><h5 id="man-class">Man.class</h5><pre><code>public class Man {
 
     /**
@@ -318,7 +318,7 @@ funcB thread4 : 0
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c\synchronize.html";
+	var curPath = "c/synchronize.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
@@ -329,8 +329,8 @@ funcB thread4 : 0
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="..\..\..\..\js/dt.js?v=1531708089326"></script>
-<script type="text/javascript" src="..\..\..\..\js/index.js?v=1531708089326"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1535361587341"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1535361587341"></script>
 </body>
 
 </html>

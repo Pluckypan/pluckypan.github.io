@@ -12,8 +12,8 @@
 		<title>
 			adb使用笔记 - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="..\..\..\..\img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="..\..\..\..\css/index.css?v=1531708089192">
+		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1535361587271">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c\adb.html">
+			<input type="hidden" id="current_path" value="c/adb.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,7 +143,7 @@
 
 <div class="markdown-body">
 
-<!--command\adb.md-->
+<!--command/adb.md-->
 
 <h1 id="adb使用笔记">adb使用笔记</h1><p>adb 常用指令大全</p>
 <h3 id="adb-install">adb install</h3><pre><code>$ adb install re.apk
@@ -170,12 +170,15 @@ $ ps|grep <span class="hljs-string">'facebook'</span>
 $ <span class="hljs-built_in">kill</span> 10086
 $ pm list package <span class="hljs-comment">#查看所有包名</span>
 $ cat string.xml <span class="hljs-comment">#查看文件内容</span>
-</code></pre><h3 id="配置adb环境变量">配置adb环境变量</h3><pre><code>$ <span class="hljs-built_in">cd</span> ~
-<span class="hljs-comment"># 如果已经建立过.bash_profile则直接打开</span>
-$ open .bash_profile <span class="hljs-comment"># 如果没有创建过 则可执行：vim .bash_profile</span>
-<span class="hljs-comment"># 配置adb路径</span>
-<span class="hljs-comment"># export PATH=${PATH}:~/Library/Android/sdk/platform-tools</span>
-<span class="hljs-comment"># export PATH=${PATH}:~/Library/Android/sdk/build-tools/25.0.3</span>
+</code></pre><h3 id="配置adb环境变量">配置adb环境变量</h3><pre><code>1.打开terminal终端。
+2.进入当前用户的home目录。
+3.创建.bash_profile文件，输入命令：touch .bash_profile
+4.打开.bash_profile文件，命令行输入open -e .bash_profile 此命令行输入完毕后，会自动弹出 .bash_profile 文件的编辑窗口
+5.编辑.bash_profile文件，内容如下：
+ANDROID_HOME=/Users/YourUsername/Library/Android/sdk
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/tools
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$ANDROID_HOME</span>/platform-tools
+6.source .bash_profile
 </code></pre><h3 id="adb 重启 关机">adb 重启 关机</h3><pre><code>adb reboot //重启
 adb shell reboot -p//关机
 </code></pre><h3 id="adb 获取设备id">adb 获取设备id</h3><pre><code>adb get-serialno
@@ -196,7 +199,7 @@ adb shell getprop | grep build
 
 <script type="text/javascript" id="wumiiComments">
 	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c\adb.html";
+	var curPath = "c/adb.html";
 	var lastIdx = siteUrl.lastIndexOf("/");
 	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
 	console.log(wumiiPermaLink);
@@ -207,8 +210,8 @@ adb shell getprop | grep build
 <script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="..\..\..\..\js/dt.js?v=1531708089192"></script>
-<script type="text/javascript" src="..\..\..\..\js/index.js?v=1531708089192"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1535361587272"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1535361587272"></script>
 </body>
 
 </html>
