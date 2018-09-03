@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1535529110068">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1535944057942">
 	</head>
 
 	<body>
@@ -194,25 +194,39 @@
 </code></pre><h4 id="设置关键帧间隔">设置关键帧间隔</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\1-1.mp4 -s 300X300 -t 3 -ss 5 -r 26 -g 1 -keyint_min 6 D:\work\video\ffmpeg\1-300x300-keyframe.mp4
 </code></pre><h4 id="获取第一帧">获取第一帧</h4><pre><code>$ ffmpeg -i input.wmv -vframes 1 input.jpg
 </code></pre><h4 id="提取关键帧">提取关键帧</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\1-300x300.mp4 -vf select=<span class="hljs-string">'eq(pict_type\,I)'</span> -vsync 2 -s 300X300 -f image2 1-300x300-thumb-%02d.jpeg
+</code></pre><h4 id="抽取音频命令">抽取音频命令</h4><p>ffmpeg -i 3.mp4 -vn -y -acodec copy 3.aac
+ffmpeg -i 3.mp4 -vn -y -acodec copy 3.m4a</p>
+<h4 id="提取视频">提取视频</h4><p>ffmpeg -i input.mkv -vcodec copy –an  output.mp4</p>
+<h4 id="音视频合成命令">音视频合成命令</h4><p>ffmpeg -i video.avi -i audio.mp3 -vcodec copy -acodec copy output.avi</p>
+<h4 id="视频旋转90 方案一">视频旋转90 方案一</h4><p>ffmpeg -i input.mp4 -metadata:s:v rotate=&quot;90&quot; -codec copy output.mp4</p>
+<h4 id="旋转视频">旋转视频</h4><pre><code>顺时针旋转画面90度
+ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=1"</span> out.mp4
+逆时针旋转画面90度
+ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=2"</span> out.mp4
+顺时针旋转画面90度再水平翻转
+ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=3"</span> out.mp4
+逆时针旋转画面90度水平翻转
+ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=0"</span> out.mp4
+水平翻转视频画面
+ffmpeg -i test.mp4 -vf hflip out.mp4
+垂直翻转视频画面
+ffmpeg -i test.mp4 -vf vflip out.mp4
 </code></pre>
 </div>
 
 
-<script type="text/javascript" id="wumiiComments">
-	var siteUrl = "http://www.echo.engineer/";
-	var curPath = "c/ffmpeg.html";
-	var lastIdx = siteUrl.lastIndexOf("/");
-	var wumiiPermaLink = (lastIdx == siteUrl.length - 1) ? (siteUrl + curPath) : (siteUrl + '/' + curPath);
-	console.log(wumiiPermaLink);
-	var wumiiTitle = "ffmpeg基础 - 无忧杂货铺";
-	var wumiiSitePrefix = siteUrl;
-	var wumiiCommentParams = "&pf=JAVASCRIPT";
+<div id="SOHUCS" sid="ffmpeg基础 - 无忧杂货铺" style="padding: 30px 35px 30px 35px;"></div>
+<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+	window.changyan.api.config({
+		"appid": "cyt55DJvJ",
+		"conf": "0a64c172719f102c8fea50ac88ff1ce0"
+	});
 </script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1535529110069"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1535529110069"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1535944057943"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1535944057943"></script>
 </body>
 
 </html>
