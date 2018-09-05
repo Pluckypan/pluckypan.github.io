@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1535995826558">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1536159294056">
 	</head>
 
 	<body>
@@ -194,9 +194,9 @@
 </code></pre><h4 id="设置关键帧间隔">设置关键帧间隔</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\1-1.mp4 -s 300X300 -t 3 -ss 5 -r 26 -g 1 -keyint_min 6 D:\work\video\ffmpeg\1-300x300-keyframe.mp4
 </code></pre><h4 id="获取第一帧">获取第一帧</h4><pre><code>$ ffmpeg -i input.wmv -vframes 1 input.jpg
 </code></pre><h4 id="提取关键帧">提取关键帧</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\1-300x300.mp4 -vf select=<span class="hljs-string">'eq(pict_type\,I)'</span> -vsync 2 -s 300X300 -f image2 1-300x300-thumb-%02d.jpeg
-</code></pre><h4 id="抽取音频命令">抽取音频命令</h4><p>ffmpeg -i 3.mp4 -vn -y -acodec copy 3.aac
-ffmpeg -i 3.mp4 -vn -y -acodec copy 3.m4a</p>
-<h4 id="提取视频">提取视频</h4><p>ffmpeg -i input.mkv -vcodec copy –an  output.mp4</p>
+</code></pre><h4 id="抽取音频命令">抽取音频命令</h4><pre><code>ffmpeg -i 3.mp4 -vn -y -acodec copy 3.aac
+ffmpeg -i 3.mp4 -vn -y -acodec copy 3.m4a
+</code></pre><h4 id="提取视频">提取视频</h4><p>ffmpeg -i input.mkv -vcodec copy –an  output.mp4</p>
 <h4 id="音视频合成命令">音视频合成命令</h4><p>ffmpeg -i video.avi -i audio.mp3 -vcodec copy -acodec copy output.avi</p>
 <h4 id="视频旋转90 方案一">视频旋转90 方案一</h4><p>ffmpeg -i input.mp4 -metadata:s:v rotate=&quot;90&quot; -codec copy output.mp4</p>
 <h4 id="旋转视频">旋转视频</h4><pre><code>顺时针旋转画面90度
@@ -211,8 +211,12 @@ ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=0"</span> out.mp4
 ffmpeg -i test.mp4 -vf hflip out.mp4
 垂直翻转视频画面
 ffmpeg -i test.mp4 -vf vflip out.mp4
-</code></pre><h4 id="压缩视频">压缩视频</h4><p>ffmpeg -i mum.mov -vcodec libx264 -vf &quot;scale=trunc(iw/2)<em>2:trunc(ih/2)</em>2&quot; -r 30  mum.mp4</p>
-
+</code></pre><h4 id="压缩视频">压缩视频</h4><pre><code><span class="hljs-comment"># 方式一</span>
+ffmpeg -i mum.mov -vcodec libx264 -vf <span class="hljs-string">"scale=trunc(iw/2)*2:trunc(ih/2)*2"</span> -r 30  mum.mp4
+<span class="hljs-comment"># 方式二</span>
+ffmpeg -i 寂静之声.mov -vcodec libx264 -s 1268X540  -r 30 jijing.mp4
+</code></pre><h4 id="截取音乐片段">截取音乐片段</h4><pre><code>ffmpeg -i Sound\ Of\ Silence.mp3 -ss 00:00:07.500 -t 20 bg.mp3
+</code></pre>
 </div>
 
 
@@ -226,8 +230,8 @@ ffmpeg -i test.mp4 -vf vflip out.mp4
 </script>
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1535995826559"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1535995826559"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1536159294057"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1536159294057"></script>
 </body>
 
 </html>
