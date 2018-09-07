@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1536331777969">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1536332058785">
 	</head>
 
 	<body>
@@ -220,9 +220,43 @@ ffmpeg -i 寂静之声.mov -vcodec libx264 -s 1268X540  -r 30 jijing.mp4
 </div>
 
 
+	<div class="gitalk_container">
+	      <style type="text/css">
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1536331777970"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1536331777970"></script>
+	        .gitalk_container {
+	          margin: 0 auto;
+	          padding-bottom: 60px;
+	          max-width: 720px;
+	          color: #6190E8;
+	          font-family: "PingFang SC", Helvetica, "Microsoft YaHei", Arial, sans-serif;
+	        }
+	        @media (max-width: 720px) {
+	          .gitalk_container {
+	            width: 90%;
+	          }
+	        }
+	      </style>
+	      <div id="gitalk-container"></div>
+	      <link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+	      <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+	      <script type="text/javascript">
+	        var gitalk = new Gitalk({
+	          clientID: gitalk.clientID,
+	          clientSecret: gitalk.clientSecret,
+	          repo: gitalk.repo,
+	          owner: gitalk.owner,
+	          admin: gitalk.admin,
+	          distractionFreeMode: gitalk.distractionFreeMode
+	        });
+	        gitalk.render('gitalk-container');
+	      </script>
+
+	    </div>
+
+
+
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1536332058786"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1536332058786"></script>
 </body>
 
 </html>
