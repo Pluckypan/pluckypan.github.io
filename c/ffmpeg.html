@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1539160763599">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1540522264728">
 	</head>
 
 	<body>
@@ -219,6 +219,10 @@ ffmpeg -i 寂静之声.mov -vcodec libx264 -s 1268X540  -r 30 jijing.mp4
 </code></pre><h4 id="截取音乐片段">截取音乐片段</h4><pre><code>ffmpeg -i Sound\ Of\ Silence.mp3 -ss 00:00:07.500 -t 20 bg.mp3
 </code></pre><h4 id="查看ffmpeg支持格式">查看ffmpeg支持格式</h4><pre><code>ffmpeg -formats
 </code></pre><h4 id="mp4转gif">MP4转gif</h4><pre><code>ffmpeg -i device-2018-10-10-160142.mp4  -r 3 3.gif
+</code></pre><h4 id="mac终端for循环">Mac终端for循环</h4><pre><code> <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> {0..76}; <span class="hljs-keyword">do</span> (<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span>) <span class="hljs-keyword">done</span>;
+</code></pre><h4 id="mac终端批量旋转图片 强大的 <strong>sips</strong> 指令">Mac终端批量旋转图片 强大的 <strong>sips</strong> 指令</h4><pre><code>sips -r 90 *.png
+</code></pre><h4 id="ffmpeg 读取pcm 信息">ffmpeg 读取PCM 信息</h4><pre><code>ffmpeg -f s16be -ar 44100 -ac 2 -acodec pcm_s16be -i 1540403885057.pcm
+</code></pre><h4 id="mac自带lame终端  pcm 转 mp3">Mac自带Lame终端  PCM 转 MP3</h4><pre><code>lame -r -s 44.1 -m m -a 1540403885057.pcm xxx.mp3
 </code></pre>
 </div>
 
@@ -258,8 +262,8 @@ ffmpeg -i 寂静之声.mov -vcodec libx264 -s 1268X540  -r 30 jijing.mp4
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1539160763600"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1539160763600"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1540522264729"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1540522264729"></script>
 </body>
 
 </html>

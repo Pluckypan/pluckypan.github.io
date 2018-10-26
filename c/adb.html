@@ -13,7 +13,7 @@
 			adb使用笔记 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1539160763568">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1540522264696">
 	</head>
 
 	<body>
@@ -165,6 +165,7 @@ adb start-server
 </code></pre><h3 id="获取 wlan mac 地址">获取 WLAN MAC 地址</h3><pre><code>adb shell  cat /sys/class/net/wlan0/address
 </code></pre><h3 id="reboot-laucher">reboot laucher</h3><pre><code>$ adb shell am force-stop com.facebook.fresco
 $ adb shell monkey -p com.facebook.fresco -c android.intent.category.LAUNCHER 1
+</code></pre><h3 id="强制停止应用">强制停止应用</h3><pre><code>adb shell am force-stop com.zf.mtmonkey.mtmonkey
 </code></pre><h3 id="adb-pull-push">adb pull/push</h3><pre><code>$ adb pull xxx.jpg yyy.jpg
 $ adb push yyy.jpg xxx.jpg
 </code></pre><h3 id="进入adb shell">进入adb shell</h3><blockquote>
@@ -246,8 +247,8 @@ adb shell <span class="hljs-built_in">kill</span> pid
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1539160763569"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1539160763569"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1540522264696"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1540522264696"></script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@
 			git指令大全 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1539160763565">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1540522264692">
 	</head>
 
 	<body>
@@ -199,6 +199,9 @@ git branch -r -D origin/branch_name
 <span class="hljs-comment"># git show v1.4-lw 查看标签</span>
 <span class="hljs-comment"># git push origin --tags 推送本地所有标签</span>
 <span class="hljs-comment"># git push origin v1.5   推送制定标签</span>
+<span class="hljs-comment"># git tag -d v1.5 删除本地指定tag</span>
+<span class="hljs-comment"># git push origin :refs/tags/v1.5 删除远程标签</span>
+</code></pre><h3 id="git 设置推送至远端的分支">git 设置推送至远端的分支</h3><pre><code>git push --<span class="hljs-built_in">set</span>-upstream origin develop
 </code></pre><h3 id="git统计某人提交次数">git统计某人提交次数</h3><pre><code>git <span class="hljs-built_in">log</span> --author=<span class="hljs-string">"plucky"</span> --oneline | wc -l
 </code></pre><h3 id="git 查看单个文件提交记录">git 查看单个文件提交记录</h3><pre><code>git <span class="hljs-built_in">log</span> adb.md
 git shortlog adb.md
@@ -292,8 +295,8 @@ git <span class="hljs-built_in">log</span> --grep=<span class="hljs-string">"JRA
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1539160763565"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1539160763565"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1540522264692"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1540522264692"></script>
 </body>
 
 </html>
