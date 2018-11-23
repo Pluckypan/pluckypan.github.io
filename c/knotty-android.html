@@ -13,7 +13,7 @@
 			Knotty - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1540522264784">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1542957812645">
 	</head>
 
 	<body>
@@ -164,7 +164,13 @@
   targetCompatibility JavaVersion.VERSION_1_8
 }
 </code></pre>但是 app Nodule中未使用，则会再编译时报如下错误：<pre><code>Error:Invoke-customs are only supported starting with Android O (--min-api 26) - Google
+</code></pre><ul>
+<li>[x] 在ConstraintLayout中TextView 设置 wrap_content 无效的问题<pre><code>在小米 Mix 2s 上 TextView 设置 wrap_content 后 存在现实问题(宽度和高度均存在问题，会比原来要宽或者高) 添加如下代码解决
+app:layout_constrainedHeight=<span class="hljs-string">"true"</span>
+app:layout_constrainedWidth=<span class="hljs-string">"true"</span>
 </code></pre></li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -205,8 +211,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1540522264785"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1540522264785"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1542957812646"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1542957812646"></script>
 </body>
 
 </html>
