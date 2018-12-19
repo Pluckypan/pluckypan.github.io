@@ -13,7 +13,7 @@
 			Hugo - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545227465834">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545227520656">
 	</head>
 
 	<body>
@@ -563,82 +563,86 @@ public class Aspecter {
                <span class="hljs-built_in">return</span> <span class="hljs-literal">false</span>;
            }
        }
-</code></pre><h4 id="processor示例代码">Processor示例代码</h4><p><code>`</code>
-@AutoService(Processor.class)
-@SupportedSourceVersion(SourceVersion.RELEASE_7)
-public class HugoXCompiler extends AbstractProcessor {</p>
-<p>   private Filer mFiler;
-   private Messager mMessage;
-   private String version = &quot;0.0.0&quot;;
-   private String name = &quot;xxx&quot;;
-   private int age = 0;</p>
-<p>   @Override
-   public synchronized void init(ProcessingEnvironment processingEnvironment) {</p>
-<pre><code>   super.init(processingEnvironment);
-   //日志打印
-   mMessage = processingEnvironment.getMessager();
-   //文件生成器
-   mFiler = processingEnvironment.getFiler();
-   //获取项目配置的编译参数
-   version = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.version"</span>);
-   name = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.name"</span>);
-   String ageX = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.age"</span>);
-   try {
-       age = Integer.valueOf(ageX);
-   } catch (NumberFormatException e) {
-
-   }
-   printLn(<span class="hljs-string">"init version="</span> + version + <span class="hljs-string">" name="</span> + name + <span class="hljs-string">" age="</span> + age, <span class="hljs-literal">true</span>);
-</code></pre><p>   }</p>
-<p>   @Override
-   public boolean process(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment) {</p>
-<pre><code>   <span class="hljs-keyword">for</span> (Element element : roundEnvironment.getElementsAnnotatedWith(DebugLog.class)) {
-       <span class="hljs-keyword">if</span> (element.getKind() == ElementKind.METHOD) {
-           printLn(<span class="hljs-string">"------------------------------"</span>, <span class="hljs-literal">true</span>);
-           printLn(<span class="hljs-string">"方法名："</span> + element.getSimpleName(), <span class="hljs-literal">true</span>);
-           DebugLog ano = element.getAnnotation(DebugLog.class);
-           printLn(<span class="hljs-string">"注解信息："</span> + ano.showSpendTime(), <span class="hljs-literal">true</span>);
-           printLn(<span class="hljs-string">"------------------------------"</span>, <span class="hljs-literal">true</span>);
-       }
-   }
-   //原始方法生成java类
-   OldTime.testCreateFile(mFiler);
-   //javapoet生成代码
-   NewTime.testJavapoet(mFiler, name, age);
-   <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
-</code></pre><p>   }</p>
-<p>   @Override
-   public Set<String> getSupportedAnnotationTypes() {</p>
-<pre><code>   /**
-    * 指定将要扫描并处理被注解标记的类 有两种方式
-    * 1. 重写 public Set&lt;String&gt; getSupportedAnnotationTypes()
-    * 2. 在 HugoXCompiler 类头部使用注解 @SupportedAnnotationTypes(<span class="hljs-string">"engineer.echo.hugox.DebugLog"</span>)
-    */
-   <span class="hljs-built_in">return</span> Collections.singleton(DebugLog.class.getCanonicalName());
-</code></pre><p>   }</p>
-</li>
+</code></pre></li>
 </ol>
-<pre><code>  /**
-   * 指明支持的源码版本(JAVA版本) 支持两种方式
-   * 1. 重写 public SourceVersion getSupportedSourceVersion()
-   * 2. 在 HugoXCompiler 类头部使用注解 @SupportedSourceVersion(SourceVersion.RELEASE_7)
-   */
-  /*
-  @Override
-  public SourceVersion <span class="hljs-function"><span class="hljs-title">getSupportedSourceVersion</span></span>() {
-      <span class="hljs-built_in">return</span> SourceVersion.latestSupported();
-  }*/
-  private void printLn(String note, boolean system) {
-      <span class="hljs-keyword">if</span> (system) {
-          System.out.println(note);
-      } <span class="hljs-keyword">else</span> {
-          //Note 会在控制台 打印 注: xxx
-          mMessage.printMessage(Diagnostic.Kind.NOTE, note);
+<h4 id="processor示例代码">Processor示例代码</h4><pre><code>  @AutoService(Processor.class)
+  @SupportedSourceVersion(SourceVersion.RELEASE_7)
+  public class HugoXCompiler extends AbstractProcessor {
+
+      private Filer mFiler;
+      private Messager mMessage;
+      private String version = <span class="hljs-string">"0.0.0"</span>;
+      private String name = <span class="hljs-string">"xxx"</span>;
+      private int age = 0;
+
+      @Override
+      public synchronized void init(ProcessingEnvironment processingEnvironment) {
+          super.init(processingEnvironment);
+          //日志打印
+          mMessage = processingEnvironment.getMessager();
+          //文件生成器
+          mFiler = processingEnvironment.getFiler();
+          //获取项目配置的编译参数
+          version = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.version"</span>);
+          name = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.name"</span>);
+          String ageX = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.age"</span>);
+          try {
+              age = Integer.valueOf(ageX);
+          } catch (NumberFormatException e) {
+
+          }
+          printLn(<span class="hljs-string">"init version="</span> + version + <span class="hljs-string">" name="</span> + name + <span class="hljs-string">" age="</span> + age, <span class="hljs-literal">true</span>);
+      }
+
+      @Override
+      public boolean process(Set&lt;? extends TypeElement&gt; <span class="hljs-built_in">set</span>, RoundEnvironment roundEnvironment) {
+          <span class="hljs-keyword">for</span> (Element element : roundEnvironment.getElementsAnnotatedWith(DebugLog.class)) {
+              <span class="hljs-keyword">if</span> (element.getKind() == ElementKind.METHOD) {
+                  printLn(<span class="hljs-string">"------------------------------"</span>, <span class="hljs-literal">true</span>);
+                  printLn(<span class="hljs-string">"方法名："</span> + element.getSimpleName(), <span class="hljs-literal">true</span>);
+                  DebugLog ano = element.getAnnotation(DebugLog.class);
+                  printLn(<span class="hljs-string">"注解信息："</span> + ano.showSpendTime(), <span class="hljs-literal">true</span>);
+                  printLn(<span class="hljs-string">"------------------------------"</span>, <span class="hljs-literal">true</span>);
+              }
+          }
+          //原始方法生成java类
+          OldTime.testCreateFile(mFiler);
+          //javapoet生成代码
+          NewTime.testJavapoet(mFiler, name, age);
+          <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+      }
+
+      @Override
+      public Set&lt;String&gt; <span class="hljs-function"><span class="hljs-title">getSupportedAnnotationTypes</span></span>() {
+          /**
+           * 指定将要扫描并处理被注解标记的类 有两种方式
+           * 1. 重写 public Set&lt;String&gt; getSupportedAnnotationTypes()
+           * 2. 在 HugoXCompiler 类头部使用注解 @SupportedAnnotationTypes(<span class="hljs-string">"engineer.echo.hugox.DebugLog"</span>)
+           */
+          <span class="hljs-built_in">return</span> Collections.singleton(DebugLog.class.getCanonicalName());
+      }
+
+
+      /**
+       * 指明支持的源码版本(JAVA版本) 支持两种方式
+       * 1. 重写 public SourceVersion getSupportedSourceVersion()
+       * 2. 在 HugoXCompiler 类头部使用注解 @SupportedSourceVersion(SourceVersion.RELEASE_7)
+       */
+      /*
+      @Override
+      public SourceVersion <span class="hljs-function"><span class="hljs-title">getSupportedSourceVersion</span></span>() {
+          <span class="hljs-built_in">return</span> SourceVersion.latestSupported();
+      }*/
+      private void printLn(String note, boolean system) {
+          <span class="hljs-keyword">if</span> (system) {
+              System.out.println(note);
+          } <span class="hljs-keyword">else</span> {
+              //Note 会在控制台 打印 注: xxx
+              mMessage.printMessage(Diagnostic.Kind.NOTE, note);
+          }
       }
   }
-</code></pre><p>  }
-<code>`</code></p>
-<h3 id="编写一个 gradle plugin">编写一个 Gradle Plugin</h3><h3 id="参考文档">参考文档</h3><ol>
+</code></pre><h3 id="编写一个 gradle plugin">编写一个 Gradle Plugin</h3><h3 id="参考文档">参考文档</h3><ol>
 <li><a href="https://blog.csdn.net/qq_30379689/article/details/82345625">APT知识简介</a></li>
 <li><a href="https://blog.csdn.net/github_35180164/article/category/6346819">JAVA注解由浅入深</a></li>
 <li><a href="https://github.com/square/javapoet">javapoet语法</a></li>
@@ -684,8 +688,8 @@ public class HugoXCompiler extends AbstractProcessor {</p>
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1545227465834"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1545227465834"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1545227520657"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1545227520657"></script>
 </body>
 
 </html>
