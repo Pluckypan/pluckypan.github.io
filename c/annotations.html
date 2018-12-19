@@ -13,7 +13,7 @@
 			Annotations - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1544062962110">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545224386732">
 	</head>
 
 	<body>
@@ -146,7 +146,55 @@
 <!--command/annotations.md-->
 
 <h1 id="annotations">Annotations</h1><p>Android 注解 Annotations 的正确打开方式</p>
-<h3 id="初识annotations">初识Annotations</h3><h4 id="<code>@requiresapi</code>作用到底是什么"><code>@RequiresApi</code>作用到底是什么</h4><blockquote>
+<h4 id="什么是注解">什么是注解</h4><p>从JDK5开始，Java增加了注解，注解是代理里特殊的标记，这些标记可以在编译、类加载、运行时被读取，并执行相应的处理。</p>
+<h4 id="注解的分类">注解的分类</h4><ol>
+<li>标注注解：<code>@Overrride</code> <code>@Deprecate</code> <code>@SupperWarnings</code></li>
+<li>元注解：自定义注解均需要这些注解来确定<ul>
+<li><code>@Target</code> 注解所修饰的对象范围</li>
+<li><code>@Inherited</code> 表示注解可以被继承</li>
+<li><code>@Documented</code> 表示这个注解应该被JavaDoc工具记录</li>
+<li><code>@Rentation</code> 用来声明注解的保留策略</li>
+</ul>
+</li>
+<li><code>@Target</code> 注解修饰的范围<ul>
+<li>ElementType.TYPE：能修饰类，接口或者枚举类型</li>
+<li>ElementType.FIELD：能修饰成员变量</li>
+<li>ElementType. METHOD：能修饰方法</li>
+<li>ElementType. PARAMETER：能修饰参数</li>
+<li>ElementType. CONSTRUCTOR：能修饰构造方法</li>
+<li>ElementType.LOCAL_VARIABLE：能修饰局部变量</li>
+<li>ElementType. ANNOTATION_TYPE：能修饰注解</li>
+<li>ElementType. PACKAGE：能修饰包</li>
+</ul>
+</li>
+<li>@Retention 表示注解不同级别的保留策略<ul>
+<li>RetentionPolicy.SOURCE：源码级注解，注解信息只会保留在Java源码中，源码在编译后，注解信息将会被丢弃，不会保留在.class文件中</li>
+<li>RetentionPolicy.CLASS：编译时注解。注解信息会保留在.java源码以及.class中。当运行java程序时，JVM会丢弃该注解信息，不会保留在JVM中</li>
+<li>RetentionPolicy.RUNTIME：运行注解。当运行Java程序时，JVM也会保留该注解信息，可以通过反射获取该注解信息</li>
+</ul>
+</li>
+</ol>
+<h3 id="反射获取 运行时 注解">反射获取 运行时 注解</h3><pre><code>public class ReflectMain {
+
+    @ReflectParam(<span class="hljs-string">"jerry"</span>)
+    public String userName;
+
+    public static void main(String[] args) {
+        ReflectMain main = new ReflectMain();
+        ReflectParam annotation = null;
+        try {
+            Class clazz = main.getClass();
+            //Field[] fields = clazz.getFields();
+            Field field = clazz.getField(<span class="hljs-string">"userName"</span>);
+            annotation = field.getAnnotation(ReflectParam.class);
+            System.out.print(annotation.value());
+        } catch (NoSuchFieldException e) {
+            System.out.print(<span class="hljs-string">"no such field"</span>);
+        }
+    }
+
+}
+</code></pre><h3 id="初识annotations">初识Annotations</h3><h4 id="<code>@requiresapi</code>作用到底是什么"><code>@RequiresApi</code>作用到底是什么</h4><blockquote>
 <p><code>@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)</code>,使用 <code>android.transition.Slide</code> 需要API的版本是 <code>Build.VERSION_CODES.LOLLIPOP</code>，加上这个注释后编译器不再报错。 <code>@RequiresApi</code> 与 <code>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP)</code> 区别是什么？ <code>@RequiresApi</code> 与 <code>@TargetApi</code> 的区别？</p>
 </blockquote>
 <pre><code class="lang-java">
@@ -193,8 +241,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1544062962111"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1544062962111"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1545224386733"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1545224386733"></script>
 </body>
 
 </html>

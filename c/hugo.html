@@ -13,7 +13,7 @@
 			Hugo - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1544062962045">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545224386659">
 	</head>
 
 	<body>
@@ -319,7 +319,245 @@ aspectjx {
 }
 </code></pre></li>
 </ol>
-<h3 id="annotation注解动态生成代码">Annotation注解动态生成代码</h3><h3 id="编写一个 gradle plugin">编写一个 Gradle Plugin</h3>
+<h4 id="示例代码">示例代码</h4><h5 id="测试类">测试类</h5><pre><code>public class Person {
+    private int age;
+    private int gender;
+    private String name;
+
+    public <span class="hljs-function"><span class="hljs-title">Person</span></span>() {
+    }
+
+    public Person(int age, int gender, String name) {
+        this.age = age;
+        this.gender = gender;
+        this.name = name;
+    }
+
+    @Override
+    public String <span class="hljs-function"><span class="hljs-title">toString</span></span>() {
+        <span class="hljs-built_in">return</span> format(name, age, gender);
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int <span class="hljs-function"><span class="hljs-title">getAge</span></span>() {
+        <span class="hljs-built_in">return</span> age;
+    }
+
+    public String format(String name, int age, int gender) {
+        String result = String.format(Locale.CHINA, <span class="hljs-string">"姓名:%s 年龄:%d 性别:%s"</span>, name, age, gender == 0 ? <span class="hljs-string">"男"</span> : <span class="hljs-string">"女"</span>);
+        Log.i(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"inner result="</span> + result);
+        <span class="hljs-built_in">return</span> result;
+    }
+
+    @Anno
+    public int add(int a, int b) {
+        <span class="hljs-built_in">return</span> a + b;
+    }
+
+    @Anno(aTag = <span class="hljs-string">"PY-AOP"</span>, modify = <span class="hljs-literal">true</span>)
+    public int minus(int a, int b) {
+        <span class="hljs-built_in">return</span> a - b;
+    }
+}
+</code></pre><h4 id="自定义注解">自定义注解</h4><pre><code>@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Anno {
+    String aTag() default <span class="hljs-string">"AOP"</span>;
+
+    boolean modify() default <span class="hljs-literal">false</span>;
+}
+</code></pre><h4 id="处理类">处理类</h4><pre><code>@Aspect
+public class Aspecter {
+
+    @After(<span class="hljs-string">"call(* com.echo.camera.Person.toString())"</span>)
+    public void aFunc(JoinPoint joinPoint) {
+        Log.d(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"Aspecter aFunc exec"</span>);
+    }
+
+    @After(<span class="hljs-string">"call(* com.echo.camera.Person.format(..))"</span>)
+    public void bFunc(JoinPoint joinPoint) {
+        String args = Arrays.toString(joinPoint.getArgs());
+        Log.d(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"Aspecter bFunc exec args="</span> + args);
+    }
+
+   // 一般使用注解可以使用这种方式
+    @Pointcut(<span class="hljs-string">"execution(@com.echo.camera.Anno * *(..)) &amp;&amp; @annotation(ann)"</span>)
+    public void testAnno(Anno ann) {
+        Log.i(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"Aspecter testAnno"</span>);
+    }
+
+    @Around(<span class="hljs-string">"testAnno(ann)"</span>)
+    public Object check(ProceedingJoinPoint joinPoint, Anno ann) throws Throwable {
+        String args = Arrays.toString(joinPoint.getArgs());
+        Object result;
+        <span class="hljs-keyword">if</span> (ann.modify()) {
+            Object[] newArgs = {9, 7};
+            result = joinPoint.proceed(newArgs);
+        } <span class="hljs-keyword">else</span> {
+            result = joinPoint.proceed();
+        }
+        Log.i(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"Aspecter check args="</span> + args + <span class="hljs-string">" result="</span> + result + <span class="hljs-string">" aTag="</span> + ann.aTag() + <span class="hljs-string">" modify="</span> + ann.modify());
+        <span class="hljs-built_in">return</span> result;
+    }
+}
+</code></pre><h4 id="分析">分析</h4><p>通过以上处理可以在 监控 <code>Person</code> 类的运行状况，并且可以干预运行结果。而一切对源代码的侵入极低(只有注解的时候有侵入)</p>
+<h3 id="annotation注解动态生成代码">Annotation注解动态生成代码</h3><ol>
+<li>AnnotationProcessor:注解处理器是javac的一个工具，它用来在编译时扫描和处理注解</li>
+<li>可自动导包的代码生成工具<a href="https://github.com/square/javapoet">javapoet</a> 来自JakeWharton</li>
+<li><p>annotationProcessor 与 android-apt</p>
+<blockquote>
+<p>android-apt是由一位开发者自己开发的apt框架，随着Android Gradle 插件 2.2 版本的发布，Android Gradle 插件提供了名为 annotationProcessor 的功能来完全代替 android-apt</p>
+</blockquote>
+</li>
+<li><p>AnnotationProcessor 打印日志</p>
+<ul>
+<li>javax.annotation.processing.ProcessingEnvironment#getMessager()#printMessage()</li>
+<li>System.out.println()</li>
+</ul>
+</li>
+<li><p>gradle 控制台日志</p>
+<blockquote>
+<p>一般点击 build 或者 run 不会显示 gradle 日志，但是运行 gradle task .比如运行 gradle task. assembleDebug 在 Run 标签下 可以看到 gradle console 日志</p>
+</blockquote>
+</li>
+<li><p>AutoService</p>
+<blockquote>
+<p>AutoService注解处理器是Google开发的，用来生成 META-INF/services/javax.annotation.processing.Processor 文件的，你只需要在你定义的注解处理器上添加 @AutoService(Processor.class) 就可以了，简直不能再方便了。</p>
+</blockquote>
+</li>
+<li><p>获取自定义编译参数</p>
+<pre><code> //Processor 中
+ String version = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.version"</span>);
+ //gradle 中
+ defaultConfig {
+     applicationId <span class="hljs-string">'com.echo.camera'</span>
+     javaCompileOptions {
+         annotationProcessorOptions {
+             arguments = [<span class="hljs-string">'hugox.version'</span>: <span class="hljs-string">'1.0.0'</span>]
+         }
+     }
+ }
+</code></pre><h4 id="annotationprocessor的使用">AnnotationProcessor的使用</h4></li>
+<li><p>新建一个Java Lib库 HugoXAnno，其gradle配置文件如下</p>
+<pre><code>   apply plugin: <span class="hljs-string">'java-library'</span>
+
+   dependencies {
+       implementation fileTree(dir: <span class="hljs-string">'libs'</span>, include: [<span class="hljs-string">'*.jar'</span>])
+   }
+
+   sourceCompatibility = JavaVersion.VERSION_1_7
+   targetCompatibility = JavaVersion.VERSION_1_7
+</code></pre></li>
+<li><p>定义一个注解 DebugLog 注解，其源码如下</p>
+<pre><code>   @Target({TYPE, METHOD, CONSTRUCTOR})
+   @Documented
+   @Retention(RetentionPolicy.CLASS)
+   public @interface DebugLog {
+
+   }
+</code></pre></li>
+<li><p>新建一个Java lib库 HugoXCompiler，并引用上面定义的annotations库,并引用上面自定义的注解</p>
+<pre><code>   apply plugin: <span class="hljs-string">'java-library'</span>
+
+   dependencies {
+     implementation fileTree(include: [<span class="hljs-string">'*.jar'</span>], dir: <span class="hljs-string">'libs'</span>)
+     implementation project(<span class="hljs-string">':HugoXAnno'</span>)
+     implementation <span class="hljs-string">'com.google.auto.service:auto-service:1.0-rc4'</span>
+     implementation <span class="hljs-string">'com.squareup:javapoet:1.11.1'</span>
+   }
+
+   sourceCompatibility = JavaVersion.VERSION_1_7
+   targetCompatibility = JavaVersion.VERSION_1_7
+</code></pre></li>
+<li>用最原始的方式生成代码<pre><code>   public static boolean testCreateFile(Filer filer) {
+     try {
+         JavaFileObject f = filer.createSourceFile(<span class="hljs-string">"engineer.echo.HelloWorld"</span>);
+         Writer w = f.openWriter();
+         try {
+             PrintWriter pw = new PrintWriter(w);
+             pw.println(<span class="hljs-string">"//This codes are generated automatically. Do not modify!"</span>);
+             pw.println(<span class="hljs-string">"package engineer.echo;"</span>);
+             pw.println(<span class="hljs-string">"public class HelloWorld{"</span>);
+             pw.println(<span class="hljs-string">" public void print() {"</span>);
+             pw.println(<span class="hljs-string">"  System.out.println(\"Hello Engineer!\");"</span>);
+             pw.println(<span class="hljs-string">" }"</span>);
+             pw.println(<span class="hljs-string">"}"</span>);
+             pw.flush();
+         } finally {
+             w.close();
+         }
+         <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+     } catch (IOException x) {
+         <span class="hljs-built_in">return</span> <span class="hljs-literal">false</span>;
+     }
+   }
+</code></pre></li>
+<li><p>javapoet 生成代码</p>
+<pre><code>   public static boolean testJavapoet(Filer filer, String name, int age) {
+
+           //创建main方法
+           MethodSpec main = MethodSpec.methodBuilder(<span class="hljs-string">"main"</span>)
+                   .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                   .returns(void.class)
+                   .addParameter(String[].class, <span class="hljs-string">"args"</span>)
+                   .addStatement(<span class="hljs-string">"<span class="hljs-variable">$T</span>.out.println(<span class="hljs-variable">$S</span>)"</span>, System.class, <span class="hljs-string">"Hello, JavaPoet!"</span>)
+                   .build();
+           //创建成员变量 TAG
+           FieldSpec tag = FieldSpec.builder(String.class, <span class="hljs-string">"TAG"</span>)
+                   .addModifiers(Modifier.FINAL, Modifier.STATIC, Modifier.PRIVATE)
+                   .initializer(<span class="hljs-string">"<span class="hljs-variable">$S</span>"</span>, <span class="hljs-string">"Engineer"</span>)
+                   .build();
+           //创建成员变量 name
+           FieldSpec aName = FieldSpec.builder(String.class, <span class="hljs-string">"name"</span>)
+                   .addModifiers(Modifier.PRIVATE)
+                   .initializer(<span class="hljs-string">"<span class="hljs-variable">$S</span>"</span>, name)
+                   .build();
+           //创建成员变量 age
+           FieldSpec aAge = FieldSpec.builder(int.class, <span class="hljs-string">"age"</span>)
+                   .addModifiers(Modifier.PRIVATE)
+                   .initializer(<span class="hljs-string">"<span class="hljs-variable">$L</span>"</span>, age)
+                   .build();
+           //创建方法 method
+           MethodSpec say = MethodSpec.methodBuilder(<span class="hljs-string">"say"</span>)
+                   .addModifiers(Modifier.PUBLIC)
+                   .returns(String.class)
+                   .addParameter(String.class, <span class="hljs-string">"content"</span>)
+                   .addStatement(<span class="hljs-string">"String result= <span class="hljs-variable">$N</span> + <span class="hljs-variable">$S</span> + <span class="hljs-variable">$N</span> + <span class="hljs-variable">$S</span> +<span class="hljs-variable">$N</span> + <span class="hljs-variable">$S</span>+<span class="hljs-variable">$S</span>"</span>,
+                           <span class="hljs-string">"TAG"</span>, <span class="hljs-string">" -&gt; I Am "</span>, <span class="hljs-string">"name"</span>, <span class="hljs-string">",I'm "</span>, <span class="hljs-string">"age"</span>, <span class="hljs-string">"years old.\n"</span>, <span class="hljs-string">"content"</span>)
+                   .addStatement(<span class="hljs-string">"System.out.println(result)"</span>)
+                   .addStatement(<span class="hljs-string">"return <span class="hljs-variable">$S</span>"</span>, <span class="hljs-string">"result"</span>)
+                   .build();
+
+           // 创建 HiWorld 类
+           TypeSpec hiWorld = TypeSpec.classBuilder(<span class="hljs-string">"HiWorld"</span>)
+                   .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
+                   .addMethod(main)
+                   .addMethod(say)
+                   .addField(tag)
+                   .addField(aName)
+                   .addField(aAge)
+                   .build();
+           JavaFile javaFile = JavaFile.builder(<span class="hljs-string">"engineer.echo"</span>, hiWorld)
+                   .addFileComment(<span class="hljs-string">"This codes are generated automatically. Do not modify!"</span>)
+                   .build();
+           try {
+               javaFile.writeTo(filer);
+               <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+           } catch (IOException e) {
+               //e.printStackTrace();
+               <span class="hljs-built_in">return</span> <span class="hljs-literal">false</span>;
+           }
+       }
+</code></pre></li>
+</ol>
+<h3 id="编写一个 gradle plugin">编写一个 Gradle Plugin</h3><h3 id="参考文档">参考文档</h3><ol>
+<li><a href="https://blog.csdn.net/qq_30379689/article/details/82345625">APT知识简介</a></li>
+<li><a href="https://blog.csdn.net/github_35180164/article/category/6346819">JAVA注解由浅入深</a></li>
+</ol>
+
 </div>
 
 
@@ -358,8 +596,8 @@ aspectjx {
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1544062962046"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1544062962046"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1545224386660"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1545224386660"></script>
 </body>
 
 </html>

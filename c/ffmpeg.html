@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1544062962065">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545224386683">
 	</head>
 
 	<body>
@@ -224,7 +224,7 @@ ffmpeg -i 寂静之声.mov -vcodec libx264 -s 1268X540  -r 30 jijing.mp4
 </code></pre><h4 id="ffmpeg 读取pcm 信息">ffmpeg 读取PCM 信息</h4><pre><code>ffmpeg -f s16be -ar 44100 -ac 2 -acodec pcm_s16be -i 1540403885057.pcm
 </code></pre><h4 id="mac自带lame终端  pcm 转 mp3">Mac自带Lame终端  PCM 转 MP3</h4><pre><code>lame -r -s 44.1 -m m -a 1540403885057.pcm xxx.mp3
 //如果没有安装 lame  执行以下指令
-brew install lame
+brew install
 </code></pre><h4 id="mp3转pcm">mp3转pcm</h4><pre><code>ffmpeg -y -i test.mp3 -acodec pcm_s16le -f s16le -ac 2 -ar 16000 16k.pcm
 </code></pre><h4 id="pcm转mp3">pcm转mp3</h4><pre><code>ffmpeg -y -f s16be -ac 2 -ar 16000 -acodec pcm_s16le -i 16k.pcm new_mp3.mp3
 </code></pre><h4 id="参数说明">参数说明</h4><table>
@@ -296,8 +296,8 @@ brew install lame
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1544062962066"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1544062962066"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1545224386686"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1545224386686"></script>
 </body>
 
 </html>
