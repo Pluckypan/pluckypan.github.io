@@ -13,7 +13,7 @@
 			Hugo - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545227520656">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545314009035">
 	</head>
 
 	<body>
@@ -642,12 +642,122 @@ public class Aspecter {
           }
       }
   }
-</code></pre><h3 id="编写一个 gradle plugin">编写一个 Gradle Plugin</h3><h3 id="参考文档">参考文档</h3><ol>
+</code></pre><h3 id="编写一个 gradle plugin">编写一个 Gradle Plugin</h3><ol>
+<li>三种方式<ul>
+<li>直接在 build.gradle 中编写   <a href="https://github.com/Pluckypan/AndroidDaddy/blob/master/camera/build.gradle">示例链接</a></li>
+<li>plugin源码放到rootProjectDir/buildSrc/src/main/groovy目录下   <a href="https://github.com/Pluckypan/AndroidDaddy/tree/master/buildSrc/src/main/groovy/echo">示例链接</a></li>
+<li>独立 project 编译成 jar 上传 Maven,然后项目中通过Build Script依赖jar的形式引入   <a href="https://github.com/Pluckypan/AndroidDaddy/tree/master/HugoXPlugin">示例链接</a></li>
+</ul>
+</li>
+<li>第三种方式除了使用 Plugin 类名外(如 <code>apply plugin: engineer.echo.HugoXPlugin</code>),还可以使用别名(如 <code>apply plugin: &#39;hugox-plugin&#39;</code>)，需要在创建Plugin时有如下配置<ul>
+<li>在 <code>src/main/resources/META-INF/gradle-plugins</code> 路径下 创建 <code>别名.properties</code>,并添加如下内容 <code>implementation-class=自定义 Plugin 的全路径如 engineer.echo.HugoXPlugin</code></li>
+</ul>
+</li>
+<li>自定义的 plugin task 在依赖当前plugin的 moudle的 Gradle -&gt; ProjectXXX  -&gt; moduleXXX -&gt; Tasks -&gt; other 下，点击即可运行   </li>
+<li>通过创建 Java Lib 的形式创建 Module,然后将 <code>src/main/java/</code> 改为 <code>src/main/groovy/</code><h4 id="示例代码">示例代码</h4></li>
+<li><p>build.gradle代码</p>
+<pre><code> apply plugin: <span class="hljs-string">'groovy'</span>
+
+ dependencies {
+     compile gradleApi()
+     compile localGroovy()
+ }
+
+ repositories {
+     mavenCentral()
+ }
+
+ //打包HugoX
+ apply plugin: <span class="hljs-string">'maven'</span>
+ uploadArchives {
+     repositories {
+         mavenDeployer {
+             pom.groupId = <span class="hljs-string">'engineer.echo'</span>
+             pom.artifactId = <span class="hljs-string">'hugox-plugin'</span>
+             pom.version = <span class="hljs-string">'1.1.0'</span>
+
+             //方式一：发布到 指定文件夹 比如 绝对路径`D:/repos` 相对路径`../localPublish`
+             repository(url: uri(<span class="hljs-string">'../localPublish'</span>))
+
+             //方式二：发布到 Maven仓库 比如 Sonatype Nexus
+             /*
+             repository(url: uri(<span class="hljs-string">'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>)) {
+                 authentication(userName: <span class="hljs-string">"admin"</span>, password: <span class="hljs-string">"admin123"</span>)
+             }
+             */
+             //发布插件:打开 Gradle 窗口,展开指定的 Library Module,展开 Tasks,展开 upload,双击运行 uploadArchives
+         }
+     }
+ }
+</code></pre></li>
+<li><p>创建扩展项 HugoXExtension.groovy</p>
+<pre><code> package engineer.echo
+
+ class HugoXExtension {
+     //开关
+     boolean <span class="hljs-built_in">enable</span> = <span class="hljs-literal">false</span>
+     String version = <span class="hljs-string">"1.0.0"</span>
+ }
+</code></pre></li>
+<li><p>自定义Plugin <code>HugoXPlugin.groovy</code></p>
+<pre><code> package engineer.echo
+
+ import org.gradle.api.Plugin
+ import org.gradle.api.Project
+
+ class HugoXPlugin implements Plugin&lt;Project&gt; {
+
+     void apply(Project project) {
+       //创建HugoX扩展,可以配置开关
+       project.extensions.create(<span class="hljs-string">"HugoX"</span>, HugoXExtension)
+       def <span class="hljs-built_in">enable</span> = <span class="hljs-literal">false</span>, ver = <span class="hljs-string">"xxx"</span>
+       project.afterEvaluate {
+           //获取HugoX配置的参数
+           def extension = project.HugoX
+           <span class="hljs-built_in">enable</span> = extension.enable
+           ver = extension.version
+           println(<span class="hljs-string">"HugoXPlugin enable=<span class="hljs-variable">$enable</span> ver=<span class="hljs-variable">$ver</span>"</span>)
+       }
+       //创建任务
+       project.task(<span class="hljs-string">'showHugoXInfo'</span>) &lt;&lt; {
+           println <span class="hljs-string">"HugoX switch on= <span class="hljs-variable">$enable</span> ver=<span class="hljs-variable">$ver</span>"</span>
+       }
+     }
+ }
+</code></pre></li>
+<li>发布插件:打开 Gradle 窗口,展开指定的 Library Module,展开 Tasks,展开 upload,双击运行 uploadArchives</li>
+<li><p>引用插件</p>
+<pre><code> buildscript {
+     repositories {
+         maven {
+             //方式一：本地文件夹
+             url <span class="hljs-string">'file:../localPublish'</span>
+
+             //Maven仓库地址
+             //url <span class="hljs-string">'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>
+         }
+     }
+     dependencies {
+         classpath <span class="hljs-string">'engineer.echo:hugox-plugin:1.1.0'</span>
+     }
+ }
+
+ apply plugin: <span class="hljs-string">'hugox-plugin'</span>
+ HugoX {
+     <span class="hljs-built_in">enable</span> = <span class="hljs-literal">true</span>
+     version = <span class="hljs-string">"1.0.2"</span>
+ }
+</code></pre></li>
+</ol>
+<h3 id="参考文档">参考文档</h3><ol>
 <li><a href="https://blog.csdn.net/qq_30379689/article/details/82345625">APT知识简介</a></li>
 <li><a href="https://blog.csdn.net/github_35180164/article/category/6346819">JAVA注解由浅入深</a></li>
 <li><a href="https://github.com/square/javapoet">javapoet语法</a></li>
 <li><a href="https://blog.csdn.net/stupid56862/article/details/82224957">Android Studio 调试 AnnotationProcessor</a></li>
 <li><a href="https://github.com/Pluckypan/AndroidDaddy/tree/master/HugoXCompiler">本文示例代码</a></li>
+<li><a href="https://github.com/davenkin/gradle-learning">Gradle Learning</a></li>
+<li><a href="https://www.cnblogs.com/davenkin/tag/gradle/">Gradle 12讲</a></li>
+<li><a href="https://github.com/helen-x/gradle-plugin-demo">Gradle插件创建</a></li>
 </ol>
 
 </div>
@@ -688,8 +798,8 @@ public class Aspecter {
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1545227520657"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1545227520657"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1545314009036"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1545314009036"></script>
 </body>
 
 </html>

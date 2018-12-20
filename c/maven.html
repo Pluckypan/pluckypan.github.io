@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="Knotty - Android疑难杂症大集合 &#34;不可思议的BUG都藏在理所当然的细节之中&#34; - 无忧杂货铺">
-		<meta name="keywords" content="Knotty - 无忧杂货铺">
+		<meta name="description" content="发布jar至Maven - apply plugin: &#39;maven&#39; 发布jar包 - 无忧杂货铺">
+		<meta name="keywords" content="发布jar至Maven - 无忧杂货铺">
 		<title>
-			Knotty - 无忧杂货铺
+			发布jar至Maven - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545314009139">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545314009053">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/knotty-android.html">
+			<input type="hidden" id="current_path" value="c/maven.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,42 +143,49 @@
 
 <div class="markdown-body">
 
-<!--command/knotty-android.md-->
+<!--command/maven.md-->
 
-<h1 id="knotty">Knotty</h1><p>Android疑难杂症大集合 &quot;不可思议的BUG都藏在理所当然的细节之中&quot;</p>
-<ul>
-<li>[ ] FileDownloader进程下载完文件后，删除下载文件夹，再次下载，会出现下载失败的BUG，而且再次进入文件管理器，无法删除文件夹，只有杀掉下载进程才能恢复正常。（在美图M4手机）</li>
-<li>[ ] 在安装ES文件管理器的手机上，zip4j和zt-zip高概率出现解压失败。</li>
-<li>[ ] RecyclerView在滑动过程中设置itemView的alpha值会导致屏幕出现一条透明的线。<a href="https://github.com/leochuan/ViewPagerLayoutManager">ViewPagerLayoutManager</a> 的 <code>setItemViewProperty</code>方法</li>
-<li>[x] <code>@Transient</code>集合<code>GreenDao</code>内存缓存策略，会有一个让人产生错觉的问题。被<code>@Transient</code>标记的字段从 <strong>数据库</strong> 取出时尽然有值。使用 xxxDao.detachAll()可解决该问题。</li>
-<li>[ ] 共享元素动画在做退出动画时，会截取控件的Canvas画布的内容，然后通过ImageView的形式放在OverLay上去执行退出动画，而且图片最大尺寸会控制在1024*1024，但在含有圆角遮罩控件的时候会出现捕获的内容显示不全的BUG。其实系统并没有问题，网上现存的大多数圆角控件的都存在这个问题，解决方案很简单：在执行裁剪前记录下画布状态 <code>int index=canvas.save();</code> 然后执行裁剪(方式有多种,clipPath,XferMode) 最后需要重置画布状态 <code>canvas.restoreToCount(index);</code></li>
-<li>[x] Android4.4兼容性问题<ul>
-<li>在xml设置 onClick无效</li>
-<li>CheckBox 无法显示 使用 AppCompatCheckBox代替</li>
-<li>PaddingEnd 无效 需使用 PaddingRight</li>
-</ul>
-</li>
-<li>[x] View在设置Animation的时候 setVisibility无效  <a href="http://blog.csdn.net/u011060103/article/details/52876683">参考链接</a></li>
-<li>[x] 如果Android Lib Module中gradle使用了 如下代码:<pre><code>compileOptions {
-  sourceCompatibility JavaVersion.VERSION_1_8
-  targetCompatibility JavaVersion.VERSION_1_8
+<h1 id="发布jar至maven">发布jar至Maven</h1><p>apply plugin: &#39;maven&#39; 发布jar包</p>
+<h3 id="[简洁版]发布">[简洁版]发布</h3><pre><code>apply plugin: <span class="hljs-string">'maven'</span>
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = <span class="hljs-string">'engineer.echo'</span>
+            pom.artifactId = <span class="hljs-string">'hugox-plugin'</span>
+            pom.version = <span class="hljs-string">'1.0.0'</span>
+
+            //方式一：发布到 指定文件夹 比如 绝对路径`D:/repos` 相对路径`../localPublish`
+            repository(url: uri(<span class="hljs-string">'../localPublish'</span>))
+
+            //方式二：发布到 Maven仓库 比如 Sonatype Nexus
+            repository(url: uri(<span class="hljs-string">'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>)) {
+                authentication(userName: <span class="hljs-string">"admin"</span>, password: <span class="hljs-string">"admin123"</span>)
+            }
+            //以上方式二选一， 配置完直接运行 uploadArchives (提示:打开 Gradle 窗口,展开指定的 Library Module,展开 Tasks,展开 upload,双击运行 uploadArchives)
+        }
+    }
 }
-</code></pre>但是 app Nodule中未使用，则会再编译时报如下错误：<pre><code>Error:Invoke-customs are only supported starting with Android O (--min-api 26) - Google
-</code></pre><ul>
-<li>[x] 在ConstraintLayout中TextView 设置 wrap_content 无效的问题<pre><code>在小米 Mix 2s 上 TextView 设置 wrap_content 后 存在现实问题(宽度和高度均存在问题，会比原来要宽或者高) 添加如下代码解决
-app:layout_constrainedHeight=<span class="hljs-string">"true"</span>
-app:layout_constrainedWidth=<span class="hljs-string">"true"</span>
-</code></pre></li>
-<li>[x] Program type already present
-<code>`</code></li>
-</ul>
-<ol>
-<li>删除工程目录下 .gradle .idea 文件夹</li>
-<li>超过 65535 方法数,需要开启 defaultConfig { multiDexEnabled true }
-<code>`</code></li>
+</code></pre><h3 id="引用">引用</h3><pre><code>//如果是 Project 下所有的 Module 都会依赖,可以放在 rootProject build.gradle 的 buildscript 中
+//如果只有指定的 Module 引用,那就在指定的 Module 创建一个 buildscript 即可
+//如果是发布到 Maven Center 则无需另外配置
+
+buildscript {
+    repositories {
+        maven {
+            //方式一：本地文件夹
+            url <span class="hljs-string">'file:../localPublish'</span>
+            //方式二：Maven仓库 比如 Sonatype Nexus
+            url <span class="hljs-string">'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>
+        }
+    }
+    dependencies {
+        //如果是引用 plugin 则使用 classpath,最后直接 `apply plugin: <span class="hljs-string">'hugox-plugin'</span>` 即可
+        classpath <span class="hljs-string">'engineer.echo:hugox-plugin:1.0.0'</span>
+    }
+}
+</code></pre><h3 id="参考文档">参考文档</h3><ol>
+<li><a href="https://github.com/chrisbanes/gradle-mvn-push">gradle-mvn-push</a></li>
 </ol>
-</li>
-</ul>
 
 </div>
 
@@ -218,8 +225,8 @@ app:layout_constrainedWidth=<span class="hljs-string">"true"</span>
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1545314009140"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1545314009140"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1545314009053"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1545314009053"></script>
 </body>
 
 </html>
