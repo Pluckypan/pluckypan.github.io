@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="Node一些有趣的包 - 收集一些Node有趣的包 - 无忧杂货铺">
-		<meta name="keywords" content="Node一些有趣的包 - 无忧杂货铺">
+		<meta name="description" content="docker - docker的安装与使用 - 无忧杂货铺">
+		<meta name="keywords" content="docker - 无忧杂货铺">
 		<title>
-			Node一些有趣的包 - 无忧杂货铺
+			docker - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545572245560">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545572245392">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/node_fun.html">
+			<input type="hidden" id="current_path" value="c/docker.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,19 +143,60 @@
 
 <div class="markdown-body">
 
-<!--command/node_fun.md-->
+<!--command/docker.md-->
 
-<h1 id="node一些有趣的包">Node一些有趣的包</h1><p>收集一些Node有趣的包</p>
-<ol>
-<li><p>gtop 实时显示CPU内存 假装很忙</p>
-<pre><code>sudo npm install blessed blessed-contrib
-</code></pre></li>
-<li><p>blessed</p>
-<pre><code>sudo  npm install blessed blessed-contrib
-</code></pre></li>
-<li><p>http-server 虽然ssr可以架设网站 但是 http-server 更稳定 经测试可支持流媒体点播(ssr出现无法点播的问题)</p>
-<pre><code>sudo npm install http-server -g
-</code></pre></li>
+<h1 id="docker">docker</h1><p>docker的安装与使用</p>
+<h3 id="安装">安装</h3><p>直接从官方下载桌面版即可 <a href="https://www.docker.com/products/docker-desktop">链接</a></p>
+<h3 id="docker 常用指令">docker 常用指令</h3><pre><code><span class="hljs-comment"># 查看docker所有容器</span>
+$ docker ps -a
+$ docker start -i 23cad7751e58(CONTAINER ID)
+$ docker stop -t=60 23cad7751e58(CONTAINER ID)
+$ docker <span class="hljs-built_in">kill</span> 23cad7751e58(CONTAINER ID)
+$ docker rm -f 23cad7751e58(CONTAINER ID)
+</code></pre><h3 id="docker 共享文件夹">docker 共享文件夹</h3><p>在宿主机器添加共享文件夹 docker desktop 首选项中有配置</p>
+<h3 id="挂载 -v">挂载 -v</h3><pre><code><span class="hljs-comment"># 将 `/Users/plucky/plucky/github/python/faceswap` 挂载到 `/srv`</span>
+$ docker run -p 8888:8888  --hostname deepfakes-cpu --name deepfakes-cpu    -v /Users/plucky/plucky/github/python/faceswap:/srv   deepfakes-cpu
+</code></pre><h3 id="常用参数">常用参数</h3><pre><code>-d：以守护进程方式运行后台
+-i：表示以“交互模式”运行容器
+-t：表示容器启动后会进入其命令行
+-v：容器挂载，-v /my/webapp:/usr/<span class="hljs-built_in">local</span>/tomcat/webapps 冒号前为当前宿主机目录,冒号后为容器目录
+</code></pre><h3 id="常用指令">常用指令</h3><pre><code>$ docker ps        <span class="hljs-comment">#列出容器</span>
+$ docker build     <span class="hljs-comment">#由Dockerfile构建镜像</span>
+$ docker port      <span class="hljs-comment">#列表端口映射或用于容器的特定的映射</span>
+$ docker pull      <span class="hljs-comment">#从镜像仓库中拉出镜像</span>
+$ docker push      <span class="hljs-comment">#上传镜像</span>
+$ docker rename    <span class="hljs-comment">#重命名镜像</span>
+$ docker restart   <span class="hljs-comment">#重启一个容器</span>
+$ docker rm        <span class="hljs-comment">#删除容器</span>
+$ docker rmi       <span class="hljs-comment">#删除镜像</span>
+$ docker run       <span class="hljs-comment">#在容器中运行命令</span>
+$ docker search    <span class="hljs-comment">#在Docker Hub中查找镜像</span>
+$ docker start     <span class="hljs-comment">#启动停止的容器</span>
+$ docker stats     <span class="hljs-comment">#显示容器的实时流资源使用统计信息</span>
+$ docker stop      <span class="hljs-comment">#停止正在运行的容器</span>
+$ docker tag       <span class="hljs-comment">#将镜像标记到存储库中</span>
+$ docker top       <span class="hljs-comment">#显示容器的正在运行的进程</span>
+$ docker volume    <span class="hljs-comment">#管理Docker卷</span>
+$ docker <span class="hljs-built_in">kill</span>      <span class="hljs-comment">#立即停止容器</span>
+$ docker <span class="hljs-built_in">exec</span>      <span class="hljs-comment">#执行容器中脚本 docker exec -it deepfakes-cpu bash</span>
+</code></pre><h3 id="docker run 参数">docker run 参数</h3><pre><code>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项； 
+-d: 后台运行容器，并返回容器ID
+-i: 以交互模式运行容器，通常与 -t 同时使用
+-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用
+–name=”nginx-lb”: 为容器指定一个名称
+–dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致
+–dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致
+-h “mars”: 指定容器的hostname
+-e username=”ritchie”: 设置环境变量
+–env-file=[]: 从指定文件读入环境变量
+–cpuset=”0-2” or –cpuset=”0,1,2”: 绑定容器到指定CPU运行
+-m :设置容器使用内存最大值
+–net=”bridge”: 指定容器的网络连接类型，支持 bridge/host/none/Container: 四种类型
+–link=[]: 添加链接到另一个容器；
+–expose=[]: 开放一个端口或一组端口
+</code></pre><h3 id="参考文档">参考文档</h3><ol>
+<li><a href="https://blog.csdn.net/jiang_xinxing/article/details/58025417">Mac平台上Docker安装与使用</a></li>
+<li><a href="http://www.cnblogs.com/inrgihc/articles/7908970.html">docker的安装与使用</a></li>
 </ol>
 
 </div>
@@ -196,8 +237,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545572245562"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1545572245562"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545572245402"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1545572245402"></script>
 </body>
 
 </html>

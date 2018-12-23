@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="Node一些有趣的包 - 收集一些Node有趣的包 - 无忧杂货铺">
-		<meta name="keywords" content="Node一些有趣的包 - 无忧杂货铺">
+		<meta name="description" content="Deepfakes - 如何使用 Deepfakes 换脸 - 无忧杂货铺">
+		<meta name="keywords" content="Deepfakes - 无忧杂货铺">
 		<title>
-			Node一些有趣的包 - 无忧杂货铺
+			Deepfakes - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545572245560">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545572245640">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/node_fun.html">
+			<input type="hidden" id="current_path" value="c/deepfakes.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,19 +143,79 @@
 
 <div class="markdown-body">
 
-<!--command/node_fun.md-->
+<!--command/deepfakes.md-->
 
-<h1 id="node一些有趣的包">Node一些有趣的包</h1><p>收集一些Node有趣的包</p>
+<h1 id="deepfakes">Deepfakes</h1><p>如何使用 Deepfakes 换脸</p>
+<ol start="0">
+<li><p>运行环境</p>
+<ul>
+<li>python3.6 pip3.6</li>
+<li>gpu效果最好</li>
+<li>docker</li>
+</ul>
+</li>
+<li><p>获取deepfakes工具包</p>
+<pre><code>$ git <span class="hljs-built_in">clone</span> https://github.com/deepfakes/faceswap.git
+</code></pre></li>
+<li><p>补全依赖
+补全所有依赖 requirements.txt</p>
+<pre><code>sudo pip install face_recognition -i https://mirrors.aliyun.com/pypi/simple/
+</code></pre></li>
+<li><p>安装完所有依赖运行 setup</p>
+<pre><code>$ python setup.py
+</code></pre></li>
+<li><p>docker 配置</p>
+<pre><code>$ docker build -t deepfakes-cpu -f Dockerfile.cpu .
+<span class="hljs-comment"># Nvidia-Docker is only supported on Linux.Only CPU is supported in Docker for your system</span>
+<span class="hljs-comment"># 如果是Mac系统或者不支持GPU</span>
+docker run -p 8888:8888     --hostname deepfakes-cpu --name deepfakes-cpu     -v /Users/plucky/plucky/github/python/faceswap:/srv     deepfakes-cpu
+<span class="hljs-comment"># 如果是Linux系统支持GPU</span>
+xhost +<span class="hljs-built_in">local</span>:
+nvidia-docker run -p 8888:8888 \
+         --hostname deepfakes-cpu --name deepfakes-cpu \
+         -v /Users/plucky/plucky/github/python/faceswap:/srv \
+         -v /tmp/.X11-unix:/tmp/.X11-unix \
+         -e DISPLAY=unix<span class="hljs-variable">$DISPLAY</span> \
+         -e AUDIO_GID=`getent group audio | cut -d: -f3` \
+         -e VIDEO_GID=`getent group video | cut -d: -f3` \
+         -e GID=`id -g` \
+         -e UID=`id -u` \
+         deepfakes-cpu
+<span class="hljs-comment"># 执行以上代码后会提示</span>
+The Jupyter Notebook is running at:
+http://(deepfakes-cpu or 127.0.0.1):8888/?token=your token
+<span class="hljs-comment"># 新开一个 Terminal 执行 `docker exec -it deepfakes-cpu bash` 进入bash</span>
+<span class="hljs-comment"># 打开提示的链接，会要求输入token,提示输入 `jupyter notebook list`</span>
+<span class="hljs-comment"># 在新开的 Terminal 执行 `jupyter notebook list`，可以看到 token,在网站 输入token 就可以打开网站首页了</span>
+</code></pre></li>
+</ol>
+<h3 id="接下来所有的工作都是在 docker容器中进行">接下来所有的工作都是在 docker容器中进行</h3><p>本来以为下载源码运行faceswap 发现一直出错，其实创建docker的目的是在docker中运行faceswap.另外 jupyter notebook 网页可以管理 Linux文件。</p>
+<h3 id="运行之前可能遇到的问题">运行之前可能遇到的问题</h3><p>经过以上步骤基本上就可以使用了，如果遇到 <code>ModuleNotFoundError: No module named &#39;pynvx</code> ，直接执行如下代码：
+<code>sudo pip install pynvx -i https://mirrors.aliyun.com/pypi/simple/</code></p>
+<h3 id="检测">检测</h3><p>如果执行 <code>python faceswap.py -h</code> 无报错，那么恭喜你环境已经配置成功了.(注意：GUI模式 由于设备原因，在本例中暂不支持)</p>
+<h3 id="准备素材">准备素材</h3><p>由于机器需要学会识别出两个需要处理的脸，所以，需要交换的两张脸都需要图片素材以供机器学习</p>
 <ol>
-<li><p>gtop 实时显示CPU内存 假装很忙</p>
-<pre><code>sudo npm install blessed blessed-contrib
-</code></pre></li>
-<li><p>blessed</p>
-<pre><code>sudo  npm install blessed blessed-contrib
-</code></pre></li>
-<li><p>http-server 虽然ssr可以架设网站 但是 http-server 更稳定 经测试可支持流媒体点播(ssr出现无法点播的问题)</p>
-<pre><code>sudo npm install http-server -g
-</code></pre></li>
+<li>从网上下载图片</li>
+<li>或从视频提取图片：<code>ffmpeg -i /path/to/my/video.mp4 /path/to/output/video-frame-%d.png</code></li>
+</ol>
+<h3 id="提炼人脸 extract">提炼人脸 EXTRACT</h3><pre><code><span class="hljs-comment"># To convert trump:</span>
+$ python faceswap.py extract -i ~/faceswap/photo/trump -o ~/faceswap/data/trump
+<span class="hljs-comment"># To convert cage:</span>
+$ python faceswap.py extract -i ~/faceswap/photo/cage -o ~/faceswap/data/cage
+<span class="hljs-comment"># My Work</span>
+$ python faceswap.py extract -i _data/<span class="hljs-keyword">in</span>/lyf/ -o _data/out/lyf/ -A dlib
+</code></pre><h4 id="出现错误 <code>valueerror: error initializing detector</code>">出现错误 <code>ValueError: Error initializing Detector</code></h4><p>如果有GPU 使用 dlib 即可 &#39;-D dlib-cnn&#39;</p>
+<pre><code>$ python faceswap.py extract -i /input/path -o /output/path -D dlib-cnn -A dlib
+</code></pre><h3 id="训练模型 train">训练模型 TRAIN</h3><p>-A 表示被换的脸，源脸 -B 表示需要换成的脸，目标脸 -m 输出训练模型</p>
+<pre><code>$ python faceswap.py train -A ~/faceswap/data/trump -B ~/faceswap/data/cage -m ~/faceswap/models/
+<span class="hljs-comment"># or -p to show a preview</span>
+$ python faceswap.py train -A ~/faceswap/data/trump -B ~/faceswap/data/cage -m ~/faceswap/models/ -p
+<span class="hljs-comment"># My Work</span>
+$ python faceswap.py train -A _data/out/ai  -B _data/out/lyf  -m _data/out/model -t GAN128
+</code></pre><h3 id="换脸 convert">换脸 CONVERT</h3><p>-i 需要被换脸的原始图片 -o 换脸后的输出文件夹 -m 模型文件目录</p>
+<pre><code>$ python faceswap.py convert -i ~/faceswap/photo/trump/ -o ~/faceswap/output/ -m ~/faceswap/models/
+</code></pre><h3 id="参考链接">参考链接</h3><ol>
+<li><a href="https://www.cnblogs.com/zackstang/p/9011753.html">如何使用 Deepfakes 换脸</a></li>
 </ol>
 
 </div>
@@ -196,8 +256,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545572245562"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1545572245562"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545572245642"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1545572245642"></script>
 </body>
 
 </html>
