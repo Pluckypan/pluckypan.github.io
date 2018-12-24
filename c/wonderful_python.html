@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="Android BuildConfig文件 - 同步Android Library与App的BuildConfig文件 - 无忧杂货铺">
-		<meta name="keywords" content="Android BuildConfig文件 - 无忧杂货铺">
+		<meta name="description" content="精彩的Python文章 - Python精彩示例 - 无忧杂货铺">
+		<meta name="keywords" content="精彩的Python文章 - 无忧杂货铺">
 		<title>
-			Android BuildConfig文件 - 无忧杂货铺
+			精彩的Python文章 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545659966352">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545659966309">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/android-buildconfig.html">
+			<input type="hidden" id="current_path" value="c/wonderful_python.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,23 +143,13 @@
 
 <div class="markdown-body">
 
-<!--command/android-buildconfig.md-->
+<!--command/wonderful_python.md-->
 
-<h1 id="android buildconfig文件">Android BuildConfig文件</h1><p>同步Android Library与App的BuildConfig文件</p>
-<h3 id="概述">概述</h3><blockquote>
-<p>在Android的实际开发中，一般会有这样的需求，debug版本打印日志，release版本禁用日志。平时直接运行代码的时候BuildConfig.DEBUG的值自动为true, 
-在发布后BuildConfig.DEBUG的值自动为false, 
-可以说是非常方便。 但是，在App依赖类库B的情况下，不论App是debug还是release，B的BuildConfig.DEBUG的值都是false！这是因为，gradle默认项目依赖的类库均以
-release形式build。</p>
-</blockquote>
-<h3 id="解决方案">解决方案</h3><h4 id="library的build.gradle">Library的build.gradle</h4><pre><code>android {    
-    publishNonDefault <span class="hljs-literal">true</span>  
-}
-</code></pre><h4 id="app的build.gradle">App的build.gradle</h4><pre><code>dependencies {    
-    releaseCompile project(path: <span class="hljs-string">':library'</span>, configuration: <span class="hljs-string">'release'</span>)    
-    debugCompile project(path: <span class="hljs-string">':library'</span>, configuration: <span class="hljs-string">'debug'</span>)
-}
-</code></pre><p>亲测好用！</p>
+<h1 id="精彩的python文章">精彩的Python文章</h1><p>Python精彩示例</p>
+<ol>
+<li>制作自己的Python命令行工具
+关键字: Click、Docopt、Fire、setuptools、打包 <a href="https://linux.cn/article-9807-1.html">3个 Python 命令行工具</a></li>
+</ol>
 
 </div>
 
@@ -199,8 +189,8 @@ release形式build。</p>
 
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545659966354"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1545659966354"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545659966310"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1545659966310"></script>
 </body>
 
 </html>
