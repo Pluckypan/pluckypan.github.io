@@ -13,7 +13,7 @@
 			Deepfakes - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545660149552">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545835803529">
 	</head>
 
 	<body>
@@ -213,6 +213,7 @@ $ python faceswap.py extract -i ~/faceswap/photo/trump -o ~/faceswap/data/trump
 $ python faceswap.py extract -i ~/faceswap/photo/cage -o ~/faceswap/data/cage
 <span class="hljs-comment"># My Work</span>
 $ python faceswap.py extract -i _data/<span class="hljs-keyword">in</span>/lyf/ -o _data/out/lyf/ -A dlib
+$ python faceswap.py extract -i _data/<span class="hljs-keyword">in</span>/video/frames_in/ -o _data/out/frames/ -A dlib
 </code></pre><h4 id="如果出现错误 <code>valueerror: error initializing detector</code>">如果出现错误 <code>ValueError: Error initializing Detector</code></h4><p>如果有GPU 使用 dlib 即可 &#39;-D dlib-cnn&#39;</p>
 <pre><code>$ python faceswap.py extract -i /input/path -o /output/path -D dlib-cnn -A dlib
 </code></pre><h3 id="六、训练模型 train">六、训练模型 TRAIN</h3><p>-A 表示被换的脸，源脸 -B 表示需要换成的脸，目标脸 -m 输出训练模型; 如果电脑配置不够(Docker配置的内存及CPU可按需调整)，建议使用 <code>-t LowMem</code> (否则卡到怀疑人生)</p>
@@ -220,9 +221,13 @@ $ python faceswap.py extract -i _data/<span class="hljs-keyword">in</span>/lyf/ 
 <span class="hljs-comment"># or -p to show a preview</span>
 $ python faceswap.py train -A ~/faceswap/data/trump -B ~/faceswap/data/cage -m ~/faceswap/models/ -p
 <span class="hljs-comment"># My Work</span>
-$ python faceswap.py train -A _data/out/ai  -B _data/out/lyf  -m _data/out/model -t LowMem
-</code></pre><h3 id="七、换脸 convert">七、换脸 CONVERT</h3><p>-i 需要被换脸的原始图片 -o 换脸后的输出文件夹 -m 模型文件目录</p>
+$ python faceswap.py train -A _data/out/frames/  -B _data/out/lyf  -m _data/out/model -t LowMem
+</code></pre><p><strong>谨记</strong>：1. 训练过程中，按 <code>Enter</code> 结束训练，保存模型需要一丢丢时间，如果强制退出可能会损坏模型 2. 在停止结束后，备份好你的模型文件，因为当你再次开始时，有可能损毁你的模型</p>
+<h3 id="七、换脸 convert">七、换脸 CONVERT</h3><p>-i 需要被换脸的原始图片 -o 换脸后的输出文件夹 -m 模型文件目录</p>
 <pre><code>$ python faceswap.py convert -i ~/faceswap/photo/trump/ -o ~/faceswap/output/ -m ~/faceswap/models/
+<span class="hljs-comment"># my work</span>
+$ python faceswap.py convert -i _data/<span class="hljs-keyword">in</span>/video/frames_in/  -o  _data/<span class="hljs-keyword">in</span>/video/frames_out/  -m  _data/out/model/ -t LowMem
+</code></pre><h3 id="八、将图片转换成视频">八、将图片转换成视频</h3><pre><code>$ ffmpeg -i video-frame-%0d.png -c:v libx264 -vf <span class="hljs-string">"fps=25,format=yuv420p"</span> out.mp4
 </code></pre><h3 id="参考链接">参考链接</h3><ol>
 <li><a href="https://github.com/deepfakes/faceswap/blob/master/INSTALL.md">建议使用前先阅读并完全理解</a></li>
 <li><a href="https://github.com/deepfakes/faceswap/blob/master/USAGE.md">环境配置成功之后的基本操作</a></li>
@@ -266,8 +271,8 @@ $ python faceswap.py train -A _data/out/ai  -B _data/out/lyf  -m _data/out/model
 
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545660149553"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1545660149553"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545835803532"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1545835803532"></script>
 </body>
 
 </html>

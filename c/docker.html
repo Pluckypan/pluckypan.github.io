@@ -13,7 +13,7 @@
 			docker - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545660149325">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545835796884">
 	</head>
 
 	<body>
@@ -168,6 +168,7 @@ $ docker push      <span class="hljs-comment">#上传镜像</span>
 $ docker rename    <span class="hljs-comment">#重命名镜像</span>
 $ docker restart   <span class="hljs-comment">#重启一个容器</span>
 $ docker rm        <span class="hljs-comment">#删除容器</span>
+$ docker images    <span class="hljs-comment">#查看所有镜像</span>
 $ docker rmi       <span class="hljs-comment">#删除镜像</span>
 $ docker run       <span class="hljs-comment">#在容器中运行命令</span>
 $ docker search    <span class="hljs-comment">#在Docker Hub中查找镜像</span>
@@ -194,6 +195,54 @@ $ docker <span class="hljs-built_in">exec</span>      <span class="hljs-comment"
 –net=”bridge”: 指定容器的网络连接类型，支持 bridge/host/none/Container: 四种类型
 –link=[]: 添加链接到另一个容器；
 –expose=[]: 开放一个端口或一组端口
+</code></pre><h3 id="docker run -p 参数解析">docker run -p 参数解析</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">Flag value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-p 8080:80</td>
+<td style="text-align:left">Map TCP port 80 in the container to port 8080 on the Docker host.</td>
+</tr>
+<tr>
+<td style="text-align:left">-p 192.168.1.100:8080:80</td>
+<td style="text-align:left">Map TCP port 80 in the container to port 8080 on the Docker host for connections to host IP 192.168.1.100.</td>
+</tr>
+<tr>
+<td style="text-align:left">-p 8080:80/udp</td>
+<td style="text-align:left">Map UDP port 80 in the container to port 8080 on the Docker host.</td>
+</tr>
+<tr>
+<td style="text-align:left">-p 8080:80/tcp -p 8080:80/udp</td>
+<td style="text-align:left">Map TCP port 80 in the container to TCP port 8080 on the Docker host, and map UDP port 80 in the container to UDP port 8080 on the Docker host.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用的docker镜像">常用的Docker镜像</h3><pre><code><span class="hljs-comment"># 部署 maven 仓库</span>
+$ docker pull sonatype/nexus3                           https://hub.docker.com/r/sonatype/nexus3
+<span class="hljs-comment"># jenkins 自动构建  </span>
+$ docker pull jenkins                                   https://hub.docker.com/_/jenkins
+<span class="hljs-comment"># gitlab 代码管理</span>
+$ docker pull store/gitlab/gitlab-ce:10.2.4-ce.0        https://docs.gitlab.com/omnibus/docker/README.html
+<span class="hljs-comment"># jira工单系统</span>
+$ docker pull cptactionhank/atlassian-jira              https://hub.docker.com/r/cptactionhank/atlassian-jira
+<span class="hljs-comment"># cf文档系统</span>
+$ docker pull cptactionhank/atlassian-confluence        https://hub.docker.com/r/cptactionhank/atlassian-confluence
+
+
+<span class="hljs-comment"># 其他</span>
+$ docker pull mysql
+$ docker pull node
+$ docker pull ubuntu
+$ docker pull redis
+$ docker pull nginx
+$ docker pull php
+$ docker pull python
+$ docker pull golang
+$ docker pull tensorflow/tensorflow
 </code></pre><h3 id="参考文档">参考文档</h3><ol>
 <li><a href="https://blog.csdn.net/jiang_xinxing/article/details/58025417">Mac平台上Docker安装与使用</a></li>
 <li><a href="http://www.cnblogs.com/inrgihc/articles/7908970.html">docker的安装与使用</a></li>
@@ -237,8 +286,8 @@ $ docker <span class="hljs-built_in">exec</span>      <span class="hljs-comment"
 
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545660149327"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1545660149327"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545835796885"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1545835796885"></script>
 </body>
 
 </html>
