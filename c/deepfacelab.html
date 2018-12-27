@@ -12,8 +12,8 @@
 		<title>
 			DeepFaceLab - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545835803906">
+		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545918505799">
 	</head>
 
 	<body>
@@ -146,6 +146,24 @@
 <!--command/deepfacelab.md-->
 
 <h1 id="deepfacelab">DeepFaceLab</h1><p>换脸进阶,使用 DeepFaceLab 换脸</p>
+<h3 id="对导出的人脸进行权重排序:">对导出的人脸进行权重排序:</h3><p><code>blur</code> 按清晰度从低到高排序</p>
+<p><code>hist</code> 按图片相似度直方图排序</p>
+<p><code>hist-dissim</code> 按图片不相似度直方图排序</p>
+<p><code>hist-blur</code> 相似度+清晰度排序</p>
+<p><code>brightness</code> 按明亮度排序</p>
+<p><code>face-yaw</code> 人脸旋转角度排序</p>
+<p><code>hue</code> ???</p>
+<p><code>black</code> 如果图片存在黑色区域，则区域越大越靠后(?)</p>
+<p>SRC 人脸模型的最佳实践:</p>
+<p>1) 删除未识别标记的人脸图片,有标记的脸不要删除.
+2) <code>black</code> -&gt; delete faces cutted by black area at end of folder
+3) <code>blur</code> -&gt; delete 30-50% at end of folder
+4) <code>hist</code> -&gt; delete groups of similar and leave only target face
+5) <code>hist-dissim</code> -&gt; leave only first <strong>1500 faces</strong>
+6) <code>face-yaw</code> -&gt; just for finalize faceset</p>
+<p>DST 人脸数据最佳实践:</p>
+<p>1) 删除未识别标记的人脸图片,有标记的脸不要删除.
+2) <code>hist</code> -&gt; delete groups of similar and leave only target face</p>
 <h3 id="参考文档">参考文档</h3>
 </div>
 
@@ -185,8 +203,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545835803907"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1545835803907"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1545918505799"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1545918505799"></script>
 </body>
 
 </html>

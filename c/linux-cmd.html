@@ -12,8 +12,8 @@
 		<title>
 			linux指令大全 - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1545835803407">
+		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1545918505782">
 	</head>
 
 	<body>
@@ -241,7 +241,20 @@ curl -o dodo1.jpg http:www.linux.com/dodo1.JPG
 curl -O http://www.linux.com/dodo1.JPG
 curl -O http://www.linux.com/dodo[1-5].JPG <span class="hljs-comment">#循环下载</span>
 </code></pre><h3 id="安装ffmpeg">安装ffmpeg</h3><pre><code>$ apt-get update
-$ apt-get install ffmpeg
+<span class="hljs-comment"># 跳过询问 直接确认 -y</span>
+$ apt-get install ffmpeg -y
+</code></pre><h3 id="配置环境变量">配置环境变量</h3><pre><code><span class="hljs-comment"># 将当前目录加入 PYTHONPATH</span>
+$ <span class="hljs-built_in">export</span> PYTHONPATH=<span class="hljs-variable">$PYTHONPATH</span>:<span class="hljs-variable">$PWD</span>
+</code></pre><h3 id="wc 和 grep">wc 和 grep</h3><pre><code>$ git <span class="hljs-built_in">log</span> |grep camera
+$ git <span class="hljs-built_in">log</span> |wc -l
+</code></pre><h3 id="wc">wc</h3><pre><code><span class="hljs-comment"># 统计 settings.gradle 文件的行数、字数、字节数</span>
+$ wc settings.gradle
+<span class="hljs-comment"># 只读取行数</span>
+$ wc -l  versions.gradle
+<span class="hljs-comment"># 只读取字数</span>
+<span class="hljs-comment"># wc -w  versions.gradle</span>
+<span class="hljs-comment"># 只读取字节数</span>
+<span class="hljs-comment"># wc -c  versions.gradle</span>
 </code></pre>
 </div>
 
@@ -281,8 +294,8 @@ $ apt-get install ffmpeg
 
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1545835803409"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1545835803409"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1545918505782"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1545918505782"></script>
 </body>
 
 </html>
