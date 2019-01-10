@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="jQuery观察者模式 - 使用jQuery或zepto的apply方法实现观察者模式 - 无忧杂货铺">
-		<meta name="keywords" content="jQuery观察者模式 - 无忧杂货铺">
+		<meta name="description" content="Sonatype - publish your Artifacts to Maven Center - 无忧杂货铺">
+		<meta name="keywords" content="Sonatype - 无忧杂货铺">
 		<title>
-			jQuery观察者模式 - 无忧杂货铺
+			Sonatype - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1547129229450">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1547129229243">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/jquery-observer.html">
+			<input type="hidden" id="current_path" value="c/sonatype.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,40 +143,28 @@
 
 <div class="markdown-body">
 
-<!--command/jquery-observer.md-->
+<!--command/sonatype.md-->
 
-<h1 id="jquery观察者模式">jQuery观察者模式</h1><p>使用jQuery或zepto的apply方法实现观察者模式</p>
-<h3 id="扩展jquery">扩展jQuery</h3><pre><code>(<span class="hljs-keyword">function</span>($) {
+<h1 id="sonatype">Sonatype</h1><p>publish your Artifacts to Maven Center</p>
+<h3 id="first-step-sign-up-or-sign-in">First Step : Sign up or Sign in</h3><p>make sure you have a account. check <a href="https://issues.sonatype.org">sonatype</a></p>
+<h3 id="create-an-issue">Create an issue</h3><p><a href="https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&amp;pid=10134">click here</a> to create an issue.and make sure:</p>
+<ol>
+<li>group id : if your don&#39;t own a domain,simply input <code>com.github.pluckypan</code>;if you own a domain <code>echo.engineer</code>,you can input <code>engineer.echo</code>,and you need verify ownership by <code>Send an email to central@sonatype.com referencing this issue from a echo.engineer email address</code></li>
+<li>Project URL: <code>https://github.com/Pluckypan/HappyMaven</code></li>
+<li>SCM url: <code>https://github.com/Pluckypan/HappyMaven.git</code></li>
+</ol>
+<h3 id="receive-comment">Receive comment</h3><pre><code>Configuration has been prepared, now you can:
 
-    var o = $({});
-        //订阅
-    $.subscribe = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-        o.on.apply(o, arguments);
-    };
-        //取消订阅
-    $.unsubscribe = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-        o.off.apply(o, arguments);
-    };
-        //发布内容 通知
-    $.publish = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-        o.trigger.apply(o, arguments);
-    };
+Deploy snapshot artifacts into repository https://oss.sonatype.org/content/repositories/snapshots
+Deploy release artifacts into the staging repository https://oss.sonatype.org/service/<span class="hljs-built_in">local</span>/staging/deploy/maven2
+Promote staged artifacts into repository <span class="hljs-string">'Releases'</span>
+Download snapshot and release artifacts from group https://oss.sonatype.org/content/groups/public
+Download snapshot, release and staged artifacts from staging group https://oss.sonatype.org/content/groups/staging
+please comment on this ticket when you promoted your first release, thanks
+</code></pre><h3 id="upload-artifacts">Upload artifacts</h3><p>followed instructions on <a href="http://central.sonatype.org/pages/gradle.html">http://central.sonatype.org/pages/gradle.html</a> and tried to upload artifacts.</p>
+<h3 id="check-your-staging-repository">check your staging repository</h3><p>You have an open staging repository named <code>engineerecho-1000</code> here: <a href="https://oss.sonatype.org/#stagingRepositories.Now">https://oss.sonatype.org/#stagingRepositories.Now</a>, you can continue with this section of our docs: <a href="http://central.sonatype.org/pages/releasing-the-deployment.html">http://central.sonatype.org/pages/releasing-the-deployment.html</a> .Once you&#39;ve successfully released, please comment again on this issue, and we can activate the sync to Central.</p>
+<h3 id="close-and-drop-or-release-your-staging-repository">Close and Drop or Release Your Staging Repository</h3><p>After you deployment the repository will be in an Open status. You can evaluate the deployed components in the repository using the Contents tab. If you believe everything is correct you, can press the Close button above the list. This will trigger the evaluations of the components against the <a href="https://central.sonatype.org/pages/requirements.html">requirements</a>.</p>
 
-}(jQuery));
-</code></pre><h3 id="示例">示例</h3><pre><code>$(<span class="hljs-function"><span class="hljs-title">function</span></span>() {
-  //订阅购物车结算事件
-    $.subscribe(<span class="hljs-string">"CartCalculate"</span>, <span class="hljs-keyword">function</span>(e, data) {
-         alert(<span class="hljs-string">"购物车金额:"</span> + data);
-    });
-
-    alert(<span class="hljs-string">"开始!"</span>);
-  //模拟通知事件
-    setTimeout(<span class="hljs-function"><span class="hljs-title">function</span></span>() {
-      var money=520*250;
-         $.publish(<span class="hljs-string">"CartCalculate"</span>, money);
-    }, 3000);
-});
-</code></pre>
 </div>
 
 
@@ -215,8 +203,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../../js/dt.js?v=1547129229451"></script>
-<script type="text/javascript" src="../../../../../../../js/index.js?v=1547129229451"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1547129229245"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1547129229245"></script>
 </body>
 
 </html>
