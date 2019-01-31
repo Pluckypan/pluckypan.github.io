@@ -13,7 +13,7 @@
 			面试题 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1547287070018">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1548928813138">
 	</head>
 
 	<body>
@@ -396,6 +396,123 @@ HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是H
 <h3 id="31.什么是线程安全和线程不安全">31.什么是线程安全和线程不安全</h3><blockquote>
 <p>首先要明白线程的工作原理，jvm有一个main   memory，而每个线程有自己的working   memory，一个线程对一个variable进行操作时，都要在自己的working   memory里面建立一个copy，操作完之后再写入main   memory。多个线程同时操作同一个variable，就可能会出现不可预知的结果。</p>
 </blockquote>
+<h3 id="32.java基础">32.Java基础</h3><ul>
+<li>Java int 32 位 4字节 有符号-2^31~2^31-1。byte 8位 有符号(-2^7=-128 ~ 2^7 -1=127)</li>
+<li>移位操作<pre><code>  shl(bits) – 左移位 (Java’s &lt;&lt;)
+  shr(bits) – 右移位 (Java’s &gt;&gt;)
+  ushr(bits) – 无符号右移位 (Java’s &gt;&gt;&gt;)
+  and(bits) – 与  &amp;
+  or(bits) – 或   ||
+  xor(bits) – 异或
+  inv() – 反向
+</code></pre></li>
+<li><p>移位操作实践
+<code>`</code>
+  val a = 4</p>
+<p>  /**</p>
+<ul>
+<li>shl &lt;&lt;</li>
+<li>shr &gt;&gt;</li>
+<li>ushr &gt;&gt;&gt;</li>
+<li>Java中 Integer 为32位有符号数 范围为 -2^31 ~ 2^31-1</li>
+<li>有符号数左移 二进制整体左移 低位补0</li>
+<li>4原二进制     0000 0000 0000 0000 0000 0000 0000 0100</li>
+<li>左移2位 得到  0000 0000 0000 0000 0000 0000 0001 0000</li>
+<li><p>所以结果为 16
+*/</p>
+<p>println(a shl 2)//16
+println((a + 2) shl 2)//24
+println(a shr 2)//1
+println((a + 2) shr 2)//1
+println(a ushr 2)//1
+println((a + 2) ushr 2)//1</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>/**
+ * Java负数存储是以补码形式存储的（补码=反码+1）
+ * 正数的反码和原码一致
+ * 负数的反码除符号位以外 取反即可
+ * 正数的补码与原码一致
+ * 负数的补码=反码+1(末位+1)
+ * 如 8 的原码：0000 0000 0000 0000 0000 0000 0000 1000
+ * 负数的原码是：1.绝对值的二进制 2.最高位补1
+ * 如 -8 绝对值的二进制 即是8的原码，所以 -8 的原码为
+ * 1000 0000 0000 0000 0000 0000 0000 1000
+ * 所以 -8 的反码为
+ * 1111 1111 1111 1111 1111 1111 1111 0111
+ * -8 的二进制表示为
+ * 1111 1111 1111 1111 1111 1111 1111 1000
+ * 左移二位：
+ * 1111 1111 1111 1111 1111 1111 1110 0000
+ * 还原成十进制 过程相反
+ * 减1  : 1111 1111 1111 1111 1111 1111 1101 1111
+ * 取反 : 1000 0000 0000 0000 0000 0000 0010 0000 (-32原码)
+ * 去除符号位 0000 0000 0000 0000 0000 0000 0010 0000 (32原码)
+ * 所以结果为-32
+ *
+ * 同理-6
+ * 6原码   0000 0000 0000 0000 0000 0000 0000 0110
+ * -6原码  1000 0000 0000 0000 0000 0000 0000 0110
+ * -6反码  1111 1111 1111 1111 1111 1111 1111 1001
+ * 二进制  1111 1111 1111 1111 1111 1111 1111 1010
+ * 左移2位 1111 1111 1111 1111 1111 1111 1110 1000
+ * 还原10进制 过程相反
+ * 减一 1111 1111 1111 1111 1111 1111 1110 0111
+ * 取反  1000 0000 0000 0000 0000 0000 0001 1000 即 -24
+ */
+
+println(<span class="hljs-string">"负数测试"</span>)
+val b = -8
+println(b shl 2)//-32
+println((b + 2) shl 2)//-24
+//1111 1111 1111 1111 1111 1111 1111 1000 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1101 ---&gt; 1000 0000 0000 0000 0000 0000 0000 0010
+println(b shr 2)//-2
+//1111 1111 1111 1111 1111 1111 1111 1010 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1110
+println((b + 2) shr 2)//-2
+/**
+ * 不管正数负数 无符号右移高位均补0
+ */
+//1111 1111 1111 1111 1111 1111 1111 1000 ---&gt; 0011 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1073741822
+println(b ushr 2)
+//1111 1111 1111 1111 1111 1111 1111 1010 ---&gt; 0011 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1073741822
+println((b + 2) ushr 2)//1073741822
+
+/**
+ * 交换两个数
+ */
+var e = 10
+var f = 4
+println(<span class="hljs-string">"before e=<span class="hljs-variable">$e</span> f=<span class="hljs-variable">$f</span>"</span>)
+val tmp = e
+e = f
+f = tmp
+println(<span class="hljs-string">"after tmp e=<span class="hljs-variable">$e</span> f=<span class="hljs-variable">$f</span>"</span>)
+
+//在两个数相加或者相减仍然在int的范围内
+e = 10
+f = 4
+e = e + f // e=10+4=14
+f = e - f // f=10+4-4=10
+e = e - f // e=10+4-10=4
+println(<span class="hljs-string">"after add e=<span class="hljs-variable">$e</span> f=<span class="hljs-variable">$f</span>"</span>)
+
+/**
+ * 异或 ^ xor 特性
+ * 1. 交换律 a^b = b^a
+ * 2. 结合律 a^b^c = a^(b^c) = (a^b)^c
+ * 3. 自反性 a^b^b=a
+ *
+ * 结合自反性可以实现数的交换
+ */
+e = 10
+f = 4
+e = e xor f //e^f
+f = e xor f //e^f^f =e
+e = e xor f //e^f^e =f
+println(<span class="hljs-string">"after xor e=<span class="hljs-variable">$e</span> f=<span class="hljs-variable">$f</span>"</span>)
+</code></pre><p>  <code>`</code></p>
 
 </div>
 
@@ -435,8 +552,8 @@ HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是H
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1547287070019"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1547287070019"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1548928813139"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1548928813139"></script>
 </body>
 
 </html>
