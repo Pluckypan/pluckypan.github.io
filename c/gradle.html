@@ -13,7 +13,7 @@
 			gradle使用日记 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1548928813089">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1550481500614">
 	</head>
 
 	<body>
@@ -161,6 +161,34 @@ $ /Users/{user-name}/.gradle/caches/modules-2/files-2.1
         args <span class="hljs-string">"hello gradle"</span>
     }
 }
+</code></pre><h3 id="使用so">使用so</h3><h4 id="app目录结构">app目录结构</h4><pre><code>├── build
+├── build.gradle
+├── framework.iml
+├── libs //so 存放位置
+├── proguard-rules.pro
+├── schemas
+└── src
+</code></pre><h4 id="libs目录结构">libs目录结构</h4><pre><code>.
+└── armeabi-v7a
+    └── libfiltergl.so
+
+</code></pre><h4 id="app 下 build.gradle 配置">app 下 build.gradle 配置</h4><pre><code>android {
+
+    lintOptions {
+        abortOnError <span class="hljs-literal">false</span>
+    }
+
+    packagingOptions {
+        //优先使用该so
+        pickFirst <span class="hljs-string">'libs/armeabi-v7a/libfiltergl.so'</span>
+    }
+    //声明jni目录
+    sourceSets {
+        main {
+            jniLibs.srcDirs = [<span class="hljs-string">'libs'</span>]
+        }
+    }
+}
 </code></pre>
 </div>
 
@@ -200,8 +228,8 @@ $ /Users/{user-name}/.gradle/caches/modules-2/files-2.1
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1548928813091"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1548928813091"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1550481500615"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1550481500615"></script>
 </body>
 
 </html>
