@@ -13,7 +13,7 @@
 			git指令大全 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1550563554537">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1550647774845">
 	</head>
 
 	<body>
@@ -202,6 +202,10 @@ git branch -r -D origin/branch_name
 <span class="hljs-comment"># git push origin v1.5   推送制定标签</span>
 <span class="hljs-comment"># git tag -d v1.5 删除本地指定tag</span>
 <span class="hljs-comment"># git push origin :refs/tags/v1.5 删除远程标签</span>
+<span class="hljs-comment"># git push --follow-tags </span>
+It pushes both commits and only tags that are both:
+annotated
+reachable (an ancestor) from the pushed commits
 </code></pre><h3 id="git 设置推送至远端的分支">git 设置推送至远端的分支</h3><pre><code>git push --<span class="hljs-built_in">set</span>-upstream origin develop
 </code></pre><h3 id="git统计某人提交次数">git统计某人提交次数</h3><pre><code>git <span class="hljs-built_in">log</span> --author=<span class="hljs-string">"plucky"</span> --oneline | wc -l
 </code></pre><h3 id="git 查看单个文件提交记录">git 查看单个文件提交记录</h3><pre><code>git <span class="hljs-built_in">log</span> adb.md
@@ -308,8 +312,8 @@ $ git pull dfl master --rebase
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1550563554538"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1550563554538"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1550647774846"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1550647774846"></script>
 </body>
 
 </html>
