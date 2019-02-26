@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1550647774921">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1551173306958">
 	</head>
 
 	<body>
@@ -227,6 +227,7 @@ ffmpeg -i 寂静之声.mov -vcodec libx264 -s 1268X540  -r 30 jijing.mp4
 brew install
 </code></pre><h4 id="mp3转pcm">mp3转pcm</h4><pre><code>ffmpeg -y -i test.mp3 -acodec pcm_s16le -f s16le -ac 2 -ar 16000 16k.pcm
 </code></pre><h4 id="pcm转mp3">pcm转mp3</h4><pre><code>ffmpeg -y -f s16be -ac 2 -ar 16000 -acodec pcm_s16le -i 16k.pcm new_mp3.mp3
+</code></pre><h4 id="播放pcm">播放PCM</h4><pre><code>ffplay -i audio_original.pcm  -f s16be -ac 1 -ar 44100 -acodec pcm_s16le
 </code></pre><h4 id="参数说明">参数说明</h4><table>
 <thead>
 <tr>
@@ -296,8 +297,8 @@ brew install
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1550647774921"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1550647774921"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1551173306958"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1551173306958"></script>
 </body>
 
 </html>
