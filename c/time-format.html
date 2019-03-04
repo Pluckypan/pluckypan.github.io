@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="synchronize用法 - synchronize类锁和对象锁详解 - 无忧杂货铺">
-		<meta name="keywords" content="synchronize用法 - 无忧杂货铺">
+		<meta name="description" content="标准的时间格式化 - time format 常用格式 - 无忧杂货铺">
+		<meta name="keywords" content="标准的时间格式化 - 无忧杂货铺">
 		<title>
-			synchronize用法 - 无忧杂货铺
+			标准的时间格式化 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1551700741243">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1551700741245">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/synchronize.html">
+			<input type="hidden" id="current_path" value="c/time-format.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,176 +143,94 @@
 
 <div class="markdown-body">
 
-<!--command/synchronize.md-->
+<!--command/time-format.md-->
 
-<h1 id="synchronize用法">synchronize用法</h1><p>synchronize类锁和对象锁详解</p>
-<h3 id="java内置锁">java内置锁</h3><blockquote>
-</blockquote>
-<p>每个java对象都可以用做一个实现同步的锁，这些锁成为内置锁。线程进入同步代码块或方法的时候会自动获得该锁，在退出同步代码块或方法时会释放该锁。获得内置锁的唯一途径就是进入这个锁的保护的同步代码块或方法。
-java内置锁是一个互斥锁，这就是意味着最多只有一个线程能够获得该锁，当线程A尝试去获得线程B持有的内置锁时，线程A必须等待或者阻塞，知道线程B释放这个锁，如果B线程不释放这个锁，那么A线程将永远等待下去。</p>
-<h3 id="java的对象锁和类锁">java的对象锁和类锁</h3><blockquote>
-</blockquote>
-<p>java的对象锁和类锁在锁的概念上基本上和内置锁是一致的，但是，两个锁实际是有很大的区别的，对象锁是用于对象实例方法，或者一个对象实例上的，类锁是用于类的静态方法或者一个类的class对象上的。我们知道，类的对象实例可以有很多个，但是每个类只有一个class对象，所以不同对象实例的对象锁是互不干扰的，但是每个类只有一个类锁。
-<code>但是有一点必须注意的是，其实类锁只是一个概念上的东西，并不是真实存在的，它只是用来帮助我们理解锁定实例方法和静态方法的区别的</code></p>
-<h3 id="对象锁">对象锁</h3><h4 id="synchronized修饰方法和代码块">synchronized修饰方法和代码块</h4><h5 id="man-class">Man.class</h5><pre><code>public class Man {
-
-    /**
-     * 对象锁 synchronized 修饰代码块
-     */
-    public void <span class="hljs-function"><span class="hljs-title">funcA</span></span>() {
-        synchronized (this) {
-            int i = 5;
-            <span class="hljs-keyword">while</span> (i-- &gt; 0) {
-                System.out.println(<span class="hljs-string">"funcA "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException ie) {
-                    ie.printStackTrace();
-                }
-            }
-        }
-    }
-
-    /**
-     * 对象锁 synchronized 修饰方法
-     */
-    public synchronized void <span class="hljs-function"><span class="hljs-title">funcB</span></span>() {
-        int i = 5;
-        <span class="hljs-keyword">while</span> (i-- &gt; 0) {
-            System.out.println(<span class="hljs-string">"funcB "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ie) {
-                ie.printStackTrace();
-            }
-        }
-    }
-}
-</code></pre><h5 id="synchronize-class">Synchronize.class</h5><pre><code>public class Synchronize {
-    public static void main(String[] args) {
-        final Man aman = new Man();
-        Thread test1 = new Thread(new <span class="hljs-function"><span class="hljs-title">Runnable</span></span>() {
-            public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
-                aman.funcA();
-            }
-        }, <span class="hljs-string">"test1"</span>);
-        Thread test2 = new Thread(new <span class="hljs-function"><span class="hljs-title">Runnable</span></span>() {
-            public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
-                aman.funcB();
-            }
-        }, <span class="hljs-string">"test2"</span>);
-        test1.start();
-        test2.start();
-    }
-}
-</code></pre><h5 id="运行结果">运行结果</h5><pre><code>funcA test1 : 4
-funcA test1 : 3
-funcA test1 : 2
-funcA test1 : 1
-funcA test1 : 0
-funcB test2 : 4
-funcB test2 : 3
-funcB test2 : 2
-funcB test2 : 1
-funcB test2 : 0
-</code></pre><h5 id="去掉funcb的synchronized">去掉funcB的synchronized</h5><pre><code>funcA test1 : 4
-funcB test2 : 4
-funcA test1 : 3
-funcB test2 : 3
-funcB test2 : 2
-funcA test1 : 2
-funcA test1 : 1
-funcB test2 : 1
-funcB test2 : 0
-funcA test1 : 0
-</code></pre><h5 id="解释">解释</h5><blockquote>
-<p>上述的代码: 第一个方法时用了同步代码块的方式进行同步，传入的对象实例是this，表明是当前对象.第二个方法是修饰方法的方式进行同步。
-两个方法使用的是同一个对象锁,所以在main中执行时,由于funcA首先获得对象锁,funcB暂时处于阻塞状态，等funcA释放对象锁时,funcB开始执行。
-去掉funcB的synchronized后,由于funcB不再受锁的约束，可正常执行。所以synchronized只是一个内置锁的加锁机制，当某个方法加上synchronized关键字后，就表明要获得该内置锁才能执行，并不能阻止其他线程访问不需要获得该内置锁的方法。</p>
-</blockquote>
-<h3 id="类锁">类锁</h3><h4 id="修饰（静态）方法和代码块">修饰（静态）方法和代码块</h4><h5 id="classlock-class">ClassLock.class</h5><pre><code>public class ClassLock {
-    /**
-     * 类锁 synchronized 修饰代码块
-     */
-    public void <span class="hljs-function"><span class="hljs-title">funcA</span></span>() {
-        synchronized (ClassLock.class) {
-            int i = 5;
-            <span class="hljs-keyword">while</span> (i-- &gt; 0) {
-                System.out.println(<span class="hljs-string">"funcA "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException ie) {
-                    ie.printStackTrace();
-                }
-            }
-        }
-    }
-
-    /**
-     * 类锁 synchronized 修饰静态方法
-     */
-    public static synchronized void <span class="hljs-function"><span class="hljs-title">funcB</span></span>() {
-        int i = 5;
-        <span class="hljs-keyword">while</span> (i-- &gt; 0) {
-            System.out.println(<span class="hljs-string">"funcB "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ie) {
-                ie.printStackTrace();
-            }
-        }
-    }
-}
-</code></pre><h5 id="synchronize-class">Synchronize.class</h5><pre><code>public class Synchronize {
-    public static void main(String[] args) {
-        final ClassLock lock = new ClassLock();
-        new Thread(new <span class="hljs-function"><span class="hljs-title">Runnable</span></span>() {
-            @Override
-            public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
-                lock.funcA();
-            }
-        }, <span class="hljs-string">"thread3"</span>).start();
-
-        new Thread(new <span class="hljs-function"><span class="hljs-title">Runnable</span></span>() {
-            @Override
-            public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
-                lock.funcB();
-            }
-        }, <span class="hljs-string">"thread4"</span>).start();
-    }
-}
-</code></pre><h5 id="执行结果">执行结果</h5><pre><code>funcA thread3 : 4
-funcA thread3 : 3
-funcA thread3 : 2
-funcA thread3 : 1
-funcA thread3 : 0
-funcB thread4 : 4
-funcB thread4 : 3
-funcB thread4 : 2
-funcB thread4 : 1
-funcB thread4 : 0
-</code></pre><h5 id="将funca的&#39;classlock.class&#39; =&gt; &#39;this&#39; 执行结果如下">将funcA的&#39;ClassLock.class&#39; =&gt; &#39;this&#39; 执行结果如下</h5><pre><code>funcA thread3 : 4
-funcB thread4 : 4
-funcB thread4 : 3
-funcA thread3 : 3
-funcB thread4 : 2
-funcA thread3 : 2
-funcA thread3 : 1
-funcB thread4 : 1
-funcA thread3 : 0
-funcB thread4 : 0
-</code></pre><h5 id="解释">解释</h5><blockquote>
-<p>类锁修饰方法和代码块的效果和对象锁是一样的，因为类锁只是一个抽象出来的概念，只是为了区别静态方法的特点，因为静态方法是所有对象实例共用的，所以对应着synchronized修饰的静态方法的锁也是唯一的，所以抽象出来个类锁。
-上面代码synchronized同时修饰静态方法和实例方法，但是运行结果是交替进行的，这证明了类锁和对象锁是两个不一样的锁，控制着不同的区域，它们是互不干扰的。同样，线程获得对象锁的同时，也可以获得该类锁，即同时获得两个锁，这是允许的。</p>
-</blockquote>
-<h3 id="synchronized的缺陷">synchronized的缺陷</h3><blockquote>
-<p>当某个线程进入同步方法获得对象锁，那么其他线程访问这里对象的同步方法时，必须等待或者阻塞，这对高并发的系统是致命的，这很容易导致系统的崩溃。如果某个线程在同步方法里面发生了死循环，那么它就永远不会释放这个对象锁，那么其他线程就要永远的等待。这是一个致命的问题。</p>
-</blockquote>
-<h3 id="注意点">注意点</h3><ul>
-<li>尽量对代码块进行同步，不至于影响其他线程访问</li>
-<li>一般同步的范围越大，性能就越差，一般需要加锁进行同步的时候，肯定是范围越小越好，这样性能更好</li>
-</ul>
-
+<h1 id="标准的时间格式化">标准的时间格式化</h1><p>time format 常用格式</p>
+<h3 id="java 格式化当前时间">Java 格式化当前时间</h3><pre><code>String currentTimeStr= new SimpleDateFormat(<span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>, Locale.getDefault()).format(new Date());
+</code></pre><h3 id="国际标准时间格式标识码">国际标准时间格式标识码</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">标识</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">年代标志符</td>
+</tr>
+<tr>
+<td style="text-align:center">y</td>
+<td style="text-align:center">年</td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td style="text-align:center">月</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:center">日</td>
+</tr>
+<tr>
+<td style="text-align:center">h</td>
+<td style="text-align:center">时 在上午或下午 (1~12)</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">时 在一天中 (0~23)</td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">分</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:center">秒</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td style="text-align:center">毫秒</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">星期</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">一年中的第几天</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">一月中第几个星期几</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">一年中第几个星期</td>
+</tr>
+<tr>
+<td style="text-align:center">W</td>
+<td style="text-align:center">一月中第几个星期</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">上午 / 下午 标记符</td>
+</tr>
+<tr>
+<td style="text-align:center">k</td>
+<td style="text-align:center">时 在一天中 (1~24)</td>
+</tr>
+<tr>
+<td style="text-align:center">K</td>
+<td style="text-align:center">时 在上午或下午 (0~11)</td>
+</tr>
+<tr>
+<td style="text-align:center">z</td>
+<td style="text-align:center">时区</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用格式">常用格式</h3><pre><code>yyyy-MM-dd HH:mm:ss:sss a E
+</code></pre>
 </div>
 
 
@@ -351,8 +269,8 @@ funcB thread4 : 0
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1551700741243"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1551700741243"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1551700741246"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1551700741246"></script>
 </body>
 
 </html>
