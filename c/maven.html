@@ -13,7 +13,7 @@
 			发布jar至Maven - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1551700741143">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1552651847145">
 	</head>
 
 	<body>
@@ -183,6 +183,20 @@ buildscript {
         classpath <span class="hljs-string">'engineer.echo:hugox-plugin:1.0.0'</span>
     }
 }
+</code></pre><h3 id="maven-url">Maven url</h3><pre><code>http://localhost:8081/nexus/content/repositories/releases/
+http://localhost:8081/nexus/content/repositories/snapshots/
+</code></pre><h3 id="解决生成javadoc因字符集报错的问题">解决生成JavaDoc因字符集报错的问题</h3><pre><code><span class="hljs-comment"># rootProject 下 build.gradle</span>
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url <span class="hljs-string">'https://jitpack.io'</span> }
+    }
+    tasks.withType(Javadoc) {
+        options.addStringOption(<span class="hljs-string">'Xdoclint:none'</span>, <span class="hljs-string">'-quiet'</span>)
+        options.addStringOption(<span class="hljs-string">'encoding'</span>, <span class="hljs-string">'UTF-8'</span>)
+    }
+}
 </code></pre><h3 id="参考文档">参考文档</h3><ol>
 <li><a href="https://github.com/chrisbanes/gradle-mvn-push">gradle-mvn-push</a></li>
 </ol>
@@ -225,8 +239,8 @@ buildscript {
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1551700741144"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1551700741144"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1552651847146"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1552651847146"></script>
 </body>
 
 </html>
