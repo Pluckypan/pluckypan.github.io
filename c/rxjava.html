@@ -12,8 +12,8 @@
 		<title>
 			rxjava - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1553154839923">
+		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1554025971233">
 	</head>
 
 	<body>
@@ -155,6 +155,47 @@ dependencies {
     compile <span class="hljs-string">"io.reactivex:rxjava:1.2.3"</span>
     compile <span class="hljs-string">"io.reactivex:rxandroid:1.2.1"</span>
 }
+</code></pre><h3 id="并发执行">并发执行</h3><pre><code>private void <span class="hljs-function"><span class="hljs-title">fun7</span></span>(){
+        Integer[] st=new Integer[]{1,2,3,4,5,6,7,8};
+        Observable.from(st)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(Schedulers.newThread())
+        .flatMap(new Func1&lt;Integer, Observable&lt;String&gt;&gt;() {
+
+            @Override
+            public Observable&lt;String&gt; call(Integer st) {
+
+                <span class="hljs-built_in">return</span> Observable.just(st)
+                        .observeOn(Schedulers.newThread())//重新开启新线程
+                        .map(new Func1&lt;Integer,String&gt;() {
+
+                            @Override
+                            public String call(Integer st) {
+                                //进行数据处理
+
+                                String s=<span class="hljs-string">""</span>;
+                                try {
+                                    Thread.sleep(1200);
+                                    s=st+<span class="hljs-string">"@"</span>;
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                <span class="hljs-built_in">return</span> s;
+                            }
+
+                        });
+
+            }
+
+        })
+        .subscribe(new Action1&lt;String&gt;() {
+
+            @Override
+            public void call(final String st) {
+                Log.e(<span class="hljs-string">"fun7"</span>, st+<span class="hljs-string">",time:"</span>+System.currentTimeMillis());
+            }
+        });
+    }
 </code></pre>
 </div>
 
@@ -194,8 +235,8 @@ dependencies {
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1553154839924"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1553154839924"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1554025971234"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1554025971234"></script>
 </body>
 
 </html>

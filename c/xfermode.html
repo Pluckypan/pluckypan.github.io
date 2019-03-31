@@ -12,8 +12,8 @@
 		<title>
 			Canvas Xfermode - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1553154839939">
+		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1554025971267">
 	</head>
 
 	<body>
@@ -149,7 +149,19 @@
 <h3 id="参考文档">参考文档</h3><ol>
 <li><a href="https://blog.csdn.net/iispring/article/details/50472485">质疑:Xfermode你理解对了吗?</a></li>
 </ol>
+<h3 id="xfermode 造成gpu呈现模式偏高的问题">Xfermode 造成GPU呈现模式偏高的问题</h3><h4 id="before">Before</h4><pre><code>mDisplayPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
 
+onDraw()
+val c = canvas.saveLayer(0f, 0f, width * 1.0f, height * 1.0f, null, Canvas.ALL_SAVE_FLAG)
+canvas.drawColor(Color.BLACK)
+canvas.drawRect(mDisplayRect, mDisplayPaint)
+canvas.restoreToCount(c)
+
+</code></pre><h4 id="after">After</h4><pre><code>mDisplayPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_OUT)
+
+canvas.drawColor(Color.BLACK)
+canvas.drawRect(mDisplayRect, mDisplayPaint)
+</code></pre>
 </div>
 
 
@@ -188,8 +200,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1553154839940"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1553154839940"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1554025971269"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1554025971269"></script>
 </body>
 
 </html>

@@ -12,8 +12,8 @@
 		<title>
 			node - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1553154839857">
+		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1554025971094">
 	</head>
 
 	<body>
@@ -147,6 +147,10 @@
 
 <h1 id="node">node</h1><p>node安装及使用详解</p>
 <h3 id="安装（linux下）">安装（linux下）</h3><h4 id="1、下载-wget">1、下载-wget</h4><pre><code>wget http://nodejs.org/dist/v0.8.7/node-v0.8.7.tar.gz
+// brew 安装 node
+brew install node
+// pkg 安装
+http://nodejs.cn/download/
 </code></pre><h4 id="2、解压 -tar">2、解压 -tar</h4><pre><code>tar -xvf node-v6.2.0.tar.gz
 <span class="hljs-comment"># x 从档案文件中释放文件</span>
 <span class="hljs-comment"># v 执行过程中显示信息 verbose</span>
@@ -161,6 +165,19 @@ ln -s ext_path/node-v6.2.0/bin/npm /usr/<span class="hljs-built_in">local</span>
 <span class="hljs-built_in">export</span> NODE_PATH=/usr/<span class="hljs-built_in">local</span>/lib/node_modules
 <span class="hljs-comment">#刷新配置</span>
 <span class="hljs-built_in">source</span> .bash_profile
+</code></pre><h3 id="5.mac删除node">5.Mac删除Node</h3><pre><code>sudo rm -rf /usr/<span class="hljs-built_in">local</span>/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
+// 如果是 brew 安装的
+brew uninstall node
+
+<span class="hljs-comment"># 删除缓存</span>
+sudo rm /usr/<span class="hljs-built_in">local</span>/bin/npm
+sudo rm /usr/<span class="hljs-built_in">local</span>/share/man/man1/node.1
+sudo rm /usr/<span class="hljs-built_in">local</span>/lib/dtrace/node.d
+sudo rm -rf ~/.npm
+sudo rm -rf ~/.node-gyp
+sudo rm /opt/<span class="hljs-built_in">local</span>/bin/node
+sudo rm /opt/<span class="hljs-built_in">local</span>/include/node
+sudo rm -rf /opt/<span class="hljs-built_in">local</span>/lib/node_modules
 </code></pre>
 </div>
 
@@ -200,8 +217,8 @@ ln -s ext_path/node-v6.2.0/bin/npm /usr/<span class="hljs-built_in">local</span>
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1553154839859"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1553154839859"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1554025971096"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1554025971096"></script>
 </body>
 
 </html>

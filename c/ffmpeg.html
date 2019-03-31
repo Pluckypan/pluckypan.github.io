@@ -12,8 +12,8 @@
 		<title>
 			ffmpeg基础 - 无忧杂货铺
 		</title>
-		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1553154839899">
+		<link rel="shortcut icon" href="../../../../../../../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/index.css?v=1554025971177">
 	</head>
 
 	<body>
@@ -171,10 +171,15 @@
 <li>-r fps 设置帧频 缺省25</li>
 <li>-s size 设置帧大小 格式为WXH 缺省160X128</li>
 <li>-aspect aspect 设置横纵比 4:3 16:9 或 1.3333 1.7777</li>
-<li>-croptop size 设置顶部切除带大小 像素单位</li>
-<li>-cropbottom size</li>
-<li>–cropleft size</li>
-<li>–cropright size</li>
+<li>~-croptop size 设置顶部切除带大小 像素单位~ cropxxx 已经废弃</li>
+<li>~-cropbottom size~</li>
+<li>~–cropleft size~</li>
+<li>~–cropright size~</li>
+<li>-vf (videofilter)</li>
+<li>-vf crop (crop=ow[:oh[:x[:y[:keep_aspect]]]])</li>
+<li>crop 参数说明 iw 输入的宽度  ih 输入的高度  ow 输出(裁剪)宽度，默认值= iw  oh 输出(裁剪)高度，默认值= ih a 纵横比，与iw/ih相同</li>
+<li>-vf drawtext=fontfile=arial.ttf:fontsize=16:fontcolor=white:shadowcolor=black:shadowx=6:shadowy=6:text=&quot;hello&quot;:x=(w-tw)/2:y=(h-th)/2:box=1:boxcolor=0x00000088</li>
+<li>drawtext 参数说明 fontcolor(RGBA格式颜色) tw是文本的宽度 th是文本的高度 w是帧的宽度 h是帧的高度. 如果报No such filter: &#39;drawtext&#39;。说明编译选项是该filter并未被编译进库里面，所以重新再编译ffmpeg，并且在执行&quot;./configure ......&quot;时加上“--enable-libfreetype”</li>
 <li>-padtop size 设置顶部补齐的大小 像素单位</li>
 <li>-padbottom size</li>
 <li>–padleft size</li>
@@ -195,8 +200,36 @@
 </code></pre><h4 id="获取第一帧">获取第一帧</h4><pre><code>$ ffmpeg -i input.wmv -vframes 1 input.jpg
 </code></pre><h4 id="获取第3s的帧">获取第3s的帧</h4><pre><code>ffmpeg -i o.mp4 -ss 3 -vframes 1 3.jpg
 </code></pre><h4 id="提取关键帧">提取关键帧</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\1-300x300.mp4 -vf select=<span class="hljs-string">'eq(pict_type\,I)'</span> -vsync 2 -s 300X300 -f image2 1-300x300-thumb-%02d.jpeg
-</code></pre><h4 id="抽取音频命令">抽取音频命令</h4><pre><code>ffmpeg -i 3.mp4 -vn -y -acodec copy 3.aac
+</code></pre><h4 id="添加水印、文字">添加水印、文字</h4><pre><code>$ ffmpeg -i changzheng.mp4 -i logo.png -filter_complex <span class="hljs-string">"overlay=10:10"</span> -y water.mp4
+<span class="hljs-comment"># main_h – 传入的视频的高度</span>
+<span class="hljs-comment"># main_w – 传入的视频的宽度</span>
+<span class="hljs-comment"># overlay_h – 传入的覆盖水印的高度</span>
+<span class="hljs-comment"># overlay_w – 传入的覆盖水印的宽度</span>
+<span class="hljs-comment"># 在视频中间位置放置水印</span>
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex <span class="hljs-string">"overlay=x=(main_w-overlay_w)/2:(main_h-overlay_h)/2"</span> -y water.mp4
+<span class="hljs-comment"># pad filter 额外添加视频区域</span>
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex <span class="hljs-string">"pad=height=ih+40:color=#000000,overlay=x=(main_w-overlay_w)/2:y=(main_h-overlay_h)/2"</span> -t 10 -y water.mp4
+<span class="hljs-comment"># 自左向右跑马灯</span>
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex <span class="hljs-string">"'if(gte(t,1), -w+(t-1)*200, NAN)':(main_h-overlay_h)/2"</span> -t 10 -y water.mp4
+<span class="hljs-comment"># 水印大小缩小(原来 488x210)</span>
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex <span class="hljs-string">"[1:v]scale=232:100[s];[0:v][s]overlay=x=(main_w-overlay_w)/2:y=(main_h-overlay_h)/2"</span> -t 10 -y water.mp4
+</code></pre><h3 id="添加水印高级篇">添加水印高级篇</h3><pre><code>$ ffmpeg -i cz.mp4 -i logo1.png -i logo2.png -filter_complex <span class="hljs-string">"[1:v]scale=116:50[logo1];[2:v]scale=122:53[logo2];[0:v][logo1]overlay=x=main_w-overlay_w-20:y=20[step1];[step1][logo2]overlay='if(gte(t,3),-w+(t-3)*100,NAN)':(main_h-overlay_h)/2"</span> -y -t 20 water.mp4
+</code></pre><h4 id="指令解析">指令解析</h4><p>以上指令展示结果为：视频右上角有一个常驻的Logo1;第三秒开始Logo2从视频左边水平平移到视频右边(垂直居中)。主要几点：</p>
+<ul>
+<li>复合滤镜 filter_complex</li>
+<li><code>[x:v]</code> x代表当前操作对象编号,v表示操作对象里的视频信息,本例中[0:v]代表的是第一层输入流cz.mp4,同理[1:v]代表logo1.png,[2:v]代表logo2.png</li>
+<li><code>[1:v]scale=116:50[logo1]</code> 的意思是指将logo1.png拉伸至116*20,并将当前操作起个别名[logo1];同理<code>[2:v]scale=122:53[logo2]</code>缩放logo2.png</li>
+<li><code>[0:v][logo1]overlay=x=main_w-overlay_w-20:y=20[step1]</code> 的意思是将[logo1]的操作覆叠到 <code>[0:v]</code> 视频上,一般由后者覆盖前者</li>
+<li><code>overlay</code> 为覆叠滤镜，一般参数为 <code>overlay=x=10:y=10;</code></li>
+<li>表达式 <code>if(gte(t,3),-w+(t-3)*100,NAN)</code>, <code>gte</code> 表示大于或等于,同理 <code>lte</code> 表示小于或等于,条件表达式的一般结构 <code>if(条件,条件为true时的值,条件为false时的值)</code></li>
+<li>变量 <code>if(gte(t,3),-w+(t-3)*100,NAN)</code> <strong>t</strong> 表示当前时间点,单位为秒</li>
+<li>常用复合滤镜 crop(裁切),flip(翻转),overlay(覆叠),scale(缩放),transpose(旋转),pad(加黑边)</li>
+</ul>
+<h4 id="抽取音频命令">抽取音频命令</h4><pre><code>ffmpeg -i 3.mp4 -vn -y -acodec copy 3.aac
 ffmpeg -i 3.mp4 -vn -y -acodec copy 3.m4a
+</code></pre><h4 id="裁切视频">裁切视频</h4><pre><code><span class="hljs-comment"># 按2.35:1 裁切视频(原视频 853:480)</span>
+ffmpeg -i changzheng.mp4 -vf crop=iw:iw/2.35:0:72 -y cz.mp4        
+</code></pre><h3 id="ffplay 播放测试视频源">ffplay 播放测试视频源</h3><pre><code>ffplay -f lavfi -i testsrc
 </code></pre><h4 id="提取视频">提取视频</h4><p>ffmpeg -i input.mkv -vcodec copy –an  output.mp4</p>
 <h4 id="音视频合成命令">音视频合成命令</h4><p>ffmpeg -i video.avi -i audio.mp3 -vcodec copy -acodec copy output.avi</p>
 <h4 id="视频旋转90 方案一">视频旋转90 方案一</h4><p>ffmpeg -i input.mp4 -metadata:s:v rotate=&quot;90&quot; -codec copy output.mp4</p>
@@ -229,6 +262,8 @@ brew install
 </code></pre><h4 id="pcm转mp3">pcm转mp3</h4><pre><code>ffmpeg -y -f s16be -ac 2 -ar 16000 -acodec pcm_s16le -i 16k.pcm new_mp3.mp3
 </code></pre><h4 id="播放pcm">播放PCM</h4><pre><code>ffplay -i audio_original.pcm  -f s16be -ac 1 -ar 44100 -acodec pcm_s16le
 </code></pre><h4 id="获取音视频时长">获取音视频时长</h4><pre><code>ffmpeg -i ~/Movies/a.3gp  2&gt;&amp;1 | grep <span class="hljs-string">'Duration'</span> | cut -d <span class="hljs-string">' '</span> -f 4 | sed s/,//
+</code></pre><h4 id="调节视频音量">调节视频音量</h4><pre><code>ffmpeg -i input.mp4  -af <span class="hljs-string">'volume=0.01'</span> -y  output.mp4
+</code></pre><h4 id="调节音量">调节音量</h4><pre><code>ffmpeg -i&lt;input&gt; -vol X &lt;output&gt;
 </code></pre><h4 id="参数说明">参数说明</h4><table>
 <thead>
 <tr>
@@ -298,8 +333,8 @@ brew install
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1553154839899"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1553154839899"></script>
+<script type="text/javascript" src="../../../../../../../js/dt.js?v=1554025971178"></script>
+<script type="text/javascript" src="../../../../../../../js/index.js?v=1554025971178"></script>
 </body>
 
 </html>
