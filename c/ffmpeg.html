@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1556012034817">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1556765411216">
 	</head>
 
 	<body>
@@ -264,6 +264,25 @@ brew install
 </code></pre><h4 id="获取音视频时长">获取音视频时长</h4><pre><code>ffmpeg -i ~/Movies/a.3gp  2&gt;&amp;1 | grep <span class="hljs-string">'Duration'</span> | cut -d <span class="hljs-string">' '</span> -f 4 | sed s/,//
 </code></pre><h4 id="调节视频音量">调节视频音量</h4><pre><code>ffmpeg -i input.mp4  -af <span class="hljs-string">'volume=0.01'</span> -y  output.mp4
 </code></pre><h4 id="调节音量">调节音量</h4><pre><code>ffmpeg -i&lt;input&gt; -vol X &lt;output&gt;
+</code></pre><h4 id="查看支持的编码格式">查看支持的编码格式</h4><pre><code>ffmpeg -codecs
+</code></pre><h4 id="查看输出文件格式">查看输出文件格式</h4><pre><code>ffmpeg -formats
+</code></pre><h4 id="多线程">多线程</h4><pre><code>ffmpeg -threads n
+</code></pre><h4 id="crf 压缩视频">crf 压缩视频</h4><pre><code>ffmpeg -i MVI_7274.MOV -vcodec libx264 -preset fast -crf 20 -y -vf <span class="hljs-string">"scale=1920:-1"</span> -acodec libmp3lame -ab 128k a.mp4
+
+-preset：指定编码的配置。x264编码算法有很多可供配置的参数，不同的参数值会导致编码的速度大相径庭，甚至可能影响质量。为了免去用户了解算法，然后手工配置参数的麻烦。x264提供了一些预设值，而这些预设值可以通过preset指定。这些预设值有包括：ultrafast，superfast，veryfast，faster，fast，medium，slow，slower，veryslow和placebo。ultrafast编码速度最快，但压缩率低，生成的文件更大，placebo则正好相反。x264所取的默认值为medium。需要说明的是，preset主要是影响编码的速度，并不会很大的影响编码出来的结果的质量。压缩高清电影时，我一般用slow或者slower，当你的机器性能很好时也可以使用veryslow，不过一般并不会带来很大的好处。
+
+-crf：这是最重要的一个选项，用于指定输出视频的质量，取值范围是0-51，默认值为23，数字越小输出视频的质量越高。这个选项会直接影响到输出视频的码率。一般来说，压制480p我会用20左右，压制720p我会用16-18，1080p我没尝试过。个人觉得，一般情况下没有必要低于16。最好的办法是大家可以多尝试几个值，每个都压几分钟，看看最后的输出质量和文件大小，自己再按需选择。
+
+其实还有-b 1024k这样的参数，但是我发现-crf设置上后-b就不管用了。根据我自己的简单尝试，压制5D2拍摄的一段18秒1920x1080的视频（下午自然光、图像简单、大面积白墙、只有一扇黑门）crf和压出来的文件大小关系如下：
+
+</code></pre><h4 id="播放时视频色彩不断变换：">播放时视频色彩不断变换：</h4><pre><code>ffplay -i D:\work\yyy2642.mp4 -vf hue=<span class="hljs-string">"H=2*PI*t:s=sin(2*PI*t)+1"</span>
+</code></pre><h4 id="视频转码为原来的播放速度的两倍：">视频转码为原来的播放速度的两倍：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4 -vf setpts=PTS/2 -af atempo=2 D:\work\outputfile.mp4
+</code></pre><h4 id="视频锐化处理，一定程度可以让视频变清晰：">视频锐化处理，一定程度可以让视频变清晰：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4  -vf unsharp=5:5:1.0:5:5:0.0 D:\work\outputfile.mp4
+</code></pre><h4 id="视频模糊处理（注意参数），可以让视频变模糊：">视频模糊处理（注意参数），可以让视频变模糊：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4  -vf  boxblur=1:10:4:10  D:\work\outputfile.mp4
+</code></pre><h4 id="彩色视频转变为黑白视频：">彩色视频转变为黑白视频：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4 -vf lutyuv=<span class="hljs-string">"u=128:v=128"</span> D:\work\outputfile.mp4
+</code></pre><h4 id="把音频的左右声道分别保存为两个文件：">把音频的左右声道分别保存为两个文件：</h4><pre><code>ffmpeg -i d:\work\yyy.mp3 -map_channel 0.0.0 d:\work\ch1.mp3 -map_channel 0.0.1 d:\work\ch2.mp3
+</code></pre><h4 id="知道了视频流地址如何保存出本地文件">知道了视频流地址如何保存出本地文件</h4><pre><code>ffmpeg -i rtmp://122.202.129.136:1935/live/ch4 -map 0 d:\work\yyy.mp4
+</code></pre><h4 id="知道了流地址，播放视频文件">知道了流地址，播放视频文件</h4><pre><code>ffplay -rtsp_transport tcp rtsp://192.168.201.133:554/stream1.sdp
 </code></pre><h4 id="参数说明">参数说明</h4><table>
 <thead>
 <tr>
@@ -333,8 +352,8 @@ brew install
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1556012034817"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1556012034817"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1556765411216"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1556765411216"></script>
 </body>
 
 </html>
