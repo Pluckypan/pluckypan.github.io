@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1556765411216">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557145755368">
 	</head>
 
 	<body>
@@ -232,7 +232,7 @@ ffmpeg -i changzheng.mp4 -vf crop=iw:iw/2.35:0:72 -y cz.mp4
 </code></pre><h3 id="ffplay 播放测试视频源">ffplay 播放测试视频源</h3><pre><code>ffplay -f lavfi -i testsrc
 </code></pre><h4 id="提取视频">提取视频</h4><p>ffmpeg -i input.mkv -vcodec copy –an  output.mp4</p>
 <h4 id="音视频合成命令">音视频合成命令</h4><p>ffmpeg -i video.avi -i audio.mp3 -vcodec copy -acodec copy output.avi</p>
-<h4 id="视频旋转90 方案一">视频旋转90 方案一</h4><p>ffmpeg -i input.mp4 -metadata:s:v rotate=&quot;90&quot; -codec copy output.mp4</p>
+<h4 id="视频旋转90 方案一">视频旋转90 方案一</h4><p>ffmpeg -i input.mp4 -metadata:s:v:0 rotate=&quot;90&quot; -codec copy output.mp4</p>
 <h4 id="旋转视频">旋转视频</h4><pre><code>顺时针旋转画面90度
 ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=1"</span> out.mp4
 逆时针旋转画面90度
@@ -352,8 +352,8 @@ brew install
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1556765411216"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1556765411216"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1557145755369"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1557145755369"></script>
 </body>
 
 </html>
