@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="Android自定义Dialog(从底部弹出) - 通过设定window对象的Enter(Exit)Animation来自定义底部弹出弹窗 - 无忧杂货铺">
-		<meta name="keywords" content="Android自定义Dialog(从底部弹出) - 无忧杂货铺">
+		<meta name="description" content="Activity - 一些Activity小知识 - 无忧杂货铺">
+		<meta name="keywords" content="Activity - 无忧杂货铺">
 		<title>
-			Android自定义Dialog(从底部弹出) - 无忧杂货铺
+			Activity - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557494476137">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557494476093">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/pupup_dialog.html">
+			<input type="hidden" id="current_path" value="c/activity.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,63 +143,38 @@
 
 <div class="markdown-body">
 
-<!--command/pupup_dialog.md-->
+<!--command/activity.md-->
 
-<h1 id="android自定义dialog(从底部弹出)">Android自定义Dialog(从底部弹出)</h1><p>通过设定window对象的Enter(Exit)Animation来自定义底部弹出弹窗</p>
-<h3 id="自定义dialog代码">自定义Dialog代码</h3><pre><code>public class LayoutDutyfreeTopUp extends Dialog {
+<h1 id="activity">Activity</h1><p>一些Activity小知识</p>
+<ol>
+<li><p>onPostCreate</p>
+<pre><code>/**
+* Called when activity start-up is complete (after {@link <span class="hljs-comment">#onStart}</span>
+* and {@link <span class="hljs-comment">#onRestoreInstanceState} have been called).  Applications will</span>
+* generally not implement this method; it is intended <span class="hljs-keyword">for</span> system
+* classes to <span class="hljs-keyword">do</span> final initialization after application code has run.
+*
+* &lt;p&gt;&lt;em&gt;Derived classes must call through to the super class<span class="hljs-string">'s
+* implementation of this method.  If they do not, an exception will be
+* thrown.&lt;/em&gt;&lt;/p&gt;
+*
+* @param savedInstanceState If the activity is being re-initialized after
+*     previously being shut down then this Bundle contains the data it most
+*     recently supplied in {@link #onSaveInstanceState}.  &lt;b&gt;&lt;i&gt;Note: Otherwise it is null.&lt;/i&gt;&lt;/b&gt;
+* @see #onCreate
+*/
+@CallSuper
+protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+ if (!isChild()) {
+     mTitleReady = true;
+     onTitleChanged(getTitle(), getTitleColor());
+ }
 
-    BaseFragmentActivity mContext;
+ mCalled = true;
+}</span>
+</code></pre></li>
+</ol>
 
-    public LayoutDutyfreeTopUp(BaseFragmentActivity context) {
-        //Dialog样式
-        super(context, R.style.FHInnerDialog);
-        mContext = context;
-        //Dialog ContentView
-        View view = View.inflate(mContext, R.layout.layout_dutyfree_topup, null);
-        Window window = getWindow();
-        window.setGravity(Gravity.BOTTOM);
-        //设置Window动画
-        window.setWindowAnimations(R.style.FHDialog_Anim);
-        window.getDecorView().setPadding(0, 0, 0, 0);
-        android.view.WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        window.setAttributes(lp);
-        setContentView(view);
-        initView();
-    }
-
-    private void <span class="hljs-function"><span class="hljs-title">initView</span></span>() {
-
-    }
-}
-</code></pre><h3 id="dialog样式文件">Dialog样式文件</h3><pre><code>&lt;!-- 弹出框动画 由下至上 --&gt;
-&lt;style name=<span class="hljs-string">"FHDialog.Anim"</span> parent=<span class="hljs-string">"@android:style/Animation.Dialog"</span>&gt;
-    &lt;item name=<span class="hljs-string">"@android:windowEnterAnimation"</span>&gt;@anim/dialog_enter&lt;/item&gt;
-    &lt;!-- 进入时的动画 --&gt;
-    &lt;item name=<span class="hljs-string">"@android:windowExitAnimation"</span>&gt;@anim/dialog_exit&lt;/item&gt;
-    &lt;!-- 退出时的动画 --&gt;
-&lt;/style&gt;
-&lt;!-- 对话框样式 --&gt;
-&lt;style name=<span class="hljs-string">"FHInnerDialog"</span> parent=<span class="hljs-string">"android:style/Theme.Dialog"</span>&gt;
-    &lt;item name=<span class="hljs-string">"android:windowBackground"</span>&gt;@android:color/transparent&lt;/item&gt;
-    &lt;item name=<span class="hljs-string">"android:windowNoTitle"</span>&gt;<span class="hljs-literal">true</span>&lt;/item&gt;
-    &lt;item name=<span class="hljs-string">"android:windowIsFloating"</span>&gt;<span class="hljs-literal">true</span>&lt;/item&gt;
-    &lt;item name=<span class="hljs-string">"android:windowContentOverlay"</span>&gt;@null&lt;/item&gt;
-    &lt;item name=<span class="hljs-string">"android:scrollHorizontally"</span>&gt;<span class="hljs-literal">true</span>&lt;/item&gt;
-&lt;/style&gt;
-</code></pre><h3 id="弹出动画(dialog_enter.xml)">弹出动画(dialog_enter.xml)</h3><pre><code>&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;
-&lt;<span class="hljs-built_in">set</span> xmlns:android=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>&gt;
-    &lt;translate
-        android:duration=<span class="hljs-string">"150"</span>
-        android:fromYDelta=<span class="hljs-string">"100%"</span> /&gt;
-&lt;/<span class="hljs-built_in">set</span>&gt;
-</code></pre><h3 id="关闭动画(dialog_exit.xml)">关闭动画(dialog_exit.xml)</h3><pre><code>&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;
-&lt;<span class="hljs-built_in">set</span> xmlns:android=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>&gt;
-    &lt;translate android:toYDelta=<span class="hljs-string">"100%"</span>
-        android:duration=<span class="hljs-string">"150"</span>/&gt;
-&lt;/<span class="hljs-built_in">set</span>&gt;
-</code></pre>
 </div>
 
 
@@ -238,8 +213,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1557494476138"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1557494476138"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1557494476094"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1557494476094"></script>
 </body>
 
 </html>

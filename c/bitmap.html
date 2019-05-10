@@ -13,7 +13,7 @@
 			图片加载库 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557323032524">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557494476068">
 	</head>
 
 	<body>
@@ -152,8 +152,191 @@
 <h3 id="异步">异步</h3><ul>
 <li>Fresco (Facebook)</li>
 <li>Universal Image Loader</li>
-<li>Piccaso (square) </li>
+<li>Piccaso (square)</li>
 </ul>
+<h3 id="bitmapfactory#decodexxx 为什么 在 debug 点击 viewbitmap时 看到的 bitmap  与实际图片不一致，和 view 绘制出来的也不一致">BitmapFactory#decodeXXX 为什么 在 Debug 点击 ViewBitmap时 看到的 Bitmap  与实际图片不一致，和 View 绘制出来的也不一致</h3><h4 id="解决方案">解决方案</h4><pre><code>// it 表示有问题的Bitmap
+BitmapFactory.decodeStream(it.toInputStream(100, Bitmap.CompressFormat.PNG), null, BitmapFactory.Options().apply {
+                inPreferredConfig = Bitmap.Config.ARGB_8888
+                // 重点是以下两行代码
+                inPremultiplied = <span class="hljs-literal">false</span>
+                // 默认为 <span class="hljs-literal">true</span> 为防止其他地方修改 强制设置成<span class="hljs-literal">true</span>
+                inScaled = <span class="hljs-literal">true</span>
+
+            })
+</code></pre><h4 id="字段含义">字段含义</h4><pre><code>/**
+ * BitmapFactory<span class="hljs-comment">#Options#inPremultiplied</span>
+ * If <span class="hljs-literal">true</span> (<span class="hljs-built_in">which</span> is the default), the resulting bitmap will have its
+ * color channels pre-multipled by the alpha channel.
+ *
+ * &lt;p&gt;This should NOT be <span class="hljs-built_in">set</span> to <span class="hljs-literal">false</span> <span class="hljs-keyword">for</span> images to be directly drawn by
+ * the view system or through a {@link Canvas}. The view system and
+ * {@link Canvas} assume all drawn images are pre-multiplied to simplify
+ * draw-time blending, and will throw a RuntimeException when
+ * un-premultiplied are drawn.&lt;/p&gt;
+ *
+ * &lt;p&gt;This is likely only useful <span class="hljs-keyword">if</span> you want to manipulate raw encoded
+ * image data, e.g. with RenderScript or custom OpenGL.&lt;/p&gt;
+ *
+ * &lt;p&gt;This does not affect bitmaps without an alpha channel.&lt;/p&gt;
+ *
+ * &lt;p&gt;Setting this flag to <span class="hljs-literal">false</span> <span class="hljs-keyword">while</span> setting {@link <span class="hljs-comment">#inScaled} to true</span>
+ * may result <span class="hljs-keyword">in</span> incorrect colors.&lt;/p&gt;
+ *
+ * @see Bitmap<span class="hljs-comment">#hasAlpha()</span>
+ * @see Bitmap<span class="hljs-comment">#isPremultiplied()</span>
+ * @see <span class="hljs-comment">#inScaled</span>
+ */
+public boolean inPremultiplied;
+
+/**  Bitmap<span class="hljs-comment">#isPremultiplied</span>
+ * &lt;p&gt;Indicates whether pixels stored <span class="hljs-keyword">in</span> this bitmaps are stored pre-multiplied.
+ * When a pixel is pre-multiplied, the RGB components have been multiplied by
+ * the alpha component. For instance, <span class="hljs-keyword">if</span> the original color is a 50%
+ * translucent red &lt;code&gt;(128, 255, 0, 0)&lt;/code&gt;, the pre-multiplied form is
+ * &lt;code&gt;(128, 128, 0, 0)&lt;/code&gt;.&lt;/p&gt;
+ *
+ * &lt;p&gt;This method always returns <span class="hljs-literal">false</span> <span class="hljs-keyword">if</span> {@link <span class="hljs-comment">#getConfig()} is</span>
+ * {@link Bitmap.Config<span class="hljs-comment">#RGB_565}.&lt;/p&gt;</span>
+ *
+ * &lt;p&gt;The <span class="hljs-built_in">return</span> value is undefined <span class="hljs-keyword">if</span> {@link <span class="hljs-comment">#getConfig()} is</span>
+ * {@link Bitmap.Config<span class="hljs-comment">#ALPHA_8}.&lt;/p&gt;</span>
+ *
+ * &lt;p&gt;This method only returns <span class="hljs-literal">true</span> <span class="hljs-keyword">if</span> {@link <span class="hljs-comment">#hasAlpha()} returns true.</span>
+ * A bitmap with no alpha channel can be used both as a pre-multiplied and
+ * as a non pre-multiplied bitmap.&lt;/p&gt;
+ *
+ * &lt;p&gt;Only pre-multiplied bitmaps may be drawn by the view system or
+ * {@link Canvas}. If a non-pre-multiplied bitmap with an alpha channel is
+ * drawn to a Canvas, a RuntimeException will be thrown.&lt;/p&gt;
+ *
+ * @<span class="hljs-built_in">return</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">if</span> the underlying pixels have been pre-multiplied, <span class="hljs-literal">false</span>
+ *         otherwise
+ *
+ * @see Bitmap<span class="hljs-comment">#setPremultiplied(boolean)</span>
+ * @see BitmapFactory.Options<span class="hljs-comment">#inPremultiplied</span>
+ */
+public final boolean <span class="hljs-function"><span class="hljs-title">isPremultiplied</span></span>() {
+    <span class="hljs-keyword">if</span> (mRecycled) {
+        Log.w(TAG, <span class="hljs-string">"Called isPremultiplied() on a recycle()'d bitmap! This is undefined behavior!"</span>);
+    }
+    <span class="hljs-built_in">return</span> nativeIsPremultiplied(mNativePtr);
+}
+
+/** Bitmap<span class="hljs-comment">#setPremultiplied</span>
+ * Sets whether the bitmap should treat its data as pre-multiplied.
+ *
+ * &lt;p&gt;Bitmaps are always treated as pre-multiplied by the view system and
+ * {@link Canvas} <span class="hljs-keyword">for</span> performance reasons. Storing un-pre-multiplied data <span class="hljs-keyword">in</span>
+ * a Bitmap (through {@link <span class="hljs-comment">#setPixel}, {@link #setPixels}, or {@link</span>
+ * BitmapFactory.Options<span class="hljs-comment">#inPremultiplied BitmapFactory.Options.inPremultiplied})</span>
+ * can lead to incorrect blending <span class="hljs-keyword">if</span> drawn by the framework.&lt;/p&gt;
+ *
+ * &lt;p&gt;This method will not affect the behavior of a bitmap without an alpha
+ * channel, or <span class="hljs-keyword">if</span> {@link <span class="hljs-comment">#hasAlpha()} returns false.&lt;/p&gt;</span>
+ *
+ * &lt;p&gt;Calling {@link <span class="hljs-comment">#createBitmap} or {@link #createScaledBitmap} with a source</span>
+ * Bitmap whose colors are not pre-multiplied may result <span class="hljs-keyword">in</span> a RuntimeException,
+ * since those <span class="hljs-built_in">functions</span> require drawing the <span class="hljs-built_in">source</span>, <span class="hljs-built_in">which</span> is not supported <span class="hljs-keyword">for</span>
+ * un-pre-multiplied Bitmaps.&lt;/p&gt;
+ *
+ * @see Bitmap<span class="hljs-comment">#isPremultiplied()</span>
+ * @see BitmapFactory.Options<span class="hljs-comment">#inPremultiplied</span>
+ */
+public final void setPremultiplied(boolean premultiplied) {
+    checkRecycled(<span class="hljs-string">"setPremultiplied called on a recycled bitmap"</span>);
+    mRequestPremultiplied = premultiplied;
+    nativeSetPremultiplied(mNativePtr, premultiplied);
+}
+</code></pre><h3 id="gpu-">GPU?</h3><pre><code>/**
+ * Builds caches associated with the bitmap that are used <span class="hljs-keyword">for</span> drawing it.
+ *
+ * &lt;p&gt;Starting <span class="hljs-keyword">in</span> {@link android.os.Build.VERSION_CODES<span class="hljs-comment">#N}, this call initiates an asynchronous</span>
+ * upload to the GPU on RenderThread, <span class="hljs-keyword">if</span> the Bitmap is not already uploaded. With Hardware
+ * Acceleration, Bitmaps must be uploaded to the GPU <span class="hljs-keyword">in</span> order to be rendered. This is <span class="hljs-keyword">done</span> by
+ * default the first time a Bitmap is drawn, but the process can take several milliseconds,
+ * depending on the size of the Bitmap. Each time a Bitmap is modified and drawn again, it must
+ * be re-uploaded.&lt;/p&gt;
+ *
+ * &lt;p&gt;Calling this method <span class="hljs-keyword">in</span> advance can save time <span class="hljs-keyword">in</span> the first frame it<span class="hljs-string">'s used. For example, it
+ * is recommended to call this on an image decoding worker thread when a decoded Bitmap is about
+ * to be displayed. It is recommended to make any pre-draw modifications to the Bitmap before
+ * calling this method, so the cached, uploaded copy may be reused without re-uploading.&lt;/p&gt;
+ *
+ * In {@link android.os.Build.VERSION_CODES#KITKAT} and below, for purgeable bitmaps, this call
+ * would attempt to ensure that the pixels have been decoded.
+ */
+public void prepareToDraw() {
+    checkRecycled("Can'</span>t prepareToDraw on a recycled bitmap!<span class="hljs-string">");
+    // Kick off an update/upload of the bitmap outside of the normal
+    // draw path.
+    nativePrepareToDraw(mNativePtr);
+}</span>
+</code></pre><h4 id="更多参数">更多参数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">inJustDecodeBounds</td>
+<td style="text-align:left">为true时，解码不会返回bitmap，只会返回bitmap的尺寸。</td>
+<td style="text-align:left">用于获取图片的尺寸，但有不想将其加载到内存中。</td>
+</tr>
+<tr>
+<td style="text-align:center">inSampleSize</td>
+<td style="text-align:left">当&lt;1时，当做1处理；&gt;1时会按照比例缩小bitmap的宽高，降低分辨率。</td>
+<td style="text-align:left">如with=100,height=100,inSampleSize=2,则返回width=50,height=50,像素50*50=250降为1/4；</td>
+</tr>
+<tr>
+<td style="text-align:center">inPreferredConfig</td>
+<td style="text-align:left">色彩模式，默认ARGB_8888，一个像素4bytes。如果对透明不做要求，采用RGB_565，一个像素2bytes；</td>
+<td style="text-align:left">ALPHA_8：每个像素1byte；ARGB_444：每个像素2byte；ARGB_8888：每个像素4byte；RGB_565：每个像素2byte；如果一个图片分辨率1024<em>768，采用ARGB_8888，占用空间为1024</em>768*4=3M，而采用ARGB_444内存就能减半1.5M;</td>
+</tr>
+<tr>
+<td style="text-align:center">inPremultiplied</td>
+<td style="text-align:left">和透明通道有关，默认true，返回的bitmap颜色通道上预先附加透明通道；</td>
+<td style="text-align:left">透明通道是计算机图形学术语，指的是“非彩色”通道，8位灰度通道，使用256级灰度来记录图像中的透明信息，定义透明、不透明和半透明。如32位存储的图片，8红+8绿+8蓝+8透明；</td>
+</tr>
+<tr>
+<td style="text-align:center">inDither</td>
+<td style="text-align:left">抖动解码，默认false，标识不采用抖动解码；</td>
+<td style="text-align:left">Bitmap解码是根据它所记录的节点，按照一定的算法来补充两个节点之间的数据，可理解为补充像素点的颜色。一张颜色丰富的图用一个位数比较低的颜色模式解码的话，会感觉颜色不够用，颜色渐变区域有明显断裂带。因为一些丰富的颜色在位数较低的颜色模式下并没有，只能用相近的颜色补充，可能一大片没有，那么这大片都用一个颜色填充，就形成了断裂色带；如果采用抖动解码，就会在这些颜色上采用随机噪声色来填充，这样显示效果更好，色带不那么明显。如果不想有这些色带，就需要采用抖动解码；</td>
+</tr>
+<tr>
+<td style="text-align:center">inDensity</td>
+<td style="text-align:left">表示这个bitmap的像素密度；</td>
+<td style="text-align:left">对应DisplayMetrics.densityDpi，不是density</td>
+</tr>
+<tr>
+<td style="text-align:center">inTargetDensity</td>
+<td style="text-align:left">表示要被画出来时的目标像素密度；</td>
+<td style="text-align:left">x</td>
+</tr>
+<tr>
+<td style="text-align:center">inScreenDensity</td>
+<td style="text-align:left">标识实际设备的像素密度；</td>
+<td style="text-align:left">inDensity，inTargetDensity，inScreenDensity这三个值的目的就是为了确定这个Bitmap的宽高和density。详细算法可以查看setDensityFromOptions()方法源码实现；</td>
+</tr>
+<tr>
+<td style="text-align:center">inScaled</td>
+<td style="text-align:left">设置这个bitmap是否可以被缩放，默认true；</td>
+<td style="text-align:left">x</td>
+</tr>
+<tr>
+<td style="text-align:center">inPurgeable/inInputShareable</td>
+<td style="text-align:left">一般一起使用，设置为true时，表示空间不够可以被释放，后者表示是否可以共享引用。Android5.0后被弃用；</td>
+<td style="text-align:left">x</td>
+</tr>
+<tr>
+<td style="text-align:center">outWidth/outHeight</td>
+<td style="text-align:left">表示bitmap的宽和高，一般和inJustDecodeBounds一起使用获取Bitmap的宽高，但不加载到内存中；</td>
+<td style="text-align:left">x</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -193,8 +376,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1557323032525"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1557323032525"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1557494476069"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1557494476069"></script>
 </body>
 
 </html>
