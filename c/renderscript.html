@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="puppy linux - puppy linux 安装及使用说明 - 无忧杂货铺">
-		<meta name="keywords" content="puppy linux - 无忧杂货铺">
+		<meta name="description" content="RenderScript - RenderScript 图形图像处理技术 - 无忧杂货铺">
+		<meta name="keywords" content="RenderScript - 无忧杂货铺">
 		<title>
-			puppy linux - 无忧杂货铺
+			RenderScript - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557887597398">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557887597404">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/linux-puppy.html">
+			<input type="hidden" id="current_path" value="c/renderscript.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,17 +143,179 @@
 
 <div class="markdown-body">
 
-<!--command/linux-puppy.md-->
+<!--command/renderscript.md-->
 
-<h1 id="puppy-linux">puppy linux</h1><p>puppy linux 安装及使用说明</p>
-<h3 id="安装步骤">安装步骤</h3><h4 id="分区">分区</h4><h4 id="硬盘安装">硬盘安装</h4><h4 id="grub-dos启动项">grub-dos启动项</h4><h4 id="设置：语言、时区、分辨率、机器名">设置：语言、时区、分辨率、机器名</h4><h4 id="字体">字体</h4><pre><code><span class="hljs-comment"># linux系统目录 usr/share/fonts</span>
-<span class="hljs-comment"># 拷贝字体</span>
-$ cp yahei.ttf usr/share/fonts
-<span class="hljs-comment"># 刷新字体库</span>
-$ <span class="hljs-built_in">fc</span>-cache
-<span class="hljs-comment"># 查看当前系统安装的字体</span>
-$ <span class="hljs-built_in">fc</span>-list 
-</code></pre><h3 id="一个网址">一个网址</h3><p><a href="http://dotpups.de/">http://dotpups.de/</a></p>
+<h1 id="renderscript">RenderScript</h1><p>RenderScript 图形图像处理技术</p>
+<h3 id="开启">开启</h3><pre><code>// 在工程 app 的 build.gradle 下
+
+defaultConfig {
+        //开启renderscript支持，否则编译时找不到RenderScript相关类(renderscriptTargetApi:11~24)
+        renderscriptTargetApi 24
+        renderscriptSupportModeEnabled <span class="hljs-literal">true</span>
+    }
+
+</code></pre><h3 id="自定义脚本">自定义脚本</h3><pre><code>// 与 res 、 java 同级目录下 新建 rs 文件夹 然后新建 ScaleScript.rs
+
+<span class="hljs-comment">#pragma version(1)</span>
+<span class="hljs-comment">#pragma rs_fp_relaxed</span>
+<span class="hljs-comment">#pragma rs java_package_name(engineer.echo.render)</span>
+
+rs_allocation inputAllocation;
+uchar4 out;
+int wIn, hIn;
+int numTotalPixels;
+static <span class="hljs-built_in">float</span> scaleInv;
+static int inputWidth, inputHeight, outputWidth, outputHeight;
+
+uchar4 __attribute__((kernel)) invert(uchar4 <span class="hljs-keyword">in</span>)
+{
+  uchar4 out = <span class="hljs-keyword">in</span>;
+  out.r =255- in.r;
+  out.g = 255-in.g;
+  out.b = 255-in.b;
+  <span class="hljs-built_in">return</span> out;
+
+}
+
+const static float3 gMonoMult1 = {0.299f, 0.587f, 0.114f};
+
+void RGBA2Gray(const uchar4 *v_in, uchar4 *v_out) {
+    float4 f4 = rsUnpackColor8888(*v_in);
+    float3 mono = dot(f4.rgb, gMonoMult1);
+    *v_out = rsPackColorTo8888(mono);
+}
+
+
+
+// Function to invoke before applying conversion
+void setInputImageSize(int _w, int _h)
+{
+    wIn = _w;
+    hIn = _h;
+    numTotalPixels = wIn * hIn;
+}
+
+
+void setInformation(int _inputWidth, int _inputHeight,
+    int _outputWidth, int _outputHeight){
+
+    inputWidth = _inputWidth;
+    inputHeight = _inputHeight;
+    outputWidth = _outputWidth;
+    outputHeight = _outputHeight;
+    scaleInv = (<span class="hljs-built_in">float</span>)inputWidth/(<span class="hljs-built_in">float</span>)outputWidth;
+}
+
+
+const static uchar Myclamp(short x, uchar Mymin, uchar Mymax){
+
+    <span class="hljs-keyword">if</span> (x &gt; Mymax)
+        <span class="hljs-built_in">return</span> Mymax;
+    <span class="hljs-keyword">if</span> (x &lt; Mymin)
+        <span class="hljs-built_in">return</span> Mymin;
+    <span class="hljs-built_in">return</span> (uchar)x;
+}
+
+// Kernel that converts a YUV element to a RGBA one
+uchar4 __attribute__((kernel)) convert(uint32_t x, uint32_t y)
+{
+
+    int baseIdx = x + y * wIn;
+
+ int baseVYIndex = numTotalPixels + (y&gt;&gt;1) * wIn + (x &amp; 0xfffffe);
+ int baseUYIndex=baseVYIndex+1;
+
+    uchar _y = rsGetElementAt_uchar(inputAllocation, baseIdx);
+    uchar _u = rsGetElementAt_uchar(inputAllocation, baseUYIndex);
+    uchar _v = rsGetElementAt_uchar(inputAllocation, baseVYIndex);
+    _y = _y &lt; 16 ? 16 : _y;
+
+    short Y = ((short)_y) - 16;
+    short U = ((short)_u) - 128;
+    short V = ((short)_v) - 128;
+
+    uchar4 out;
+
+    out.r =  (uchar)Myclamp(((Y * 298 + V * 408 + 128) &gt;&gt; 8), 0, 255);
+    out.g =  (uchar)Myclamp(((Y * 298 - U * 100 - V * 208 + 128) &gt;&gt; 8), 0, 255);
+    out.b =  (uchar)Myclamp(((Y * 298 + U * 516 + 128) &gt;&gt; 8), 0, 255);
+
+    out.a = 255;
+
+    <span class="hljs-built_in">return</span> out;
+}
+
+uchar4 __attribute__ ((kernel)) rotate_90_clockwise ( uint32_t x, uint32_t y) {
+    uint32_t inX  = wIn - 1 - y;
+    uint32_t inY = x;
+    uchar4 out;
+    out = rsGetElementAt_uchar4(inputAllocation,inX, inY);
+    <span class="hljs-built_in">return</span> out;
+}
+
+uchar4 __attribute__ ((kernel)) rotate_270_clockwise (uint32_t x, uint32_t y) {
+    uint32_t inX = y;
+    uint32_t inY = hIn - 1 - x;
+    uchar4 out;
+     out = rsGetElementAt_uchar4(inputAllocation,inX, inY);
+    <span class="hljs-built_in">return</span> out;
+}
+
+
+const static <span class="hljs-built_in">float</span> Limit(<span class="hljs-built_in">float</span> x, <span class="hljs-built_in">float</span> Mymin, <span class="hljs-built_in">float</span> Mymax){
+    <span class="hljs-keyword">if</span> (x &gt; Mymax)
+        <span class="hljs-built_in">return</span> Mymax;
+    <span class="hljs-keyword">if</span> (x &lt; Mymin)
+        <span class="hljs-built_in">return</span> Mymin;
+    <span class="hljs-built_in">return</span> x;
+}
+
+uchar4 __attribute__((kernel)) resizeNearest(uint32_t x, uint32_t y) {
+
+    <span class="hljs-built_in">float</span> fX = clamp(x*scaleInv, 0.0f, (<span class="hljs-built_in">float</span>)inputWidth);
+    <span class="hljs-built_in">float</span> fY = clamp(y*scaleInv, 0.0f, (<span class="hljs-built_in">float</span>)inputHeight);
+
+    <span class="hljs-built_in">return</span> rsGetElementAt_uchar4(inputAllocation, fX, fY);
+}
+</code></pre><h3 id="编译">编译</h3><p>直接 clean&amp;build 即可生成 JAVA 代码. 目录在 <code>app/build/generated/source/rs</code></p>
+<h3 id="使用">使用</h3><pre><code>// 缩放图片
+private fun scaleBitmap(context: Context, bitmap: Bitmap, scale: Float): Bitmap {
+    val renderScript = RenderScript.create(context)
+    // 缩放
+    val scaleScript = ScriptC_ScaleScript(renderScript)
+    // 输入
+    val allIn = Allocation.createFromBitmap(renderScript, bitmap)
+    // 缩放宽高
+    val width = (bitmap.width * scale).toInt()
+    val height = (bitmap.height * scale).toInt()
+    val scaleType = Type.Builder(renderScript, Element.RGBA_8888(renderScript))
+            .setX(width)
+            .setY(height)
+            .create()
+    // 输出
+    val allOut = Allocation.createTyped(renderScript, scaleType)
+    // 关联输入输出
+    scaleScript._inputAllocation = allIn
+    scaleScript.invoke_setInformation(bitmap.width, bitmap.height, width, height)
+    scaleScript.forEach_resizeNearest(allOut)
+    // 将数据拷贝至 Bitmap
+    val outBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+    allOut.copyTo(outBitmap)
+    // 释放
+    renderScript.destroy()
+    scaleScript.destroy()
+    allIn.destroy()
+    scaleType.destroy()
+    allOut.destroy()
+    <span class="hljs-built_in">return</span> outBitmap
+}
+</code></pre><h3 id="效果对比">效果对比</h3><h4 id="ffmpeg">FFMPEG</h4><h3 id="参考链接">参考链接</h3><ul>
+<li><a href="https://github.com/googlesamples/android-BasicRenderScript">googlesamples</a></li>
+<li><a href="https://medium.com/@petrakeas/alias-free-resize-with-renderscript-5bf15a86ce3">alias-free-resize-with-renderscript</a></li>
+<li><a href="http://t.cn/EKa3HyY">Pre-scaling Bitmaps (100 Days of Google Dev)</a></li>
+<li><a href="https://blog.csdn.net/Explorer_day/article/details/71641333">RenderScript Runtime API参考</a></li>
+<li><a href="https://developer.android.com/guide/topics/renderscript/compute.html#writing-an-rs-kernel">writing-an-rs-kernel</a></li>
+</ul>
 
 </div>
 
@@ -193,8 +355,8 @@ $ <span class="hljs-built_in">fc</span>-list
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1557887597399"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1557887597399"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1557887597405"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1557887597405"></script>
 </body>
 
 </html>
