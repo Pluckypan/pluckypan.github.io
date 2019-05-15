@@ -13,7 +13,7 @@
 			RenderScript - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557887597404">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557903975602">
 	</head>
 
 	<body>
@@ -309,7 +309,70 @@ private fun scaleBitmap(context: Context, bitmap: Bitmap, scale: Float): Bitmap 
     allOut.destroy()
     <span class="hljs-built_in">return</span> outBitmap
 }
-</code></pre><h3 id="效果对比">效果对比</h3><h4 id="ffmpeg">FFMPEG</h4><h3 id="参考链接">参考链接</h3><ul>
+</code></pre><h3 id="使用系统自建script所犯图片">使用系统自建Script所犯图片</h3><pre><code>/**
+ * 通过高斯算法缩放图片
+ * 通过 ffmpeg -i 708721762.png -s 176x44 -sws_flags gauss  -y 0.3.png 对比
+ * 发现 gauss &amp; bilinear 缩小图片时 图片质量丢失最小
+ * 参考链接：
+ * https://medium.com/@petrakeas/<span class="hljs-built_in">alias</span>-free-resize-with-renderscript-5bf15a86ce3
+ * https://blog.csdn.net/leixiaohua1020/article/details/84483277
+ * http://www.echo.engineer/c/ffmpeg.html
+ */
+fun Bitmap.gaussScale(scale: Float, radiusOffset: Float): Bitmap {
+    // 创建 RenderScript 引擎
+    val renderScriptEngine = RenderScript.create(getApplicationContext())
+
+    val resizeRatio = 1f / scale
+    /**
+     * 计算高斯模糊半径,参考源代码
+     * https://android.googlesource.com/platform/frameworks/rs/+/master/cpu_ref/rsCpuIntrinsicBlur.cpp
+     */
+    val sigma = resizeRatio / Math.PI.toFloat()
+    //+ radiusOffset 的目的是更柔和一点 否则字体容易出现锯齿
+    var radius = 2.5f * sigma - 1.5f + radiusOffset
+    radius = Math.min(25f, Math.max(0.0001f, radius))
+
+    /**
+     * 由于 gauss &amp; bilinear 两种缩放算法表现比较好且 Android 已经自带了 ScriptIntrinsicBlur (基于gauss)
+     * 所以暂时使用 ScriptIntrinsicBlur 不自行 写 renderScript 脚本
+     * 如果要自行实现 gauss or bilinear or 其他缩放算法
+     * 可参考：http://www.echo.engineer/c/renderscript.html
+     */
+
+    // 输入流
+    val allIn = Allocation.createFromBitmap(renderScriptEngine, this)
+    val blurScript = ScriptIntrinsicBlur.create(renderScriptEngine, allIn.element)
+    // 输出暂存
+    val tmpAlloc = Allocation.createTyped(renderScriptEngine, allIn.type)
+    blurScript.setRadius(radius)
+    blurScript.setInput(allIn)
+    blurScript.forEach(tmpAlloc)
+    // 释放
+    allIn.destroy()
+    blurScript.destroy()
+
+    // 缩放
+    val srcAspect = width.toFloat() / height
+    val dstWidth = (width * scale + 0.5f).toInt()
+    val dstHeight = (dstWidth / srcAspect).toInt()
+    val dstBitmap = Bitmap.createBitmap(dstWidth, dstHeight, this.config)
+    // 输出流 在原有高斯编码的基础上做缩放
+    val allOut = Allocation.createTyped(renderScriptEngine, Type.createXY(renderScriptEngine, tmpAlloc.element, dstWidth, dstHeight))
+    // 缩放
+    val resizeScript = ScriptIntrinsicResize.create(renderScriptEngine)
+    resizeScript.setInput(tmpAlloc)
+    resizeScript.forEach_bicubic(allOut)
+    // 将最终数据输出到 Bitmap
+    allOut.copyTo(dstBitmap)
+
+    // 释放
+    tmpAlloc.destroy()
+    allOut.destroy()
+    resizeScript.destroy()
+    renderScriptEngine.destroy()
+    <span class="hljs-built_in">return</span> dstBitmap
+}
+</code></pre><h3 id="参考链接">参考链接</h3><ul>
 <li><a href="https://github.com/googlesamples/android-BasicRenderScript">googlesamples</a></li>
 <li><a href="https://medium.com/@petrakeas/alias-free-resize-with-renderscript-5bf15a86ce3">alias-free-resize-with-renderscript</a></li>
 <li><a href="http://t.cn/EKa3HyY">Pre-scaling Bitmaps (100 Days of Google Dev)</a></li>
@@ -355,8 +418,8 @@ private fun scaleBitmap(context: Context, bitmap: Bitmap, scale: Float): Bitmap 
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1557887597405"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1557887597405"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1557903975602"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1557903975602"></script>
 </body>
 
 </html>
