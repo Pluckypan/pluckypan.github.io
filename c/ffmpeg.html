@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557903975518">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1557994909265">
 	</head>
 
 	<body>
@@ -313,7 +313,8 @@ brew install
 </code></pre><h4 id="把音频的左右声道分别保存为两个文件：">把音频的左右声道分别保存为两个文件：</h4><pre><code>ffmpeg -i d:\work\yyy.mp3 -map_channel 0.0.0 d:\work\ch1.mp3 -map_channel 0.0.1 d:\work\ch2.mp3
 </code></pre><h4 id="知道了视频流地址如何保存出本地文件">知道了视频流地址如何保存出本地文件</h4><pre><code>ffmpeg -i rtmp://122.202.129.136:1935/live/ch4 -map 0 d:\work\yyy.mp4
 </code></pre><h4 id="知道了流地址，播放视频文件">知道了流地址，播放视频文件</h4><pre><code>ffplay -rtsp_transport tcp rtsp://192.168.201.133:554/stream1.sdp
-</code></pre><h3 id="ffmpeg 缩放图片 <a href="https://blog.csdn.net/leixiaohua1020/article/details/84483277">sws_flags缩放算法对比</a>">ffmpeg 缩放图片 <a href="https://blog.csdn.net/leixiaohua1020/article/details/84483277">sws_flags缩放算法对比</a></h3><pre><code><span class="hljs-comment"># 以下两种缩放算法比较理想</span>
+</code></pre><h3 id="ffmpeg 缩放图片">ffmpeg 缩放图片</h3><p><a href="https://blog.csdn.net/leixiaohua1020/article/details/84483277">sws_flags缩放算法对比</a></p>
+<pre><code><span class="hljs-comment"># 以下两种缩放算法比较理想</span>
 $ ffmpeg -i 708721762.png -s 176x44 -sws_flags bilinear  -y 0.3.png
 $ ffmpeg -i 708721762.png -s 176x44 -sws_flags gauss  -y 0.3.png
 </code></pre>
@@ -355,8 +356,8 @@ $ ffmpeg -i 708721762.png -s 176x44 -sws_flags gauss  -y 0.3.png
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1557903975519"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1557903975519"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1557994909266"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1557994909266"></script>
 </body>
 
 </html>
