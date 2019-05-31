@@ -13,7 +13,7 @@
 			图片加载库 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1559134477581">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1559301106383">
 	</head>
 
 	<body>
@@ -363,6 +363,87 @@ BitmapFactory.decodeStream(xxx, null, BitmapFactory.Options().apply {
             inDensity = srcWidth
             inTargetDensity = dstWidth
         })
+</code></pre><h3 id="去除边缘透明像素">去除边缘透明像素</h3><pre><code>fun Bitmap.clipTransparentEdge(): Bitmap {
+    var left = 0
+    var top = 0
+    var right = width
+    var bottom = height
+
+    // 从边缘检测(比较快)
+    // LEFT
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> 0 until width) {
+        var find = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> 0 until height) {
+            val color = getPixel(i, j)
+            // 如果是透明像素
+            <span class="hljs-keyword">if</span> (Color.alpha(color) != 0) {
+                left = i
+                find = <span class="hljs-literal">true</span>
+                <span class="hljs-built_in">break</span>
+            }
+        }
+        <span class="hljs-keyword">if</span> (find) {
+            <span class="hljs-built_in">break</span>
+        }
+    }
+    // TOP
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> 0 until height) {
+        var find = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> 0 until width) {
+            val color = getPixel(j, i)
+            // 如果是透明像素
+            <span class="hljs-keyword">if</span> (Color.alpha(color) != 0) {
+                top = i
+                find = <span class="hljs-literal">true</span>
+                <span class="hljs-built_in">break</span>
+            }
+        }
+        <span class="hljs-keyword">if</span> (find) {
+            <span class="hljs-built_in">break</span>
+        }
+    }
+
+    // RIGHT
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> width - 1 downTo 0) {
+        var find = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> 0 until height) {
+            val color = getPixel(i, j)
+            // 如果是透明像素
+            <span class="hljs-keyword">if</span> (Color.alpha(color) != 0) {
+                right = i
+                find = <span class="hljs-literal">true</span>
+                <span class="hljs-built_in">break</span>
+            }
+        }
+        <span class="hljs-keyword">if</span> (find) {
+            <span class="hljs-built_in">break</span>
+        }
+    }
+
+    // BOTTOM
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> height - 1 downTo 0) {
+        var find = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> 0 until width) {
+            val color = getPixel(j, i)
+            // 如果是透明像素
+            <span class="hljs-keyword">if</span> (Color.alpha(color) != 0) {
+                bottom = i
+                find = <span class="hljs-literal">true</span>
+                <span class="hljs-built_in">break</span>
+            }
+        }
+        <span class="hljs-keyword">if</span> (find) {
+            <span class="hljs-built_in">break</span>
+        }
+    }
+
+    <span class="hljs-built_in">return</span> <span class="hljs-keyword">if</span> (left == 0 &amp;&amp; top == 0 &amp;&amp; right == width &amp;&amp; bottom == height) {
+        this
+    } <span class="hljs-keyword">else</span> {
+        Log.d(<span class="hljs-string">"BitmapX"</span>, <span class="hljs-string">"{<span class="hljs-variable">$width</span>,<span class="hljs-variable">$height</span>},cut={<span class="hljs-variable">$left</span>,<span class="hljs-variable">$top</span>,<span class="hljs-variable">${width - right}</span>,<span class="hljs-variable">${height - bottom}</span>}"</span>)
+        Bitmap.createBitmap(this, left, top, right - left, bottom - top)
+    }
+}
 </code></pre>
 </div>
 
@@ -402,8 +483,8 @@ BitmapFactory.decodeStream(xxx, null, BitmapFactory.Options().apply {
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1559134477582"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1559134477582"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1559301106383"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1559301106383"></script>
 </body>
 
 </html>
