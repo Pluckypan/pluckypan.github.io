@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="jQuery观察者模式 - 使用jQuery或zepto的apply方法实现观察者模式 - 无忧杂货铺">
-		<meta name="keywords" content="jQuery观察者模式 - 无忧杂货铺">
+		<meta name="description" content="手机端人工智能 - Mobile AI CNN - 无忧杂货铺">
+		<meta name="keywords" content="手机端人工智能 - 无忧杂货铺">
 		<title>
-			jQuery观察者模式 - 无忧杂货铺
+			手机端人工智能 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1561373890844">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1561373890799">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="c/jquery-observer.html">
+			<input type="hidden" id="current_path" value="c/mobile_ai.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -143,40 +143,19 @@
 
 <div class="markdown-body">
 
-<!--command/jquery-observer.md-->
+<!--command/mobile_ai.md-->
 
-<h1 id="jquery观察者模式">jQuery观察者模式</h1><p>使用jQuery或zepto的apply方法实现观察者模式</p>
-<h3 id="扩展jquery">扩展jQuery</h3><pre><code>(<span class="hljs-keyword">function</span>($) {
+<h1 id="手机端人工智能">手机端人工智能</h1><p>Mobile AI CNN</p>
+<h3 id="框架">框架</h3><ol>
+<li><a href="https://github.com/Tencent/FeatherCNN">FeatherCNN</a></li>
+<li><a href="https://github.com/XiaoMi/mobile-ai-bench">mobile-ai-bench</a></li>
+<li><a href="https://github.com/XiaoMi/mace">mace</a></li>
+<li><a href="https://github.com/PaddlePaddle/paddle-mobile">paddle-mobile</a></li>
+<li><a href="https://www.tensorflow.org/lite">tensorflow-lite</a></li>
+<li><a href="https://github.com/tencent/NCNN">NCNN</a></li>
+<li><a href="https://github.com/in66-dev/In-Prestissimo">In-Prestissimo</a></li>
+</ol>
 
-    var o = $({});
-        //订阅
-    $.subscribe = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-        o.on.apply(o, arguments);
-    };
-        //取消订阅
-    $.unsubscribe = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-        o.off.apply(o, arguments);
-    };
-        //发布内容 通知
-    $.publish = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
-        o.trigger.apply(o, arguments);
-    };
-
-}(jQuery));
-</code></pre><h3 id="示例">示例</h3><pre><code>$(<span class="hljs-function"><span class="hljs-title">function</span></span>() {
-  //订阅购物车结算事件
-    $.subscribe(<span class="hljs-string">"CartCalculate"</span>, <span class="hljs-keyword">function</span>(e, data) {
-         alert(<span class="hljs-string">"购物车金额:"</span> + data);
-    });
-
-    alert(<span class="hljs-string">"开始!"</span>);
-  //模拟通知事件
-    setTimeout(<span class="hljs-function"><span class="hljs-title">function</span></span>() {
-      var money=520*250;
-         $.publish(<span class="hljs-string">"CartCalculate"</span>, money);
-    }, 3000);
-});
-</code></pre>
 </div>
 
 
@@ -215,8 +194,8 @@
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1561373890845"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1561373890845"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1561373890800"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1561373890800"></script>
 </body>
 
 </html>

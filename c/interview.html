@@ -13,7 +13,7 @@
 			面试题 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1559818894313">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1561373890793">
 	</head>
 
 	<body>
@@ -152,7 +152,7 @@ ViewGroup: 构造方法 --&gt; onFinishInflate() --&gt; onAttachedToWindow --&gt
 <li>UI线程有耗时操作</li>
 <li>视图渲染时间过长<h4 id="排查工具">排查工具</h4>Android自带的DDMS、BlockCanary。可以找到影响卡顿的原因，可优化相关代码。其中视图渲染时间过程的原因一般出现在View的onMeasure, onLayout, onDraw 这些方法中。</li>
 </ul>
-<h3 id="3.activity、fragment、service生命周期">3.Activity、Fragment、Service生命周期</h3><p>Activity: onCreate() --&gt; onStart() --&gt; onResume() --&gt; onPause() --&gt; onStop() --&gt; onDestory(). 
+<h3 id="3.activity、fragment、service生命周期">3.Activity、Fragment、Service生命周期</h3><p>Activity: onCreate() --&gt; onStart() --&gt; onResume() --&gt; onPause() --&gt; onStop() --&gt; onDestory().
 Fragment: onAttach() --&gt; onCreate() --&gt; onCreateView() --&gt; onActivityCreated() --&gt; onStart() --&gt; onResume() --&gt; onPaused() --&gt; onStop() --&gt; onDestoryView --&gt; onDestory --&gt; onDetach()
 Service:</p>
 <ul>
@@ -161,7 +161,7 @@ Service:</p>
 </ul>
 <h3 id="4.android事件分发机制">4.Android事件分发机制</h3><p>主要有三个事件: dispatchTouchEvent(),onInterceptTouchEvent,onTouchEvent.</p>
 <h4 id="说明">说明</h4><ul>
-<li>dispatchTouchEvent() <ul>
+<li>dispatchTouchEvent()<ul>
 <li>return true;事件会分发给当前 View 并由 dispatchTouchEvent 方法进行消费，同时事件会停止向下传递；</li>
 <li>如果 return false，事件分发分为两种情况：</li>
 <li>如果当前 View 获取的事件直接来自 Activity，则会将事件返回给 Activity 的 onTouchEvent 进行消费；</li>
@@ -252,6 +252,24 @@ LinearLayout易用，效率高，表达能力有限。RelativeLayout复杂，表
       }
       <span class="hljs-built_in">return</span> instance;
    }
+}
+</code></pre><h3 id="kotlin 单例">Kotlin 单例</h3><pre><code>// 静态内部类
+class A private <span class="hljs-function"><span class="hljs-title">constructor</span></span>(){
+  companion object{
+    val sInstance=Holder.sA
+  }
+
+  private object Holder{
+    val sA=A()
+  }
+}
+// 懒汉式 线程安全 双重校验
+class B private <span class="hljs-function"><span class="hljs-title">constructor</span></span>(){
+  companion object{
+    val sInstance by lazy{
+      B()
+    }
+  }
 }
 </code></pre><h3 id="15.除了lru缓存算法，你还知道哪些缓存算法">15.除了Lru缓存算法，你还知道哪些缓存算法</h3><blockquote>
 <p>当缓存需要被清理时（比如空间占用已经接近临界值了），需要使用某种淘汰算法来决定清理掉哪些数据。常用的淘汰算法有下面几种：</p>
@@ -553,8 +571,8 @@ HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是H
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1559818894314"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1559818894314"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1561373890793"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1561373890793"></script>
 </body>
 
 </html>

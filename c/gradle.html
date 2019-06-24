@@ -13,7 +13,7 @@
 			gradle使用日记 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../../../../../../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1559818894260">
+		<link rel="stylesheet" type="text/css" href="../../../../../../css/index.css?v=1561373890737">
 	</head>
 
 	<body>
@@ -189,6 +189,23 @@ $ /Users/{user-name}/.gradle/caches/modules-2/files-2.1
         }
     }
 }
+</code></pre><h3 id="gradle 插件调试">gradle 插件调试</h3><ol>
+<li>Edit Configurations 中添加 Remote 关联上调试插件</li>
+<li><code>./gradlew assembleDebug -Dorg.gradle.daemon=false -Dorg.gradle.debug=true</code></li>
+</ol>
+<h3 id="warning-api-39-variant-getjavacompile-39-is-obsolete-and-has-been-replaced-with-39-variant-getjavacompileprovider-39-">WARNING: API &#39;variant.getJavaCompile()&#39; is obsolete and has been replaced with &#39;variant.getJavaCompileProvider()&#39;.</h3><pre><code>def variant=project.android.libraryVariants.toList().first()
+Task javaCompileTask
+<span class="hljs-keyword">if</span> (variant.hasProperty(<span class="hljs-string">'javaCompileProvider'</span>)) {
+    // Android 3.3.0+
+    javaCompileTask = variant.javaCompileProvider.get()
+} <span class="hljs-keyword">else</span> {
+    // Older Android
+    javaCompileTask = variant.javaCompile
+}
+<span class="hljs-keyword">if</span> (javaCompileTask!=null){
+    classpath += javaCompileTask.classpath
+    classpath += javaCompileTask.outputs.files
+}
 </code></pre>
 </div>
 
@@ -228,8 +245,8 @@ $ /Users/{user-name}/.gradle/caches/modules-2/files-2.1
 
 
 
-<script type="text/javascript" src="../../../../../../js/dt.js?v=1559818894261"></script>
-<script type="text/javascript" src="../../../../../../js/index.js?v=1559818894261"></script>
+<script type="text/javascript" src="../../../../../../js/dt.js?v=1561373890737"></script>
+<script type="text/javascript" src="../../../../../../js/index.js?v=1561373890737"></script>
 </body>
 
 </html>
