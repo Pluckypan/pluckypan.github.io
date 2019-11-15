@@ -13,11 +13,11 @@
 			linux指令大全 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573142430651">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145210">
 	</head>
 
 	<body>
-<a href="http://www.echo.engineer" target="_blank" class="github-corner">
+<a href="https://github.com/Pluckypan" target="_blank" class="github-corner">
 	<svg viewBox="0 0 250 250">
 		<title>logo</title>
 		<desc>
@@ -252,6 +252,28 @@ $ wc -l  versions.gradle
 <span class="hljs-comment"># wc -w  versions.gradle</span>
 <span class="hljs-comment"># 只读取字节数</span>
 <span class="hljs-comment"># wc -c  versions.gradle</span>
+</code></pre><h3 id="ls">ls</h3><pre><code>1、列出当前目录的文件、文件夹完整路径
+   ls -1 |awk <span class="hljs-string">'{print i$0}'</span> i=`<span class="hljs-built_in">pwd</span>`<span class="hljs-string">'/'</span>
+
+2、列出当前目录及子目录的文件、文件夹完整路径
+   ls -R |awk <span class="hljs-string">'{print i$0}'</span> i=`<span class="hljs-built_in">pwd</span>`<span class="hljs-string">'/'</span>
+
+2b） 列出当前目录及子目录下的文件夹完整路径
+    ls -FR | grep /$ | sed <span class="hljs-string">"s:^:`pwd`/:"</span> 
+
+3、用find实现，好像运行要慢些
+   find / -name <span class="hljs-string">"*.*"</span> -<span class="hljs-built_in">exec</span> ls {} \;
+
+4、递归列出当前目录及子目录名称
+    ls -FR | grep /$
+
+5、递归列出当前目录及子目录名称，包括相关属性
+    ls -lR | grep <span class="hljs-string">"^d"</span>
+    <span class="hljs-comment"># drwxr-xr-x 3 idea idea  4096 Aug  2  2009 images</span>
+
+6、只列出当前目录下的子目录
+    用ls只列出子目录
+    ls -d */
 </code></pre>
 </div>
 
@@ -291,8 +313,8 @@ $ wc -l  versions.gradle
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573142430651"></script>
-<script type="text/javascript" src="../js/index.js?v=1573142430651"></script>
+<script type="text/javascript" src="../js/dt.js?v=1573824145210"></script>
+<script type="text/javascript" src="../js/index.js?v=1573824145210"></script>
 </body>
 
 </html>
