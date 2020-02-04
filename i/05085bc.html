@@ -13,7 +13,7 @@
 			Python - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145219">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107017">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -145,26 +145,30 @@
 <h1 id="python">Python</h1><p>Python学习笔记</p>
 <h3 id="下载">下载</h3><p><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
 <h3 id="卸载干净python3.7">卸载干净python3.7</h3><pre><code>$ python3 --version
-<span class="hljs-comment"># 删除Python 3.7 框架</span>
+# 删除Python 3.7 框架
 $ sudo rm -rf /Library/Frameworks/Python.framework/Versions/3.7
-<span class="hljs-comment"># 删除Python 3.7 应用目录</span>
-$ <span class="hljs-built_in">cd</span> /Applications
-$ sudo rm -rf Python\ 3.7/   <span class="hljs-comment">#Python 3.7存在空格</span>
-<span class="hljs-comment"># 删除/usr/local/bin 目录下指向的Python3.7 的连接</span>
-$ <span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/bin/
-$ ls -l /usr/<span class="hljs-built_in">local</span>/bin
+# 删除Python 3.7 应用目录
+$ cd /Applications
+$ sudo rm -rf Python\ 3.7/   #Python 3.7存在空格
+# 删除/usr/local/bin 目录下指向的Python3.7 的连接
+$ cd /usr/local/bin/
+$ ls -l /usr/local/bin
 $ rm Python3.7xxx
-<span class="hljs-comment"># 删除python的环境路径</span>
+# 删除python的环境路径
 $ vi ~/.bash_profile
-<span class="hljs-comment"># 确认python是否已经删除</span>
+# 确认python是否已经删除
 $ python3 --version
-</code></pre><h3 id="修改默认python版本">修改默认python版本</h3><pre><code><span class="hljs-comment"># 修改.bash_profile文件 Mac</span>
-<span class="hljs-built_in">alias</span> python=<span class="hljs-string">"/usr/local/bin/python3.7"</span>
-<span class="hljs-built_in">alias</span> pip=<span class="hljs-string">"/usr/local/bin/pip3.7"</span>
+</code></pre><h3 id="修改默认python版本">修改默认python版本</h3><pre><code># 修改.bash_profile文件 Mac
+alias python=&quot;/usr/local/bin/python3.7&quot;
+alias pip=&quot;/usr/local/bin/pip3.7&quot;
 
-<span class="hljs-comment"># Linux /etc/bash.bashrc</span>
-<span class="hljs-comment"># python3.5</span>
-$ <span class="hljs-built_in">alias</span> python=<span class="hljs-string">"/usr/bin/python3.5"</span>
+# Linux /etc/bash.bashrc
+# python3.5
+$ alias python=&quot;/usr/bin/python3.5&quot;
+</code></pre><h3 id="brew 安装 python 3">brew 安装 python 3</h3><pre><code>$ brew install python3     
+$ sudo mkdir /usr/local/Frameworks
+$ sudo chown $(whoami):admin /usr/local/Frameworks
+$ brew link python3
 </code></pre><h3 id="查找 python3 链接路径">查找 python3 链接路径</h3><pre><code>$ dpkg -L python3
 </code></pre><h3 id="参考文档">参考文档</h3><ul>
 <li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">廖雪峰Python教程</a></li>
@@ -208,8 +212,8 @@ $ <span class="hljs-built_in">alias</span> python=<span class="hljs-string">"/us
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145219"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145219"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107018"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107018"></script>
 </body>
 
 </html>

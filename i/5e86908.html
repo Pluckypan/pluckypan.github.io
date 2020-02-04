@@ -13,7 +13,7 @@
 			图片加载库 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145301">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107093">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -151,54 +151,54 @@
 <li>Universal Image Loader</li>
 <li>Piccaso (square)</li>
 </ul>
-<h3 id="bitmapfactory#decodexxx 为什么 在 debug 点击 viewbitmap时 看到的 bitmap  与实际图片不一致，和 view 绘制出来的也不一致">BitmapFactory#decodeXXX 为什么 在 Debug 点击 ViewBitmap时 看到的 Bitmap  与实际图片不一致，和 View 绘制出来的也不一致</h3><h4 id="解决方案">解决方案</h4><pre><code>// it 表示有问题的Bitmap
-BitmapFactory.decodeStream(it.toInputStream(100, Bitmap.CompressFormat.PNG), null, BitmapFactory.Options().apply {
+<h3 id="bitmapfactory#decodexxx 为什么 在 debug 点击 viewbitmap时 看到的 bitmap  与实际图片不一致，和 view 绘制出来的也不一致">BitmapFactory#decodeXXX 为什么 在 Debug 点击 ViewBitmap时 看到的 Bitmap  与实际图片不一致，和 View 绘制出来的也不一致</h3><h4 id="解决方案">解决方案</h4><pre><code><span class="hljs-comment">// it 表示有问题的Bitmap</span>
+BitmapFactory.decodeStream(it.toInputStream(<span class="hljs-number">100</span>, Bitmap.CompressFormat.PNG), <span class="hljs-literal">null</span>, BitmapFactory.Options().apply {
                 inPreferredConfig = Bitmap.Config.ARGB_8888
-                // 重点是以下两行代码
+                <span class="hljs-comment">// 重点是以下两行代码</span>
                 inPremultiplied = <span class="hljs-literal">false</span>
-                // 默认为 <span class="hljs-literal">true</span> 为防止其他地方修改 强制设置成<span class="hljs-literal">true</span>
+                <span class="hljs-comment">// 默认为 true 为防止其他地方修改 强制设置成true</span>
                 inScaled = <span class="hljs-literal">true</span>
 
             })
-</code></pre><h4 id="字段含义">字段含义</h4><pre><code>/**
- * BitmapFactory<span class="hljs-comment">#Options#inPremultiplied</span>
- * If <span class="hljs-literal">true</span> (<span class="hljs-built_in">which</span> is the default), the resulting bitmap will have its
+</code></pre><h4 id="字段含义">字段含义</h4><pre><code><span class="hljs-comment">/**
+ * BitmapFactory#Options#inPremultiplied
+ * If true (which is the default), the resulting bitmap will have its
  * color channels pre-multipled by the alpha channel.
  *
- * &lt;p&gt;This should NOT be <span class="hljs-built_in">set</span> to <span class="hljs-literal">false</span> <span class="hljs-keyword">for</span> images to be directly drawn by
+ * &lt;p&gt;This should NOT be set to false for images to be directly drawn by
  * the view system or through a {@link Canvas}. The view system and
  * {@link Canvas} assume all drawn images are pre-multiplied to simplify
  * draw-time blending, and will throw a RuntimeException when
  * un-premultiplied are drawn.&lt;/p&gt;
  *
- * &lt;p&gt;This is likely only useful <span class="hljs-keyword">if</span> you want to manipulate raw encoded
+ * &lt;p&gt;This is likely only useful if you want to manipulate raw encoded
  * image data, e.g. with RenderScript or custom OpenGL.&lt;/p&gt;
  *
  * &lt;p&gt;This does not affect bitmaps without an alpha channel.&lt;/p&gt;
  *
- * &lt;p&gt;Setting this flag to <span class="hljs-literal">false</span> <span class="hljs-keyword">while</span> setting {@link <span class="hljs-comment">#inScaled} to true</span>
- * may result <span class="hljs-keyword">in</span> incorrect colors.&lt;/p&gt;
+ * &lt;p&gt;Setting this flag to false while setting {@link #inScaled} to true
+ * may result in incorrect colors.&lt;/p&gt;
  *
- * @see Bitmap<span class="hljs-comment">#hasAlpha()</span>
- * @see Bitmap<span class="hljs-comment">#isPremultiplied()</span>
- * @see <span class="hljs-comment">#inScaled</span>
- */
+ * @see Bitmap#hasAlpha()
+ * @see Bitmap#isPremultiplied()
+ * @see #inScaled
+ */</span>
 public boolean inPremultiplied;
 
-/**  Bitmap<span class="hljs-comment">#isPremultiplied</span>
- * &lt;p&gt;Indicates whether pixels stored <span class="hljs-keyword">in</span> this bitmaps are stored pre-multiplied.
+<span class="hljs-comment">/**  Bitmap#isPremultiplied
+ * &lt;p&gt;Indicates whether pixels stored in this bitmaps are stored pre-multiplied.
  * When a pixel is pre-multiplied, the RGB components have been multiplied by
- * the alpha component. For instance, <span class="hljs-keyword">if</span> the original color is a 50%
+ * the alpha component. For instance, if the original color is a 50%
  * translucent red &lt;code&gt;(128, 255, 0, 0)&lt;/code&gt;, the pre-multiplied form is
  * &lt;code&gt;(128, 128, 0, 0)&lt;/code&gt;.&lt;/p&gt;
  *
- * &lt;p&gt;This method always returns <span class="hljs-literal">false</span> <span class="hljs-keyword">if</span> {@link <span class="hljs-comment">#getConfig()} is</span>
- * {@link Bitmap.Config<span class="hljs-comment">#RGB_565}.&lt;/p&gt;</span>
+ * &lt;p&gt;This method always returns false if {@link #getConfig()} is
+ * {@link Bitmap.Config#RGB_565}.&lt;/p&gt;
  *
- * &lt;p&gt;The <span class="hljs-built_in">return</span> value is undefined <span class="hljs-keyword">if</span> {@link <span class="hljs-comment">#getConfig()} is</span>
- * {@link Bitmap.Config<span class="hljs-comment">#ALPHA_8}.&lt;/p&gt;</span>
+ * &lt;p&gt;The return value is undefined if {@link #getConfig()} is
+ * {@link Bitmap.Config#ALPHA_8}.&lt;/p&gt;
  *
- * &lt;p&gt;This method only returns <span class="hljs-literal">true</span> <span class="hljs-keyword">if</span> {@link <span class="hljs-comment">#hasAlpha()} returns true.</span>
+ * &lt;p&gt;This method only returns true if {@link #hasAlpha()} returns true.
  * A bitmap with no alpha channel can be used both as a pre-multiplied and
  * as a non pre-multiplied bitmap.&lt;/p&gt;
  *
@@ -206,68 +206,68 @@ public boolean inPremultiplied;
  * {@link Canvas}. If a non-pre-multiplied bitmap with an alpha channel is
  * drawn to a Canvas, a RuntimeException will be thrown.&lt;/p&gt;
  *
- * @<span class="hljs-built_in">return</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">if</span> the underlying pixels have been pre-multiplied, <span class="hljs-literal">false</span>
+ * @return true if the underlying pixels have been pre-multiplied, false
  *         otherwise
  *
- * @see Bitmap<span class="hljs-comment">#setPremultiplied(boolean)</span>
- * @see BitmapFactory.Options<span class="hljs-comment">#inPremultiplied</span>
- */
-public final boolean <span class="hljs-function"><span class="hljs-title">isPremultiplied</span></span>() {
+ * @see Bitmap#setPremultiplied(boolean)
+ * @see BitmapFactory.Options#inPremultiplied
+ */</span>
+public final boolean isPremultiplied() {
     <span class="hljs-keyword">if</span> (mRecycled) {
         Log.w(TAG, <span class="hljs-string">"Called isPremultiplied() on a recycle()'d bitmap! This is undefined behavior!"</span>);
     }
-    <span class="hljs-built_in">return</span> nativeIsPremultiplied(mNativePtr);
+    <span class="hljs-keyword">return</span> nativeIsPremultiplied(mNativePtr);
 }
 
-/** Bitmap<span class="hljs-comment">#setPremultiplied</span>
+<span class="hljs-comment">/** Bitmap#setPremultiplied
  * Sets whether the bitmap should treat its data as pre-multiplied.
  *
  * &lt;p&gt;Bitmaps are always treated as pre-multiplied by the view system and
- * {@link Canvas} <span class="hljs-keyword">for</span> performance reasons. Storing un-pre-multiplied data <span class="hljs-keyword">in</span>
- * a Bitmap (through {@link <span class="hljs-comment">#setPixel}, {@link #setPixels}, or {@link</span>
- * BitmapFactory.Options<span class="hljs-comment">#inPremultiplied BitmapFactory.Options.inPremultiplied})</span>
- * can lead to incorrect blending <span class="hljs-keyword">if</span> drawn by the framework.&lt;/p&gt;
+ * {@link Canvas} for performance reasons. Storing un-pre-multiplied data in
+ * a Bitmap (through {@link #setPixel}, {@link #setPixels}, or {@link
+ * BitmapFactory.Options#inPremultiplied BitmapFactory.Options.inPremultiplied})
+ * can lead to incorrect blending if drawn by the framework.&lt;/p&gt;
  *
  * &lt;p&gt;This method will not affect the behavior of a bitmap without an alpha
- * channel, or <span class="hljs-keyword">if</span> {@link <span class="hljs-comment">#hasAlpha()} returns false.&lt;/p&gt;</span>
+ * channel, or if {@link #hasAlpha()} returns false.&lt;/p&gt;
  *
- * &lt;p&gt;Calling {@link <span class="hljs-comment">#createBitmap} or {@link #createScaledBitmap} with a source</span>
- * Bitmap whose colors are not pre-multiplied may result <span class="hljs-keyword">in</span> a RuntimeException,
- * since those <span class="hljs-built_in">functions</span> require drawing the <span class="hljs-built_in">source</span>, <span class="hljs-built_in">which</span> is not supported <span class="hljs-keyword">for</span>
+ * &lt;p&gt;Calling {@link #createBitmap} or {@link #createScaledBitmap} with a source
+ * Bitmap whose colors are not pre-multiplied may result in a RuntimeException,
+ * since those functions require drawing the source, which is not supported for
  * un-pre-multiplied Bitmaps.&lt;/p&gt;
  *
- * @see Bitmap<span class="hljs-comment">#isPremultiplied()</span>
- * @see BitmapFactory.Options<span class="hljs-comment">#inPremultiplied</span>
- */
-public final void setPremultiplied(boolean premultiplied) {
+ * @see Bitmap#isPremultiplied()
+ * @see BitmapFactory.Options#inPremultiplied
+ */</span>
+public final <span class="hljs-keyword">void</span> setPremultiplied(boolean premultiplied) {
     checkRecycled(<span class="hljs-string">"setPremultiplied called on a recycled bitmap"</span>);
     mRequestPremultiplied = premultiplied;
     nativeSetPremultiplied(mNativePtr, premultiplied);
 }
-</code></pre><h3 id="gpu-">GPU?</h3><pre><code>/**
- * Builds caches associated with the bitmap that are used <span class="hljs-keyword">for</span> drawing it.
+</code></pre><h3 id="gpu-">GPU?</h3><pre><code><span class="hljs-comment">/**
+ * Builds caches associated with the bitmap that are used for drawing it.
  *
- * &lt;p&gt;Starting <span class="hljs-keyword">in</span> {@link android.os.Build.VERSION_CODES<span class="hljs-comment">#N}, this call initiates an asynchronous</span>
- * upload to the GPU on RenderThread, <span class="hljs-keyword">if</span> the Bitmap is not already uploaded. With Hardware
- * Acceleration, Bitmaps must be uploaded to the GPU <span class="hljs-keyword">in</span> order to be rendered. This is <span class="hljs-keyword">done</span> by
+ * &lt;p&gt;Starting in {@link android.os.Build.VERSION_CODES#N}, this call initiates an asynchronous
+ * upload to the GPU on RenderThread, if the Bitmap is not already uploaded. With Hardware
+ * Acceleration, Bitmaps must be uploaded to the GPU in order to be rendered. This is done by
  * default the first time a Bitmap is drawn, but the process can take several milliseconds,
  * depending on the size of the Bitmap. Each time a Bitmap is modified and drawn again, it must
  * be re-uploaded.&lt;/p&gt;
  *
- * &lt;p&gt;Calling this method <span class="hljs-keyword">in</span> advance can save time <span class="hljs-keyword">in</span> the first frame it<span class="hljs-string">'s used. For example, it
+ * &lt;p&gt;Calling this method in advance can save time in the first frame it's used. For example, it
  * is recommended to call this on an image decoding worker thread when a decoded Bitmap is about
  * to be displayed. It is recommended to make any pre-draw modifications to the Bitmap before
  * calling this method, so the cached, uploaded copy may be reused without re-uploading.&lt;/p&gt;
  *
  * In {@link android.os.Build.VERSION_CODES#KITKAT} and below, for purgeable bitmaps, this call
  * would attempt to ensure that the pixels have been decoded.
- */
-public void prepareToDraw() {
-    checkRecycled("Can'</span>t prepareToDraw on a recycled bitmap!<span class="hljs-string">");
-    // Kick off an update/upload of the bitmap outside of the normal
-    // draw path.
+ */</span>
+public <span class="hljs-keyword">void</span> prepareToDraw() {
+    checkRecycled(<span class="hljs-string">"Can't prepareToDraw on a recycled bitmap!"</span>);
+    <span class="hljs-comment">// Kick off an update/upload of the bitmap outside of the normal</span>
+    <span class="hljs-comment">// draw path.</span>
     nativePrepareToDraw(mNativePtr);
-}</span>
+}
 </code></pre><h4 id="更多参数">更多参数</h4><table>
 <thead>
 <tr>
@@ -334,111 +334,111 @@ public void prepareToDraw() {
 </tr>
 </tbody>
 </table>
-<h4 id="缩放图片的几种方式">缩放图片的几种方式</h4><pre><code>// 方式一 内部实现就是Matrix
-inline fun Bitmap.scale(width: Int, height: Int, filter: Boolean = <span class="hljs-literal">true</span>): Bitmap {
-    <span class="hljs-built_in">return</span> Bitmap.createScaledBitmap(this, width, height, filter)
+<h4 id="缩放图片的几种方式">缩放图片的几种方式</h4><pre><code><span class="hljs-comment">// 方式一 内部实现就是Matrix</span>
+inline fun Bitmap.scale(width: Int, <span class="hljs-attr">height</span>: Int, <span class="hljs-attr">filter</span>: <span class="hljs-built_in">Boolean</span> = <span class="hljs-literal">true</span>): Bitmap {
+    <span class="hljs-keyword">return</span> Bitmap.createScaledBitmap(<span class="hljs-keyword">this</span>, width, height, filter)
 }
 
-public static Bitmap createScaledBitmap(@NonNull Bitmap src, int dstWidth, int dstHeight,
+public <span class="hljs-keyword">static</span> Bitmap createScaledBitmap(@NonNull Bitmap src, int dstWidth, int dstHeight,
         boolean filter) {
-    Matrix m = new Matrix();
+    Matrix m = <span class="hljs-keyword">new</span> Matrix();
 
     final int width = src.getWidth();
     final int height = src.getHeight();
     <span class="hljs-keyword">if</span> (width != dstWidth || height != dstHeight) {
-        final <span class="hljs-built_in">float</span> sx = dstWidth / (<span class="hljs-built_in">float</span>) width;
-        final <span class="hljs-built_in">float</span> sy = dstHeight / (<span class="hljs-built_in">float</span>) height;
+        final float sx = dstWidth / (float) width;
+        final float sy = dstHeight / (float) height;
         m.setScale(sx, sy);
     }
-    <span class="hljs-built_in">return</span> Bitmap.createBitmap(src, 0, 0, width, height, m, filter);
+    <span class="hljs-keyword">return</span> Bitmap.createBitmap(src, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width, height, m, filter);
 }
 
-// 方式二
-BitmapFactory.decodeStream(xxx, null, BitmapFactory.Options().apply {
+<span class="hljs-comment">// 方式二</span>
+BitmapFactory.decodeStream(xxx, <span class="hljs-literal">null</span>, BitmapFactory.Options().apply {
             inPreferredConfig = Bitmap.Config.ARGB_8888
             inScaled = <span class="hljs-literal">true</span>
             inDensity = srcWidth
             inTargetDensity = dstWidth
         })
 </code></pre><h3 id="去除边缘透明像素">去除边缘透明像素</h3><pre><code>fun Bitmap.clipTransparentEdge(): Bitmap {
-    var left = 0
-    var top = 0
-    var right = width
-    var bottom = height
+    <span class="hljs-keyword">var</span> left = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">var</span> top = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">var</span> right = width
+    <span class="hljs-keyword">var</span> bottom = height
 
-    // 从边缘检测(比较快)
-    // LEFT
-    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> 0 until width) {
-        var find = <span class="hljs-literal">false</span>
-        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> 0 until height) {
+    <span class="hljs-comment">// 从边缘检测(比较快)</span>
+    <span class="hljs-comment">// LEFT</span>
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> until width) {
+        <span class="hljs-keyword">var</span> find = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> until height) {
             val color = getPixel(i, j)
-            // 如果是透明像素
-            <span class="hljs-keyword">if</span> (Color.alpha(color) != 0) {
+            <span class="hljs-comment">// 如果是透明像素</span>
+            <span class="hljs-keyword">if</span> (Color.alpha(color) != <span class="hljs-number">0</span>) {
                 left = i
                 find = <span class="hljs-literal">true</span>
-                <span class="hljs-built_in">break</span>
+                <span class="hljs-keyword">break</span>
             }
         }
         <span class="hljs-keyword">if</span> (find) {
-            <span class="hljs-built_in">break</span>
+            <span class="hljs-keyword">break</span>
         }
     }
-    // TOP
-    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> 0 until height) {
-        var find = <span class="hljs-literal">false</span>
-        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> 0 until width) {
+    <span class="hljs-comment">// TOP</span>
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> until height) {
+        <span class="hljs-keyword">var</span> find = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> until width) {
             val color = getPixel(j, i)
-            // 如果是透明像素
-            <span class="hljs-keyword">if</span> (Color.alpha(color) != 0) {
+            <span class="hljs-comment">// 如果是透明像素</span>
+            <span class="hljs-keyword">if</span> (Color.alpha(color) != <span class="hljs-number">0</span>) {
                 top = i
                 find = <span class="hljs-literal">true</span>
-                <span class="hljs-built_in">break</span>
+                <span class="hljs-keyword">break</span>
             }
         }
         <span class="hljs-keyword">if</span> (find) {
-            <span class="hljs-built_in">break</span>
+            <span class="hljs-keyword">break</span>
         }
     }
 
-    // RIGHT
-    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> width - 1 downTo 0) {
-        var find = <span class="hljs-literal">false</span>
-        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> 0 until height) {
+    <span class="hljs-comment">// RIGHT</span>
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> width - <span class="hljs-number">1</span> downTo <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">var</span> find = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> until height) {
             val color = getPixel(i, j)
-            // 如果是透明像素
-            <span class="hljs-keyword">if</span> (Color.alpha(color) != 0) {
+            <span class="hljs-comment">// 如果是透明像素</span>
+            <span class="hljs-keyword">if</span> (Color.alpha(color) != <span class="hljs-number">0</span>) {
                 right = i
                 find = <span class="hljs-literal">true</span>
-                <span class="hljs-built_in">break</span>
+                <span class="hljs-keyword">break</span>
             }
         }
         <span class="hljs-keyword">if</span> (find) {
-            <span class="hljs-built_in">break</span>
+            <span class="hljs-keyword">break</span>
         }
     }
 
-    // BOTTOM
-    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> height - 1 downTo 0) {
-        var find = <span class="hljs-literal">false</span>
-        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> 0 until width) {
+    <span class="hljs-comment">// BOTTOM</span>
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> height - <span class="hljs-number">1</span> downTo <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">var</span> find = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> until width) {
             val color = getPixel(j, i)
-            // 如果是透明像素
-            <span class="hljs-keyword">if</span> (Color.alpha(color) != 0) {
+            <span class="hljs-comment">// 如果是透明像素</span>
+            <span class="hljs-keyword">if</span> (Color.alpha(color) != <span class="hljs-number">0</span>) {
                 bottom = i
                 find = <span class="hljs-literal">true</span>
-                <span class="hljs-built_in">break</span>
+                <span class="hljs-keyword">break</span>
             }
         }
         <span class="hljs-keyword">if</span> (find) {
-            <span class="hljs-built_in">break</span>
+            <span class="hljs-keyword">break</span>
         }
     }
 
-    <span class="hljs-built_in">return</span> <span class="hljs-keyword">if</span> (left == 0 &amp;&amp; top == 0 &amp;&amp; right == width &amp;&amp; bottom == height) {
-        this
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> (left == <span class="hljs-number">0</span> &amp;&amp; top == <span class="hljs-number">0</span> &amp;&amp; right == width &amp;&amp; bottom == height) {
+        <span class="hljs-keyword">this</span>
     } <span class="hljs-keyword">else</span> {
-        Log.d(<span class="hljs-string">"BitmapX"</span>, <span class="hljs-string">"{<span class="hljs-variable">$width</span>,<span class="hljs-variable">$height</span>},cut={<span class="hljs-variable">$left</span>,<span class="hljs-variable">$top</span>,<span class="hljs-variable">${width - right}</span>,<span class="hljs-variable">${height - bottom}</span>}"</span>)
-        Bitmap.createBitmap(this, left, top, right - left, bottom - top)
+        Log.d(<span class="hljs-string">"BitmapX"</span>, <span class="hljs-string">"{$width,$height},cut={$left,$top,${width - right},${height - bottom}}"</span>)
+        Bitmap.createBitmap(<span class="hljs-keyword">this</span>, left, top, right - left, bottom - top)
     }
 }
 </code></pre>
@@ -480,8 +480,8 @@ BitmapFactory.decodeStream(xxx, null, BitmapFactory.Options().apply {
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145301"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145301"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107093"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107093"></script>
 </body>
 
 </html>

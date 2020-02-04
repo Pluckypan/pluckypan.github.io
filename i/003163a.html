@@ -13,7 +13,7 @@
 			OkHttp Cache-Control - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145238">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107040">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -146,22 +146,22 @@
 <blockquote>
 <p>okhttp只会对get请求进行缓存，post请求是不会进行缓存，这也是有道理的，因为get请求的数据一般是比较持久的，而post一般是交互操作，没太大意义进行缓存。</p>
 </blockquote>
-<h3 id="cachecontrol.java类介绍">CacheControl.java类介绍</h3><pre><code>final CacheControl.Builder builder = new CacheControl.Builder();
-builder.noCache();//不使用缓存，全部走网络
-builder.noStore();//不使用缓存，也不存储缓存
-builder.onlyIfCached();//只使用缓存
+<h3 id="cachecontrol.java类介绍">CacheControl.java类介绍</h3><pre><code>final CacheControl.Builder builder = <span class="hljs-keyword">new</span> CacheControl.Builder();
+builder.noCache();<span class="hljs-comment">//不使用缓存，全部走网络</span>
+builder.noStore();<span class="hljs-comment">//不使用缓存，也不存储缓存</span>
+builder.onlyIfCached();<span class="hljs-comment">//只使用缓存</span>
 builder.noTransform();
-builder.maxAge(10, TimeUnit.MILLISECONDS);//有效期为10秒
-builder.maxStale(10, TimeUnit.SECONDS);//指示客户机可以接收超出超时期间的响应消息
-builder.minFresh(10, TimeUnit.SECONDS);//指示客户机可以接收响应时间小于当前时间加上指定时间的响应。
-CacheControl cache = builder.build();//cacheControl
-</code></pre><h3 id="interceptor拦截器中使用cachecontrol">Interceptor拦截器中使用CacheControl</h3><pre><code>private static final long cacheSize = 1024*1024*20;//缓存文件最大限制大小20M  
-private static String cachedirectory = FilePathroot + <span class="hljs-string">"/caches"</span>;  //设置缓存文件路径  
-private static Cache cache = new Cache(new File(cachedirectory), cacheSize);
+builder.maxAge(<span class="hljs-number">10</span>, TimeUnit.MILLISECONDS);<span class="hljs-comment">//有效期为10秒</span>
+builder.maxStale(<span class="hljs-number">10</span>, TimeUnit.SECONDS);<span class="hljs-comment">//指示客户机可以接收超出超时期间的响应消息</span>
+builder.minFresh(<span class="hljs-number">10</span>, TimeUnit.SECONDS);<span class="hljs-comment">//指示客户机可以接收响应时间小于当前时间加上指定时间的响应。</span>
+CacheControl cache = builder.build();<span class="hljs-comment">//cacheControl</span>
+</code></pre><h3 id="interceptor拦截器中使用cachecontrol">Interceptor拦截器中使用CacheControl</h3><pre><code>private <span class="hljs-keyword">static</span> final long cacheSize = <span class="hljs-number">1024</span>*<span class="hljs-number">1024</span>*<span class="hljs-number">20</span>;<span class="hljs-comment">//缓存文件最大限制大小20M  </span>
+private <span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> cachedirectory = FilePathroot + <span class="hljs-string">"/caches"</span>;  <span class="hljs-comment">//设置缓存文件路径  </span>
+private <span class="hljs-keyword">static</span> Cache cache = <span class="hljs-keyword">new</span> Cache(<span class="hljs-keyword">new</span> File(cachedirectory), cacheSize);
 
 OkHttpClient.Builder newBuilder = mOkHttpClient.newBuilder();
-newBuilder.cache(cache);//设置缓存
-newBuilder.addInterceptor(new <span class="hljs-function"><span class="hljs-title">Interceptor</span></span>() {
+newBuilder.cache(cache);<span class="hljs-comment">//设置缓存</span>
+newBuilder.addInterceptor(<span class="hljs-keyword">new</span> Interceptor() {
 @Override
 public Response intercept(Chain chain) throws IOException {
     Request request = chain.request();
@@ -171,7 +171,7 @@ public Response intercept(Chain chain) throws IOException {
     }
     Response response = chain.proceed(request);
 
-    <span class="hljs-built_in">return</span> response;
+    <span class="hljs-keyword">return</span> response;
     }
 });
 </code></pre>
@@ -213,8 +213,8 @@ public Response intercept(Chain chain) throws IOException {
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145238"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145238"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107040"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107040"></script>
 </body>
 
 </html>

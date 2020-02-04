@@ -13,7 +13,7 @@
 			Annotations - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145286">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107089">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -171,21 +171,21 @@
 </ul>
 </li>
 </ol>
-<h3 id="反射获取 运行时 注解">反射获取 运行时 注解</h3><pre><code>public class ReflectMain {
+<h3 id="反射获取 运行时 注解">反射获取 运行时 注解</h3><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReflectMain</span> </span>{
 
     @ReflectParam(<span class="hljs-string">"jerry"</span>)
-    public String userName;
+    public <span class="hljs-built_in">String</span> userName;
 
-    public static void main(String[] args) {
-        ReflectMain main = new ReflectMain();
-        ReflectParam annotation = null;
-        try {
+    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+        ReflectMain main = <span class="hljs-keyword">new</span> ReflectMain();
+        ReflectParam annotation = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">try</span> {
             Class clazz = main.getClass();
-            //Field[] fields = clazz.getFields();
+            <span class="hljs-comment">//Field[] fields = clazz.getFields();</span>
             Field field = clazz.getField(<span class="hljs-string">"userName"</span>);
             annotation = field.getAnnotation(ReflectParam.class);
             System.out.print(annotation.value());
-        } catch (NoSuchFieldException e) {
+        } <span class="hljs-keyword">catch</span> (NoSuchFieldException e) {
             System.out.print(<span class="hljs-string">"no such field"</span>);
         }
     }
@@ -238,8 +238,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145287"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145287"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107089"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107089"></script>
 </body>
 
 </html>

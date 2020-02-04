@@ -13,7 +13,7 @@
 			iOS正则表达式RegexKitLite - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145299">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107110">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -149,33 +149,33 @@
 <h3 id="常用方法">常用方法</h3><pre><code>NSString *searchString = @<span class="hljs-string">"我正在#话题#吃饭@zhangsan 你@lisi 吃了没?"</span>;
 NSString *regexString = @<span class="hljs-string">"@\\w+"</span>;
 
-//1、返回所有匹配成功的结果，并存放到一个数组里
+<span class="hljs-comment">//1、返回所有匹配成功的结果，并存放到一个数组里</span>
 NSArray *array = [searchString componentsMatchedByRegex:regexString];
-NSLog(@<span class="hljs-string">"array:%@"</span>,array); // 输出结果: (<span class="hljs-string">"@zhangsan"</span>,<span class="hljs-string">"@lisi"</span>)
+NSLog(@<span class="hljs-string">"array:%@"</span>,array); <span class="hljs-comment">// 输出结果: ("@zhangsan","@lisi")</span>
 
-//2、判断字符串是否与Regex配对
+<span class="hljs-comment">//2、判断字符串是否与Regex配对</span>
 BOOL isMatched = [@<span class="hljs-string">"@zhangsan"</span> isMatchedByRegex:regexString];
 <span class="hljs-keyword">if</span> (isMatched) {
    NSLog(@<span class="hljs-string">"配对成功"</span>);
 }
 
-//3、 取得配对出来的第一個完整字串
+<span class="hljs-comment">//3、 取得配对出来的第一個完整字串</span>
 NSString *matchedString1 = [searchString stringByMatching:regexString];
-NSLog(@<span class="hljs-string">"matchedString1:%@"</span>,matchedString1); // 输出结果: @zhangsan
+NSLog(@<span class="hljs-string">"matchedString1:%@"</span>,matchedString1); <span class="hljs-comment">// 输出结果: @zhangsan</span>
 
-//4、 将字符串中与Regex配对的结果进行替换
+<span class="hljs-comment">//4、 将字符串中与Regex配对的结果进行替换</span>
 NSString *replaceString = @<span class="hljs-string">"wangwu"</span>;
 NSString *matchedString2 = [searchString stringByReplacingOccurrencesOfRegex:regexString withString:replaceString];
-NSLog(@<span class="hljs-string">"matchedString2:%@"</span>,matchedString2); // 输出结果: 我正在<span class="hljs-comment">#话题#吃饭wangwu 你wangwu 吃了没?</span>
+NSLog(@<span class="hljs-string">"matchedString2:%@"</span>,matchedString2); <span class="hljs-comment">// 输出结果: 我正在#话题#吃饭wangwu 你wangwu 吃了没?</span>
 
-//5、 如果是NSMutableString，则可以直接替换，并返回替换的次数
+<span class="hljs-comment">//5、 如果是NSMutableString，则可以直接替换，并返回替换的次数</span>
 NSMutableString *mutSearchString = [NSMutableString stringWithString:@<span class="hljs-string">"我正在#话题#吃放@zhangsan 你@lisi 吃了没?"</span>];
 NSInteger mutMatchedString2 = [mutSearchString replaceOccurrencesOfRegex:regexString withString:replaceString];
-NSLog(@<span class="hljs-string">"mutMatchedString2:%ld"</span>,mutMatchedString2); // 输出结果: 2
+NSLog(@<span class="hljs-string">"mutMatchedString2:%ld"</span>,mutMatchedString2); <span class="hljs-comment">// 输出结果: 2</span>
 
-//6、 返回一个拆分后的字符串数组
+<span class="hljs-comment">//6、 返回一个拆分后的字符串数组</span>
 NSArray *array3 = [searchString componentsSeparatedByRegex:regexString];
-NSLog(@<span class="hljs-string">"array3:%@"</span>,array3); // 输出结果: (<span class="hljs-string">"我正在#话题#吃饭"</span>,<span class="hljs-string">" 你"</span>,<span class="hljs-string">" 吃了没?"</span>)
+NSLog(@<span class="hljs-string">"array3:%@"</span>,array3); <span class="hljs-comment">// 输出结果: ("我正在#话题#吃饭"," 你"," 吃了没?")</span>
 </code></pre><h3 id="正则参考">正则参考</h3><p><a href="http://www.runoob.com/regexp/regexp-tutorial.html">正则表达式学习参考</a></p>
 
 </div>
@@ -216,8 +216,8 @@ NSLog(@<span class="hljs-string">"array3:%@"</span>,array3); // 输出结果: (<
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145300"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145300"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107110"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107110"></script>
 </body>
 
 </html>

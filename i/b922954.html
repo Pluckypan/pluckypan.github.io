@@ -13,7 +13,7 @@
 			docker - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145222">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107015">
 	</head>
 
 	<body>
@@ -137,57 +137,57 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
 <div class="markdown-body">
 <h1 id="docker">docker</h1><p>docker的安装与使用</p>
 <h3 id="安装">安装</h3><p>直接从官方下载桌面版即可 <a href="https://www.docker.com/products/docker-desktop">链接</a></p>
-<h3 id="docker 常用指令">docker 常用指令</h3><pre><code><span class="hljs-comment"># 查看docker所有容器</span>
+<h3 id="docker 常用指令">docker 常用指令</h3><pre><code># 查看docker所有容器
 $ docker ps -a
 $ docker start -i 23cad7751e58(CONTAINER ID)
 $ docker stop -t=60 23cad7751e58(CONTAINER ID)
-$ docker <span class="hljs-built_in">kill</span> 23cad7751e58(CONTAINER ID)
+$ docker kill 23cad7751e58(CONTAINER ID)
 $ docker rm -f 23cad7751e58(CONTAINER ID)
 </code></pre><h3 id="docker 共享文件夹">docker 共享文件夹</h3><p>在宿主机器添加共享文件夹 docker desktop 首选项中有配置</p>
-<h3 id="挂载 -v">挂载 -v</h3><pre><code><span class="hljs-comment"># 将 `/Users/plucky/plucky/github/python/faceswap` 挂载到 `/srv`</span>
+<h3 id="挂载 -v">挂载 -v</h3><pre><code># 将 `/Users/plucky/plucky/github/python/faceswap` 挂载到 `/srv`
 $ docker run -p 8888:8888  --hostname deepfakes-cpu --name deepfakes-cpu    -v /Users/plucky/plucky/github/python/faceswap:/srv   deepfakes-cpu
 </code></pre><h3 id="常用参数">常用参数</h3><pre><code>-d：以守护进程方式运行后台
 -i：表示以“交互模式”运行容器
 -t：表示容器启动后会进入其命令行
--v：容器挂载，-v /my/webapp:/usr/<span class="hljs-built_in">local</span>/tomcat/webapps 冒号前为当前宿主机目录,冒号后为容器目录
-</code></pre><h3 id="常用指令">常用指令</h3><pre><code>$ docker ps        <span class="hljs-comment">#列出容器</span>
-$ docker build     <span class="hljs-comment">#由Dockerfile构建镜像</span>
-$ docker port      <span class="hljs-comment">#列表端口映射或用于容器的特定的映射</span>
-$ docker pull      <span class="hljs-comment">#从镜像仓库中拉出镜像</span>
-$ docker push      <span class="hljs-comment">#上传镜像</span>
-$ docker rename    <span class="hljs-comment">#重命名镜像</span>
-$ docker restart   <span class="hljs-comment">#重启一个容器</span>
-$ docker rm        <span class="hljs-comment">#删除容器</span>
-$ docker images    <span class="hljs-comment">#查看所有镜像</span>
-$ docker rmi       <span class="hljs-comment">#删除镜像</span>
-$ docker run       <span class="hljs-comment">#在容器中运行命令</span>
-$ docker search    <span class="hljs-comment">#在Docker Hub中查找镜像</span>
-$ docker start     <span class="hljs-comment">#启动停止的容器</span>
-$ docker stats     <span class="hljs-comment">#显示容器的实时流资源使用统计信息</span>
-$ docker stop      <span class="hljs-comment">#停止正在运行的容器</span>
-$ docker tag       <span class="hljs-comment">#将镜像标记到存储库中</span>
-$ docker top       <span class="hljs-comment">#显示容器的正在运行的进程</span>
-$ docker volume    <span class="hljs-comment">#管理Docker卷</span>
-$ docker <span class="hljs-built_in">kill</span>      <span class="hljs-comment">#立即停止容器</span>
-$ docker <span class="hljs-built_in">exec</span>      <span class="hljs-comment">#执行容器中脚本 docker exec -it deepfakes-cpu bash</span>
+-v：容器挂载，-v /my/webapp:<span class="hljs-regexp">/usr/</span>local/tomcat/webapps 冒号前为当前宿主机目录,冒号后为容器目录
+</code></pre><h3 id="常用指令">常用指令</h3><pre><code>$ docker ps        #列出容器
+$ docker build     #由Dockerfile构建镜像
+$ docker port      #列表端口映射或用于容器的特定的映射
+$ docker pull      #从镜像仓库中拉出镜像
+$ docker push      #上传镜像
+$ docker rename    #重命名镜像
+$ docker restart   #重启一个容器
+$ docker rm        #删除容器
+$ docker images    #查看所有镜像
+$ docker rmi       #删除镜像
+$ docker run       #在容器中运行命令
+$ docker search    #在Docker Hub中查找镜像
+$ docker start     #启动停止的容器
+$ docker stats     #显示容器的实时流资源使用统计信息
+$ docker stop      #停止正在运行的容器
+$ docker tag       #将镜像标记到存储库中
+$ docker top       #显示容器的正在运行的进程
+$ docker volume    #管理Docker卷
+$ docker kill      #立即停止容器
+$ docker exec      #执行容器中脚本 docker exec -it deepfakes-cpu bash
 </code></pre><h3 id="docker run 参数">docker run 参数</h3><pre><code>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项； 
 -d: 后台运行容器，并返回容器ID
 -i: 以交互模式运行容器，通常与 -t 同时使用
 -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用
 –name=”nginx-lb”: 为容器指定一个名称
-–dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致
+–dns <span class="hljs-number">8.8</span><span class="hljs-number">.8</span><span class="hljs-number">.8</span>: 指定容器使用的DNS服务器，默认和宿主一致
 –dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致
 -h “mars”: 指定容器的hostname
 -e username=”ritchie”: 设置环境变量
 –env-file=[]: 从指定文件读入环境变量
-–cpuset=”0-2” or –cpuset=”0,1,2”: 绑定容器到指定CPU运行
+–cpuset=”<span class="hljs-number">0</span><span class="hljs-number">-2</span>” or –cpuset=”<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>”: 绑定容器到指定CPU运行
 -m :设置容器使用内存最大值
 –net=”bridge”: 指定容器的网络连接类型，支持 bridge/host/none/Container: 四种类型
 –link=[]: 添加链接到另一个容器；
@@ -218,19 +218,19 @@ $ docker <span class="hljs-built_in">exec</span>      <span class="hljs-comment"
 </tr>
 </tbody>
 </table>
-<h3 id="常用的docker镜像">常用的Docker镜像</h3><pre><code><span class="hljs-comment"># 部署 maven 仓库</span>
+<h3 id="常用的docker镜像">常用的Docker镜像</h3><pre><code># 部署 maven 仓库
 $ docker pull sonatype/nexus3                           https://hub.docker.com/r/sonatype/nexus3
-<span class="hljs-comment"># jenkins 自动构建  </span>
+# jenkins 自动构建  
 $ docker pull jenkins                                   https://hub.docker.com/_/jenkins
-<span class="hljs-comment"># gitlab 代码管理</span>
+# gitlab 代码管理
 $ docker pull store/gitlab/gitlab-ce:10.2.4-ce.0        https://docs.gitlab.com/omnibus/docker/README.html
-<span class="hljs-comment"># jira工单系统</span>
+# jira工单系统
 $ docker pull cptactionhank/atlassian-jira              https://hub.docker.com/r/cptactionhank/atlassian-jira
-<span class="hljs-comment"># cf文档系统</span>
+# cf文档系统
 $ docker pull cptactionhank/atlassian-confluence        https://hub.docker.com/r/cptactionhank/atlassian-confluence
 
 
-<span class="hljs-comment"># 其他</span>
+# 其他
 $ docker pull mysql
 $ docker pull node
 $ docker pull ubuntu
@@ -241,9 +241,9 @@ $ docker pull python
 $ docker pull golang
 $ docker pull tensorflow/tensorflow
 </code></pre><h3 id="国内镜像">国内镜像</h3><p>如果是 <code>Docker Desktop</code> 版本可以在 <code>Preferences</code> 中添加</p>
-<pre><code>https://docker.mirrors.ustc.edu.cn
-https://hub-mirror.c.163.com
-https://registry.docker-cn.com
+<pre><code>https:<span class="hljs-comment">//docker.mirrors.ustc.edu.cn</span>
+https:<span class="hljs-comment">//hub-mirror.c.163.com</span>
+https:<span class="hljs-comment">//registry.docker-cn.com</span>
 </code></pre><h3 id="参考文档">参考文档</h3><ol>
 <li><a href="https://blog.csdn.net/jiang_xinxing/article/details/58025417">Mac平台上Docker安装与使用</a></li>
 <li><a href="http://www.cnblogs.com/inrgihc/articles/7908970.html">docker的安装与使用</a></li>
@@ -287,8 +287,8 @@ https://registry.docker-cn.com
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145222"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145222"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107016"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107016"></script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@
 			面试题 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145249">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107151">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -219,39 +219,39 @@ LinearLayout易用，效率高，表达能力有限。RelativeLayout复杂，表
 </ul>
 </li>
 </ul>
-<h3 id="14.如何实现单例模式">14.如何实现单例模式</h3><h4 id="饿汉式">饿汉式</h4><pre><code>public class OnlyMan{
-   public static OnlyMan instance=new OnlyMan();
-   private <span class="hljs-function"><span class="hljs-title">OnlyMan</span></span>(){
+<h3 id="14.如何实现单例模式">14.如何实现单例模式</h3><h4 id="饿汉式">饿汉式</h4><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OnlyMan</span></span>{
+   public <span class="hljs-keyword">static</span> OnlyMan instance=<span class="hljs-keyword">new</span> OnlyMan();
+   private OnlyMan(){
    }
 
-   public static OnlyMan <span class="hljs-function"><span class="hljs-title">getInstance</span></span>(){
-       <span class="hljs-built_in">return</span> instance;
+   public <span class="hljs-keyword">static</span> OnlyMan getInstance(){
+       <span class="hljs-keyword">return</span> instance;
    }
 }
-</code></pre><h4 id="懒汉式(线程不安全)">懒汉式(线程不安全)</h4><pre><code>public class OnlyMan{
-   public static OnlyMan instance;
-   private <span class="hljs-function"><span class="hljs-title">OnlyMan</span></span>(){
+</code></pre><h4 id="懒汉式(线程不安全)">懒汉式(线程不安全)</h4><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OnlyMan</span></span>{
+   public <span class="hljs-keyword">static</span> OnlyMan instance;
+   private OnlyMan(){
    }
-   public static OnlyMan <span class="hljs-function"><span class="hljs-title">getInstance</span></span>(){
-      <span class="hljs-keyword">if</span>(instance==null){
-         instance=new OnlyMan();
+   public <span class="hljs-keyword">static</span> OnlyMan getInstance(){
+      <span class="hljs-keyword">if</span>(instance==<span class="hljs-literal">null</span>){
+         instance=<span class="hljs-keyword">new</span> OnlyMan();
       }
-      <span class="hljs-built_in">return</span> instance;
+      <span class="hljs-keyword">return</span> instance;
    }
 }
-</code></pre><h4 id="懒汉式(线程安全)">懒汉式(线程安全)</h4><pre><code>public class OnlyMan{
-   public static OnlyMan instance;
-   private <span class="hljs-function"><span class="hljs-title">OnlyMan</span></span>(){
+</code></pre><h4 id="懒汉式(线程安全)">懒汉式(线程安全)</h4><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OnlyMan</span></span>{
+   public <span class="hljs-keyword">static</span> OnlyMan instance;
+   private OnlyMan(){
    }
-   public static synchronized OnlyMan <span class="hljs-function"><span class="hljs-title">getInstance</span></span>(){
-      <span class="hljs-keyword">if</span>(instance==null){
-         instance=new OnlyMan();
+   public <span class="hljs-keyword">static</span> synchronized OnlyMan getInstance(){
+      <span class="hljs-keyword">if</span>(instance==<span class="hljs-literal">null</span>){
+         instance=<span class="hljs-keyword">new</span> OnlyMan();
       }
-      <span class="hljs-built_in">return</span> instance;
+      <span class="hljs-keyword">return</span> instance;
    }
 }
-</code></pre><h3 id="kotlin 单例">Kotlin 单例</h3><pre><code>// 静态内部类
-class A private <span class="hljs-function"><span class="hljs-title">constructor</span></span>(){
+</code></pre><h3 id="kotlin 单例">Kotlin 单例</h3><pre><code><span class="hljs-comment">// 静态内部类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> <span class="hljs-title">private</span> <span class="hljs-title">constructor</span>()</span>{
   companion object{
     val sInstance=Holder.sA
   }
@@ -260,8 +260,8 @@ class A private <span class="hljs-function"><span class="hljs-title">constructor
     val sA=A()
   }
 }
-// 懒汉式 线程安全 双重校验
-class B private <span class="hljs-function"><span class="hljs-title">constructor</span></span>(){
+<span class="hljs-comment">// 懒汉式 线程安全 双重校验</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-title">private</span> <span class="hljs-title">constructor</span>()</span>{
   companion object{
     val sInstance by lazy{
       B()
@@ -290,9 +290,9 @@ class B private <span class="hljs-function"><span class="hljs-title">constructor
 <li>不要使用Enum</li>
 </ul>
 <h3 id="18.android 中如何捕获未捕获的异常">18.Android 中如何捕获未捕获的异常</h3><pre><code>Thread.UncaughtExceptionHandler mUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-Thread.setDefaultUncaughtExceptionHandler(new Thread.<span class="hljs-function"><span class="hljs-title">UncaughtExceptionHandler</span></span>() {
+Thread.setDefaultUncaughtExceptionHandler(<span class="hljs-keyword">new</span> Thread.UncaughtExceptionHandler() {
     @Override
-    public void uncaughtException(Thread thread, Throwable throwable) {
+    public <span class="hljs-keyword">void</span> uncaughtException(Thread thread, Throwable throwable) {
         Logger.d(<span class="hljs-string">"hello"</span>);
         mUncaughtExceptionHandler.uncaughtException(thread, throwable);
     }
@@ -368,8 +368,8 @@ Thread.setDefaultUncaughtExceptionHandler(new Thread.<span class="hljs-function"
 <h3 id="28.string、stringbuffer与stringbuilder之间区别">28.String、StringBuffer与StringBuilder之间区别</h3><ul>
 <li>三者在执行速度方面的比较：StringBuilder &gt;  StringBuffer  &gt;  String<blockquote>
 <p>String是字符串常量,StringBuffer和StringBuilder是字符串变量。</p>
-<pre><code>String s = <span class="hljs-string">"abcd"</span>;
-s = s+1;
+<pre><code><span class="hljs-built_in">String</span> s = <span class="hljs-string">"abcd"</span>;
+s = s+<span class="hljs-number">1</span>;
 System.out.print(s);
 </code></pre><p>我们明明就是改变了String型的变量s的，为什么说是没有改变呢? 其实这是一种欺骗，JVM是这样解析这段代码的：首先创建对象s，赋予一个abcd，然后再创建一个新的对象s用来执行第二行代码，也就是说我们之前对象s并没有变化，所以我们说String类型是不可改变的对象了，由于这种机制，每当用String操作字符串时，实际上是在不断的创建新的对象，而原来的对象就会变为垃圾被ＧＣ回收掉，可想而知这样执行效率会有多底。而StringBuffer与StringBuilder就不一样了，他们是字符串变量，是可改变的对象，每当我们用它们对字符串做操作时，实际上是在一个对象上操作的，这样就不会像String一样创建一些而外的对象进行操作了，当然速度就快了。</p>
 </blockquote>
@@ -413,7 +413,7 @@ HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是H
 </blockquote>
 <h3 id="32.java基础">32.Java基础</h3><ul>
 <li>Java int 32 位 4字节 有符号-2^31~2^31-1。byte 8位 有符号(-2^7=-128 ~ 2^7 -1=127)</li>
-<li>移位操作<pre><code>```
+<li>移位操作<pre><code><span class="hljs-string">``</span><span class="hljs-string">`
   shl(bits) – 左移位 (Java’s &lt;&lt;)
   shr(bits) – 右移位 (Java’s &gt;&gt;)
   ushr(bits) – 无符号右移位 (Java’s &gt;&gt;&gt;)
@@ -421,10 +421,10 @@ HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是H
   or(bits) – 或   ||
   xor(bits) – 异或
   inv() – 反向
-```
+`</span><span class="hljs-string">``</span>
 </code></pre></li>
 <li><p>移位操作实践</p>
-<pre><code>```
+<pre><code><span class="hljs-string">``</span><span class="hljs-string">`
   val a = 4
 
   /**
@@ -443,10 +443,10 @@ HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是H
   println(a shr 2)//1
   println((a + 2) shr 2)//1
   println(a ushr 2)//1
-  println((a + 2) ushr 2)//1
+  println((a + 2) ushr 2)//1</span>
 </code></pre></li>
 </ul>
-<pre><code>    /**
+<pre><code>    <span class="hljs-comment">/**
      * Java负数存储是以补码形式存储的（补码=反码+1）
      * 正数的反码和原码一致
      * 负数的反码除符号位以外 取反即可
@@ -477,58 +477,58 @@ HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是H
      * 还原10进制 过程相反
      * 减一 1111 1111 1111 1111 1111 1111 1110 0111
      * 取反  1000 0000 0000 0000 0000 0000 0001 1000 即 -24
-     */
+     */</span>
 
     println(<span class="hljs-string">"负数测试"</span>)
-    val b = -8
-    println(b shl 2)//-32
-    println((b + 2) shl 2)//-24
-    //1111 1111 1111 1111 1111 1111 1111 1000 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1101 ---&gt; 1000 0000 0000 0000 0000 0000 0000 0010
-    println(b shr 2)//-2
-    //1111 1111 1111 1111 1111 1111 1111 1010 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1110
-    println((b + 2) shr 2)//-2
-    /**
+    val b = <span class="hljs-number">-8</span>
+    println(b shl <span class="hljs-number">2</span>)<span class="hljs-comment">//-32</span>
+    println((b + <span class="hljs-number">2</span>) shl <span class="hljs-number">2</span>)<span class="hljs-comment">//-24</span>
+    <span class="hljs-comment">//1111 1111 1111 1111 1111 1111 1111 1000 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1101 ---&gt; 1000 0000 0000 0000 0000 0000 0000 0010</span>
+    println(b shr <span class="hljs-number">2</span>)<span class="hljs-comment">//-2</span>
+    <span class="hljs-comment">//1111 1111 1111 1111 1111 1111 1111 1010 ---&gt; 1111 1111 1111 1111 1111 1111 1111 1110</span>
+    println((b + <span class="hljs-number">2</span>) shr <span class="hljs-number">2</span>)<span class="hljs-comment">//-2</span>
+    <span class="hljs-comment">/**
      * 不管正数负数 无符号右移高位均补0
-     */
-    //1111 1111 1111 1111 1111 1111 1111 1000 ---&gt; 0011 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1073741822
-    println(b ushr 2)
-    //1111 1111 1111 1111 1111 1111 1111 1010 ---&gt; 0011 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1073741822
-    println((b + 2) ushr 2)//1073741822
+     */</span>
+    <span class="hljs-comment">//1111 1111 1111 1111 1111 1111 1111 1000 ---&gt; 0011 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1073741822</span>
+    println(b ushr <span class="hljs-number">2</span>)
+    <span class="hljs-comment">//1111 1111 1111 1111 1111 1111 1111 1010 ---&gt; 0011 1111 1111 1111 1111 1111 1111 1110 ---&gt; 1073741822</span>
+    println((b + <span class="hljs-number">2</span>) ushr <span class="hljs-number">2</span>)<span class="hljs-comment">//1073741822</span>
 
-    /**
+    <span class="hljs-comment">/**
      * 交换两个数
-     */
-    var e = 10
-    var f = 4
-    println(<span class="hljs-string">"before e=<span class="hljs-variable">$e</span> f=<span class="hljs-variable">$f</span>"</span>)
+     */</span>
+    <span class="hljs-keyword">var</span> e = <span class="hljs-number">10</span>
+    <span class="hljs-keyword">var</span> f = <span class="hljs-number">4</span>
+    println(<span class="hljs-string">"before e=$e f=$f"</span>)
     val tmp = e
     e = f
     f = tmp
-    println(<span class="hljs-string">"after tmp e=<span class="hljs-variable">$e</span> f=<span class="hljs-variable">$f</span>"</span>)
+    println(<span class="hljs-string">"after tmp e=$e f=$f"</span>)
 
-    //在两个数相加或者相减仍然在int的范围内
-    e = 10
-    f = 4
-    e = e + f // e=10+4=14
-    f = e - f // f=10+4-4=10
-    e = e - f // e=10+4-10=4
-    println(<span class="hljs-string">"after add e=<span class="hljs-variable">$e</span> f=<span class="hljs-variable">$f</span>"</span>)
+    <span class="hljs-comment">//在两个数相加或者相减仍然在int的范围内</span>
+    e = <span class="hljs-number">10</span>
+    f = <span class="hljs-number">4</span>
+    e = e + f <span class="hljs-comment">// e=10+4=14</span>
+    f = e - f <span class="hljs-comment">// f=10+4-4=10</span>
+    e = e - f <span class="hljs-comment">// e=10+4-10=4</span>
+    println(<span class="hljs-string">"after add e=$e f=$f"</span>)
 
-    /**
+    <span class="hljs-comment">/**
      * 异或 ^ xor 特性
      * 1. 交换律 a^b = b^a
      * 2. 结合律 a^b^c = a^(b^c) = (a^b)^c
      * 3. 自反性 a^b^b=a
      *
      * 结合自反性可以实现数的交换
-     */
-    e = 10
-    f = 4
-    e = e xor f //e^f
-    f = e xor f //e^f^f =e
-    e = e xor f //e^f^e =f
-    println(<span class="hljs-string">"after xor e=<span class="hljs-variable">$e</span> f=<span class="hljs-variable">$f</span>"</span>)
-  ```
+     */</span>
+    e = <span class="hljs-number">10</span>
+    f = <span class="hljs-number">4</span>
+    e = e xor f <span class="hljs-comment">//e^f</span>
+    f = e xor f <span class="hljs-comment">//e^f^f =e</span>
+    e = e xor f <span class="hljs-comment">//e^f^e =f</span>
+    println(<span class="hljs-string">"after xor e=$e f=$f"</span>)
+  <span class="hljs-string">``</span><span class="hljs-string">`</span>
 </code></pre>
 </div>
 
@@ -568,8 +568,8 @@ HashMap不是线程安全的；Hashtable线程安全，但效率低，因为是H
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145250"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145250"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107151"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107151"></script>
 </body>
 
 </html>

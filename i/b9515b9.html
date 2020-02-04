@@ -13,7 +13,7 @@
 			gradle jcenter - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145334">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107148">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -151,20 +151,20 @@ bintray.apikey=xxx
 </code></pre><h3 id="project 中 build.gradle 设置">project 中 build.gradle 设置</h3><pre><code>dependencies {
         classpath <span class="hljs-string">'com.android.tools.build:gradle:2.2.3'</span>
 
-        //需要额外添加的
+        <span class="hljs-comment">//需要额外添加的</span>
         classpath <span class="hljs-string">'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'</span>
         classpath <span class="hljs-string">'com.github.dcendents:android-maven-gradle-plugin:1.4.1'</span>
     }
-</code></pre><h3 id="library 中 build.gradle 设置">library 中 build.gradle 设置</h3><pre><code>//需要用到的插件
+</code></pre><h3 id="library 中 build.gradle 设置">library 中 build.gradle 设置</h3><pre><code><span class="hljs-comment">//需要用到的插件</span>
 apply plugin: <span class="hljs-string">'com.github.dcendents.android-maven'</span>
 apply plugin: <span class="hljs-string">'com.jfrog.bintray'</span>
 
-def vercode = 1
+def vercode = <span class="hljs-number">1</span>
 def vername = <span class="hljs-string">"1.0.0"</span>
 
-def siteUrl = <span class="hljs-string">'https://github.com/Pluckypan/'</span>  // 项目的主页
-def gitUrl = <span class="hljs-string">'https://github.com/Pluckypan/EE-PullToRefresh.git'</span> // Git仓库
-group = <span class="hljs-string">"engineer.echo.pulltorefresh.library"</span> // 类库包名
+def siteUrl = <span class="hljs-string">'https://github.com/Pluckypan/'</span>  <span class="hljs-comment">// 项目的主页</span>
+def gitUrl = <span class="hljs-string">'https://github.com/Pluckypan/EE-PullToRefresh.git'</span> <span class="hljs-comment">// Git仓库</span>
+group = <span class="hljs-string">"engineer.echo.pulltorefresh.library"</span> <span class="hljs-comment">// 类库包名</span>
 version = vername
 
 install {
@@ -172,7 +172,7 @@ install {
         pom {
             project {
                 packaging <span class="hljs-string">'aar'</span>
-                name <span class="hljs-string">'Base on Android-PullToRefresh(com.handmark.pulltorefresh),support gradle'</span>//项目描述
+                name <span class="hljs-string">'Base on Android-PullToRefresh(com.handmark.pulltorefresh),support gradle'</span><span class="hljs-comment">//项目描述</span>
                 url siteUrl
                 licenses {
                     license {
@@ -197,16 +197,16 @@ install {
     }
 }
 
-task javadoc(<span class="hljs-built_in">type</span>: Javadoc) {
-    <span class="hljs-built_in">source</span> = android.sourceSets.main.java.srcDirs
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
-task javadocJar(<span class="hljs-built_in">type</span>: Jar, dependsOn: javadoc) {
+task javadocJar(type: Jar, <span class="hljs-attr">dependsOn</span>: javadoc) {
     classifier = <span class="hljs-string">'javadoc'</span>
-    from javadoc.destinationDir
+    <span class="hljs-keyword">from</span> javadoc.destinationDir
 }
-task sourcesJar(<span class="hljs-built_in">type</span>: Jar) {
-    from android.sourceSets.main.java.srcDirs
+task sourcesJar(type: Jar) {
+    <span class="hljs-keyword">from</span> android.sourceSets.main.java.srcDirs
     classifier = <span class="hljs-string">'sources'</span>
 }
 artifacts {
@@ -216,7 +216,7 @@ artifacts {
 
 javadoc {
     options{
-        //如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码
+        <span class="hljs-comment">//如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码</span>
         encoding <span class="hljs-string">"UTF-8"</span>
         charSet <span class="hljs-string">'UTF-8'</span>
         author <span class="hljs-literal">true</span>
@@ -225,11 +225,11 @@ javadoc {
     }
 }
 
-Properties properties = new Properties()
+Properties properties = <span class="hljs-keyword">new</span> Properties()
 properties.load(project.rootProject.file(<span class="hljs-string">'local.properties'</span>).newDataInputStream())
 bintray {
-    user = properties.getProperty(<span class="hljs-string">"bintray.user"</span>) //读取 local.properties 文件里面的 bintray.user
-    key = properties.getProperty(<span class="hljs-string">"bintray.apikey"</span>) //读取 local.properties 文件里面的 bintray.apikey
+    user = properties.getProperty(<span class="hljs-string">"bintray.user"</span>) <span class="hljs-comment">//读取 local.properties 文件里面的 bintray.user</span>
+    key = properties.getProperty(<span class="hljs-string">"bintray.apikey"</span>) <span class="hljs-comment">//读取 local.properties 文件里面的 bintray.apikey</span>
     configurations = [<span class="hljs-string">'archives'</span>]
     pkg {
         repo = <span class="hljs-string">"maven"</span>
@@ -244,7 +244,7 @@ bintray {
 <p>terminal切换至类库所在根目录，执行以下指令。</p>
 </blockquote>
 <pre><code>library-path$: ../gradlew bintray
-</code></pre><h3 id="问题">问题</h3><pre><code><span class="hljs-comment">#如果发现gradlew command not found 或者需要输入密码</span>
+</code></pre><h3 id="问题">问题</h3><pre><code>#如果发现gradlew command not found 或者需要输入密码
 chmod 755 gradlew
 </code></pre>
 </div>
@@ -285,8 +285,8 @@ chmod 755 gradlew
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145335"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145335"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107148"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107148"></script>
 </body>
 
 </html>

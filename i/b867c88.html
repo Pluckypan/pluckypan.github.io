@@ -13,7 +13,7 @@
 			Deepfakes - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145207">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107004">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -154,15 +154,15 @@
 </ul>
 </li>
 <li><p>获取deepfakes工具包</p>
-<pre><code>$ git <span class="hljs-built_in">clone</span> https://github.com/deepfakes/faceswap.git
+<pre><code>$ git clone https:<span class="hljs-comment">//github.com/deepfakes/faceswap.git</span>
 </code></pre></li>
 <li><p>补全依赖</p>
 </li>
 </ol>
 <p>打开工具包目录下的<code>requirements.txt</code> <strong>补全所有依赖 requirements.txt</strong> 为了安装快速,可以使用国内源，示例代码如下:</p>
-<pre><code><span class="hljs-comment"># 逐个安装</span>
+<pre><code># 逐个安装
 $ sudo pip install pynvx -i https://mirrors.aliyun.com/pypi/simple/
-<span class="hljs-comment"># 批量安装</span>
+# 批量安装
 $ sudo pip --no-cache-dir install -r requirements.txt
 </code></pre><ol start="4">
 <li>安装完所有依赖运行 setup</li>
@@ -172,31 +172,31 @@ $ sudo pip --no-cache-dir install -r requirements.txt
 <li>docker 配置</li>
 </ol>
 <pre><code>$ docker build -t deepfakes-cpu -f Dockerfile.cpu .
-<span class="hljs-comment"># Nvidia-Docker is only supported on Linux.Only CPU is supported in Docker for your system</span>
-<span class="hljs-comment"># 如果是Mac系统或者不支持GPU</span>
+# Nvidia-Docker is only supported on Linux.Only CPU is supported in Docker for your system
+# 如果是Mac系统或者不支持GPU
 $ docker run -p 8888:8888  --hostname deepfakes-cpu --name deepfakes-cpu  -v /Users/plucky/plucky/github/python/faceswap:/srv  deepfakes-cpu
-<span class="hljs-comment"># 如果是Linux系统支持GPU</span>
-xhost +<span class="hljs-built_in">local</span>:
+# 如果是Linux系统支持GPU
+xhost +local:
 nvidia-docker run -p 8888:8888 \
             --hostname deepfakes-cpu --name deepfakes-cpu \
             -v /Users/plucky/plucky/github/python/faceswap:/srv \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
-            -e DISPLAY=unix<span class="hljs-variable">$DISPLAY</span> \
+            -e DISPLAY=unix$DISPLAY \
             -e AUDIO_GID=`getent group audio | cut -d: -f3` \
             -e VIDEO_GID=`getent group video | cut -d: -f3` \
             -e GID=`id -g` \
             -e UID=`id -u` \
             deepfakes-cpu
-<span class="hljs-comment"># 执行以上代码后会提示</span>
+# 执行以上代码后会提示
 The Jupyter Notebook is running at:
 http://(deepfakes-cpu or 127.0.0.1):8888/?token=your token
-<span class="hljs-comment"># 新开一个 Terminal 执行 `docker exec -it deepfakes-cpu bash` 进入bash</span>
-<span class="hljs-comment"># 打开提示的链接，会要求输入token,提示输入 `jupyter notebook list`</span>
-<span class="hljs-comment"># 在新开的 Terminal 执行 `jupyter notebook list`，可以看到 token,在网站 输入token 就可以打开网站首页了</span>
+# 新开一个 Terminal 执行 `docker exec -it deepfakes-cpu bash` 进入bash
+# 打开提示的链接，会要求输入token,提示输入 `jupyter notebook list`
+# 在新开的 Terminal 执行 `jupyter notebook list`，可以看到 token,在网站 输入token 就可以打开网站首页了
 
-<span class="hljs-comment"># 因为创建过 docker 容器，所以之后只需要启动容器,然后在进入容器的bash运行代码即可</span>
+# 因为创建过 docker 容器，所以之后只需要启动容器,然后在进入容器的bash运行代码即可
 $ docker start -i xxxx
-$ docker <span class="hljs-built_in">exec</span> -it deepfakes-cpu bash
+$ docker exec -it deepfakes-cpu bash
 </code></pre><h3 id="二、重要信息">二、重要信息</h3><p>明确一点 <strong>接下来所有的工作都是在 docker 容器中进行</strong>,本来以为下载源码就可以直接运行 <code>faceswap</code> 但一直出错；后来发现其实创建 <code>docker</code> 的目的是在 <code>docker</code> 中运行 <code>faceswap</code> . <code>Dockerfile.cpu</code> 或 <code>Dockerfile.gpu</code> 已经为我们配置好了运行 <code>faceswap</code> 的 <code>Linux</code> 环境。启动 <code>docker</code> 容器的时候，将我们的源码挂载到了 <code>Linux</code> 中 <code>srv</code> 目录下，我们运行代码时需要 <code>cd ../srv/</code> 因为默认打开终端是 <code>notebook</code>目录下。</p>
 <h3 id="三、检测环境">三、检测环境</h3><p>如果执行 <code>python faceswap.py -h</code> 无报错，那么恭喜你环境已经配置成功了.(注意：GUI模式 由于设备原因，在本例中暂不支持)</p>
 <h3 id="四、准备素材">四、准备素材</h3><p>由于机器需要学会识别出两个需要处理的脸，所以，需要交换的两张脸都需要图片素材以供机器学习，越多越好</p>
@@ -204,27 +204,27 @@ $ docker <span class="hljs-built_in">exec</span> -it deepfakes-cpu bash
 <li>从网上下载图片</li>
 <li>或从视频提取图片：<code>ffmpeg -i /path/to/my/video.mp4 /path/to/output/video-frame-%d.png</code></li>
 </ol>
-<h3 id="五、提炼人脸 extract">五、提炼人脸 EXTRACT</h3><pre><code><span class="hljs-comment"># To convert trump:</span>
+<h3 id="五、提炼人脸 extract">五、提炼人脸 EXTRACT</h3><pre><code># To convert trump:
 $ python faceswap.py extract -i ~/faceswap/photo/trump -o ~/faceswap/data/trump
-<span class="hljs-comment"># To convert cage:</span>
+# To convert cage:
 $ python faceswap.py extract -i ~/faceswap/photo/cage -o ~/faceswap/data/cage
-<span class="hljs-comment"># My Work</span>
-$ python faceswap.py extract -i _data/<span class="hljs-keyword">in</span>/lyf/ -o _data/out/lyf/ -A dlib
-$ python faceswap.py extract -i _data/<span class="hljs-keyword">in</span>/video/frames_in/ -o _data/out/frames/ -A dlib
+# My Work
+$ python faceswap.py extract -i _data/in/lyf/ -o _data/out/lyf/ -A dlib
+$ python faceswap.py extract -i _data/in/video/frames_in/ -o _data/out/frames/ -A dlib
 </code></pre><h4 id="如果出现错误 <code>valueerror: error initializing detector</code>">如果出现错误 <code>ValueError: Error initializing Detector</code></h4><p>如果有GPU 使用 dlib 即可 &#39;-D dlib-cnn&#39;</p>
 <pre><code>$ python faceswap.py extract -i /input/path -o /output/path -D dlib-cnn -A dlib
 </code></pre><h3 id="六、训练模型 train">六、训练模型 TRAIN</h3><p>-A 表示被换的脸，源脸 -B 表示需要换成的脸，目标脸 -m 输出训练模型; 如果电脑配置不够(Docker配置的内存及CPU可按需调整)，建议使用 <code>-t LowMem</code> (否则卡到怀疑人生)</p>
 <pre><code>$ python faceswap.py train -A ~/faceswap/data/trump -B ~/faceswap/data/cage -m ~/faceswap/models/
-<span class="hljs-comment"># or -p to show a preview</span>
+# or -p to show a preview
 $ python faceswap.py train -A ~/faceswap/data/trump -B ~/faceswap/data/cage -m ~/faceswap/models/ -p
-<span class="hljs-comment"># My Work</span>
+# My Work
 $ python faceswap.py train -A _data/out/frames/  -B _data/out/lyf  -m _data/out/model -t LowMem
 </code></pre><p><strong>谨记</strong>：1. 训练过程中，按 <code>Enter</code> 结束训练，保存模型需要一丢丢时间，如果强制退出可能会损坏模型 2. 在停止结束后，备份好你的模型文件，因为当你再次开始时，有可能损毁你的模型</p>
 <h3 id="七、换脸 convert">七、换脸 CONVERT</h3><p>-i 需要被换脸的原始图片 -o 换脸后的输出文件夹 -m 模型文件目录</p>
 <pre><code>$ python faceswap.py convert -i ~/faceswap/photo/trump/ -o ~/faceswap/output/ -m ~/faceswap/models/
-<span class="hljs-comment"># my work</span>
-$ python faceswap.py convert -i _data/<span class="hljs-keyword">in</span>/video/frames_in/  -o  _data/<span class="hljs-keyword">in</span>/video/frames_out/  -m  _data/out/model/ -t LowMem
-</code></pre><h3 id="八、将图片转换成视频">八、将图片转换成视频</h3><pre><code>$ ffmpeg -i video-frame-%0d.png -c:v libx264 -vf <span class="hljs-string">"fps=25,format=yuv420p"</span> out.mp4
+# my work
+$ python faceswap.py convert -i _data/in/video/frames_in/  -o  _data/in/video/frames_out/  -m  _data/out/model/ -t LowMem
+</code></pre><h3 id="八、将图片转换成视频">八、将图片转换成视频</h3><pre><code>$ ffmpeg -i video-frame-%<span class="hljs-number">0</span>d.png -c:v libx264 -vf <span class="hljs-string">"fps=25,format=yuv420p"</span> out.mp4
 </code></pre><h3 id="参考链接">参考链接</h3><ol>
 <li><a href="https://github.com/deepfakes/faceswap/blob/master/INSTALL.md">建议使用前先阅读并完全理解</a></li>
 <li><a href="https://github.com/deepfakes/faceswap/blob/master/USAGE.md">环境配置成功之后的基本操作</a></li>
@@ -268,8 +268,8 @@ $ python faceswap.py convert -i _data/<span class="hljs-keyword">in</span>/video
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145207"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145207"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107005"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107005"></script>
 </body>
 
 </html>

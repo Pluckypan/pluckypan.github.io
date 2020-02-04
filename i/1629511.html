@@ -13,7 +13,7 @@
 			Canvas Xfermode - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145180">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788106960">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -149,7 +149,7 @@
 <h3 id="xfermode 造成gpu呈现模式偏高的问题">Xfermode 造成GPU呈现模式偏高的问题</h3><h4 id="before">Before</h4><pre><code>mDisplayPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
 
 onDraw()
-val c = canvas.saveLayer(0f, 0f, width * 1.0f, height * 1.0f, null, Canvas.ALL_SAVE_FLAG)
+val c = canvas.saveLayer(<span class="hljs-number">0</span>f, <span class="hljs-number">0</span>f, width * <span class="hljs-number">1.0</span>f, height * <span class="hljs-number">1.0</span>f, <span class="hljs-literal">null</span>, Canvas.ALL_SAVE_FLAG)
 canvas.drawColor(Color.BLACK)
 canvas.drawRect(mDisplayRect, mDisplayPaint)
 canvas.restoreToCount(c)
@@ -198,8 +198,8 @@ canvas.drawRect(mDisplayRect, mDisplayPaint)
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145181"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145181"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788106961"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788106961"></script>
 </body>
 
 </html>

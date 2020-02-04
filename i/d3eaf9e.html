@@ -13,7 +13,7 @@
 			JS如何获取图片的原始尺寸 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145321">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107127">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -146,14 +146,14 @@
 <blockquote>
 <p>HTML5提供了一个新属性naturalWidth/naturalHeight可以直接获取图片的原始宽高。这两个属性在Firefox/Chrome/Safari/Opera及IE9里已经实现。改造下获取图片尺寸的方法。</p>
 </blockquote>
-<h3 id="代码">代码</h3><pre><code>var nWidth, nHeight
-<span class="hljs-keyword">if</span> (img.naturalWidth) { // 现代浏览器
+<h3 id="代码">代码</h3><pre><code><span class="hljs-keyword">var</span> nWidth, nHeight
+<span class="hljs-keyword">if</span> (img.naturalWidth) { <span class="hljs-comment">// 现代浏览器</span>
     nWidth = img.naturalWidth
     nHeight = img.naturalHeight
-} <span class="hljs-keyword">else</span> { // IE6/7/8
-    var imgae = new Image()
+} <span class="hljs-keyword">else</span> { <span class="hljs-comment">// IE6/7/8</span>
+    <span class="hljs-keyword">var</span> imgae = <span class="hljs-keyword">new</span> Image()
     image.src = img.src
-    image.onload = <span class="hljs-function"><span class="hljs-title">function</span></span>() {
+    image.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         callback(image.width, image.height)
     }
 }
@@ -196,8 +196,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145322"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145322"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107127"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107127"></script>
 </body>
 
 </html>

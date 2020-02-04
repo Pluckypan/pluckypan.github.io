@@ -13,7 +13,7 @@
 			git指令大全 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145188">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788106972">
 	</head>
 
 	<body>
@@ -137,19 +137,19 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
 <div class="markdown-body">
 <h1 id="git指令大全">git指令大全</h1><p>git常用指令详解
 <a href="1483961257">date</a>:1483961257</p>
-<h3 id="config">config</h3><pre><code>$ git config -l       <span class="hljs-comment">#查看配置</span>
-$ git config --global <span class="hljs-comment">#全局配置 如果只是设定当前 project 则去掉 --global</span>
-$ git config --global core.autocrlf input <span class="hljs-comment">#这样即可保证仓库中永远都是LF. 而且在Windows工作空间都是CRLF, 在Mac/Linux工作空间都是LF.</span>
+<h3 id="config">config</h3><pre><code>$ git config -l       #查看配置
+$ git config --global #全局配置 如果只是设定当前 project 则去掉 --global
+$ git config --global core.autocrlf input #这样即可保证仓库中永远都是LF. 而且在Windows工作空间都是CRLF, 在Mac/Linux工作空间都是LF.
 $ git config --global user.name   plucky
 $ git config --global user.email  plucky@echo.engineer
-</code></pre><h3 id="fetch">fetch</h3><pre><code>$ git fetch -p <span class="hljs-comment">#同步分支（如果远程有删除执行）</span>
+</code></pre><h3 id="fetch">fetch</h3><pre><code>$ git fetch -p #同步分支（如果远程有删除执行）
 $ git remote prune origin
 $ git pull --all
 </code></pre><h3 id="cache">cache</h3><blockquote>
@@ -171,149 +171,149 @@ $ git checkout .
 <pre><code>$ git revert HEAD             撤销前一次 commit
 $ git revert HEAD^            撤销前前一次 commit
 $ git revert commit-id （比如：fa042ce57ebbe5bb9c8db709f719cec2c58ee7ff）撤销指定的版本，撤销也会作为一次提交进行保存。
-</code></pre><h3 id=".ssh/id_rsa are too open 解决">.ssh/id_rsa are too open 解决</h3><pre><code>chmod 600 id_rsa
+</code></pre><h3 id=".ssh/id_rsa are too open 解决">.ssh/id_rsa are too open 解决</h3><pre><code>chmod <span class="hljs-number">600</span> id_rsa
 </code></pre><h3 id="rebase">rebase</h3><blockquote>
 <p>git一般的流程是先拉取最新代码（git pull）,再向服务器提交自己的代码(git push),当然如果有冲突先解决冲突。但是执行git pull的时候会执行一个merge操作，这样从git log中看 git提交记录线会比较乱。这个时候rebase就派上用场了。git pull --rebase的作用是先把当前工作分支的代码同步成最新的 再merge我们修改的代码，如果有冲突需先修改冲突。修改完冲突 再 git rebase continue .然后再提交代码。</p>
 </blockquote>
 <pre><code>git pull --rebase
-git rebase <span class="hljs-built_in">continue</span>
+git rebase <span class="hljs-keyword">continue</span>
 git push
 </code></pre><h3 id="stash">stash</h3><blockquote>
 <p><code>git stash</code> 应用的场景是，你的修改进行了一半，还不想提交记录。比如，你正在开发一个功能，还没开发结束，你还不能commit,这个时候经理告诉你，有个线上BUG需要先去处理。按照流程，你需要切换分支，但切换分支的前提是，你要commit 当前修改的内容。为了解决这个问题。<code>git stash</code> 派上用场了。<code>git stash</code> 会暂存你的修改记录，存进一个stash目录里面。当你处理完别的任务，回来的时候执行下 <code>git stash apply</code> 就可以继续开发工作了。</p>
 </blockquote>
 <pre><code>git stash
 git stash apply
-</code></pre><h3 id="删除分支">删除分支</h3><pre><code><span class="hljs-comment"># 删除远程分支</span>
-<span class="hljs-comment"># 方法一</span>
+</code></pre><h3 id="删除分支">删除分支</h3><pre><code># 删除远程分支
+# 方法一
 git push origin --delete branch_name
-<span class="hljs-comment"># 方法二</span>
+# 方法二
 git push origin :branch_name  (注意origin后面的空格)
-<span class="hljs-comment"># 删除本地分支</span>
+# 删除本地分支
 git branch -D branch_name
 git branch -r -D origin/branch_name
-</code></pre><h3 id="tag">tag</h3><pre><code><span class="hljs-comment"># 列出现有标签的命令非常简单，直接运行 git tag 即可</span>
-<span class="hljs-comment"># git tag -l 'v1.4.2.*' 特定搜索</span>
-<span class="hljs-comment"># git tag -a v1.4 -m 'my version 1.4'  创建含附注annotated的标签</span>
-<span class="hljs-comment"># git show v1.4-lw 查看标签</span>
-<span class="hljs-comment"># git push origin --tags 推送本地所有标签</span>
-<span class="hljs-comment"># git push origin v1.5   推送制定标签</span>
-<span class="hljs-comment"># git tag -d v1.5 删除本地指定tag</span>
-<span class="hljs-comment"># git push origin :refs/tags/v1.5 删除远程标签</span>
-<span class="hljs-comment"># git push --follow-tags</span>
+</code></pre><h3 id="tag">tag</h3><pre><code># 列出现有标签的命令非常简单，直接运行 git tag 即可
+# git tag -l &#39;v1.4.2.*&#39; 特定搜索
+# git tag -a v1.4 -m &#39;my version 1.4&#39;  创建含附注annotated的标签
+# git show v1.4-lw 查看标签
+# git push origin --tags 推送本地所有标签
+# git push origin v1.5   推送制定标签
+# git tag -d v1.5 删除本地指定tag
+# git push origin :refs/tags/v1.5 删除远程标签
+# git push --follow-tags
 It pushes both commits and only tags that are both:
 annotated
 reachable (an ancestor) from the pushed commits
 </code></pre><h3 id="从某个tag迁出代码">从某个tag迁出代码</h3><pre><code>$ git checkout -b branch_name tag_name
 </code></pre><h3 id="从某个 commit 切出分支">从某个 commit 切出分支</h3><pre><code>$ git checkout -b branch_name commit_id
-</code></pre><h3 id="git 设置推送至远端的分支">git 设置推送至远端的分支</h3><pre><code>git push --<span class="hljs-built_in">set</span>-upstream origin develop
-</code></pre><h3 id="git统计某人提交次数">git统计某人提交次数</h3><pre><code>git <span class="hljs-built_in">log</span> --author=<span class="hljs-string">"plucky"</span> --oneline | wc -l
-</code></pre><h3 id="git 查看单个文件提交记录">git 查看单个文件提交记录</h3><pre><code>git <span class="hljs-built_in">log</span> adb.md
+</code></pre><h3 id="git 设置推送至远端的分支">git 设置推送至远端的分支</h3><pre><code>git push --<span class="hljs-keyword">set</span>-upstream origin develop
+</code></pre><h3 id="git统计某人提交次数">git统计某人提交次数</h3><pre><code>git log --author=<span class="hljs-string">"plucky"</span> --oneline | wc -l
+</code></pre><h3 id="git 查看单个文件提交记录">git 查看单个文件提交记录</h3><pre><code>git log adb.md
 git shortlog adb.md
-git <span class="hljs-built_in">log</span> --pretty=oneline adb.md
-<span class="hljs-comment"># %cn代表commiter name, %h代表commit hash的缩写,  %cd代表commiter date</span>
-git <span class="hljs-built_in">log</span> --pretty=format:<span class="hljs-string">"%cn committed %h on %cd"</span> adb.md
-git <span class="hljs-built_in">log</span> --after=<span class="hljs-string">"2018-1-1"</span> --before=<span class="hljs-string">"2018-9-1"</span>
-git <span class="hljs-built_in">log</span> -3 adb.md
-git <span class="hljs-built_in">log</span> --grep=<span class="hljs-string">"JRA-224"</span>
-</code></pre><h3 id="git log 参数">git log 参数</h3><pre><code>%H: commit <span class="hljs-built_in">hash</span>
-%h: 缩短的commit <span class="hljs-built_in">hash</span>
-%T: tree <span class="hljs-built_in">hash</span>
-%t: 缩短的 tree <span class="hljs-built_in">hash</span>
+git log --pretty=oneline adb.md
+# %cn代表commiter name, %h代表commit hash的缩写,  %cd代表commiter date
+git log --pretty=format:&quot;%cn committed %h on %cd&quot; adb.md
+git log --after=&quot;2018-1-1&quot; --before=&quot;2018-9-1&quot;
+git log -3 adb.md
+git log --grep=&quot;JRA-224&quot;
+</code></pre><h3 id="git log 参数">git log 参数</h3><pre><code>%H: commit hash
+%h: 缩短的commit hash
+%T: tree hash
+%t: 缩短的 tree hash
 %P: parent hashes
 %p: 缩短的 parent hashes
 %an: 作者名字
-%aN: mailmap的作者名字 (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))
+%aN: mailmap的作者名字 (.mailmap对应，详情参照git-shortlog(<span class="hljs-number">1</span>)或者git-blame(<span class="hljs-number">1</span>))
 %ae: 作者邮箱
-%aE: 作者邮箱 (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))
+%aE: 作者邮箱 (.mailmap对应，详情参照git-shortlog(<span class="hljs-number">1</span>)或者git-blame(<span class="hljs-number">1</span>))
 %ad: 日期 (--date= 制定的格式)
 %aD: 日期, RFC2822格式
-%ar: 日期, 相对格式(1 day ago)
+%ar: 日期, 相对格式(<span class="hljs-number">1</span> day ago)
 %at: 日期, UNIX timestamp
-%ai: 日期, ISO 8601 格式
+%ai: 日期, ISO <span class="hljs-number">8601</span> 格式
 %cn: 提交者名字
-%cN: 提交者名字 (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))
+%cN: 提交者名字 (.mailmap对应，详情参照git-shortlog(<span class="hljs-number">1</span>)或者git-blame(<span class="hljs-number">1</span>))
 %ce: 提交者 email
-%cE: 提交者 email (.mailmap对应，详情参照git-shortlog(1)或者git-blame(1))
-%<span class="hljs-built_in">cd</span>: 提交日期 (--date= 制定的格式)
+%cE: 提交者 email (.mailmap对应，详情参照git-shortlog(<span class="hljs-number">1</span>)或者git-blame(<span class="hljs-number">1</span>))
+%cd: 提交日期 (--date= 制定的格式)
 %cD: 提交日期, RFC2822格式
-%cr: 提交日期, 相对格式(1 day ago)
+%cr: 提交日期, 相对格式(<span class="hljs-number">1</span> day ago)
 %ct: 提交日期, UNIX timestamp
-%ci: 提交日期, ISO 8601 格式
+%ci: 提交日期, ISO <span class="hljs-number">8601</span> 格式
 %d: ref名称
 %e: encoding
 %s: commit信息标题
 %f: sanitized subject line, suitable <span class="hljs-keyword">for</span> a filename
 %b: commit信息内容
 %N: commit notes
-%gD: reflog selector, e.g., refs/stash@{1}
-%gd: shortened reflog selector, e.g., stash@{1}
+%gD: reflog selector, e.g., refs/stash@{<span class="hljs-number">1</span>}
+%gd: shortened reflog selector, e.g., stash@{<span class="hljs-number">1</span>}
 %gs: reflog subject
 %Cred: 切换到红色
 %Cgreen: 切换到绿色
 %Cblue: 切换到蓝色
 %Creset: 重设颜色
-%C(...): 制定颜色, as described <span class="hljs-keyword">in</span> color.branch.* config option
+%C(...): 制定颜色, <span class="hljs-keyword">as</span> described <span class="hljs-keyword">in</span> color.branch.* config option
 %m: left, right or boundary mark
 %n: 换行
 %%: a raw %
-%x00: <span class="hljs-built_in">print</span> a byte from a hex code
-%w([[,[,]]]): switch line wrapping, like the -w option of git-shortlog(1).
-</code></pre><h3 id="查看某个文件第一次提交时间  <code>--reverse</code>">查看某个文件第一次提交时间  <code>--reverse</code></h3><pre><code>git <span class="hljs-built_in">log</span> --pretty=format:<span class="hljs-string">"%ct"</span> --reverse -1 adb.md
-</code></pre><h3 id="撤销文件夹下所有的md格式文件的修改">撤销文件夹下所有的md格式文件的修改</h3><pre><code>git checkout <span class="hljs-built_in">command</span>/*.md
+%x00: print a byte <span class="hljs-keyword">from</span> a hex code
+%w([[,[,]]]): <span class="hljs-keyword">switch</span> line wrapping, like the -w option <span class="hljs-keyword">of</span> git-shortlog(<span class="hljs-number">1</span>).
+</code></pre><h3 id="查看某个文件第一次提交时间  <code>--reverse</code>">查看某个文件第一次提交时间  <code>--reverse</code></h3><pre><code>git log --pretty=format:<span class="hljs-string">"%ct"</span> --reverse <span class="hljs-number">-1</span> adb.md
+</code></pre><h3 id="撤销文件夹下所有的md格式文件的修改">撤销文件夹下所有的md格式文件的修改</h3><pre><code>git checkout command<span class="hljs-comment">/*.md</span>
 </code></pre><h3 id="git-remote">git remote</h3><p>作用，设置多个代码源；在不同代码源更新或推送代码。常见场景为 github fork 代码后 及时更新源项目代码</p>
-<pre><code><span class="hljs-comment"># 查看代码源</span>
+<pre><code># 查看代码源
 $ git remote -v
-<span class="hljs-comment"># 查看 remote 相关帮助</span>
-$ git remote --<span class="hljs-built_in">help</span>
-<span class="hljs-comment"># 添加新源</span>
+# 查看 remote 相关帮助
+$ git remote --help
+# 添加新源
 $ git remote add  dfl git@github.com:iperov/DeepFaceLab.git
-<span class="hljs-comment"># 移除源</span>
+# 移除源
 $ git remote remove dfl
-<span class="hljs-comment"># 从 dfl master 分支更新并合并代码</span>
+# 从 dfl master 分支更新并合并代码
 $ git pull dfl master --rebase
 </code></pre><h3 id="更新本地branch">更新本地branch</h3><pre><code>$ git remote update origin --prune
 $ git remote show origin
 $ git remote prune origin
 
-</code></pre><h3 id="git-submodule">git submodule</h3><pre><code><span class="hljs-comment"># 建子目录</span>
+</code></pre><h3 id="git-submodule">git submodule</h3><pre><code># 建子目录
 git submodule add git://github.com/chneukirchen/rack.git rack
 
-<span class="hljs-comment"># 克隆一个带子模块的项目</span>
-1. git <span class="hljs-built_in">clone</span> git://github.com/schacon/myproject.git
+# 克隆一个带子模块的项目
+1. git clone git://github.com/schacon/myproject.git
 2. git submodule init
 3. git submodule update
 </code></pre><h3 id="git-lfs-large-file-storage-">git lfs(Large file storage)</h3><p><a href="https://zzz.buzz/zh/2016/04/19/the-guide-to-git-lfs/">参考链接</a></p>
-<pre><code><span class="hljs-comment"># 首次安装</span>
+<pre><code># 首次安装
 git lfs install
-<span class="hljs-comment"># 查看当前使用 Git LFS 管理的匹配列表</span>
+# 查看当前使用 Git LFS 管理的匹配列表
 git lfs track
 
-<span class="hljs-comment"># 使用 Git LFS 管理指定的文件</span>
-git lfs track <span class="hljs-string">"*.psd"</span>
+# 使用 Git LFS 管理指定的文件
+git lfs track &quot;*.psd&quot;
 
-<span class="hljs-comment"># 不再使用 Git LFS 管理指定的文件</span>
-git lfs untrack <span class="hljs-string">"*.psd"</span>
+# 不再使用 Git LFS 管理指定的文件
+git lfs untrack &quot;*.psd&quot;
 
-<span class="hljs-comment"># 类似 `git status`，查看当前 Git LFS 对象的状态</span>
+# 类似 `git status`，查看当前 Git LFS 对象的状态
 git lfs status
 
-<span class="hljs-comment"># 枚举目前所有被 Git LFS 管理的具体文件</span>
+# 枚举目前所有被 Git LFS 管理的具体文件
 git lfs ls-files
 
-<span class="hljs-comment"># 检查当前所用 Git LFS 的版本</span>
+# 检查当前所用 Git LFS 的版本
 git lfs version
 
-<span class="hljs-comment"># 针对使用了 LFS 的仓库进行了特别优化的 clone 命令，显著提升获取</span>
-<span class="hljs-comment"># LFS 对象的速度，接受和 `git clone` 一样的参数。 [1] [2]</span>
-git lfs <span class="hljs-built_in">clone</span> https://github.com/user/repo.git
+# 针对使用了 LFS 的仓库进行了特别优化的 clone 命令，显著提升获取
+# LFS 对象的速度，接受和 `git clone` 一样的参数。 [1] [2]
+git lfs clone https://github.com/user/repo.git
 </code></pre><h3 id="git 通过账号密码访问">git 通过账号密码访问</h3><pre><code>如果出现 remote: Permission to xxx denied to xxx. 错误提示
 如果你使用的是Mac 则到 钥匙串访问 中搜索 github 然后删除上一次输入的账号密码就可以重新输入了
 </code></pre><h3 id="cherry-pick">cherry-pick</h3><pre><code>develop 想合并 feature/xxx 的 commit 05cd5tf
-<span class="hljs-comment"># 切换至develop</span>
+# 切换至develop
 $ git checkout develop
-<span class="hljs-comment"># 遴选 05cd5tf</span>
+# 遴选 05cd5tf
 $ git cherry-pick 05cd5tf
-<span class="hljs-comment"># 推至远程</span>
+# 推至远程
 $ git push
 </code></pre><h3 id="git status 乱码">git status 乱码</h3><pre><code>$ git config --global core.quotepath <span class="hljs-literal">false</span>
 </code></pre><h3 id="别名">别名</h3><pre><code>$ git config --global alias.st status
@@ -323,20 +323,20 @@ $ git config --global alias.ci commit
 $ git config --global alias.cf config
 $ git config --global alias.fc fetch
 
-<span class="hljs-comment"># git log 输出样式</span>
-$ git config --global pretty.graph <span class="hljs-string">'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'</span>
-$ git config --global alias.lg <span class="hljs-string">'log --pretty=graph --graph --abbrev-commit --'</span>
+# git log 输出样式
+$ git config --global pretty.graph '%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'
+$ git config --global alias.lg 'log --pretty=graph --graph --abbrev-commit --'
 
-<span class="hljs-comment"># 添加 git last 指令</span>
-$ git config --global alias.last <span class="hljs-string">'log -1 HEAD'</span>
+# 添加 git last 指令
+$ git config --global alias.last 'log -1 HEAD'
 
-<span class="hljs-comment"># 清除别名</span>
-$ git config --global --<span class="hljs-built_in">unset</span> alias.last 
+# 清除别名
+$ git config --global --unset alias.last 
 
-<span class="hljs-comment"># 函数带参数 `!f() { git rebase -i HEAD~$1; }; f`</span>
+# 函数带参数 `!f() { git rebase -i HEAD~$1; }; f`
 
-<span class="hljs-comment"># 切新分支</span>
-$ git config --global alias.cbf <span class="hljs-string">'!f(){ git checkout -b feature/"$1"; }; f'</span>
+# 切新分支
+$ git config --global alias.cbf '!f(){ git checkout -b feature/"$1"; }; f'
 
 </code></pre><!--this code is generated by eedoc,do not edit.-->
 
@@ -378,8 +378,8 @@ $ git config --global alias.cbf <span class="hljs-string">'!f(){ git checkout -b
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145189"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145189"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788106972"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788106972"></script>
 </body>
 
 </html>

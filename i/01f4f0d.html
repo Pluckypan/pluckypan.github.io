@@ -13,7 +13,7 @@
 			发布jar至Maven - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145227">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107029">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -151,47 +151,47 @@ uploadArchives {
             pom.artifactId = <span class="hljs-string">'hugox-plugin'</span>
             pom.version = <span class="hljs-string">'1.0.0'</span>
 
-            //方式一：发布到 指定文件夹 比如 绝对路径`D:/repos` 相对路径`../localPublish`
+            <span class="hljs-comment">//方式一：发布到 指定文件夹 比如 绝对路径`D:/repos` 相对路径`../localPublish`</span>
             repository(url: uri(<span class="hljs-string">'../localPublish'</span>))
 
-            //方式二：发布到 Maven仓库 比如 Sonatype Nexus
+            <span class="hljs-comment">//方式二：发布到 Maven仓库 比如 Sonatype Nexus</span>
             repository(url: uri(<span class="hljs-string">'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>)) {
-                authentication(userName: <span class="hljs-string">"admin"</span>, password: <span class="hljs-string">"admin123"</span>)
+                authentication(userName: <span class="hljs-string">"admin"</span>, <span class="hljs-attr">password</span>: <span class="hljs-string">"admin123"</span>)
             }
-            //以上方式二选一， 配置完直接运行 uploadArchives (提示:打开 Gradle 窗口,展开指定的 Library Module,展开 Tasks,展开 upload,双击运行 uploadArchives)
+            <span class="hljs-comment">//以上方式二选一， 配置完直接运行 uploadArchives (提示:打开 Gradle 窗口,展开指定的 Library Module,展开 Tasks,展开 upload,双击运行 uploadArchives)</span>
         }
     }
 }
-</code></pre><h3 id="引用">引用</h3><pre><code>//如果是 Project 下所有的 Module 都会依赖,可以放在 rootProject build.gradle 的 buildscript 中
-//如果只有指定的 Module 引用,那就在指定的 Module 创建一个 buildscript 即可
-//如果是发布到 Maven Center 则无需另外配置
+</code></pre><h3 id="引用">引用</h3><pre><code><span class="hljs-comment">//如果是 Project 下所有的 Module 都会依赖,可以放在 rootProject build.gradle 的 buildscript 中</span>
+<span class="hljs-comment">//如果只有指定的 Module 引用,那就在指定的 Module 创建一个 buildscript 即可</span>
+<span class="hljs-comment">//如果是发布到 Maven Center 则无需另外配置</span>
 
 buildscript {
     repositories {
         maven {
-            //方式一：本地文件夹
+            <span class="hljs-comment">//方式一：本地文件夹</span>
             url <span class="hljs-string">'file:../localPublish'</span>
-            //方式二：Maven仓库 比如 Sonatype Nexus
+            <span class="hljs-comment">//方式二：Maven仓库 比如 Sonatype Nexus</span>
             url <span class="hljs-string">'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>
         }
     }
     dependencies {
-        //如果是引用 plugin 则使用 classpath,最后直接 `apply plugin: <span class="hljs-string">'hugox-plugin'</span>` 即可
+        <span class="hljs-comment">//如果是引用 plugin 则使用 classpath,最后直接 `apply plugin: 'hugox-plugin'` 即可</span>
         classpath <span class="hljs-string">'engineer.echo:hugox-plugin:1.0.0'</span>
     }
 }
-</code></pre><h3 id="maven-url">Maven url</h3><pre><code>http://localhost:8081/nexus/content/repositories/releases/
-http://localhost:8081/nexus/content/repositories/snapshots/
-</code></pre><h3 id="解决生成javadoc因字符集报错的问题">解决生成JavaDoc因字符集报错的问题</h3><pre><code><span class="hljs-comment"># rootProject 下 build.gradle</span>
+</code></pre><h3 id="maven-url">Maven url</h3><pre><code>http:<span class="hljs-comment">//localhost:8081/nexus/content/repositories/releases/</span>
+http:<span class="hljs-comment">//localhost:8081/nexus/content/repositories/snapshots/</span>
+</code></pre><h3 id="解决生成javadoc因字符集报错的问题">解决生成JavaDoc因字符集报错的问题</h3><pre><code># rootProject 下 build.gradle
 allprojects {
     repositories {
         google()
         jcenter()
-        maven { url <span class="hljs-string">'https://jitpack.io'</span> }
+        maven { url &#39;https://jitpack.io&#39; }
     }
     tasks.withType(Javadoc) {
-        options.addStringOption(<span class="hljs-string">'Xdoclint:none'</span>, <span class="hljs-string">'-quiet'</span>)
-        options.addStringOption(<span class="hljs-string">'encoding'</span>, <span class="hljs-string">'UTF-8'</span>)
+        options.addStringOption(&#39;Xdoclint:none&#39;, &#39;-quiet&#39;)
+        options.addStringOption(&#39;encoding&#39;, &#39;UTF-8&#39;)
     }
 }
 </code></pre><h3 id="参考文档">参考文档</h3><ol>
@@ -236,8 +236,8 @@ allprojects {
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145228"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145228"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107030"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107030"></script>
 </body>
 
 </html>

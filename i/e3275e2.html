@@ -13,7 +13,7 @@
 			volatile - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145312">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107112">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -159,81 +159,81 @@
 </ul>
 <h3 id="保证原子性的方法">保证原子性的方法</h3><ul>
 <li><p>synchronized</p>
-<pre><code>public class Test {
-  public  int inc = 0;
+<pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+  public  int inc = <span class="hljs-number">0</span>;
 
-  public synchronized void <span class="hljs-function"><span class="hljs-title">increase</span></span>() {
+  public synchronized <span class="hljs-keyword">void</span> increase() {
       inc++;
   }
 
-  public static void main(String[] args) {
-      final Test <span class="hljs-built_in">test</span> = new Test();
-      <span class="hljs-keyword">for</span>(int i=0;i&lt;10;i++){
-          new <span class="hljs-function"><span class="hljs-title">Thread</span></span>(){
-              public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
-                  <span class="hljs-keyword">for</span>(int j=0;j&lt;1000;j++)
+  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+      final Test test = <span class="hljs-keyword">new</span> Test();
+      <span class="hljs-keyword">for</span>(int i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){
+          <span class="hljs-keyword">new</span> Thread(){
+              public <span class="hljs-keyword">void</span> run() {
+                  <span class="hljs-keyword">for</span>(int j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">1000</span>;j++)
                       test.increase();
               };
           }.start();
       }
 
-      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;1)  //保证前面的线程都执行完
+      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;<span class="hljs-number">1</span>)  <span class="hljs-comment">//保证前面的线程都执行完</span>
           Thread.yield();
       System.out.println(test.inc);
   }
 }
 </code></pre></li>
 <li><p>Lock</p>
-<pre><code>public class Test {
-  public  int inc = 0;
-  Lock lock = new ReentrantLock();
+<pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+  public  int inc = <span class="hljs-number">0</span>;
+  Lock lock = <span class="hljs-keyword">new</span> ReentrantLock();
 
-  public  void <span class="hljs-function"><span class="hljs-title">increase</span></span>() {
+  public  <span class="hljs-keyword">void</span> increase() {
       lock.lock();
-      try {
+      <span class="hljs-keyword">try</span> {
           inc++;
-      } finally{
+      } <span class="hljs-keyword">finally</span>{
           lock.unlock();
       }
   }
 
-  public static void main(String[] args) {
-      final Test <span class="hljs-built_in">test</span> = new Test();
-      <span class="hljs-keyword">for</span>(int i=0;i&lt;10;i++){
-          new <span class="hljs-function"><span class="hljs-title">Thread</span></span>(){
-              public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
-                  <span class="hljs-keyword">for</span>(int j=0;j&lt;1000;j++)
+  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+      final Test test = <span class="hljs-keyword">new</span> Test();
+      <span class="hljs-keyword">for</span>(int i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){
+          <span class="hljs-keyword">new</span> Thread(){
+              public <span class="hljs-keyword">void</span> run() {
+                  <span class="hljs-keyword">for</span>(int j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">1000</span>;j++)
                       test.increase();
               };
           }.start();
       }
 
-      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;1)  //保证前面的线程都执行完
+      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;<span class="hljs-number">1</span>)  <span class="hljs-comment">//保证前面的线程都执行完</span>
           Thread.yield();
       System.out.println(test.inc);
   }
 }
 </code></pre></li>
 <li><p>AtomicInteger</p>
-<pre><code>public class Test {
-  public  AtomicInteger inc = new AtomicInteger();
+<pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
+  public  AtomicInteger inc = <span class="hljs-keyword">new</span> AtomicInteger();
 
-  public  void <span class="hljs-function"><span class="hljs-title">increase</span></span>() {
+  public  <span class="hljs-keyword">void</span> increase() {
       inc.getAndIncrement();
   }
 
-  public static void main(String[] args) {
-      final Test <span class="hljs-built_in">test</span> = new Test();
-      <span class="hljs-keyword">for</span>(int i=0;i&lt;10;i++){
-          new <span class="hljs-function"><span class="hljs-title">Thread</span></span>(){
-              public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
-                  <span class="hljs-keyword">for</span>(int j=0;j&lt;1000;j++)
+  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+      final Test test = <span class="hljs-keyword">new</span> Test();
+      <span class="hljs-keyword">for</span>(int i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){
+          <span class="hljs-keyword">new</span> Thread(){
+              public <span class="hljs-keyword">void</span> run() {
+                  <span class="hljs-keyword">for</span>(int j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">1000</span>;j++)
                       test.increase();
               };
           }.start();
       }
 
-      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;1)  //保证前面的线程都执行完
+      <span class="hljs-keyword">while</span>(Thread.activeCount()&gt;<span class="hljs-number">1</span>)  <span class="hljs-comment">//保证前面的线程都执行完</span>
           Thread.yield();
       System.out.println(test.inc);
   }
@@ -279,8 +279,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145313"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145313"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107112"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107112"></script>
 </body>
 
 </html>

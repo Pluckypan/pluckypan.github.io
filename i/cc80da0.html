@@ -13,7 +13,7 @@
 			rxjava - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145178">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788106955">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -152,32 +152,32 @@ dependencies {
     api <span class="hljs-string">"io.reactivex.rxjava2:rxjava:2.1.5"</span>
     api <span class="hljs-string">"io.reactivex.rxjava2:rxandroid:2.0.1"</span>
 }
-</code></pre><h3 id="并发执行">并发执行</h3><pre><code>private void <span class="hljs-function"><span class="hljs-title">fun7</span></span>(){
-        Integer[] st=new Integer[]{1,2,3,4,5,6,7,8};
+</code></pre><h3 id="并发执行">并发执行</h3><pre><code>private <span class="hljs-keyword">void</span> fun7(){
+        Integer[] st=<span class="hljs-keyword">new</span> Integer[]{<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>};
         Observable.from(st)
         .subscribeOn(Schedulers.newThread())
         .observeOn(Schedulers.newThread())
-        .flatMap(new Func1&lt;Integer, Observable&lt;String&gt;&gt;() {
+        .flatMap(<span class="hljs-keyword">new</span> Func1&lt;Integer, Observable&lt;<span class="hljs-built_in">String</span>&gt;&gt;() {
 
             @Override
-            public Observable&lt;String&gt; call(Integer st) {
+            public Observable&lt;<span class="hljs-built_in">String</span>&gt; call(Integer st) {
 
-                <span class="hljs-built_in">return</span> Observable.just(st)
-                        .observeOn(Schedulers.newThread())//重新开启新线程
-                        .map(new Func1&lt;Integer,String&gt;() {
+                <span class="hljs-keyword">return</span> Observable.just(st)
+                        .observeOn(Schedulers.newThread())<span class="hljs-comment">//重新开启新线程</span>
+                        .map(<span class="hljs-keyword">new</span> Func1&lt;Integer,<span class="hljs-built_in">String</span>&gt;() {
 
                             @Override
-                            public String call(Integer st) {
-                                //进行数据处理
+                            public <span class="hljs-built_in">String</span> call(Integer st) {
+                                <span class="hljs-comment">//进行数据处理</span>
 
-                                String s=<span class="hljs-string">""</span>;
-                                try {
-                                    Thread.sleep(1200);
+                                <span class="hljs-built_in">String</span> s=<span class="hljs-string">""</span>;
+                                <span class="hljs-keyword">try</span> {
+                                    Thread.sleep(<span class="hljs-number">1200</span>);
                                     s=st+<span class="hljs-string">"@"</span>;
-                                } catch (InterruptedException e) {
+                                } <span class="hljs-keyword">catch</span> (InterruptedException e) {
                                     e.printStackTrace();
                                 }
-                                <span class="hljs-built_in">return</span> s;
+                                <span class="hljs-keyword">return</span> s;
                             }
 
                         });
@@ -185,10 +185,10 @@ dependencies {
             }
 
         })
-        .subscribe(new Action1&lt;String&gt;() {
+        .subscribe(<span class="hljs-keyword">new</span> Action1&lt;<span class="hljs-built_in">String</span>&gt;() {
 
             @Override
-            public void call(final String st) {
+            public <span class="hljs-keyword">void</span> call(final <span class="hljs-built_in">String</span> st) {
                 Log.e(<span class="hljs-string">"fun7"</span>, st+<span class="hljs-string">",time:"</span>+System.currentTimeMillis());
             }
         });
@@ -232,8 +232,8 @@ dependencies {
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145179"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145179"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788106956"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788106956"></script>
 </body>
 
 </html>

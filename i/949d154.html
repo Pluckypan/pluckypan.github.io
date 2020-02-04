@@ -13,7 +13,7 @@
 			Android自定义侧滑按钮 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145276">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107072">
 	</head>
 
 	<body>
@@ -137,71 +137,71 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
 <div class="markdown-body">
 <h1 id="android自定义侧滑按钮">Android自定义侧滑按钮</h1><p>结合ViewDragHelper自定义控件侧滑按钮</p>
 <pre><code>package com.fanglin.fhui;
-import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.ViewDragHelper;
-import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.LinearLayout;
+<span class="hljs-keyword">import</span> android.content.Context;
+<span class="hljs-keyword">import</span> android.support.v4.view.ViewCompat;
+<span class="hljs-keyword">import</span> android.support.v4.widget.ViewDragHelper;
+<span class="hljs-keyword">import</span> android.util.AttributeSet;
+<span class="hljs-keyword">import</span> android.view.MotionEvent;
+<span class="hljs-keyword">import</span> android.view.View;
+<span class="hljs-keyword">import</span> android.widget.LinearLayout;
 
-/**
+<span class="hljs-comment">/**
  * author:Created by Plucky on 2016/12/12-下午6:12.
  * 功能描述:自定义侧滑按钮
- */
-public class FHSwipeLayout extends LinearLayout {
+ */</span>
+public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FHSwipeLayout</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">LinearLayout</span> </span>{
 
     private ViewDragHelper viewDragHelper;
     private View contentView;
     private View actionView;
     private int dragDistance;
-    private final double AUTO_OPEN_SPEED_LIMIT = 800.0;
+    private final double AUTO_OPEN_SPEED_LIMIT = <span class="hljs-number">800.0</span>;
     private int draggedX;
 
     public FHSwipeLayout(Context context) {
-        this(context, null);
+        <span class="hljs-keyword">this</span>(context, <span class="hljs-literal">null</span>);
     }
 
     public FHSwipeLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, -1);
+        <span class="hljs-keyword">this</span>(context, attrs, <span class="hljs-number">-1</span>);
     }
 
     public FHSwipeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        viewDragHelper = ViewDragHelper.create(this, new DragHelperCallback());
+        <span class="hljs-keyword">super</span>(context, attrs, defStyleAttr);
+        viewDragHelper = ViewDragHelper.create(<span class="hljs-keyword">this</span>, <span class="hljs-keyword">new</span> DragHelperCallback());
     }
 
     @Override
-    protected void <span class="hljs-function"><span class="hljs-title">onFinishInflate</span></span>() {
-        super.onFinishInflate();
-        contentView = getChildAt(0);
-        actionView = getChildAt(1);
+    protected <span class="hljs-keyword">void</span> onFinishInflate() {
+        <span class="hljs-keyword">super</span>.onFinishInflate();
+        contentView = getChildAt(<span class="hljs-number">0</span>);
+        actionView = getChildAt(<span class="hljs-number">1</span>);
         actionView.setVisibility(GONE);
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    protected <span class="hljs-keyword">void</span> onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        <span class="hljs-keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         dragDistance = actionView.getMeasuredWidth();
     }
 
-    private class DragHelperCallback extends ViewDragHelper.Callback {
+    private <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DragHelperCallback</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ViewDragHelper</span>.<span class="hljs-title">Callback</span> </span>{
 
         @Override
         public boolean tryCaptureView(View view, int i) {
-            <span class="hljs-built_in">return</span> view == contentView || view == actionView;
+            <span class="hljs-keyword">return</span> view == contentView || view == actionView;
         }
 
         @Override
-        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+        public <span class="hljs-keyword">void</span> onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             draggedX = left;
             <span class="hljs-keyword">if</span> (changedView == contentView) {
                 actionView.offsetLeftAndRight(dx);
@@ -219,37 +219,37 @@ public class FHSwipeLayout extends LinearLayout {
             <span class="hljs-keyword">if</span> (child == contentView) {
                 final int leftBound = getPaddingLeft();
                 final int minLeftBound = -leftBound - dragDistance;
-                final int newLeft = Math.min(Math.max(minLeftBound, left), 0);
-                <span class="hljs-built_in">return</span> newLeft;
+                final int newLeft = <span class="hljs-built_in">Math</span>.min(<span class="hljs-built_in">Math</span>.max(minLeftBound, left), <span class="hljs-number">0</span>);
+                <span class="hljs-keyword">return</span> newLeft;
             } <span class="hljs-keyword">else</span> {
                 final int minLeftBound = getPaddingLeft() + contentView.getMeasuredWidth() - dragDistance;
                 final int maxLeftBound = getPaddingLeft() + contentView.getMeasuredWidth() + getPaddingRight();
-                final int newLeft = Math.min(Math.max(left, minLeftBound), maxLeftBound);
-                <span class="hljs-built_in">return</span> newLeft;
+                final int newLeft = <span class="hljs-built_in">Math</span>.min(<span class="hljs-built_in">Math</span>.max(left, minLeftBound), maxLeftBound);
+                <span class="hljs-keyword">return</span> newLeft;
             }
         }
 
         @Override
         public int getViewHorizontalDragRange(View child) {
-            <span class="hljs-built_in">return</span> dragDistance;
+            <span class="hljs-keyword">return</span> dragDistance;
         }
 
         @Override
-        public void onViewReleased(View releasedChild, <span class="hljs-built_in">float</span> xvel, <span class="hljs-built_in">float</span> yvel) {
-            super.onViewReleased(releasedChild, xvel, yvel);
+        public <span class="hljs-keyword">void</span> onViewReleased(View releasedChild, float xvel, float yvel) {
+            <span class="hljs-keyword">super</span>.onViewReleased(releasedChild, xvel, yvel);
             boolean settleToOpen = <span class="hljs-literal">false</span>;
             <span class="hljs-keyword">if</span> (xvel &gt; AUTO_OPEN_SPEED_LIMIT) {
                 settleToOpen = <span class="hljs-literal">false</span>;
             } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (xvel &lt; -AUTO_OPEN_SPEED_LIMIT) {
                 settleToOpen = <span class="hljs-literal">true</span>;
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (draggedX &lt;= -dragDistance / 2) {
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (draggedX &lt;= -dragDistance / <span class="hljs-number">2</span>) {
                 settleToOpen = <span class="hljs-literal">true</span>;
-            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (draggedX &gt; -dragDistance / 2) {
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (draggedX &gt; -dragDistance / <span class="hljs-number">2</span>) {
                 settleToOpen = <span class="hljs-literal">false</span>;
             }
 
-            final int settleDestX = settleToOpen ? -dragDistance : 0;
-            viewDragHelper.smoothSlideViewTo(contentView, settleDestX, 0);
+            final int settleDestX = settleToOpen ? -dragDistance : <span class="hljs-number">0</span>;
+            viewDragHelper.smoothSlideViewTo(contentView, settleDestX, <span class="hljs-number">0</span>);
             ViewCompat.postInvalidateOnAnimation(FHSwipeLayout.this);
         }
     }
@@ -257,22 +257,22 @@ public class FHSwipeLayout extends LinearLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         <span class="hljs-keyword">if</span> (viewDragHelper.shouldInterceptTouchEvent(ev)) {
-            <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
         }
-        <span class="hljs-built_in">return</span> super.onInterceptTouchEvent(ev);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         viewDragHelper.processTouchEvent(event);
-        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
 
     @Override
-    public void <span class="hljs-function"><span class="hljs-title">computeScroll</span></span>() {
-        super.computeScroll();
+    public <span class="hljs-keyword">void</span> computeScroll() {
+        <span class="hljs-keyword">super</span>.computeScroll();
         <span class="hljs-keyword">if</span> (viewDragHelper.continueSettling(<span class="hljs-literal">true</span>)) {
-            ViewCompat.postInvalidateOnAnimation(this);
+            ViewCompat.postInvalidateOnAnimation(<span class="hljs-keyword">this</span>);
         }
     }
 }
@@ -280,25 +280,25 @@ public class FHSwipeLayout extends LinearLayout {
         android:layout_width=<span class="hljs-string">"match_parent"</span>
         android:layout_height=<span class="hljs-string">"wrap_content"</span>&gt;
 
-    &lt;LinearLayout
-        android:layout_width=<span class="hljs-string">"match_parent"</span>
-        android:layout_height=<span class="hljs-string">"106dp"</span>
-        android:gravity=<span class="hljs-string">"center"</span>
-        android:background=<span class="hljs-string">"#333333"</span>
-        android:orientation=<span class="hljs-string">"horizontal"</span>&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"106dp"</span>
+        <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">"center"</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">"#333333"</span>
+        <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">"horizontal"</span>&gt;</span>
 
-    &lt;/LinearLayout&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span>
 
-    &lt;TextView
-        android:id=<span class="hljs-string">"@+id/tvDelete"</span>
-        android:layout_width=<span class="hljs-string">"75dp"</span>
-        android:layout_height=<span class="hljs-string">"106dp"</span>
-        android:background=<span class="hljs-string">"#FA2855"</span>
-        android:gravity=<span class="hljs-string">"center"</span>
-        android:text=<span class="hljs-string">"delete"</span>
-        android:textColor=<span class="hljs-string">"#FFFFFF"</span>
-        android:textSize=<span class="hljs-string">"16sp"</span> /&gt;
-&lt;/com.fanglin.fhui.FHSwipeLayout&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/tvDelete"</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"75dp"</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"106dp"</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">"#FA2855"</span>
+        <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">"center"</span>
+        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"delete"</span>
+        <span class="hljs-attr">android:textColor</span>=<span class="hljs-string">"#FFFFFF"</span>
+        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"16sp"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">com.fanglin.fhui.FHSwipeLayout</span>&gt;</span></span>
 </code></pre>
 </div>
 
@@ -338,8 +338,8 @@ public class FHSwipeLayout extends LinearLayout {
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145276"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145276"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107072"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107072"></script>
 </body>
 
 </html>

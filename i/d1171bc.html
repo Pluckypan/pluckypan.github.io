@@ -13,7 +13,7 @@
 			synchronize用法 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145294">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107097">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -151,50 +151,50 @@ java内置锁是一个互斥锁，这就是意味着最多只有一个线程能�
 </blockquote>
 <p>java的对象锁和类锁在锁的概念上基本上和内置锁是一致的，但是，两个锁实际是有很大的区别的，对象锁是用于对象实例方法，或者一个对象实例上的，类锁是用于类的静态方法或者一个类的class对象上的。我们知道，类的对象实例可以有很多个，但是每个类只有一个class对象，所以不同对象实例的对象锁是互不干扰的，但是每个类只有一个类锁。
 <code>但是有一点必须注意的是，其实类锁只是一个概念上的东西，并不是真实存在的，它只是用来帮助我们理解锁定实例方法和静态方法的区别的</code></p>
-<h3 id="对象锁">对象锁</h3><h4 id="synchronized修饰方法和代码块">synchronized修饰方法和代码块</h4><h5 id="man-class">Man.class</h5><pre><code>public class Man {
+<h3 id="对象锁">对象锁</h3><h4 id="synchronized修饰方法和代码块">synchronized修饰方法和代码块</h4><h5 id="man-class">Man.class</h5><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Man</span> </span>{
 
-    /**
+    <span class="hljs-comment">/**
      * 对象锁 synchronized 修饰代码块
-     */
-    public void <span class="hljs-function"><span class="hljs-title">funcA</span></span>() {
-        synchronized (this) {
-            int i = 5;
-            <span class="hljs-keyword">while</span> (i-- &gt; 0) {
+     */</span>
+    public <span class="hljs-keyword">void</span> funcA() {
+        synchronized (<span class="hljs-keyword">this</span>) {
+            int i = <span class="hljs-number">5</span>;
+            <span class="hljs-keyword">while</span> (i-- &gt; <span class="hljs-number">0</span>) {
                 System.out.println(<span class="hljs-string">"funcA "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException ie) {
+                <span class="hljs-keyword">try</span> {
+                    Thread.sleep(<span class="hljs-number">500</span>);
+                } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
                     ie.printStackTrace();
                 }
             }
         }
     }
 
-    /**
+    <span class="hljs-comment">/**
      * 对象锁 synchronized 修饰方法
-     */
-    public synchronized void <span class="hljs-function"><span class="hljs-title">funcB</span></span>() {
-        int i = 5;
-        <span class="hljs-keyword">while</span> (i-- &gt; 0) {
+     */</span>
+    public synchronized <span class="hljs-keyword">void</span> funcB() {
+        int i = <span class="hljs-number">5</span>;
+        <span class="hljs-keyword">while</span> (i-- &gt; <span class="hljs-number">0</span>) {
             System.out.println(<span class="hljs-string">"funcB "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ie) {
+            <span class="hljs-keyword">try</span> {
+                Thread.sleep(<span class="hljs-number">500</span>);
+            } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
                 ie.printStackTrace();
             }
         }
     }
 }
-</code></pre><h5 id="synchronize-class">Synchronize.class</h5><pre><code>public class Synchronize {
-    public static void main(String[] args) {
-        final Man aman = new Man();
-        Thread test1 = new Thread(new <span class="hljs-function"><span class="hljs-title">Runnable</span></span>() {
-            public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
+</code></pre><h5 id="synchronize-class">Synchronize.class</h5><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Synchronize</span> </span>{
+    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+        final Man aman = <span class="hljs-keyword">new</span> Man();
+        Thread test1 = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
+            public <span class="hljs-keyword">void</span> run() {
                 aman.funcA();
             }
         }, <span class="hljs-string">"test1"</span>);
-        Thread test2 = new Thread(new <span class="hljs-function"><span class="hljs-title">Runnable</span></span>() {
-            public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
+        Thread test2 = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
+            public <span class="hljs-keyword">void</span> run() {
                 aman.funcB();
             }
         }, <span class="hljs-string">"test2"</span>);
@@ -202,102 +202,102 @@ java内置锁是一个互斥锁，这就是意味着最多只有一个线程能�
         test2.start();
     }
 }
-</code></pre><h5 id="运行结果">运行结果</h5><pre><code>funcA test1 : 4
-funcA test1 : 3
-funcA test1 : 2
-funcA test1 : 1
-funcA test1 : 0
-funcB test2 : 4
-funcB test2 : 3
-funcB test2 : 2
-funcB test2 : 1
-funcB test2 : 0
-</code></pre><h5 id="去掉funcb的synchronized">去掉funcB的synchronized</h5><pre><code>funcA test1 : 4
-funcB test2 : 4
-funcA test1 : 3
-funcB test2 : 3
-funcB test2 : 2
-funcA test1 : 2
-funcA test1 : 1
-funcB test2 : 1
-funcB test2 : 0
-funcA test1 : 0
+</code></pre><h5 id="运行结果">运行结果</h5><pre><code>funcA test1 : <span class="hljs-number">4</span>
+funcA test1 : <span class="hljs-number">3</span>
+funcA test1 : <span class="hljs-number">2</span>
+funcA test1 : <span class="hljs-number">1</span>
+funcA test1 : <span class="hljs-number">0</span>
+funcB test2 : <span class="hljs-number">4</span>
+funcB test2 : <span class="hljs-number">3</span>
+funcB test2 : <span class="hljs-number">2</span>
+funcB test2 : <span class="hljs-number">1</span>
+funcB test2 : <span class="hljs-number">0</span>
+</code></pre><h5 id="去掉funcb的synchronized">去掉funcB的synchronized</h5><pre><code>funcA test1 : <span class="hljs-number">4</span>
+funcB test2 : <span class="hljs-number">4</span>
+funcA test1 : <span class="hljs-number">3</span>
+funcB test2 : <span class="hljs-number">3</span>
+funcB test2 : <span class="hljs-number">2</span>
+funcA test1 : <span class="hljs-number">2</span>
+funcA test1 : <span class="hljs-number">1</span>
+funcB test2 : <span class="hljs-number">1</span>
+funcB test2 : <span class="hljs-number">0</span>
+funcA test1 : <span class="hljs-number">0</span>
 </code></pre><h5 id="解释">解释</h5><blockquote>
 <p>上述的代码: 第一个方法时用了同步代码块的方式进行同步，传入的对象实例是this，表明是当前对象.第二个方法是修饰方法的方式进行同步。
 两个方法使用的是同一个对象锁,所以在main中执行时,由于funcA首先获得对象锁,funcB暂时处于阻塞状态，等funcA释放对象锁时,funcB开始执行。
 去掉funcB的synchronized后,由于funcB不再受锁的约束，可正常执行。所以synchronized只是一个内置锁的加锁机制，当某个方法加上synchronized关键字后，就表明要获得该内置锁才能执行，并不能阻止其他线程访问不需要获得该内置锁的方法。</p>
 </blockquote>
-<h3 id="类锁">类锁</h3><h4 id="修饰（静态）方法和代码块">修饰（静态）方法和代码块</h4><h5 id="classlock-class">ClassLock.class</h5><pre><code>public class ClassLock {
-    /**
+<h3 id="类锁">类锁</h3><h4 id="修饰（静态）方法和代码块">修饰（静态）方法和代码块</h4><h5 id="classlock-class">ClassLock.class</h5><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassLock</span> </span>{
+    <span class="hljs-comment">/**
      * 类锁 synchronized 修饰代码块
-     */
-    public void <span class="hljs-function"><span class="hljs-title">funcA</span></span>() {
+     */</span>
+    public <span class="hljs-keyword">void</span> funcA() {
         synchronized (ClassLock.class) {
-            int i = 5;
-            <span class="hljs-keyword">while</span> (i-- &gt; 0) {
+            int i = <span class="hljs-number">5</span>;
+            <span class="hljs-keyword">while</span> (i-- &gt; <span class="hljs-number">0</span>) {
                 System.out.println(<span class="hljs-string">"funcA "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException ie) {
+                <span class="hljs-keyword">try</span> {
+                    Thread.sleep(<span class="hljs-number">500</span>);
+                } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
                     ie.printStackTrace();
                 }
             }
         }
     }
 
-    /**
+    <span class="hljs-comment">/**
      * 类锁 synchronized 修饰静态方法
-     */
-    public static synchronized void <span class="hljs-function"><span class="hljs-title">funcB</span></span>() {
-        int i = 5;
-        <span class="hljs-keyword">while</span> (i-- &gt; 0) {
+     */</span>
+    public <span class="hljs-keyword">static</span> synchronized <span class="hljs-keyword">void</span> funcB() {
+        int i = <span class="hljs-number">5</span>;
+        <span class="hljs-keyword">while</span> (i-- &gt; <span class="hljs-number">0</span>) {
             System.out.println(<span class="hljs-string">"funcB "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ie) {
+            <span class="hljs-keyword">try</span> {
+                Thread.sleep(<span class="hljs-number">500</span>);
+            } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
                 ie.printStackTrace();
             }
         }
     }
 }
-</code></pre><h5 id="synchronize-class">Synchronize.class</h5><pre><code>public class Synchronize {
-    public static void main(String[] args) {
-        final ClassLock lock = new ClassLock();
-        new Thread(new <span class="hljs-function"><span class="hljs-title">Runnable</span></span>() {
+</code></pre><h5 id="synchronize-class">Synchronize.class</h5><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Synchronize</span> </span>{
+    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+        final ClassLock lock = <span class="hljs-keyword">new</span> ClassLock();
+        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
             @Override
-            public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
+            public <span class="hljs-keyword">void</span> run() {
                 lock.funcA();
             }
         }, <span class="hljs-string">"thread3"</span>).start();
 
-        new Thread(new <span class="hljs-function"><span class="hljs-title">Runnable</span></span>() {
+        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
             @Override
-            public void <span class="hljs-function"><span class="hljs-title">run</span></span>() {
+            public <span class="hljs-keyword">void</span> run() {
                 lock.funcB();
             }
         }, <span class="hljs-string">"thread4"</span>).start();
     }
 }
-</code></pre><h5 id="执行结果">执行结果</h5><pre><code>funcA thread3 : 4
-funcA thread3 : 3
-funcA thread3 : 2
-funcA thread3 : 1
-funcA thread3 : 0
-funcB thread4 : 4
-funcB thread4 : 3
-funcB thread4 : 2
-funcB thread4 : 1
-funcB thread4 : 0
-</code></pre><h5 id="将funca的&#39;classlock.class&#39; =&gt; &#39;this&#39; 执行结果如下">将funcA的&#39;ClassLock.class&#39; =&gt; &#39;this&#39; 执行结果如下</h5><pre><code>funcA thread3 : 4
-funcB thread4 : 4
-funcB thread4 : 3
-funcA thread3 : 3
-funcB thread4 : 2
-funcA thread3 : 2
-funcA thread3 : 1
-funcB thread4 : 1
-funcA thread3 : 0
-funcB thread4 : 0
+</code></pre><h5 id="执行结果">执行结果</h5><pre><code>funcA thread3 : <span class="hljs-number">4</span>
+funcA thread3 : <span class="hljs-number">3</span>
+funcA thread3 : <span class="hljs-number">2</span>
+funcA thread3 : <span class="hljs-number">1</span>
+funcA thread3 : <span class="hljs-number">0</span>
+funcB thread4 : <span class="hljs-number">4</span>
+funcB thread4 : <span class="hljs-number">3</span>
+funcB thread4 : <span class="hljs-number">2</span>
+funcB thread4 : <span class="hljs-number">1</span>
+funcB thread4 : <span class="hljs-number">0</span>
+</code></pre><h5 id="将funca的&#39;classlock.class&#39; =&gt; &#39;this&#39; 执行结果如下">将funcA的&#39;ClassLock.class&#39; =&gt; &#39;this&#39; 执行结果如下</h5><pre><code>funcA thread3 : <span class="hljs-number">4</span>
+funcB thread4 : <span class="hljs-number">4</span>
+funcB thread4 : <span class="hljs-number">3</span>
+funcA thread3 : <span class="hljs-number">3</span>
+funcB thread4 : <span class="hljs-number">2</span>
+funcA thread3 : <span class="hljs-number">2</span>
+funcA thread3 : <span class="hljs-number">1</span>
+funcB thread4 : <span class="hljs-number">1</span>
+funcA thread3 : <span class="hljs-number">0</span>
+funcB thread4 : <span class="hljs-number">0</span>
 </code></pre><h5 id="解释">解释</h5><blockquote>
 <p>类锁修饰方法和代码块的效果和对象锁是一样的，因为类锁只是一个抽象出来的概念，只是为了区别静态方法的特点，因为静态方法是所有对象实例共用的，所以对应着synchronized修饰的静态方法的锁也是唯一的，所以抽象出来个类锁。
 上面代码synchronized同时修饰静态方法和实例方法，但是运行结果是交替进行的，这证明了类锁和对象锁是两个不一样的锁，控制着不同的区域，它们是互不干扰的。同样，线程获得对象锁的同时，也可以获得该类锁，即同时获得两个锁，这是允许的。</p>
@@ -348,8 +348,8 @@ funcB thread4 : 0
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145294"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145294"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107098"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107098"></script>
 </body>
 
 </html>

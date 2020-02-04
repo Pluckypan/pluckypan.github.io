@@ -13,7 +13,7 @@
 			RecyclerView拖动排序及侧滑删除 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145283">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107068">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -150,60 +150,60 @@
 <a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.ItemDecoration.html">RecyclerView.ItemDecoration</a>的子类，也就是说它可以轻易的添加到几乎所有的LayoutManager和Adapter中。它还可以和现有的item动画一起工作，提供受类型限制的拖放动画等等。</p>
 <h3 id="实现效果">实现效果</h3><p><img src="http://7xs20s.com1.z0.glb.clouddn.com/tuchongeter/素材/1435641365165672.gif" alt="RecyclerView"></p>
 <h3 id="代码实现">代码实现</h3><h4 id="第一步：定义item拖拽和删除接口">第一步：定义Item拖拽和删除接口</h4><pre><code>public interface DragSwipeListener {
-    void onItemDismiss(int position);
-    void onDrag(int from, int to);
+    <span class="hljs-keyword">void</span> onItemDismiss(int position);
+    <span class="hljs-keyword">void</span> onDrag(int <span class="hljs-keyword">from</span>, int to);
 }
-</code></pre><h4 id="第二步：定义adapter并实现上述接口方法">第二步：定义Adapter并实现上述接口方法</h4><pre><code>public class DragSwipeAdapter extends RecyclerView.Adapter&lt;DragSwipeAdapter.ItemViewHolder&gt; implements DragSwipeListener {
+</code></pre><h4 id="第二步：定义adapter并实现上述接口方法">第二步：定义Adapter并实现上述接口方法</h4><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DragSwipeAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RecyclerView</span>.<span class="hljs-title">Adapter</span>&lt;<span class="hljs-title">DragSwipeAdapter</span>.<span class="hljs-title">ItemViewHolder</span>&gt; <span class="hljs-title">implements</span> <span class="hljs-title">DragSwipeListener</span> </span>{
 
     private Context mContext;
 
     public DragSwipeAdapter(Context mContext) {
-        this.mContext = mContext;
+        <span class="hljs-keyword">this</span>.mContext = mContext;
     }
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(mContext, R.layout.item_msg, null);
-        <span class="hljs-built_in">return</span> new ItemViewHolder(view);
+        View view = View.inflate(mContext, R.layout.item_msg, <span class="hljs-literal">null</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ItemViewHolder holder, int position) {
+    public <span class="hljs-keyword">void</span> onBindViewHolder(ItemViewHolder holder, int position) {
         holder.tvDesc.setText(<span class="hljs-string">"xx00 --&gt;"</span> + position + <span class="hljs-string">"&lt;-- 00xx"</span>);
     }
 
     @Override
-    public int <span class="hljs-function"><span class="hljs-title">getItemCount</span></span>() {
-        <span class="hljs-built_in">return</span> 6;
+    public int getItemCount() {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">6</span>;
     }
 
-    class ItemViewHolder extends RecyclerView.ViewHolder {
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ItemViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RecyclerView</span>.<span class="hljs-title">ViewHolder</span> </span>{
 
         TextView tvName, tvDesc;
 
         public ItemViewHolder(View itemView) {
-            super(itemView);
+            <span class="hljs-keyword">super</span>(itemView);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvDesc = (TextView) itemView.findViewById(R.id.tvDesc);
         }
     }
 
     @Override
-    public void onItemDismiss(int position) {
+    public <span class="hljs-keyword">void</span> onItemDismiss(int position) {
         notifyItemRemoved(position);
     }
 
     @Override
-    public void onDrag(int from, int to) {
-        notifyItemMoved(from, to);
+    public <span class="hljs-keyword">void</span> onDrag(int <span class="hljs-keyword">from</span>, int to) {
+        notifyItemMoved(<span class="hljs-keyword">from</span>, to);
     }
 }
-</code></pre><h4 id="第三步：设置回调，当拖拽、侧滑删除时触发">第三步：设置回调，当拖拽、侧滑删除时触发</h4><pre><code>public class SimpleTouchCallback extends ItemTouchHelper.Callback {
+</code></pre><h4 id="第三步：设置回调，当拖拽、侧滑删除时触发">第三步：设置回调，当拖拽、侧滑删除时触发</h4><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SimpleTouchCallback</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ItemTouchHelper</span>.<span class="hljs-title">Callback</span> </span>{
 
     private DragSwipeListener listener;
 
     public SimpleTouchCallback(DragSwipeListener listener) {
-        this.listener = listener;
+        <span class="hljs-keyword">this</span>.listener = listener;
     }
 
     @Override
@@ -211,40 +211,40 @@
         int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
         int swipFlags = ItemTouchHelper.START | ItemTouchHelper.END;
 
-        <span class="hljs-built_in">return</span> makeMovementFlags(dragFlags, swipFlags);
+        <span class="hljs-keyword">return</span> makeMovementFlags(dragFlags, swipFlags);
     }
 
     @Override
-    public boolean <span class="hljs-function"><span class="hljs-title">isLongPressDragEnabled</span></span>() {
-        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+    public boolean isLongPressDragEnabled() {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
 
     @Override
-    public boolean <span class="hljs-function"><span class="hljs-title">isItemViewSwipeEnabled</span></span>() {
-        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+    public boolean isItemViewSwipeEnabled() {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
         listener.onDrag(viewHolder.getAdapterPosition(), target.getAdapterPosition());
-        <span class="hljs-built_in">return</span> <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
 
     @Override
-    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+    public <span class="hljs-keyword">void</span> onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         listener.onItemDismiss(viewHolder.getAdapterPosition());
     }
 }
-</code></pre><h4 id="第四步：itemtouchhelper关联至recyclerview">第四步：ItemTouchHelper关联至RecyclerView</h4><pre><code>LinearLayoutManager manager = new LinearLayoutManager(this);
+</code></pre><h4 id="第四步：itemtouchhelper关联至recyclerview">第四步：ItemTouchHelper关联至RecyclerView</h4><pre><code>LinearLayoutManager manager = <span class="hljs-keyword">new</span> LinearLayoutManager(<span class="hljs-keyword">this</span>);
 manager.setOrientation(LinearLayoutManager.VERTICAL);
 
 recyclerView.setLayoutManager(manager);
 
-DragSwipeAdapter adapter = new DragSwipeAdapter(this);
+DragSwipeAdapter adapter = <span class="hljs-keyword">new</span> DragSwipeAdapter(<span class="hljs-keyword">this</span>);
 recyclerView.setAdapter(adapter);
 
-SimpleTouchCallback callback = new SimpleTouchCallback(adapter);
-ItemTouchHelper helper = new ItemTouchHelper(callback);
+SimpleTouchCallback callback = <span class="hljs-keyword">new</span> SimpleTouchCallback(adapter);
+ItemTouchHelper helper = <span class="hljs-keyword">new</span> ItemTouchHelper(callback);
 helper.attachToRecyclerView(recyclerView);
 </code></pre><h3 id="项目地址">项目地址</h3><p><a href="https://github.com/Pluckypan/AndroidDaddy/tree/master/app/src/main/java/engineer/echo/bigandroid/swipe">github</a></p>
 
@@ -286,8 +286,8 @@ helper.attachToRecyclerView(recyclerView);
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145284"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145284"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107068"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107068"></script>
 </body>
 
 </html>

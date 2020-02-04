@@ -7,13 +7,13 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<meta name="description" content="puppy linux - puppy linux 安装及使用说明">
-		<meta name="keywords" content="puppy linux">
+		<meta name="description" content="ConstraintLayout 优化你的布局 - ConstraintLayout ">
+		<meta name="keywords" content="ConstraintLayout 优化你的布局">
 		<title>
-			puppy linux - 无忧杂货铺
+			ConstraintLayout 优化你的布局 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107099">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788106846">
 	</head>
 
 	<body>
@@ -132,7 +132,7 @@
 		</ul>
 		<input type="text" class="query" id="query" autocomplete="off" placeholder="请输入关键字" />
 		<div class="enter-input">
-			<input type="hidden" id="current_path" value="i/83cbc87.html">
+			<input type="hidden" id="current_path" value="i/636d28a.html">
 			<button id="search_btn">搜索</button>
 		</div>
 	</div>
@@ -142,15 +142,28 @@
 </div>
 
 <div class="markdown-body">
-<h1 id="puppy-linux">puppy linux</h1><p>puppy linux 安装及使用说明</p>
-<h3 id="安装步骤">安装步骤</h3><h4 id="分区">分区</h4><h4 id="硬盘安装">硬盘安装</h4><h4 id="grub-dos启动项">grub-dos启动项</h4><h4 id="设置：语言、时区、分辨率、机器名">设置：语言、时区、分辨率、机器名</h4><h4 id="字体">字体</h4><pre><code># linux系统目录 usr/share/fonts
-# 拷贝字体
-$ cp yahei.ttf usr/share/fonts
-# 刷新字体库
-$ fc-cache
-# 查看当前系统安装的字体
-$ fc-list 
-</code></pre><h3 id="一个网址">一个网址</h3><p><a href="http://dotpups.de/">http://dotpups.de/</a></p>
+<h1 id="constraintlayout 优化你的布局">ConstraintLayout 优化你的布局</h1><p>ConstraintLayout </p>
+<h3 id="关键属性">关键属性</h3><ol>
+<li>layout_constraintDimensionRatio 9:16 &amp; H,16:9</li>
+<li>layout_constraintWidth_percent</li>
+<li>layout_constraintVertical_bias</li>
+<li>layout_constraintGuide_percent</li>
+<li>layout_constraintBaseline_toBaselineOf</li>
+<li>layout_editor_absoluteX</li>
+<li>layout_editor_absoluteY</li>
+<li>layout_constraintGuide_begin</li>
+<li>layout_constraintGuide_end</li>
+<li>layout_constraintHorizontal_weight</li>
+</ol>
+<h3 id="为什么不生效">为什么不生效</h3><ol>
+<li>形成约束</li>
+<li>0dp</li>
+</ol>
+<h3 id="场景测试">场景测试</h3><ol>
+<li><code>adb shell wm size 480x800</code></li>
+<li><code>adb shell wm size reset</code></li>
+<li>常用手机尺寸 <a href="http://www.bejson.com/ui/phonesize/">链接</a></li>
+</ol>
 
 </div>
 
@@ -190,8 +203,8 @@ $ fc-list
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1580788107099"></script>
-<script type="text/javascript" src="../js/index.js?v=1580788107099"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788106848"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788106848"></script>
 </body>
 
 </html>

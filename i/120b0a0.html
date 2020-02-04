@@ -13,7 +13,7 @@
 			linux指令大全 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145210">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788107009">
 	</head>
 
 	<body>
@@ -137,20 +137,20 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
 <div class="markdown-body">
 <h1 id="linux指令大全">linux指令大全</h1><p>常用linux指令解析</p>
-<h3 id="改变文件夹dir权限">改变文件夹dir权限</h3><pre><code>sudo chmod -r 777 dir
+<h3 id="改变文件夹dir权限">改变文件夹dir权限</h3><pre><code>sudo chmod -r <span class="hljs-number">777</span> dir
 </code></pre><h3 id="ln">ln</h3><h3 id="fc-list">fc-list</h3><h3 id="fc-cache">fc-cache</h3><h3 id="cp">cp</h3><h3 id="halt-poweroff">halt poweroff</h3><h3 id="reboot">reboot</h3><h3 id="tar">tar</h3><pre><code>tar -xvf node-v6.2.0.tar.gz
-<span class="hljs-comment">#x 从档案文件中释放文件</span>
-<span class="hljs-comment">#v 执行过程中显示信息 verbose</span>
-<span class="hljs-comment">#f 使用档名，在 f之后要立即接档名！不要再加其他参数！</span>
-<span class="hljs-comment">#c 创建新的档案文件</span>
-<span class="hljs-comment">#z 是否需要用 gzip压缩或解压（xx.tar.gz、xx. tgz）</span>
-</code></pre><h3 id="wget">wget</h3><pre><code><span class="hljs-comment">#下载文件</span>
+#x 从档案文件中释放文件
+#v 执行过程中显示信息 verbose
+#f 使用档名，在 f之后要立即接档名！不要再加其他参数！
+#c 创建新的档案文件
+#z 是否需要用 gzip压缩或解压（xx.tar.gz、xx. tgz）
+</code></pre><h3 id="wget">wget</h3><pre><code>#下载文件
 wget http://nodejs.org/dist/v0.8.7/node-v0.8.7.tar.gz
 </code></pre><h3 id="curl">curl</h3><h4 id="参数">参数</h4><table>
 <thead>
@@ -226,50 +226,50 @@ wget http://nodejs.org/dist/v0.8.7/node-v0.8.7.tar.gz
 </tr>
 </tbody>
 </table>
-<h4 id="示例">示例</h4><pre><code>curl http://www.linux.com <span class="hljs-comment">#执行后，www.linux.com 的html就会显示在屏幕上了</span>
-curl http://www.linux.com &gt;&gt; linux.html   <span class="hljs-comment">#重定向功能保存</span>
-curl -o linux.html http://www.linux.com   <span class="hljs-comment">#-o/--output 把输出写到该文件中</span>
-curl -c cookiec.txt  http://www.linux.com <span class="hljs-comment">#保存http的response里面的cookie信息。内置option:-c（小写）</span>
-curl -D header.txt http://www.linux.com   <span class="hljs-comment">#保存http的response里面的header信息。内置option: -D</span>
-curl -b cookiec.txt http://www.linux.com  <span class="hljs-comment">#读取保存的cookie信息访问。内置option: -b</span>
-curl -A <span class="hljs-string">"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)"</span> http://www.linux.com <span class="hljs-comment">#设置UserAgent</span>
-<span class="hljs-comment">#下载文件</span>
+<h4 id="示例">示例</h4><pre><code>curl http://www.linux.com #执行后，www.linux.com 的html就会显示在屏幕上了
+curl http://www.linux.com &gt;&gt; linux.html   #重定向功能保存
+curl -o linux.html http://www.linux.com   #-o/--output 把输出写到该文件中
+curl -c cookiec.txt  http://www.linux.com #保存http的response里面的cookie信息。内置option:-c（小写）
+curl -D header.txt http://www.linux.com   #保存http的response里面的header信息。内置option: -D
+curl -b cookiec.txt http://www.linux.com  #读取保存的cookie信息访问。内置option: -b
+curl -A "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)" http://www.linux.com #设置UserAgent
+#下载文件
 curl -o dodo1.jpg http:www.linux.com/dodo1.JPG
 curl -O http://www.linux.com/dodo1.JPG
-curl -O http://www.linux.com/dodo[1-5].JPG <span class="hljs-comment">#循环下载</span>
-</code></pre><h3 id="安装ffmpeg">安装ffmpeg</h3><pre><code>$ apt-get update
-<span class="hljs-comment"># 跳过询问 直接确认 -y</span>
-$ apt-get install ffmpeg -y
-</code></pre><h3 id="配置环境变量">配置环境变量</h3><pre><code><span class="hljs-comment"># 将当前目录加入 PYTHONPATH</span>
-$ <span class="hljs-built_in">export</span> PYTHONPATH=<span class="hljs-variable">$PYTHONPATH</span>:<span class="hljs-variable">$PWD</span>
-</code></pre><h3 id="wc 和 grep">wc 和 grep</h3><pre><code>$ git <span class="hljs-built_in">log</span> |grep camera
-$ git <span class="hljs-built_in">log</span> |wc -l
-</code></pre><h3 id="wc">wc</h3><pre><code><span class="hljs-comment"># 统计 settings.gradle 文件的行数、字数、字节数</span>
+curl -O http://www.linux.com/dodo[1-5].JPG #循环下载
+</code></pre><h3 id="安装ffmpeg">安装ffmpeg</h3><pre><code>$ apt-<span class="hljs-keyword">get</span> update
+# 跳过询问 直接确认 -y
+$ apt-<span class="hljs-keyword">get</span> install ffmpeg -y
+</code></pre><h3 id="配置环境变量">配置环境变量</h3><pre><code># 将当前目录加入 PYTHONPATH
+$ export PYTHONPATH=$PYTHONPATH:$PWD
+</code></pre><h3 id="wc 和 grep">wc 和 grep</h3><pre><code>$ git log |grep camera
+$ git log |wc -l
+</code></pre><h3 id="wc">wc</h3><pre><code># 统计 settings.gradle 文件的行数、字数、字节数
 $ wc settings.gradle
-<span class="hljs-comment"># 只读取行数</span>
+# 只读取行数
 $ wc -l  versions.gradle
-<span class="hljs-comment"># 只读取字数</span>
-<span class="hljs-comment"># wc -w  versions.gradle</span>
-<span class="hljs-comment"># 只读取字节数</span>
-<span class="hljs-comment"># wc -c  versions.gradle</span>
+# 只读取字数
+# wc -w  versions.gradle
+# 只读取字节数
+# wc -c  versions.gradle
 </code></pre><h3 id="ls">ls</h3><pre><code>1、列出当前目录的文件、文件夹完整路径
-   ls -1 |awk <span class="hljs-string">'{print i$0}'</span> i=`<span class="hljs-built_in">pwd</span>`<span class="hljs-string">'/'</span>
+   ls -1 |awk &#39;{print i$0}&#39; i=`pwd`&#39;/&#39;
 
 2、列出当前目录及子目录的文件、文件夹完整路径
-   ls -R |awk <span class="hljs-string">'{print i$0}'</span> i=`<span class="hljs-built_in">pwd</span>`<span class="hljs-string">'/'</span>
+   ls -R |awk &#39;{print i$0}&#39; i=`pwd`&#39;/&#39;
 
 2b） 列出当前目录及子目录下的文件夹完整路径
-    ls -FR | grep /$ | sed <span class="hljs-string">"s:^:`pwd`/:"</span> 
+    ls -FR | grep /$ | sed &quot;s:^:`pwd`/:&quot; 
 
 3、用find实现，好像运行要慢些
-   find / -name <span class="hljs-string">"*.*"</span> -<span class="hljs-built_in">exec</span> ls {} \;
+   find / -name &quot;*.*&quot; -exec ls {} \;
 
 4、递归列出当前目录及子目录名称
     ls -FR | grep /$
 
 5、递归列出当前目录及子目录名称，包括相关属性
-    ls -lR | grep <span class="hljs-string">"^d"</span>
-    <span class="hljs-comment"># drwxr-xr-x 3 idea idea  4096 Aug  2  2009 images</span>
+    ls -lR | grep &quot;^d&quot;
+    # drwxr-xr-x 3 idea idea  4096 Aug  2  2009 images
 
 6、只列出当前目录下的子目录
     用ls只列出子目录
@@ -313,8 +313,8 @@ $ wc -l  versions.gradle
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145210"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145210"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788107010"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788107010"></script>
 </body>
 
 </html>

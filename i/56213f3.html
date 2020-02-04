@@ -13,7 +13,7 @@
 			RenderScript - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1573824145131">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1580788106875">
 	</head>
 
 	<body>
@@ -137,40 +137,40 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">94</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
 <div class="markdown-body">
 <h1 id="renderscript">RenderScript</h1><p>RenderScript 图形图像处理技术</p>
-<h3 id="开启">开启</h3><pre><code>// 在工程 app 的 build.gradle 下
+<h3 id="开启">开启</h3><pre><code><span class="hljs-comment">// 在工程 app 的 build.gradle 下</span>
 
 defaultConfig {
-        //开启renderscript支持，否则编译时找不到RenderScript相关类(renderscriptTargetApi:11~24)
-        renderscriptTargetApi 24
+        <span class="hljs-comment">//开启renderscript支持，否则编译时找不到RenderScript相关类(renderscriptTargetApi:11~24)</span>
+        renderscriptTargetApi <span class="hljs-number">24</span>
         renderscriptSupportModeEnabled <span class="hljs-literal">true</span>
     }
 
 </code></pre><h3 id="自定义脚本">自定义脚本</h3><pre><code>// 与 res 、 java 同级目录下 新建 rs 文件夹 然后新建 ScaleScript.rs
 
-<span class="hljs-comment">#pragma version(1)</span>
-<span class="hljs-comment">#pragma rs_fp_relaxed</span>
-<span class="hljs-comment">#pragma rs java_package_name(engineer.echo.render)</span>
+#pragma version(1)
+#pragma rs_fp_relaxed
+#pragma rs java_package_name(engineer.echo.render)
 
 rs_allocation inputAllocation;
 uchar4 out;
 int wIn, hIn;
 int numTotalPixels;
-static <span class="hljs-built_in">float</span> scaleInv;
+static float scaleInv;
 static int inputWidth, inputHeight, outputWidth, outputHeight;
 
-uchar4 __attribute__((kernel)) invert(uchar4 <span class="hljs-keyword">in</span>)
+uchar4 __attribute__((kernel)) invert(uchar4 in)
 {
-  uchar4 out = <span class="hljs-keyword">in</span>;
+  uchar4 out = in;
   out.r =255- in.r;
   out.g = 255-in.g;
   out.b = 255-in.b;
-  <span class="hljs-built_in">return</span> out;
+  return out;
 
 }
 
@@ -200,17 +200,17 @@ void setInformation(int _inputWidth, int _inputHeight,
     inputHeight = _inputHeight;
     outputWidth = _outputWidth;
     outputHeight = _outputHeight;
-    scaleInv = (<span class="hljs-built_in">float</span>)inputWidth/(<span class="hljs-built_in">float</span>)outputWidth;
+    scaleInv = (float)inputWidth/(float)outputWidth;
 }
 
 
 const static uchar Myclamp(short x, uchar Mymin, uchar Mymax){
 
-    <span class="hljs-keyword">if</span> (x &gt; Mymax)
-        <span class="hljs-built_in">return</span> Mymax;
-    <span class="hljs-keyword">if</span> (x &lt; Mymin)
-        <span class="hljs-built_in">return</span> Mymin;
-    <span class="hljs-built_in">return</span> (uchar)x;
+    if (x &gt; Mymax)
+        return Mymax;
+    if (x &lt; Mymin)
+        return Mymin;
+    return (uchar)x;
 }
 
 // Kernel that converts a YUV element to a RGBA one
@@ -239,7 +239,7 @@ uchar4 __attribute__((kernel)) convert(uint32_t x, uint32_t y)
 
     out.a = 255;
 
-    <span class="hljs-built_in">return</span> out;
+    return out;
 }
 
 uchar4 __attribute__ ((kernel)) rotate_90_clockwise ( uint32_t x, uint32_t y) {
@@ -247,7 +247,7 @@ uchar4 __attribute__ ((kernel)) rotate_90_clockwise ( uint32_t x, uint32_t y) {
     uint32_t inY = x;
     uchar4 out;
     out = rsGetElementAt_uchar4(inputAllocation,inX, inY);
-    <span class="hljs-built_in">return</span> out;
+    return out;
 }
 
 uchar4 __attribute__ ((kernel)) rotate_270_clockwise (uint32_t x, uint32_t y) {
@@ -255,119 +255,119 @@ uchar4 __attribute__ ((kernel)) rotate_270_clockwise (uint32_t x, uint32_t y) {
     uint32_t inY = hIn - 1 - x;
     uchar4 out;
      out = rsGetElementAt_uchar4(inputAllocation,inX, inY);
-    <span class="hljs-built_in">return</span> out;
+    return out;
 }
 
 
-const static <span class="hljs-built_in">float</span> Limit(<span class="hljs-built_in">float</span> x, <span class="hljs-built_in">float</span> Mymin, <span class="hljs-built_in">float</span> Mymax){
-    <span class="hljs-keyword">if</span> (x &gt; Mymax)
-        <span class="hljs-built_in">return</span> Mymax;
-    <span class="hljs-keyword">if</span> (x &lt; Mymin)
-        <span class="hljs-built_in">return</span> Mymin;
-    <span class="hljs-built_in">return</span> x;
+const static float Limit(float x, float Mymin, float Mymax){
+    if (x &gt; Mymax)
+        return Mymax;
+    if (x &lt; Mymin)
+        return Mymin;
+    return x;
 }
 
 uchar4 __attribute__((kernel)) resizeNearest(uint32_t x, uint32_t y) {
 
-    <span class="hljs-built_in">float</span> fX = clamp(x*scaleInv, 0.0f, (<span class="hljs-built_in">float</span>)inputWidth);
-    <span class="hljs-built_in">float</span> fY = clamp(y*scaleInv, 0.0f, (<span class="hljs-built_in">float</span>)inputHeight);
+    float fX = clamp(x*scaleInv, 0.0f, (float)inputWidth);
+    float fY = clamp(y*scaleInv, 0.0f, (float)inputHeight);
 
-    <span class="hljs-built_in">return</span> rsGetElementAt_uchar4(inputAllocation, fX, fY);
+    return rsGetElementAt_uchar4(inputAllocation, fX, fY);
 }
 </code></pre><h3 id="编译">编译</h3><p>直接 clean&amp;build 即可生成 JAVA 代码. 目录在 <code>app/build/generated/source/rs</code></p>
-<h3 id="使用">使用</h3><pre><code>// 缩放图片
-private fun scaleBitmap(context: Context, bitmap: Bitmap, scale: Float): Bitmap {
+<h3 id="使用">使用</h3><pre><code><span class="hljs-comment">// 缩放图片</span>
+private fun scaleBitmap(context: Context, <span class="hljs-attr">bitmap</span>: Bitmap, <span class="hljs-attr">scale</span>: Float): Bitmap {
     val renderScript = RenderScript.create(context)
-    // 缩放
+    <span class="hljs-comment">// 缩放</span>
     val scaleScript = ScriptC_ScaleScript(renderScript)
-    // 输入
+    <span class="hljs-comment">// 输入</span>
     val allIn = Allocation.createFromBitmap(renderScript, bitmap)
-    // 缩放宽高
+    <span class="hljs-comment">// 缩放宽高</span>
     val width = (bitmap.width * scale).toInt()
     val height = (bitmap.height * scale).toInt()
     val scaleType = Type.Builder(renderScript, Element.RGBA_8888(renderScript))
             .setX(width)
             .setY(height)
             .create()
-    // 输出
+    <span class="hljs-comment">// 输出</span>
     val allOut = Allocation.createTyped(renderScript, scaleType)
-    // 关联输入输出
+    <span class="hljs-comment">// 关联输入输出</span>
     scaleScript._inputAllocation = allIn
     scaleScript.invoke_setInformation(bitmap.width, bitmap.height, width, height)
     scaleScript.forEach_resizeNearest(allOut)
-    // 将数据拷贝至 Bitmap
+    <span class="hljs-comment">// 将数据拷贝至 Bitmap</span>
     val outBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     allOut.copyTo(outBitmap)
-    // 释放
+    <span class="hljs-comment">// 释放</span>
     renderScript.destroy()
     scaleScript.destroy()
     allIn.destroy()
     scaleType.destroy()
     allOut.destroy()
-    <span class="hljs-built_in">return</span> outBitmap
+    <span class="hljs-keyword">return</span> outBitmap
 }
-</code></pre><h3 id="使用系统自建script所犯图片">使用系统自建Script所犯图片</h3><pre><code>/**
+</code></pre><h3 id="使用系统自建script所犯图片">使用系统自建Script所犯图片</h3><pre><code><span class="hljs-comment">/**
  * 通过高斯算法缩放图片
  * 通过 ffmpeg -i 708721762.png -s 176x44 -sws_flags gauss  -y 0.3.png 对比
  * 发现 gauss &amp; bilinear 缩小图片时 图片质量丢失最小
  * 参考链接：
- * https://medium.com/@petrakeas/<span class="hljs-built_in">alias</span>-free-resize-with-renderscript-5bf15a86ce3
+ * https://medium.com/@petrakeas/alias-free-resize-with-renderscript-5bf15a86ce3
  * https://blog.csdn.net/leixiaohua1020/article/details/84483277
  * http://www.echo.engineer/c/ffmpeg.html
- */
-fun Bitmap.gaussScale(scale: Float, radiusOffset: Float): Bitmap {
-    // 创建 RenderScript 引擎
+ */</span>
+fun Bitmap.gaussScale(scale: Float, <span class="hljs-attr">radiusOffset</span>: Float): Bitmap {
+    <span class="hljs-comment">// 创建 RenderScript 引擎</span>
     val renderScriptEngine = RenderScript.create(getApplicationContext())
 
-    val resizeRatio = 1f / scale
-    /**
+    val resizeRatio = <span class="hljs-number">1</span>f / scale
+    <span class="hljs-comment">/**
      * 计算高斯模糊半径,参考源代码
      * https://android.googlesource.com/platform/frameworks/rs/+/master/cpu_ref/rsCpuIntrinsicBlur.cpp
-     */
-    val sigma = resizeRatio / Math.PI.toFloat()
-    //+ radiusOffset 的目的是更柔和一点 否则字体容易出现锯齿
-    var radius = 2.5f * sigma - 1.5f + radiusOffset
-    radius = Math.min(25f, Math.max(0.0001f, radius))
+     */</span>
+    val sigma = resizeRatio / <span class="hljs-built_in">Math</span>.PI.toFloat()
+    <span class="hljs-comment">//+ radiusOffset 的目的是更柔和一点 否则字体容易出现锯齿</span>
+    <span class="hljs-keyword">var</span> radius = <span class="hljs-number">2.5</span>f * sigma - <span class="hljs-number">1.5</span>f + radiusOffset
+    radius = <span class="hljs-built_in">Math</span>.min(<span class="hljs-number">25</span>f, <span class="hljs-built_in">Math</span>.max(<span class="hljs-number">0.0001</span>f, radius))
 
-    /**
+    <span class="hljs-comment">/**
      * 由于 gauss &amp; bilinear 两种缩放算法表现比较好且 Android 已经自带了 ScriptIntrinsicBlur (基于gauss)
      * 所以暂时使用 ScriptIntrinsicBlur 不自行 写 renderScript 脚本
      * 如果要自行实现 gauss or bilinear or 其他缩放算法
      * 可参考：http://www.echo.engineer/c/renderscript.html
-     */
+     */</span>
 
-    // 输入流
-    val allIn = Allocation.createFromBitmap(renderScriptEngine, this)
+    <span class="hljs-comment">// 输入流</span>
+    val allIn = Allocation.createFromBitmap(renderScriptEngine, <span class="hljs-keyword">this</span>)
     val blurScript = ScriptIntrinsicBlur.create(renderScriptEngine, allIn.element)
-    // 输出暂存
+    <span class="hljs-comment">// 输出暂存</span>
     val tmpAlloc = Allocation.createTyped(renderScriptEngine, allIn.type)
     blurScript.setRadius(radius)
     blurScript.setInput(allIn)
     blurScript.forEach(tmpAlloc)
-    // 释放
+    <span class="hljs-comment">// 释放</span>
     allIn.destroy()
     blurScript.destroy()
 
-    // 缩放
+    <span class="hljs-comment">// 缩放</span>
     val srcAspect = width.toFloat() / height
-    val dstWidth = (width * scale + 0.5f).toInt()
+    val dstWidth = (width * scale + <span class="hljs-number">0.5</span>f).toInt()
     val dstHeight = (dstWidth / srcAspect).toInt()
-    val dstBitmap = Bitmap.createBitmap(dstWidth, dstHeight, this.config)
-    // 输出流 在原有高斯编码的基础上做缩放
+    val dstBitmap = Bitmap.createBitmap(dstWidth, dstHeight, <span class="hljs-keyword">this</span>.config)
+    <span class="hljs-comment">// 输出流 在原有高斯编码的基础上做缩放</span>
     val allOut = Allocation.createTyped(renderScriptEngine, Type.createXY(renderScriptEngine, tmpAlloc.element, dstWidth, dstHeight))
-    // 缩放
+    <span class="hljs-comment">// 缩放</span>
     val resizeScript = ScriptIntrinsicResize.create(renderScriptEngine)
     resizeScript.setInput(tmpAlloc)
     resizeScript.forEach_bicubic(allOut)
-    // 将最终数据输出到 Bitmap
+    <span class="hljs-comment">// 将最终数据输出到 Bitmap</span>
     allOut.copyTo(dstBitmap)
 
-    // 释放
+    <span class="hljs-comment">// 释放</span>
     tmpAlloc.destroy()
     allOut.destroy()
     resizeScript.destroy()
     renderScriptEngine.destroy()
-    <span class="hljs-built_in">return</span> dstBitmap
+    <span class="hljs-keyword">return</span> dstBitmap
 }
 </code></pre><h3 id="参考链接">参考链接</h3><ul>
 <li><a href="https://github.com/googlesamples/android-BasicRenderScript">googlesamples</a></li>
@@ -415,8 +415,8 @@ fun Bitmap.gaussScale(scale: Float, radiusOffset: Float): Bitmap {
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1573824145132"></script>
-<script type="text/javascript" src="../js/index.js?v=1573824145132"></script>
+<script type="text/javascript" src="../js/dt.js?v=1580788106876"></script>
+<script type="text/javascript" src="../js/index.js?v=1580788106876"></script>
 </body>
 
 </html>
