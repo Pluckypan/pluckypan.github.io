@@ -13,7 +13,7 @@
 			jQuery插件 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1586330236922">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1586756285320">
 	</head>
 
 	<body>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">96</span> 篇文章
+		收藏本站请使用Ctrl+D或者Command+d<br> 共收录到 <span id="commands_info">95</span> 篇文章
 	</div>
 </div>
 
@@ -178,7 +178,12 @@ Holder.run({
 <blockquote>
 <p>Photo Sphere Viewer是一款基于Three.js的360X180度全景图预览js插件。该js插件可以360度旋转查看全景图，也可以上下180度查看图片。使用该插件的唯一要求是浏览器支持canvas或WebGL。<a href="http://www.jq22.com/demo/Photo-Sphere-Viewer20161120/">预览</a></p>
 </blockquote>
-
+<h2 id="在 chrome console 中引入 jquery">在 chrome console 中引入 jquery</h2><pre><code><span class="hljs-keyword">var</span> jqueryJs=<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+jqueryJs.setAttribute(<span class="hljs-string">"type"</span>,<span class="hljs-string">"text/JavaScript"</span>);
+jqueryJs.setAttribute(<span class="hljs-string">"src"</span>, <span class="hljs-string">'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'</span>);
+<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>].appendChild(jqueryJs);
+<span class="hljs-comment">//正则匹配 ^_\S* "</span>
+</code></pre>
 </div>
 
 
@@ -217,8 +222,8 @@ Holder.run({
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1586330236922"></script>
-<script type="text/javascript" src="../js/index.js?v=1586330236922"></script>
+<script type="text/javascript" src="../js/dt.js?v=1586756285321"></script>
+<script type="text/javascript" src="../js/index.js?v=1586756285321"></script>
 </body>
 
 </html>
