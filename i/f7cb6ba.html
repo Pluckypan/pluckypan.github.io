@@ -13,7 +13,7 @@
 			jQuery插件 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1593744503331">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1593933688280">
 	</head>
 
 	<body>
@@ -143,18 +143,18 @@
 
 <div class="markdown-body">
 <h1 id="jquery插件">jQuery插件</h1><p>强大的jQuery插件</p>
-<h3 id="图片处理">图片处理</h3><h4 id="一、qrcode.js二维码">一、qrcode.js二维码</h4><pre><code class="lang-javascript">&lt;script src=<span class="hljs-string">"http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://jqweui.com/assets/js/qrcode.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
-<span class="hljs-keyword">var</span> qrcode=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"qrcode"</span>);
-<span class="hljs-keyword">var</span> coder = <span class="hljs-keyword">new</span> QRCode(qrcode, {<span class="hljs-attr">width</span>: <span class="hljs-number">200</span>,<span class="hljs-attr">height</span>: <span class="hljs-number">200</span>,});
-coder.makeCode(<span class="hljs-string">"hello"</span>);
+<h3 id="图片处理">图片处理</h3><h4 id="一、qrcode.js二维码">一、qrcode.js二维码</h4><pre><code class="lang-javascript">&lt;script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="http://jqweui.com/assets/js/qrcode.js"&gt;&lt;/script&gt;
+var qrcode=document.getElementById("qrcode");
+var coder = new QRCode(qrcode, {width: 200,height: 200,});
+coder.makeCode("hello");
 </code></pre>
 <h4 id="二、holder.js占位图">二、holder.js占位图</h4><blockquote>
 <p>html5中，input标-签可以根据placeholder来设定默认占位文字，但是img标签并没有该属性。由于img图片的渲染是一个耗时操作，在网络状态较差的情况下，可能长时间显示不出图片来。使用holder.js给图片添加
 占位图能提高用户体验。</p>
 </blockquote>
-<pre><code class="lang-javascript">&lt;script src=<span class="hljs-string">"holder.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">data-src</span>=<span class="hljs-string">"example.com/100x100?theme=simple"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"new"</span>&gt;</span>
+<pre><code class="lang-javascript">&lt;script src="holder.js"&gt;&lt;/script&gt;
+&lt;img data-src="example.com/100x100?theme=simple" id="new"&gt;
 Holder.run({
   domain: "example.com",
   themes: {
@@ -165,7 +165,7 @@ Holder.run({
     }
   },
   images: "#new"
-});</span>
+});
 </code></pre>
 <h3 id="判断字符串相等">判断字符串相等</h3><pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">equal</span>(<span class="hljs-params">str1,str2</span>)</span>{
     <span class="hljs-keyword">if</span>(str1&amp;&amp;str2){
@@ -222,8 +222,8 @@ jqueryJs.setAttribute(<span class="hljs-string">"src"</span>, <span class="hljs-
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1593744503332"></script>
-<script type="text/javascript" src="../js/index.js?v=1593744503332"></script>
+<script type="text/javascript" src="../js/dt.js?v=1593933688281"></script>
+<script type="text/javascript" src="../js/index.js?v=1593933688281"></script>
 </body>
 
 </html>
