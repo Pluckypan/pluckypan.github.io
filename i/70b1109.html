@@ -13,7 +13,7 @@
 			Mac常用指令 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1593939585862">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704562">
 	</head>
 
 	<body>
@@ -145,11 +145,27 @@
 <h1 id="mac常用指令">Mac常用指令</h1><p>Mac Commands</p>
 <h2 id="终端for循环打印">终端for循环打印</h2><pre><code># 序列帧配置
 for a in {1..120}; do (echo '&lt;item\n'android:drawable=\"@drawable/ic_logo_effect_"$a"_camera_videotool\"\\n 'android:duration="42" /&gt;') done;
+
+# 循环案例
+for a in {27,34,40,45,80}; do (echo "thumb$[a*3/2]x$[a*3/2]" "thumb$[a*2]x$[a*2]" thumb$[a*3]x$[a*3] thumb$[a*4]x$[a*4]) done;
 </code></pre><h2 id="批量生成文件夹">批量生成文件夹</h2><pre><code>$ cat dirlist.txt | xargs mkdir
 </code></pre><h2 id="scp 上传文件">scp 上传文件</h2><pre><code>$ scp ~<span class="hljs-regexp">/Downloads/</span>node-v12<span class="hljs-number">.16</span><span class="hljs-number">.3</span>.tar.gz root@<span class="hljs-number">1.1</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span>:<span class="hljs-regexp">/home/</span>node/
 $ scp -r dist/ test@<span class="hljs-number">1.1</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span>:~<span class="hljs-regexp">/1/</span>
 </code></pre><h2 id="node 静默运行">node 静默运行</h2><pre><code>$ pm2 start serve
-</code></pre>
+</code></pre><h2 id="ftp 连接超时">ftp 连接超时</h2><p>明明用户名密码是正确的,可是提示超时,无法登陆,怀疑是ftp配置有问题,于是通过<code>find -name ftp</code> 找到ftp配置</p>
+<ol>
+<li>一般路径 /usr/local/phpstudy/soft/ftp/pureftpd-1.0.47/etc</li>
+<li>vim pure-ftpd.conf
+```<h1 id="port-range-for-passive-connections-keep-it-as-broad-as-possible-">Port range for passive connections - keep it as broad as possible.</h1></li>
+</ol>
+<p>PassivePortRange             30000 30050</p>
+<h1 id="force-an-ip-address-in-pasv-epsv-spsv-replies-for-nat-">Force an IP address in PASV/EPSV/SPSV replies. - for NAT.</h1><h1 id="symbolic-host-names-are-also-accepted-for-gateways-with-dynamic-ip">Symbolic host names are also accepted for gateways with dynamic IP</h1><h1 id="addresses-">addresses.</h1><p>ForcePassiveIP               你的公网ip
+```</p>
+<ol>
+<li>阿里云安全规则添加：允许    1    自定义 TCP 目的:30000/30050 源:0.0.0.0/0 30000-30050</li>
+<li>重启 ftp 就生效了</li>
+</ol>
+
 </div>
 
 
@@ -188,8 +204,8 @@ $ scp -r dist/ test@<span class="hljs-number">1.1</span><span class="hljs-number
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1593939585863"></script>
-<script type="text/javascript" src="../js/index.js?v=1593939585863"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200704565"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200704565"></script>
 </body>
 
 </html>

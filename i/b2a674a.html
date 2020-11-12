@@ -13,7 +13,7 @@
 			Hugo - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1593939585908">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704621">
 	</head>
 
 	<body>
@@ -592,7 +592,7 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
       }
 
       @Override
-      public boolean process(<span class="hljs-built_in">Set</span>&lt;? extends TypeElement&gt; <span class="hljs-keyword">set</span>, RoundEnvironment roundEnvironment) {
+      public boolean process(<span class="hljs-built_in">Set</span>&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment) {
           <span class="hljs-keyword">for</span> (Element element : roundEnvironment.getElementsAnnotatedWith(DebugLog.class)) {
               <span class="hljs-keyword">if</span> (element.getKind() == ElementKind.METHOD) {
                   printLn(<span class="hljs-string">"------------------------------"</span>, <span class="hljs-literal">true</span>);
@@ -614,7 +614,7 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
           <span class="hljs-comment">/**
            * 指定将要扫描并处理被注解标记的类 有两种方式
            * 1. 重写 public Set&lt;String&gt; getSupportedAnnotationTypes()
-           * 2. 在 HugoXCompiler 类头部使用注解 <span class="hljs-doctag">@SupportedAnnotationTypes</span>("engineer.echo.hugox.DebugLog")
+           * 2. 在 HugoXCompiler 类头部使用注解 @SupportedAnnotationTypes("engineer.echo.hugox.DebugLog")
            */</span>
           <span class="hljs-keyword">return</span> Collections.singleton(DebugLog.class.getCanonicalName());
       }
@@ -623,7 +623,7 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
       <span class="hljs-comment">/**
        * 指明支持的源码版本(JAVA版本) 支持两种方式
        * 1. 重写 public SourceVersion getSupportedSourceVersion()
-       * 2. 在 HugoXCompiler 类头部使用注解 <span class="hljs-doctag">@SupportedSourceVersion</span>(SourceVersion.RELEASE_7)
+       * 2. 在 HugoXCompiler 类头部使用注解 @SupportedSourceVersion(SourceVersion.RELEASE_7)
        */</span>
       <span class="hljs-comment">/*
       @Override
@@ -797,8 +797,8 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1593939585909"></script>
-<script type="text/javascript" src="../js/index.js?v=1593939585909"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200704622"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200704622"></script>
 </body>
 
 </html>

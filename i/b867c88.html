@@ -13,7 +13,7 @@
 			Deepfakes - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1593939585912">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704772">
 	</head>
 
 	<body>
@@ -148,7 +148,7 @@
 <ul>
 <li>python3.6 pip3.6</li>
 <li>macOS需要安装: xquartz(手动安装)</li>
-<li>如果你有N卡(GPU训练更快)，Nvidia graphics card：You should install CUDA (<a href="https://developer.nvidia.com/cuda-zone">https://developer.nvidia.com/cuda-zone</a>) and CUDNN (<a href="https://developer.nvidia.com/cudnn)">https://developer.nvidia.com/cudnn)</a>. If you do not plan to build Tensorflow yourself, make sure you install no higher than version 9.0 of CUDA and 7.0.x of CUDNN</li>
+<li>如果你有N卡(GPU训练更快)，Nvidia graphics card：You should install CUDA (<a href="https://developer.nvidia.com/cuda-zone">https://developer.nvidia.com/cuda-zone</a>) and CUDNN (<a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a>). If you do not plan to build Tensorflow yourself, make sure you install no higher than version 9.0 of CUDA and 7.0.x of CUDNN</li>
 <li>docker，通过DockerFile构建，环境与官方保持一致</li>
 <li>docker中使用到了 <code>jupyter notebook</code> ,可以根据终端提示的链接打开网页，可上传文件、运行python代码</li>
 </ul>
@@ -164,11 +164,11 @@
 $ sudo pip install pynvx -i https://mirrors.aliyun.com/pypi/simple/
 # 批量安装
 $ sudo pip --no-cache-dir install -r requirements.txt
-</code></pre><ol start="4">
+</code></pre><ol>
 <li>安装完所有依赖运行 setup</li>
 </ol>
 <pre><code>$ python setup.py
-</code></pre><ol start="5">
+</code></pre><ol>
 <li>docker 配置</li>
 </ol>
 <pre><code>$ docker build -t deepfakes-cpu -f Dockerfile.cpu .
@@ -268,8 +268,8 @@ $ python faceswap.py convert -i _data/in/video/frames_in/  -o  _data/in/video/fr
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1593939585913"></script>
-<script type="text/javascript" src="../js/index.js?v=1593939585913"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200704772"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200704772"></script>
 </body>
 
 </html>

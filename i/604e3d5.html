@@ -13,7 +13,7 @@
 			Android设置Drawable Shape的颜色 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1593939586040">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704756">
 	</head>
 
 	<body>
@@ -147,32 +147,32 @@
 <p>Android 给LinearLayout设定一个圆角可以通过Shape来实现，但是shape的颜色是静态的，比如下面的代码是白色的。但实际需求中，我们可能会根据后台返回的颜色值来动态改变这个颜色，显然需要再多做一点点。</p>
 </blockquote>
 <h3 id="样式文件">样式文件</h3><pre><code>&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">shape</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>
-       <span class="hljs-attr">android:shape</span>=<span class="hljs-string">"rectangle"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">stroke</span>
-        <span class="hljs-attr">android:width</span>=<span class="hljs-string">"1dp"</span>
-        <span class="hljs-attr">android:color</span>=<span class="hljs-string">"#FFFFFF"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">solid</span> <span class="hljs-attr">android:color</span>=<span class="hljs-string">"#FFFFFF"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">corners</span>
-        <span class="hljs-attr">android:bottomLeftRadius</span>=<span class="hljs-string">"10dp"</span>
-        <span class="hljs-attr">android:bottomRightRadius</span>=<span class="hljs-string">"10dp"</span>
-        <span class="hljs-attr">android:topLeftRadius</span>=<span class="hljs-string">"10dp"</span>
-        <span class="hljs-attr">android:topRightRadius</span>=<span class="hljs-string">"10dp"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">shape</span>&gt;</span></span>
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle"&gt;
+    &lt;stroke
+        android:width="1dp"
+        android:color="#FFFFFF"/&gt;
+    &lt;solid android:color="#FFFFFF"/&gt;
+    &lt;corners
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"/&gt;
+&lt;/shape&gt;
 </code></pre><h3 id="布局文件">布局文件</h3><pre><code>&lt;LinearLayout
-        <span class="hljs-attr">android</span>:layout_width=<span class="hljs-string">"match_parent"</span>
-        <span class="hljs-attr">android</span>:layout_height=<span class="hljs-string">"60dp"</span>
-        <span class="hljs-attr">android</span>:layout_marginLeft=<span class="hljs-string">"10dp"</span>
-        <span class="hljs-attr">android</span>:layout_marginRight=<span class="hljs-string">"10dp"</span>
-        <span class="hljs-attr">android</span>:background=<span class="hljs-string">"@drawable/shape_whitesolid_corner"</span>
-        <span class="hljs-attr">android</span>:gravity=<span class="hljs-string">"center_vertical"</span>
-        <span class="hljs-attr">android</span>:orientation=<span class="hljs-string">"horizontal"</span>&gt;
+        android:layout_width=<span class="hljs-string">"match_parent"</span>
+        android:layout_height=<span class="hljs-string">"60dp"</span>
+        android:layout_marginLeft=<span class="hljs-string">"10dp"</span>
+        android:layout_marginRight=<span class="hljs-string">"10dp"</span>
+        android:background=<span class="hljs-string">"@drawable/shape_whitesolid_corner"</span>
+        android:gravity=<span class="hljs-string">"center_vertical"</span>
+        android:orientation=<span class="hljs-string">"horizontal"</span>&gt;
         <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">View</span>
             <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/vLeft"</span>
             <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"@dimen/tv_padding"</span>
             <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
-            <span class="hljs-attr">android:background</span>=<span class="hljs-string">"@drawable/shape_left_corner"</span> /&gt;</span></span>
-&lt;<span class="hljs-regexp">/LinearLayout&gt;</span>
+            <span class="hljs-attr">android:background</span>=<span class="hljs-string">"@drawable/shape_left_corner"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span>
 </code></pre><h3 id="改变shape颜色">改变shape颜色</h3><pre><code>GradientDrawable drawable = (GradientDrawable) vLeft.getBackground();
 drawable.setColor(itemView.getResources().getColor(R.color.fh_red));
 </code></pre>
@@ -214,8 +214,8 @@ drawable.setColor(itemView.getResources().getColor(R.color.fh_red));
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1593939586041"></script>
-<script type="text/javascript" src="../js/index.js?v=1593939586041"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200704757"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200704757"></script>
 </body>
 
 </html>
