@@ -13,7 +13,7 @@
 			Mac常用指令 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704562">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200844636">
 	</head>
 
 	<body>
@@ -156,12 +156,12 @@ $ scp -r dist/ test@<span class="hljs-number">1.1</span><span class="hljs-number
 <ol>
 <li>一般路径 /usr/local/phpstudy/soft/ftp/pureftpd-1.0.47/etc</li>
 <li>vim pure-ftpd.conf
-```<h1 id="port-range-for-passive-connections-keep-it-as-broad-as-possible-">Port range for passive connections - keep it as broad as possible.</h1></li>
+<code>`</code><h1 id="port-range-for-passive-connections-keep-it-as-broad-as-possible-">Port range for passive connections - keep it as broad as possible.</h1></li>
 </ol>
 <p>PassivePortRange             30000 30050</p>
 <h1 id="force-an-ip-address-in-pasv-epsv-spsv-replies-for-nat-">Force an IP address in PASV/EPSV/SPSV replies. - for NAT.</h1><h1 id="symbolic-host-names-are-also-accepted-for-gateways-with-dynamic-ip">Symbolic host names are also accepted for gateways with dynamic IP</h1><h1 id="addresses-">addresses.</h1><p>ForcePassiveIP               你的公网ip
-```</p>
-<ol>
+<code>`</code></p>
+<ol start="3">
 <li>阿里云安全规则添加：允许    1    自定义 TCP 目的:30000/30050 源:0.0.0.0/0 30000-30050</li>
 <li>重启 ftp 就生效了</li>
 </ol>
@@ -204,8 +204,8 @@ $ scp -r dist/ test@<span class="hljs-number">1.1</span><span class="hljs-number
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605200704565"></script>
-<script type="text/javascript" src="../js/index.js?v=1605200704565"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200844657"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200844657"></script>
 </body>
 
 </html>

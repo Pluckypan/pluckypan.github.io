@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704646">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200844783">
 	</head>
 
 	<body>
@@ -227,7 +227,7 @@ ffmpeg -i ALARM2.mp4 -i watermark.png -filter_complex &quot;overlay=x=&#39;if(gt
 <h4 id="抽取音频命令">抽取音频命令</h4><pre><code>ffmpeg -i <span class="hljs-number">3.</span>mp4 -vn -y -acodec copy <span class="hljs-number">3.</span>aac
 ffmpeg -i <span class="hljs-number">3.</span>mp4 -vn -y -acodec copy <span class="hljs-number">3.</span>m4a
 </code></pre><h4 id="裁切视频">裁切视频</h4><pre><code># 按2.35:1 裁切视频(原视频 853:480)
-ffmpeg -i changzheng.mp4 -vf crop=iw:iw/2.35:0:72 -y cz.mp4
+ffmpeg -i changzheng.mp4 -vf crop=iw:iw/2.35:0:72 -y cz.mp4        
 </code></pre><h3 id="ffplay 播放测试视频源">ffplay 播放测试视频源</h3><pre><code>ffplay -f lavfi -i testsrc
 </code></pre><h4 id="提取视频">提取视频</h4><p>ffmpeg -i input.mkv -vcodec copy –an  output.mp4</p>
 <h4 id="音视频合成命令">音视频合成命令</h4><p>ffmpeg -i video.avi -i audio.mp3 -vcodec copy -acodec copy output.avi</p>
@@ -303,6 +303,7 @@ brew install
 -crf：这是最重要的一个选项，用于指定输出视频的质量，取值范围是<span class="hljs-number">0</span><span class="hljs-number">-51</span>，默认值为<span class="hljs-number">23</span>，数字越小输出视频的质量越高。这个选项会直接影响到输出视频的码率。一般来说，压制<span class="hljs-number">480</span>p我会用<span class="hljs-number">20</span>左右，压制<span class="hljs-number">720</span>p我会用<span class="hljs-number">16</span><span class="hljs-number">-18</span>，<span class="hljs-number">1080</span>p我没尝试过。个人觉得，一般情况下没有必要低于<span class="hljs-number">16</span>。最好的办法是大家可以多尝试几个值，每个都压几分钟，看看最后的输出质量和文件大小，自己再按需选择。
 
 其实还有-b <span class="hljs-number">1024</span>k这样的参数，但是我发现-crf设置上后-b就不管用了。根据我自己的简单尝试，压制<span class="hljs-number">5</span>D2拍摄的一段<span class="hljs-number">18</span>秒<span class="hljs-number">1920</span>x1080的视频（下午自然光、图像简单、大面积白墙、只有一扇黑门）crf和压出来的文件大小关系如下：
+
 </code></pre><h4 id="播放时视频色彩不断变换：">播放时视频色彩不断变换：</h4><pre><code>ffplay -i D:\work\yyy2642.mp4 -vf hue=<span class="hljs-string">"H=2*PI*t:s=sin(2*PI*t)+1"</span>
 </code></pre><h4 id="视频转码为原来的播放速度的两倍：">视频转码为原来的播放速度的两倍：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4 -vf setpts=PTS/<span class="hljs-number">2</span> -af atempo=<span class="hljs-number">2</span> D:\work\outputfile.mp4
 </code></pre><h4 id="视频锐化处理，一定程度可以让视频变清晰：">视频锐化处理，一定程度可以让视频变清晰：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4  -vf unsharp=<span class="hljs-number">5</span>:<span class="hljs-number">5</span>:<span class="hljs-number">1.0</span>:<span class="hljs-number">5</span>:<span class="hljs-number">5</span>:<span class="hljs-number">0.0</span> D:\work\outputfile.mp4
@@ -355,8 +356,8 @@ $ ffmpeg -i 708721762.png -s 176x44 -sws_flags gauss  -y 0.3.png
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605200704646"></script>
-<script type="text/javascript" src="../js/index.js?v=1605200704646"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200844784"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200844784"></script>
 </body>
 
 </html>

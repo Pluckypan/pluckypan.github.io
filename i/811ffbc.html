@@ -13,7 +13,7 @@
 			adb使用笔记 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704856">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200845205">
 	</head>
 
 	<body>
@@ -189,7 +189,7 @@ ANDROID_HOME=<span class="hljs-regexp">/Users/</span>YourUsername/Library/Androi
 <span class="hljs-number">2.</span>在文件最后一行加入 <span class="hljs-string">`source ~/.bash_profile`</span>
 </code></pre><h3 id="adb 重启 关机">adb 重启 关机</h3><pre><code>adb reboot <span class="hljs-comment">//重启</span>
 adb shell reboot -p<span class="hljs-comment">//关机</span>
-</code></pre><h3 id="adb 获取设备id">adb 获取设备id</h3><pre><code>adb get-serialno
+</code></pre><h3 id="adb 获取设备id">adb 获取设备id</h3><pre><code>adb <span class="hljs-keyword">get</span>-serialno
 </code></pre><h3 id="滑动点击输入">滑动点击输入</h3><pre><code>adb shell input text xxx    <span class="hljs-comment">//输入文字</span>
 adb shell input keyevnet <span class="hljs-number">67</span> <span class="hljs-comment">//删除文字</span>
 adb shell input keyevent --longpress <span class="hljs-number">3</span> <span class="hljs-comment">//长按Home</span>
@@ -278,8 +278,8 @@ $ adb shell settings put global animator_duration_scale 1
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605200704857"></script>
-<script type="text/javascript" src="../js/index.js?v=1605200704857"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200845206"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200845206"></script>
 </body>
 
 </html>

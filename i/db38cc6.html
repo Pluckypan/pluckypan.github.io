@@ -13,7 +13,7 @@
 			git指令大全 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704585">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200844681">
 	</head>
 
 	<body>
@@ -142,7 +142,8 @@
 </div>
 
 <div class="markdown-body">
-<h1 id="git指令大全">git指令大全</h1><p>git常用指令详解</p>
+<h1 id="git指令大全">git指令大全</h1><p>git常用指令详解
+[date]:1483961257</p>
 <h3 id="config">config</h3><pre><code>$ git config -l       #查看配置
 $ git config --global #全局配置 如果只是设定当前 project 则去掉 --global
 $ git config --global core.autocrlf input #这样即可保证仓库中永远都是LF. 而且在Windows工作空间都是CRLF, 在Mac/Linux工作空间都是LF.
@@ -204,7 +205,7 @@ annotated
 reachable (an ancestor) from the pushed commits
 </code></pre><h3 id="从某个tag迁出代码">从某个tag迁出代码</h3><pre><code>$ git checkout -b branch_name tag_name
 </code></pre><h3 id="从某个 commit 切出分支">从某个 commit 切出分支</h3><pre><code>$ git checkout -b branch_name commit_id
-</code></pre><h3 id="git 设置推送至远端的分支">git 设置推送至远端的分支</h3><pre><code>git push --set-upstream origin develop
+</code></pre><h3 id="git 设置推送至远端的分支">git 设置推送至远端的分支</h3><pre><code>git push --<span class="hljs-keyword">set</span>-upstream origin develop
 </code></pre><h3 id="git统计某人提交次数">git统计某人提交次数</h3><pre><code>git log --author=<span class="hljs-string">"plucky"</span> --oneline | wc -l
 </code></pre><h3 id="git 查看单个文件提交记录">git 查看单个文件提交记录</h3><pre><code>git log adb.md
 git shortlog adb.md
@@ -273,6 +274,7 @@ $ git pull dfl master --rebase
 </code></pre><h3 id="更新本地branch">更新本地branch</h3><pre><code>$ git remote update origin --prune
 $ git remote show origin
 $ git remote prune origin
+
 </code></pre><h3 id="git-submodule">git submodule</h3><pre><code># 建子目录
 git submodule add git://github.com/chneukirchen/rack.git rack
 
@@ -338,6 +340,7 @@ $ git config --global alias.cbf '!f(){ git checkout -b feature/"$1"; }; f'
 
 # 统计commit
 $ git log --since '7 days ago' --oneline --author xxx | awk 'BEGIN{FS=OFS=" "}{$1="*";print}'
+
 </code></pre><h3 id="使用系统别名">使用系统别名</h3><p>比如想实现 Android Studio 中拉取代码的功能,可以</p>
 <pre><code>$ vim ~/.bash_profile
 # 在 .bash_profile 中最后一行添加 alias gps="git stash save xx &amp;&amp; git pull --rebase &amp;&amp; git stash pop"
@@ -385,8 +388,8 @@ $ source ~/.bash_profile
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605200704586"></script>
-<script type="text/javascript" src="../js/index.js?v=1605200704586"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200844682"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200844682"></script>
 </body>
 
 </html>

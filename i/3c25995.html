@@ -13,7 +13,7 @@
 			Android Shape画虚线不起作用的原因 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200704818">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605200845140">
 	</head>
 
 	<body>
@@ -144,29 +144,29 @@
 <div class="markdown-body">
 <h1 id="android shape画虚线不起作用的原因">Android Shape画虚线不起作用的原因</h1><p>解决Android定义虚线后不成功的BUG</p>
 <h3 id="android画虚线常规流程">Android画虚线常规流程</h3><h4 id="定义shape">定义Shape</h4><pre><code>&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;
-&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="line" &gt;
-    &lt;stroke
-        android:dashGap="3dp"
-        android:dashWidth="8dp"
-        android:width="1dp"
-        android:color="#63a219" /&gt;
-    &lt;size android:height="1dp" /&gt;
-&lt;/shape&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">shape</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>
+    <span class="hljs-attr">android:shape</span>=<span class="hljs-string">"line"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">stroke</span>
+        <span class="hljs-attr">android:dashGap</span>=<span class="hljs-string">"3dp"</span>
+        <span class="hljs-attr">android:dashWidth</span>=<span class="hljs-string">"8dp"</span>
+        <span class="hljs-attr">android:width</span>=<span class="hljs-string">"1dp"</span>
+        <span class="hljs-attr">android:color</span>=<span class="hljs-string">"#63a219"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">size</span> <span class="hljs-attr">android:height</span>=<span class="hljs-string">"1dp"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">shape</span>&gt;</span></span>
 </code></pre><h4 id="view 使用">view 使用</h4><pre><code>&lt;View
-    android:layout_width=<span class="hljs-string">"match_parent"</span>
-    android:layout_height=<span class="hljs-string">"5px"</span>
-    android:layout_marginTop=<span class="hljs-string">"10dp"</span>
-    android:background=<span class="hljs-string">"@drawable/line_shape"</span>/&gt;
+    <span class="hljs-attr">android</span>:layout_width=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android</span>:layout_height=<span class="hljs-string">"5px"</span>
+    <span class="hljs-attr">android</span>:layout_marginTop=<span class="hljs-string">"10dp"</span>
+    <span class="hljs-attr">android</span>:background=<span class="hljs-string">"@drawable/line_shape"</span>/&gt;
 </code></pre><blockquote>
 <p>但是神奇的是：虚线并没有显示，却显示了实线。</p>
 </blockquote>
 <h3 id="解决方法">解决方法</h3><pre><code>&lt;View
-    android:layout_width=<span class="hljs-string">"match_parent"</span>
-    android:layout_height=<span class="hljs-string">"5px"</span>
-    android:layout_marginTop=<span class="hljs-string">"10dp"</span>
-    android:layerType=<span class="hljs-string">"software"</span>
-    android:background=<span class="hljs-string">"@drawable/line_shape"</span> /&gt;
+    <span class="hljs-attr">android</span>:layout_width=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android</span>:layout_height=<span class="hljs-string">"5px"</span>
+    <span class="hljs-attr">android</span>:layout_marginTop=<span class="hljs-string">"10dp"</span>
+    <span class="hljs-attr">android</span>:layerType=<span class="hljs-string">"software"</span>
+    <span class="hljs-attr">android</span>:background=<span class="hljs-string">"@drawable/line_shape"</span> /&gt;
 </code></pre>
 </div>
 
@@ -206,8 +206,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605200704819"></script>
-<script type="text/javascript" src="../js/index.js?v=1605200704819"></script>
+<script type="text/javascript" src="../js/dt.js?v=1605200845141"></script>
+<script type="text/javascript" src="../js/index.js?v=1605200845141"></script>
 </body>
 
 </html>
