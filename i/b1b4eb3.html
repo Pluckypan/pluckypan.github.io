@@ -13,7 +13,7 @@
 			Android自定义Dialog(从底部弹出) - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656876">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433888">
 	</head>
 
 	<body>
@@ -147,9 +147,9 @@
 
     BaseFragmentActivity mContext;
 
-    public LayoutDutyfreeTopUp(BaseFragmentActivity context) {
+    public <span class="hljs-function"><span class="hljs-title">LayoutDutyfreeTopUp</span>(<span class="hljs-params">BaseFragmentActivity context</span>)</span> {
         <span class="hljs-comment">//Dialog样式</span>
-        <span class="hljs-keyword">super</span>(context, R.style.FHInnerDialog);
+        <span class="hljs-built_in">super</span>(context, R.style.FHInnerDialog);
         mContext = context;
         <span class="hljs-comment">//Dialog ContentView</span>
         View view = View.inflate(mContext, R.layout.layout_dutyfree_topup, <span class="hljs-literal">null</span>);
@@ -166,35 +166,35 @@
         initView();
     }
 
-    private <span class="hljs-keyword">void</span> initView() {
+    private <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">initView</span>(<span class="hljs-params"></span>)</span> {
 
     }
 }
 </code></pre><h3 id="dialog样式文件">Dialog样式文件</h3><pre><code>&lt;!-- 弹出框动画 由下至上 --&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"FHDialog.Anim"</span> <span class="hljs-attr">parent</span>=<span class="hljs-string">"@android:style/Animation.Dialog"</span>&gt;</span><span class="xml">
-    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"@android:windowEnterAnimation"</span>&gt;</span>@anim/dialog_enter<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;FHDialog.Anim&quot;</span> <span class="hljs-attr">parent</span>=<span class="hljs-string">&quot;@android:style/Animation.Dialog&quot;</span>&gt;</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;@android:windowEnterAnimation&quot;</span>&gt;</span>@anim/dialog_enter<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- 进入时的动画 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"@android:windowExitAnimation"</span>&gt;</span>@anim/dialog_exit<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;@android:windowExitAnimation&quot;</span>&gt;</span>@anim/dialog_exit<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- 退出时的动画 --&gt;</span>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span>
-<span class="xml"><span class="hljs-comment">&lt;!-- 对话框样式 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"FHInnerDialog"</span> <span class="hljs-attr">parent</span>=<span class="hljs-string">"android:style/Theme.Dialog"</span>&gt;</span><span class="xml">
-    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"android:windowBackground"</span>&gt;</span>@android:color/transparent<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"android:windowNoTitle"</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"android:windowIsFloating"</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"android:windowContentOverlay"</span>&gt;</span>@null<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"android:scrollHorizontally"</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+&lt;!-- 对话框样式 --&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;FHInnerDialog&quot;</span> <span class="hljs-attr">parent</span>=<span class="hljs-string">&quot;android:style/Theme.Dialog&quot;</span>&gt;</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;android:windowBackground&quot;</span>&gt;</span>@android:color/transparent<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;android:windowNoTitle&quot;</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;android:windowIsFloating&quot;</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;android:windowContentOverlay&quot;</span>&gt;</span>@null<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;android:scrollHorizontally&quot;</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span>
-</code></pre><h3 id="弹出动画(dialog_enter.xml)">弹出动画(dialog_enter.xml)</h3><pre><code>&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">set</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>&gt;</span>
+</code></pre><h3 id="弹出动画(dialog_enter.xml)">弹出动画(dialog_enter.xml)</h3><pre><code>&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">set</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">translate</span>
-        <span class="hljs-attr">android:duration</span>=<span class="hljs-string">"150"</span>
-        <span class="hljs-attr">android:fromYDelta</span>=<span class="hljs-string">"100%"</span> /&gt;</span>
+        <span class="hljs-attr">android:duration</span>=<span class="hljs-string">&quot;150&quot;</span>
+        <span class="hljs-attr">android:fromYDelta</span>=<span class="hljs-string">&quot;100%&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">set</span>&gt;</span></span>
-</code></pre><h3 id="关闭动画(dialog_exit.xml)">关闭动画(dialog_exit.xml)</h3><pre><code>&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">set</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">translate</span> <span class="hljs-attr">android:toYDelta</span>=<span class="hljs-string">"100%"</span>
-        <span class="hljs-attr">android:duration</span>=<span class="hljs-string">"150"</span>/&gt;</span>
+</code></pre><h3 id="关闭动画(dialog_exit.xml)">关闭动画(dialog_exit.xml)</h3><pre><code>&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">set</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">translate</span> <span class="hljs-attr">android:toYDelta</span>=<span class="hljs-string">&quot;100%&quot;</span>
+        <span class="hljs-attr">android:duration</span>=<span class="hljs-string">&quot;150&quot;</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">set</span>&gt;</span></span>
 </code></pre>
 </div>
@@ -235,8 +235,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656877"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656877"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433888"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433888"></script>
 </body>
 
 </html>

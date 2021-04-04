@@ -13,7 +13,7 @@
 			进程保活 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656916">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433916">
 	</head>
 
 	<body>
@@ -159,10 +159,10 @@
 </blockquote>
 <h3 id="androidmanifest-xml">AndroidManifest.xml</h3><pre><code># 排除 Activity 在 RecentTask 中的显示
 &lt;activity
-     android:name=".KeepAliveActivity"
-     android:exported="false"
-     android:excludeFromRecents="true"
-     android:finishOnTaskLaunch="false"&gt;
+     android:name=&quot;.KeepAliveActivity&quot;
+     android:exported=&quot;false&quot;
+     android:excludeFromRecents=&quot;true&quot;
+     android:finishOnTaskLaunch=&quot;false&quot;&gt;
 </code></pre><h3 id="进程死后拉活的方案">进程死后拉活的方案</h3><h4 id="利用系统广播拉活">利用系统广播拉活</h4><blockquote>
 <p>方案设计思想：在发生特定系统事件时，系统会发出响应的广播，通过在 AndroidManifest 中“静态”注册对应的广播监听器，即可在发生响应事件时拉活。</p>
 </blockquote>
@@ -205,8 +205,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656917"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656917"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433917"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433917"></script>
 </body>
 
 </html>

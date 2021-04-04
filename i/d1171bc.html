@@ -13,7 +13,7 @@
 			synchronize用法 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656869">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433881">
 	</head>
 
 	<body>
@@ -156,11 +156,11 @@ java内置锁是一个互斥锁，这就是意味着最多只有一个线程能�
     <span class="hljs-comment">/**
      * 对象锁 synchronized 修饰代码块
      */</span>
-    public <span class="hljs-keyword">void</span> funcA() {
-        synchronized (<span class="hljs-keyword">this</span>) {
+    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">funcA</span>(<span class="hljs-params"></span>)</span> {
+        synchronized (<span class="hljs-built_in">this</span>) {
             int i = <span class="hljs-number">5</span>;
             <span class="hljs-keyword">while</span> (i-- &gt; <span class="hljs-number">0</span>) {
-                System.out.println(<span class="hljs-string">"funcA "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
+                System.out.println(<span class="hljs-string">&quot;funcA &quot;</span> + Thread.currentThread().getName() + <span class="hljs-string">&quot; : &quot;</span> + i);
                 <span class="hljs-keyword">try</span> {
                     Thread.sleep(<span class="hljs-number">500</span>);
                 } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
@@ -173,10 +173,10 @@ java内置锁是一个互斥锁，这就是意味着最多只有一个线程能�
     <span class="hljs-comment">/**
      * 对象锁 synchronized 修饰方法
      */</span>
-    public synchronized <span class="hljs-keyword">void</span> funcB() {
+    public synchronized <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">funcB</span>(<span class="hljs-params"></span>)</span> {
         int i = <span class="hljs-number">5</span>;
         <span class="hljs-keyword">while</span> (i-- &gt; <span class="hljs-number">0</span>) {
-            System.out.println(<span class="hljs-string">"funcB "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
+            System.out.println(<span class="hljs-string">&quot;funcB &quot;</span> + Thread.currentThread().getName() + <span class="hljs-string">&quot; : &quot;</span> + i);
             <span class="hljs-keyword">try</span> {
                 Thread.sleep(<span class="hljs-number">500</span>);
             } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
@@ -186,18 +186,18 @@ java内置锁是一个互斥锁，这就是意味着最多只有一个线程能�
     }
 }
 </code></pre><h5 id="synchronize-class">Synchronize.class</h5><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Synchronize</span> </span>{
-    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> {
         final Man aman = <span class="hljs-keyword">new</span> Man();
-        Thread test1 = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
-            public <span class="hljs-keyword">void</span> run() {
+        Thread test1 = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">Runnable</span>(<span class="hljs-params"></span>)</span> {
+            public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">run</span>(<span class="hljs-params"></span>)</span> {
                 aman.funcA();
             }
-        }, <span class="hljs-string">"test1"</span>);
-        Thread test2 = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
-            public <span class="hljs-keyword">void</span> run() {
+        }, <span class="hljs-string">&quot;test1&quot;</span>);
+        Thread test2 = <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">Runnable</span>(<span class="hljs-params"></span>)</span> {
+            public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">run</span>(<span class="hljs-params"></span>)</span> {
                 aman.funcB();
             }
-        }, <span class="hljs-string">"test2"</span>);
+        }, <span class="hljs-string">&quot;test2&quot;</span>);
         test1.start();
         test2.start();
     }
@@ -231,11 +231,11 @@ funcA test1 : <span class="hljs-number">0</span>
     <span class="hljs-comment">/**
      * 类锁 synchronized 修饰代码块
      */</span>
-    public <span class="hljs-keyword">void</span> funcA() {
+    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">funcA</span>(<span class="hljs-params"></span>)</span> {
         synchronized (ClassLock.class) {
             int i = <span class="hljs-number">5</span>;
             <span class="hljs-keyword">while</span> (i-- &gt; <span class="hljs-number">0</span>) {
-                System.out.println(<span class="hljs-string">"funcA "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
+                System.out.println(<span class="hljs-string">&quot;funcA &quot;</span> + Thread.currentThread().getName() + <span class="hljs-string">&quot; : &quot;</span> + i);
                 <span class="hljs-keyword">try</span> {
                     Thread.sleep(<span class="hljs-number">500</span>);
                 } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
@@ -248,10 +248,10 @@ funcA test1 : <span class="hljs-number">0</span>
     <span class="hljs-comment">/**
      * 类锁 synchronized 修饰静态方法
      */</span>
-    public <span class="hljs-keyword">static</span> synchronized <span class="hljs-keyword">void</span> funcB() {
+    public <span class="hljs-keyword">static</span> synchronized <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">funcB</span>(<span class="hljs-params"></span>)</span> {
         int i = <span class="hljs-number">5</span>;
         <span class="hljs-keyword">while</span> (i-- &gt; <span class="hljs-number">0</span>) {
-            System.out.println(<span class="hljs-string">"funcB "</span> + Thread.currentThread().getName() + <span class="hljs-string">" : "</span> + i);
+            System.out.println(<span class="hljs-string">&quot;funcB &quot;</span> + Thread.currentThread().getName() + <span class="hljs-string">&quot; : &quot;</span> + i);
             <span class="hljs-keyword">try</span> {
                 Thread.sleep(<span class="hljs-number">500</span>);
             } <span class="hljs-keyword">catch</span> (InterruptedException ie) {
@@ -261,21 +261,21 @@ funcA test1 : <span class="hljs-number">0</span>
     }
 }
 </code></pre><h5 id="synchronize-class">Synchronize.class</h5><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Synchronize</span> </span>{
-    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> {
         final ClassLock lock = <span class="hljs-keyword">new</span> ClassLock();
-        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
+        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">Runnable</span>(<span class="hljs-params"></span>)</span> {
             @Override
-            public <span class="hljs-keyword">void</span> run() {
+            public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">run</span>(<span class="hljs-params"></span>)</span> {
                 lock.funcA();
             }
-        }, <span class="hljs-string">"thread3"</span>).start();
+        }, <span class="hljs-string">&quot;thread3&quot;</span>).start();
 
-        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
+        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">Runnable</span>(<span class="hljs-params"></span>)</span> {
             @Override
-            public <span class="hljs-keyword">void</span> run() {
+            public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">run</span>(<span class="hljs-params"></span>)</span> {
                 lock.funcB();
             }
-        }, <span class="hljs-string">"thread4"</span>).start();
+        }, <span class="hljs-string">&quot;thread4&quot;</span>).start();
     }
 }
 </code></pre><h5 id="执行结果">执行结果</h5><pre><code>funcA thread3 : <span class="hljs-number">4</span>
@@ -348,8 +348,8 @@ funcB thread4 : <span class="hljs-number">0</span>
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656870"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656870"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433882"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433882"></script>
 </body>
 
 </html>

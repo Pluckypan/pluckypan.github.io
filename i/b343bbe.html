@@ -13,7 +13,7 @@
 			Annotations - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656863">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433874">
 	</head>
 
 	<body>
@@ -173,20 +173,20 @@
 </ol>
 <h3 id="反射获取 运行时 注解">反射获取 运行时 注解</h3><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReflectMain</span> </span>{
 
-    @ReflectParam(<span class="hljs-string">"jerry"</span>)
+    @ReflectParam(<span class="hljs-string">&quot;jerry&quot;</span>)
     public <span class="hljs-built_in">String</span> userName;
 
-    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
+    public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> {
         ReflectMain main = <span class="hljs-keyword">new</span> ReflectMain();
         ReflectParam annotation = <span class="hljs-literal">null</span>;
         <span class="hljs-keyword">try</span> {
             Class clazz = main.getClass();
             <span class="hljs-comment">//Field[] fields = clazz.getFields();</span>
-            Field field = clazz.getField(<span class="hljs-string">"userName"</span>);
+            Field field = clazz.getField(<span class="hljs-string">&quot;userName&quot;</span>);
             annotation = field.getAnnotation(ReflectParam.class);
             System.out.print(annotation.value());
         } <span class="hljs-keyword">catch</span> (NoSuchFieldException e) {
-            System.out.print(<span class="hljs-string">"no such field"</span>);
+            System.out.print(<span class="hljs-string">&quot;no such field&quot;</span>);
         }
     }
 
@@ -238,8 +238,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656864"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656864"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433874"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433874"></script>
 </body>
 
 </html>

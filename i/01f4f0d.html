@@ -13,7 +13,7 @@
 			发布jar至Maven - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656809">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433797">
 	</head>
 
 	<body>
@@ -143,20 +143,20 @@
 
 <div class="markdown-body">
 <h1 id="发布jar至maven">发布jar至Maven</h1><p>apply plugin: &#39;maven&#39; 发布jar包</p>
-<h3 id="[简洁版]发布">[简洁版]发布</h3><pre><code>apply plugin: <span class="hljs-string">'maven'</span>
+<h3 id="[简洁版]发布">[简洁版]发布</h3><pre><code>apply plugin: <span class="hljs-string">&#x27;maven&#x27;</span>
 uploadArchives {
     repositories {
         mavenDeployer {
-            pom.groupId = <span class="hljs-string">'engineer.echo'</span>
-            pom.artifactId = <span class="hljs-string">'hugox-plugin'</span>
-            pom.version = <span class="hljs-string">'1.0.0'</span>
+            pom.groupId = <span class="hljs-string">&#x27;engineer.echo&#x27;</span>
+            pom.artifactId = <span class="hljs-string">&#x27;hugox-plugin&#x27;</span>
+            pom.version = <span class="hljs-string">&#x27;1.0.0&#x27;</span>
 
             <span class="hljs-comment">//方式一：发布到 指定文件夹 比如 绝对路径`D:/repos` 相对路径`../localPublish`</span>
-            repository(url: uri(<span class="hljs-string">'../localPublish'</span>))
+            repository(url: uri(<span class="hljs-string">&#x27;../localPublish&#x27;</span>))
 
             <span class="hljs-comment">//方式二：发布到 Maven仓库 比如 Sonatype Nexus</span>
-            repository(url: uri(<span class="hljs-string">'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>)) {
-                authentication(userName: <span class="hljs-string">"admin"</span>, <span class="hljs-attr">password</span>: <span class="hljs-string">"admin123"</span>)
+            <span class="hljs-function"><span class="hljs-title">repository</span>(<span class="hljs-params">url: uri(<span class="hljs-string">&#x27;http://localhost:8081/nexus/content/repositories/thirdparty/&#x27;</span>)</span>)</span> {
+                authentication(userName: <span class="hljs-string">&quot;admin&quot;</span>, <span class="hljs-attr">password</span>: <span class="hljs-string">&quot;admin123&quot;</span>)
             }
             <span class="hljs-comment">//以上方式二选一， 配置完直接运行 uploadArchives (提示:打开 Gradle 窗口,展开指定的 Library Module,展开 Tasks,展开 upload,双击运行 uploadArchives)</span>
         }
@@ -170,14 +170,14 @@ buildscript {
     repositories {
         maven {
             <span class="hljs-comment">//方式一：本地文件夹</span>
-            url <span class="hljs-string">'file:../localPublish'</span>
+            url <span class="hljs-string">&#x27;file:../localPublish&#x27;</span>
             <span class="hljs-comment">//方式二：Maven仓库 比如 Sonatype Nexus</span>
-            url <span class="hljs-string">'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>
+            url <span class="hljs-string">&#x27;http://localhost:8081/nexus/content/repositories/thirdparty/&#x27;</span>
         }
     }
     dependencies {
-        <span class="hljs-comment">//如果是引用 plugin 则使用 classpath,最后直接 `apply plugin: 'hugox-plugin'` 即可</span>
-        classpath <span class="hljs-string">'engineer.echo:hugox-plugin:1.0.0'</span>
+        <span class="hljs-comment">//如果是引用 plugin 则使用 classpath,最后直接 `apply plugin: &#x27;hugox-plugin&#x27;` 即可</span>
+        classpath <span class="hljs-string">&#x27;engineer.echo:hugox-plugin:1.0.0&#x27;</span>
     }
 }
 </code></pre><h3 id="maven-url">Maven url</h3><pre><code>http:<span class="hljs-comment">//localhost:8081/nexus/content/repositories/releases/</span>
@@ -187,11 +187,11 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url &#39;https://jitpack.io&#39; }
+        maven { url &#x27;https://jitpack.io&#x27; }
     }
     tasks.withType(Javadoc) {
-        options.addStringOption(&#39;Xdoclint:none&#39;, &#39;-quiet&#39;)
-        options.addStringOption(&#39;encoding&#39;, &#39;UTF-8&#39;)
+        options.addStringOption(&#x27;Xdoclint:none&#x27;, &#x27;-quiet&#x27;)
+        options.addStringOption(&#x27;encoding&#x27;, &#x27;UTF-8&#x27;)
     }
 }
 </code></pre><h3 id="参考文档">参考文档</h3><ol>
@@ -236,8 +236,8 @@ allprojects {
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656810"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656810"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433797"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433797"></script>
 </body>
 
 </html>

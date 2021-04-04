@@ -13,7 +13,7 @@
 			jQuery插件 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656838">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433824">
 	</head>
 
 	<body>
@@ -143,28 +143,28 @@
 
 <div class="markdown-body">
 <h1 id="jquery插件">jQuery插件</h1><p>强大的jQuery插件</p>
-<h3 id="图片处理">图片处理</h3><h4 id="一、qrcode.js二维码">一、qrcode.js二维码</h4><pre><code class="lang-javascript">&lt;script src=<span class="hljs-string">"http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://jqweui.com/assets/js/qrcode.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
-<span class="hljs-keyword">var</span> qrcode=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"qrcode"</span>);
+<h3 id="图片处理">图片处理</h3><h4 id="一、qrcode.js二维码">一、qrcode.js二维码</h4><pre><code class="lang-javascript">&lt;script src=<span class="hljs-string">&quot;http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js&quot;</span>&gt;&lt;/script&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://jqweui.com/assets/js/qrcode.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+<span class="hljs-keyword">var</span> qrcode=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;qrcode&quot;</span>);
 <span class="hljs-keyword">var</span> coder = <span class="hljs-keyword">new</span> QRCode(qrcode, {<span class="hljs-attr">width</span>: <span class="hljs-number">200</span>,<span class="hljs-attr">height</span>: <span class="hljs-number">200</span>,});
-coder.makeCode(<span class="hljs-string">"hello"</span>);
+coder.makeCode(<span class="hljs-string">&quot;hello&quot;</span>);
 </code></pre>
 <h4 id="二、holder.js占位图">二、holder.js占位图</h4><blockquote>
 <p>html5中，input标-签可以根据placeholder来设定默认占位文字，但是img标签并没有该属性。由于img图片的渲染是一个耗时操作，在网络状态较差的情况下，可能长时间显示不出图片来。使用holder.js给图片添加
 占位图能提高用户体验。</p>
 </blockquote>
-<pre><code class="lang-javascript">&lt;script src=<span class="hljs-string">"holder.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">data-src</span>=<span class="hljs-string">"example.com/100x100?theme=simple"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"new"</span>&gt;</span>
+<pre><code class="lang-javascript">&lt;script src=<span class="hljs-string">&quot;holder.js&quot;</span>&gt;&lt;/script&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">data-src</span>=<span class="hljs-string">&quot;example.com/100x100?theme=simple&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;new&quot;</span>&gt;</span>
 Holder.run({
-  domain: "example.com",
+  domain: &quot;example.com&quot;,
   themes: {
-    "simple": {
-      bg: "#eee",
-      fg: "#000",
+    &quot;simple&quot;: {
+      bg: &quot;#eee&quot;,
+      fg: &quot;#000&quot;,
       size: 17
     }
   },
-  images: "#new"
+  images: &quot;#new&quot;
 });</span>
 </code></pre>
 <h3 id="判断字符串相等">判断字符串相等</h3><pre><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">equal</span>(<span class="hljs-params">str1,str2</span>)</span>{
@@ -178,11 +178,11 @@ Holder.run({
 <blockquote>
 <p>Photo Sphere Viewer是一款基于Three.js的360X180度全景图预览js插件。该js插件可以360度旋转查看全景图，也可以上下180度查看图片。使用该插件的唯一要求是浏览器支持canvas或WebGL。<a href="http://www.jq22.com/demo/Photo-Sphere-Viewer20161120/">预览</a></p>
 </blockquote>
-<h2 id="在 chrome console 中引入 jquery">在 chrome console 中引入 jquery</h2><pre><code><span class="hljs-keyword">var</span> jqueryJs=<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
-jqueryJs.setAttribute(<span class="hljs-string">"type"</span>,<span class="hljs-string">"text/JavaScript"</span>);
-jqueryJs.setAttribute(<span class="hljs-string">"src"</span>, <span class="hljs-string">'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'</span>);
-<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>].appendChild(jqueryJs);
-<span class="hljs-comment">//正则匹配 ^_\S* "</span>
+<h2 id="在 chrome console 中引入 jquery">在 chrome console 中引入 jquery</h2><pre><code><span class="hljs-keyword">var</span> jqueryJs=<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;script&#x27;</span>);
+jqueryJs.setAttribute(<span class="hljs-string">&quot;type&quot;</span>,<span class="hljs-string">&quot;text/JavaScript&quot;</span>);
+jqueryJs.setAttribute(<span class="hljs-string">&quot;src&quot;</span>, <span class="hljs-string">&#x27;https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js&#x27;</span>);
+<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&#x27;head&#x27;</span>)[<span class="hljs-number">0</span>].appendChild(jqueryJs);
+<span class="hljs-comment">//正则匹配 ^_\S* &quot;</span>
 </code></pre>
 </div>
 
@@ -222,8 +222,8 @@ jqueryJs.setAttribute(<span class="hljs-string">"src"</span>, <span class="hljs-
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656839"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656839"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433824"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433824"></script>
 </body>
 
 </html>

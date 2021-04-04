@@ -13,7 +13,7 @@
 			TextView富文本（html标签） - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656850">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433869">
 	</head>
 
 	<body>
@@ -169,9 +169,9 @@
 </ul>
 <h3 id="自定义taghandler">自定义TagHandler</h3><pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FHTagHandler</span> <span class="hljs-title">implements</span> <span class="hljs-title">Html</span>.<span class="hljs-title">TagHandler</span> </span>{
 
-    public <span class="hljs-keyword">void</span> handleTag(boolean opening, <span class="hljs-built_in">String</span> tag, Editable output,
-                          XMLReader xmlReader) {
-        <span class="hljs-keyword">if</span> (tag.equalsIgnoreCase(<span class="hljs-string">"strike"</span>) || tag.equals(<span class="hljs-string">"s"</span>) || tag.equals(<span class="hljs-string">"del"</span>)) {
+    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">handleTag</span>(<span class="hljs-params">boolean opening, <span class="hljs-built_in">String</span> tag, Editable output,
+                          XMLReader xmlReader</span>)</span> {
+        <span class="hljs-keyword">if</span> (tag.equalsIgnoreCase(<span class="hljs-string">&quot;strike&quot;</span>) || tag.equals(<span class="hljs-string">&quot;s&quot;</span>) || tag.equals(<span class="hljs-string">&quot;del&quot;</span>)) {
             processStrike(opening, output);
         }
     }
@@ -179,10 +179,10 @@
     <span class="hljs-comment">/**
      * 处理下划线
      *
-     * @param opening 是否打开(&lt;s/&gt;)或者闭合(&lt;s&gt;&lt;s/&gt;)
-     * @param output
+     * <span class="hljs-doctag">@param </span>opening 是否打开(&lt;s/&gt;)或者闭合(&lt;s&gt;&lt;s/&gt;)
+     * <span class="hljs-doctag">@param <span class="hljs-variable">output</span></span>
      */</span>
-    private <span class="hljs-keyword">void</span> processStrike(boolean opening, Editable output) {
+    private <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">processStrike</span>(<span class="hljs-params">boolean opening, Editable output</span>)</span> {
         int len = output.length();
         <span class="hljs-keyword">if</span> (opening) {
             output.setSpan(<span class="hljs-keyword">new</span> StrikethroughSpan(), len, len, Spannable.SPAN_MARK_MARK);
@@ -198,7 +198,7 @@
         }
     }
 
-    private <span class="hljs-built_in">Object</span> getLast(Editable text, Class kind) {
+    private <span class="hljs-built_in">Object</span> <span class="hljs-function"><span class="hljs-title">getLast</span>(<span class="hljs-params">Editable text, Class kind</span>)</span> {
         <span class="hljs-built_in">Object</span>[] objs = text.getSpans(<span class="hljs-number">0</span>, text.length(), kind);
 
         <span class="hljs-keyword">if</span> (objs.length == <span class="hljs-number">0</span>) {
@@ -213,7 +213,7 @@
         }
     }
 }
-</code></pre><h3 id="使用案例">使用案例</h3><pre><code><span class="hljs-built_in">String</span> html=<span class="hljs-string">"&lt;font color='#999999'&gt;普通会员&lt;del&gt;￥1688&lt;/del&gt;&lt;/font&gt;"</span>;
+</code></pre><h3 id="使用案例">使用案例</h3><pre><code><span class="hljs-built_in">String</span> html=<span class="hljs-string">&quot;&lt;font color=&#x27;#999999&#x27;&gt;普通会员&lt;del&gt;￥1688&lt;/del&gt;&lt;/font&gt;&quot;</span>;
 textView.setText(Html.fromHtml(html,<span class="hljs-literal">null</span>,<span class="hljs-keyword">new</span> FHTagHandler()));
 </code></pre>
 </div>
@@ -254,8 +254,8 @@ textView.setText(Html.fromHtml(html,<span class="hljs-literal">null</span>,<span
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656851"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656851"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433869"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433869"></script>
 </body>
 
 </html>

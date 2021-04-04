@@ -13,7 +13,7 @@
 			Canvas Xfermode - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656736">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433852">
 	</head>
 
 	<body>
@@ -149,7 +149,7 @@
 <h3 id="xfermode 造成gpu呈现模式偏高的问题">Xfermode 造成GPU呈现模式偏高的问题</h3><h4 id="before">Before</h4><pre><code>mDisplayPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
 
 onDraw()
-val c = canvas.saveLayer(<span class="hljs-number">0</span>f, <span class="hljs-number">0</span>f, width * <span class="hljs-number">1.0</span>f, height * <span class="hljs-number">1.0</span>f, <span class="hljs-literal">null</span>, Canvas.ALL_SAVE_FLAG)
+val c = canvas.saveLayer(0f, 0f, width * <span class="hljs-number">1.</span>0f, height * <span class="hljs-number">1.</span>0f, <span class="hljs-literal">null</span>, Canvas.ALL_SAVE_FLAG)
 canvas.drawColor(Color.BLACK)
 canvas.drawRect(mDisplayRect, mDisplayPaint)
 canvas.restoreToCount(c)
@@ -198,8 +198,8 @@ canvas.drawRect(mDisplayRect, mDisplayPaint)
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656737"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656737"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433852"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433852"></script>
 </body>
 
 </html>

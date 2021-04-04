@@ -13,7 +13,7 @@
 			图片加载库 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1605319656886">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433812">
 	</head>
 
 	<body>
@@ -166,8 +166,8 @@ BitmapFactory.decodeStream(it.toInputStream(<span class="hljs-number">100</span>
  * color channels pre-multipled by the alpha channel.
  *
  * &lt;p&gt;This should NOT be set to false for images to be directly drawn by
- * the view system or through a {@link Canvas}. The view system and
- * {@link Canvas} assume all drawn images are pre-multiplied to simplify
+ * the view system or through a {<span class="hljs-doctag">@link </span>Canvas}. The view system and
+ * {<span class="hljs-doctag">@link </span>Canvas} assume all drawn images are pre-multiplied to simplify
  * draw-time blending, and will throw a RuntimeException when
  * un-premultiplied are drawn.&lt;/p&gt;
  *
@@ -176,12 +176,12 @@ BitmapFactory.decodeStream(it.toInputStream(<span class="hljs-number">100</span>
  *
  * &lt;p&gt;This does not affect bitmaps without an alpha channel.&lt;/p&gt;
  *
- * &lt;p&gt;Setting this flag to false while setting {@link #inScaled} to true
+ * &lt;p&gt;Setting this flag to false while setting {<span class="hljs-doctag">@link </span>#inScaled} to true
  * may result in incorrect colors.&lt;/p&gt;
  *
- * @see Bitmap#hasAlpha()
- * @see Bitmap#isPremultiplied()
- * @see #inScaled
+ * <span class="hljs-doctag">@see </span>Bitmap#hasAlpha()
+ * <span class="hljs-doctag">@see </span>Bitmap#isPremultiplied()
+ * <span class="hljs-doctag">@see </span>#inScaled
  */</span>
 public boolean inPremultiplied;
 
@@ -192,29 +192,29 @@ public boolean inPremultiplied;
  * translucent red &lt;code&gt;(128, 255, 0, 0)&lt;/code&gt;, the pre-multiplied form is
  * &lt;code&gt;(128, 128, 0, 0)&lt;/code&gt;.&lt;/p&gt;
  *
- * &lt;p&gt;This method always returns false if {@link #getConfig()} is
- * {@link Bitmap.Config#RGB_565}.&lt;/p&gt;
+ * &lt;p&gt;This method always returns false if {<span class="hljs-doctag">@link </span>#getConfig()} is
+ * {<span class="hljs-doctag">@link </span>Bitmap.Config#RGB_565}.&lt;/p&gt;
  *
- * &lt;p&gt;The return value is undefined if {@link #getConfig()} is
- * {@link Bitmap.Config#ALPHA_8}.&lt;/p&gt;
+ * &lt;p&gt;The return value is undefined if {<span class="hljs-doctag">@link </span>#getConfig()} is
+ * {<span class="hljs-doctag">@link </span>Bitmap.Config#ALPHA_8}.&lt;/p&gt;
  *
- * &lt;p&gt;This method only returns true if {@link #hasAlpha()} returns true.
+ * &lt;p&gt;This method only returns true if {<span class="hljs-doctag">@link </span>#hasAlpha()} returns true.
  * A bitmap with no alpha channel can be used both as a pre-multiplied and
  * as a non pre-multiplied bitmap.&lt;/p&gt;
  *
  * &lt;p&gt;Only pre-multiplied bitmaps may be drawn by the view system or
- * {@link Canvas}. If a non-pre-multiplied bitmap with an alpha channel is
+ * {<span class="hljs-doctag">@link </span>Canvas}. If a non-pre-multiplied bitmap with an alpha channel is
  * drawn to a Canvas, a RuntimeException will be thrown.&lt;/p&gt;
  *
- * @return true if the underlying pixels have been pre-multiplied, false
+ * <span class="hljs-doctag">@return </span>true if the underlying pixels have been pre-multiplied, false
  *         otherwise
  *
- * @see Bitmap#setPremultiplied(boolean)
- * @see BitmapFactory.Options#inPremultiplied
+ * <span class="hljs-doctag">@see </span>Bitmap#setPremultiplied(boolean)
+ * <span class="hljs-doctag">@see </span>BitmapFactory.Options#inPremultiplied
  */</span>
-public final boolean isPremultiplied() {
+public final boolean <span class="hljs-function"><span class="hljs-title">isPremultiplied</span>(<span class="hljs-params"></span>)</span> {
     <span class="hljs-keyword">if</span> (mRecycled) {
-        Log.w(TAG, <span class="hljs-string">"Called isPremultiplied() on a recycle()'d bitmap! This is undefined behavior!"</span>);
+        Log.w(TAG, <span class="hljs-string">&quot;Called isPremultiplied() on a recycle()&#x27;d bitmap! This is undefined behavior!&quot;</span>);
     }
     <span class="hljs-keyword">return</span> nativeIsPremultiplied(mNativePtr);
 }
@@ -223,47 +223,47 @@ public final boolean isPremultiplied() {
  * Sets whether the bitmap should treat its data as pre-multiplied.
  *
  * &lt;p&gt;Bitmaps are always treated as pre-multiplied by the view system and
- * {@link Canvas} for performance reasons. Storing un-pre-multiplied data in
- * a Bitmap (through {@link #setPixel}, {@link #setPixels}, or {@link
+ * {<span class="hljs-doctag">@link </span>Canvas} for performance reasons. Storing un-pre-multiplied data in
+ * a Bitmap (through {<span class="hljs-doctag">@link </span>#setPixel}, {<span class="hljs-doctag">@link </span>#setPixels}, or {<span class="hljs-doctag">@link</span>
  * BitmapFactory.Options#inPremultiplied BitmapFactory.Options.inPremultiplied})
  * can lead to incorrect blending if drawn by the framework.&lt;/p&gt;
  *
  * &lt;p&gt;This method will not affect the behavior of a bitmap without an alpha
- * channel, or if {@link #hasAlpha()} returns false.&lt;/p&gt;
+ * channel, or if {<span class="hljs-doctag">@link </span>#hasAlpha()} returns false.&lt;/p&gt;
  *
- * &lt;p&gt;Calling {@link #createBitmap} or {@link #createScaledBitmap} with a source
+ * &lt;p&gt;Calling {<span class="hljs-doctag">@link </span>#createBitmap} or {<span class="hljs-doctag">@link </span>#createScaledBitmap} with a source
  * Bitmap whose colors are not pre-multiplied may result in a RuntimeException,
  * since those functions require drawing the source, which is not supported for
  * un-pre-multiplied Bitmaps.&lt;/p&gt;
  *
- * @see Bitmap#isPremultiplied()
- * @see BitmapFactory.Options#inPremultiplied
+ * <span class="hljs-doctag">@see </span>Bitmap#isPremultiplied()
+ * <span class="hljs-doctag">@see </span>BitmapFactory.Options#inPremultiplied
  */</span>
-public final <span class="hljs-keyword">void</span> setPremultiplied(boolean premultiplied) {
-    checkRecycled(<span class="hljs-string">"setPremultiplied called on a recycled bitmap"</span>);
+public final <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">setPremultiplied</span>(<span class="hljs-params">boolean premultiplied</span>)</span> {
+    checkRecycled(<span class="hljs-string">&quot;setPremultiplied called on a recycled bitmap&quot;</span>);
     mRequestPremultiplied = premultiplied;
     nativeSetPremultiplied(mNativePtr, premultiplied);
 }
 </code></pre><h3 id="gpu-">GPU?</h3><pre><code><span class="hljs-comment">/**
  * Builds caches associated with the bitmap that are used for drawing it.
  *
- * &lt;p&gt;Starting in {@link android.os.Build.VERSION_CODES#N}, this call initiates an asynchronous
+ * &lt;p&gt;Starting in {<span class="hljs-doctag">@link </span>android.os.Build.VERSION_CODES#N}, this call initiates an asynchronous
  * upload to the GPU on RenderThread, if the Bitmap is not already uploaded. With Hardware
  * Acceleration, Bitmaps must be uploaded to the GPU in order to be rendered. This is done by
  * default the first time a Bitmap is drawn, but the process can take several milliseconds,
  * depending on the size of the Bitmap. Each time a Bitmap is modified and drawn again, it must
  * be re-uploaded.&lt;/p&gt;
  *
- * &lt;p&gt;Calling this method in advance can save time in the first frame it's used. For example, it
+ * &lt;p&gt;Calling this method in advance can save time in the first frame it&#x27;s used. For example, it
  * is recommended to call this on an image decoding worker thread when a decoded Bitmap is about
  * to be displayed. It is recommended to make any pre-draw modifications to the Bitmap before
  * calling this method, so the cached, uploaded copy may be reused without re-uploading.&lt;/p&gt;
  *
- * In {@link android.os.Build.VERSION_CODES#KITKAT} and below, for purgeable bitmaps, this call
+ * In {<span class="hljs-doctag">@link </span>android.os.Build.VERSION_CODES#KITKAT} and below, for purgeable bitmaps, this call
  * would attempt to ensure that the pixels have been decoded.
  */</span>
-public <span class="hljs-keyword">void</span> prepareToDraw() {
-    checkRecycled(<span class="hljs-string">"Can't prepareToDraw on a recycled bitmap!"</span>);
+public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">prepareToDraw</span>(<span class="hljs-params"></span>)</span> {
+    checkRecycled(<span class="hljs-string">&quot;Can&#x27;t prepareToDraw on a recycled bitmap!&quot;</span>);
     <span class="hljs-comment">// Kick off an update/upload of the bitmap outside of the normal</span>
     <span class="hljs-comment">// draw path.</span>
     nativePrepareToDraw(mNativePtr);
@@ -336,11 +336,11 @@ public <span class="hljs-keyword">void</span> prepareToDraw() {
 </table>
 <h4 id="缩放图片的几种方式">缩放图片的几种方式</h4><pre><code><span class="hljs-comment">// 方式一 内部实现就是Matrix</span>
 inline fun Bitmap.scale(width: Int, <span class="hljs-attr">height</span>: Int, <span class="hljs-attr">filter</span>: <span class="hljs-built_in">Boolean</span> = <span class="hljs-literal">true</span>): Bitmap {
-    <span class="hljs-keyword">return</span> Bitmap.createScaledBitmap(<span class="hljs-keyword">this</span>, width, height, filter)
+    <span class="hljs-keyword">return</span> Bitmap.createScaledBitmap(<span class="hljs-built_in">this</span>, width, height, filter)
 }
 
-public <span class="hljs-keyword">static</span> Bitmap createScaledBitmap(@NonNull Bitmap src, int dstWidth, int dstHeight,
-        boolean filter) {
+public <span class="hljs-keyword">static</span> Bitmap <span class="hljs-function"><span class="hljs-title">createScaledBitmap</span>(<span class="hljs-params">@NonNull Bitmap src, int dstWidth, int dstHeight,
+        boolean filter</span>)</span> {
     Matrix m = <span class="hljs-keyword">new</span> Matrix();
 
     final int width = src.getWidth();
@@ -435,10 +435,10 @@ BitmapFactory.decodeStream(xxx, <span class="hljs-literal">null</span>, BitmapFa
     }
 
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> (left == <span class="hljs-number">0</span> &amp;&amp; top == <span class="hljs-number">0</span> &amp;&amp; right == width &amp;&amp; bottom == height) {
-        <span class="hljs-keyword">this</span>
+        <span class="hljs-built_in">this</span>
     } <span class="hljs-keyword">else</span> {
-        Log.d(<span class="hljs-string">"BitmapX"</span>, <span class="hljs-string">"{$width,$height},cut={$left,$top,${width - right},${height - bottom}}"</span>)
-        Bitmap.createBitmap(<span class="hljs-keyword">this</span>, left, top, right - left, bottom - top)
+        Log.d(<span class="hljs-string">&quot;BitmapX&quot;</span>, <span class="hljs-string">&quot;{$width,$height},cut={$left,$top,${width - right},${height - bottom}}&quot;</span>)
+        Bitmap.createBitmap(<span class="hljs-built_in">this</span>, left, top, right - left, bottom - top)
     }
 }
 </code></pre>
@@ -480,8 +480,8 @@ BitmapFactory.decodeStream(xxx, <span class="hljs-literal">null</span>, BitmapFa
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1605319656886"></script>
-<script type="text/javascript" src="../js/index.js?v=1605319656886"></script>
+<script type="text/javascript" src="../js/dt.js?v=1617502433812"></script>
+<script type="text/javascript" src="../js/index.js?v=1617502433812"></script>
 </body>
 
 </html>
