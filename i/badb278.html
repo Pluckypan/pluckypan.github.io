@@ -13,7 +13,7 @@
 			Aop - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433768">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414174">
 	</head>
 
 	<body>
@@ -143,7 +143,7 @@
 
 <div class="markdown-body">
 <h1 id="aop">Aop</h1><p>Aop</p>
-<h3 id="切属性">切属性</h3><pre><code>@Before(<span class="hljs-string">&quot;set(java.util.Locale android.content.res.Configuration.local) &amp;&amp; args(newValue) &amp;&amp; target(t)&quot;</span>)
+<h3 id="切属性">切属性</h3><pre><code>@Before(<span class="hljs-string">"set(java.util.Locale android.content.res.Configuration.local) &amp;&amp; args(newValue) &amp;&amp; target(t)"</span>)
     public <span class="hljs-keyword">void</span> aroundZZZZ(JoinPoint joinPoint, <span class="hljs-built_in">Object</span> newValue, <span class="hljs-built_in">Object</span> t) throws IllegalAccessException {
         FieldSignature fieldSignature = (FieldSignature) joinPoint.getSignature();
         Field field = fieldSignature.getField();
@@ -152,7 +152,7 @@
         <span class="hljs-built_in">String</span> clazzName = clazz.getSimpleName();
         <span class="hljs-built_in">Object</span> oldValue = field.get(t);
 
-        Log.d(<span class="hljs-string">&quot;Plucky zzzz&quot;</span>, <span class="hljs-string">&quot;clazzName = &quot;</span> + clazzName + <span class="hljs-string">&quot; field=&quot;</span> + field.getName() + <span class="hljs-string">&quot; oldValue=&quot;</span> + oldValue + <span class="hljs-string">&quot; newValue=&quot;</span> + newValue);
+        Log.d(<span class="hljs-string">"Plucky zzzz"</span>, <span class="hljs-string">"clazzName = "</span> + clazzName + <span class="hljs-string">" field="</span> + field.getName() + <span class="hljs-string">" oldValue="</span> + oldValue + <span class="hljs-string">" newValue="</span> + newValue);
     }
 </code></pre>
 </div>
@@ -193,8 +193,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433768"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433768"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414174"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414174"></script>
 </body>
 
 </html>

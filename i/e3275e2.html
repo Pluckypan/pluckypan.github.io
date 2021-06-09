@@ -13,7 +13,7 @@
 			volatile - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433850">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414364">
 	</head>
 
 	<body>
@@ -162,15 +162,15 @@
 <pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
   public  int inc = <span class="hljs-number">0</span>;
 
-  public synchronized <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">increase</span>(<span class="hljs-params"></span>)</span> {
+  public synchronized <span class="hljs-keyword">void</span> increase() {
       inc++;
   }
 
-  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> {
+  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
       final Test test = <span class="hljs-keyword">new</span> Test();
       <span class="hljs-keyword">for</span>(int i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){
-          <span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">Thread</span>(<span class="hljs-params"></span>)</span>{
-              public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">run</span>(<span class="hljs-params"></span>)</span> {
+          <span class="hljs-keyword">new</span> Thread(){
+              public <span class="hljs-keyword">void</span> run() {
                   <span class="hljs-keyword">for</span>(int j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">1000</span>;j++)
                       test.increase();
               };
@@ -188,7 +188,7 @@
   public  int inc = <span class="hljs-number">0</span>;
   Lock lock = <span class="hljs-keyword">new</span> ReentrantLock();
 
-  public  <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">increase</span>(<span class="hljs-params"></span>)</span> {
+  public  <span class="hljs-keyword">void</span> increase() {
       lock.lock();
       <span class="hljs-keyword">try</span> {
           inc++;
@@ -197,11 +197,11 @@
       }
   }
 
-  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> {
+  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
       final Test test = <span class="hljs-keyword">new</span> Test();
       <span class="hljs-keyword">for</span>(int i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){
-          <span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">Thread</span>(<span class="hljs-params"></span>)</span>{
-              public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">run</span>(<span class="hljs-params"></span>)</span> {
+          <span class="hljs-keyword">new</span> Thread(){
+              public <span class="hljs-keyword">void</span> run() {
                   <span class="hljs-keyword">for</span>(int j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">1000</span>;j++)
                       test.increase();
               };
@@ -218,15 +218,15 @@
 <pre><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
   public  AtomicInteger inc = <span class="hljs-keyword">new</span> AtomicInteger();
 
-  public  <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">increase</span>(<span class="hljs-params"></span>)</span> {
+  public  <span class="hljs-keyword">void</span> increase() {
       inc.getAndIncrement();
   }
 
-  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> {
+  public <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(<span class="hljs-built_in">String</span>[] args) {
       final Test test = <span class="hljs-keyword">new</span> Test();
       <span class="hljs-keyword">for</span>(int i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){
-          <span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">Thread</span>(<span class="hljs-params"></span>)</span>{
-              public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">run</span>(<span class="hljs-params"></span>)</span> {
+          <span class="hljs-keyword">new</span> Thread(){
+              public <span class="hljs-keyword">void</span> run() {
                   <span class="hljs-keyword">for</span>(int j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">1000</span>;j++)
                       test.increase();
               };
@@ -279,8 +279,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433850"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433850"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414365"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414365"></script>
 </body>
 
 </html>

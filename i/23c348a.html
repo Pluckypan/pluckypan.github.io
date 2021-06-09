@@ -13,7 +13,7 @@
 			Android https访问BUG - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433900">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414352">
 	</head>
 
 	<body>
@@ -175,7 +175,7 @@
     <span class="hljs-keyword">private</span> SSLSocketFactory delegate;
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TLSSocketFactory</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> KeyManagementException, NoSuchAlgorithmException </span>{
-        SSLContext context = SSLContext.getInstance(<span class="hljs-string">&quot;TLS&quot;</span>);
+        SSLContext context = SSLContext.getInstance(<span class="hljs-string">"TLS"</span>);
         context.init(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
         delegate = context.getSocketFactory();
     }
@@ -224,14 +224,14 @@
             <span class="hljs-keyword">if</span> (protocols != <span class="hljs-keyword">null</span> &amp;&amp; protocols.length &gt; <span class="hljs-number">0</span>) {
                 supports.addAll(Arrays.asList(protocols));
             }
-            Collections.addAll(supports, <span class="hljs-string">&quot;TLSv1.1&quot;</span>, <span class="hljs-string">&quot;TLSv1.2&quot;</span>);
+            Collections.addAll(supports, <span class="hljs-string">"TLSv1.1"</span>, <span class="hljs-string">"TLSv1.2"</span>);
             ((SSLSocket) socket).setEnabledProtocols(supports.toArray(<span class="hljs-keyword">new</span> String[supports.size()]));
         }
         <span class="hljs-keyword">return</span> socket;
     }
 }
 </code></pre>
-<h4 id="xutils3访问api">xUtils3访问API</h4><pre><code class="lang-java">RequestParams params=<span class="hljs-keyword">new</span> RequestParams(<span class="hljs-string">&quot;https://www.12306.com&quot;</span>);
+<h4 id="xutils3访问api">xUtils3访问API</h4><pre><code class="lang-java">RequestParams params=<span class="hljs-keyword">new</span> RequestParams(<span class="hljs-string">"https://www.12306.com"</span>);
 TLSSocketFactory factory;
 <span class="hljs-keyword">try</span> {
     factory = <span class="hljs-keyword">new</span> TLSSocketFactory();
@@ -273,7 +273,7 @@ params.setSslSocketFactory(factory);
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FHSSLSocketFactory</span><span class="hljs-params">(KeyStore truststore)</span> <span class="hljs-keyword">throws</span> NoSuchAlgorithmException, KeyManagementException, KeyStoreException, UnrecoverableKeyException </span>{
         <span class="hljs-keyword">super</span>(truststore);
-        SSLContext context = SSLContext.getInstance(<span class="hljs-string">&quot;TLS&quot;</span>);
+        SSLContext context = SSLContext.getInstance(<span class="hljs-string">"TLS"</span>);
         context.init(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>);
         delegate = context.getSocketFactory();
     }
@@ -296,7 +296,7 @@ params.setSslSocketFactory(factory);
             <span class="hljs-keyword">if</span> (protocols != <span class="hljs-keyword">null</span> &amp;&amp; protocols.length &gt; <span class="hljs-number">0</span>) {
                 supports.addAll(Arrays.asList(protocols));
             }
-            Collections.addAll(supports, <span class="hljs-string">&quot;TLSv1.1&quot;</span>, <span class="hljs-string">&quot;TLSv1.2&quot;</span>);
+            Collections.addAll(supports, <span class="hljs-string">"TLSv1.1"</span>, <span class="hljs-string">"TLSv1.2"</span>);
             ((SSLSocket) socket).setEnabledProtocols(supports.toArray(<span class="hljs-keyword">new</span> String[supports.size()]));
         }
         <span class="hljs-keyword">return</span> socket;
@@ -309,7 +309,7 @@ params.setSslSocketFactory(factory);
     FHSSLSocketFactory factory = <span class="hljs-keyword">new</span> FHSSLSocketFactory(<span class="hljs-keyword">null</span>);
     hUtils.configSSLSocketFactory(factory);
 } <span class="hljs-keyword">catch</span> (Exception e) {
-    FHLog.d(<span class="hljs-string">&quot;APIUtil&quot;</span>, e.getMessage());
+    FHLog.d(<span class="hljs-string">"APIUtil"</span>, e.getMessage());
 }
 </code></pre>
 <p>问题完美解决，OkHttp,Volley类似。</p>
@@ -352,8 +352,8 @@ params.setSslSocketFactory(factory);
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433900"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433900"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414352"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414352"></script>
 </body>
 
 </html>

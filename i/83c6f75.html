@@ -13,7 +13,7 @@
 			ADB 参考手册 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433840">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414219">
 	</head>
 
 	<body>
@@ -333,7 +333,7 @@ emulator-5554    device
 </code></pre>
 <p>（一般无需手动执行此命令，在运行 adb 命令时若发现 adb server 没有启动会自动调起。）</p>
 <p>停止 adb server 命令：</p>
-<pre><code class="lang-sh">adb kill-server
+<pre><code class="lang-sh">adb <span class="hljs-built_in">kill</span>-server
 </code></pre>
 <h3 id="查看 adb 版本">查看 adb 版本</h3><p>命令：</p>
 <pre><code class="lang-sh">adb version
@@ -940,8 +940,8 @@ Failure [INSTALL_FAILED_ALREADY_EXISTS]
   Non-Data Actions:
       android.intent.action.MAIN:
         5b4cba8 org.mazhuang.guanggoo/.SplashActivity filter 5ec9dcc
-          Action: <span class="hljs-string">&quot;android.intent.action.MAIN&quot;</span>
-          Category: <span class="hljs-string">&quot;android.intent.category.LAUNCHER&quot;</span>
+          Action: <span class="hljs-string">"android.intent.action.MAIN"</span>
+          Category: <span class="hljs-string">"android.intent.category.LAUNCHER"</span>
           AutoVerify=<span class="hljs-literal">false</span>
 
 Registered ContentProviders:
@@ -1018,7 +1018,7 @@ Dexopt state:
 <p>输出示例:</p>
 <pre><code>adb shell pm path ecarx.weather
 
-<span class="hljs-attr">package</span>:<span class="hljs-regexp">/data/</span>app/ecarx.weather-<span class="hljs-number">1.</span>apk
+package:<span class="hljs-regexp">/data/</span>app/ecarx.weather<span class="hljs-number">-1.</span>apk
 </code></pre><h2 id="与应用交互">与应用交互</h2><p>主要是使用 <code>am &lt;command&gt;</code> 命令，常用的 <code>&lt;command&gt;</code> 如下：</p>
 <table>
 <thead>
@@ -1129,7 +1129,7 @@ Dexopt state:
 <pre><code class="lang-sh">adb shell am start -n com.tencent.mm/.ui.LauncherUI
 </code></pre>
 <p>表示调起微信主界面。</p>
-<pre><code class="lang-sh">adb shell am start -n org.mazhuang.boottimemeasure/.MainActivity --es <span class="hljs-string">&quot;toast&quot;</span> <span class="hljs-string">&quot;hello, world&quot;</span>
+<pre><code class="lang-sh">adb shell am start -n org.mazhuang.boottimemeasure/.MainActivity --es <span class="hljs-string">"toast"</span> <span class="hljs-string">"hello, world"</span>
 </code></pre>
 <p>表示调起 <code>org.mazhuang.boottimemeasure/.MainActivity</code> 并传给它 string 数据键值对 <code>toast - hello, world</code>。</p>
 <h3 id="调起 service">调起 Service</h3><p>命令格式：</p>
@@ -1694,9 +1694,9 @@ service call iphonesubinfo 1
 </code></pre>
 <p>输出示例：</p>
 <pre><code class="lang-sh">Result: Parcel(
-  0x00000000: 00000000 0000000f 00360038 00390030 <span class="hljs-string">&#x27;........8.6.0.9.&#x27;</span>
-  0x00000010: 00350035 00320030 00370037 00350038 <span class="hljs-string">&#x27;5.5.0.2.7.7.8.5.&#x27;</span>
-  0x00000020: 00340030 00000031                   <span class="hljs-string">&#x27;0.4.1...        &#x27;</span>)
+  0x00000000: 00000000 0000000f 00360038 00390030 <span class="hljs-string">'........8.6.0.9.'</span>
+  0x00000010: 00350035 00320030 00370037 00350038 <span class="hljs-string">'5.5.0.2.7.7.8.5.'</span>
+  0x00000020: 00340030 00000031                   <span class="hljs-string">'0.4.1...        '</span>)
 </code></pre>
 <p>把里面的有效内容提取出来就是 IMEI 了，比如这里的是 <code>860955027785041</code>。</p>
 <p>参考：<a href="http://stackoverflow.com/questions/27002663/adb-shell-dumpsys-iphonesubinfo-not-working-since-android-5-0-lollipop">adb shell dumpsys iphonesubinfo not working since Android 5.0 Lollipop</a></p>
@@ -2035,7 +2035,7 @@ adb shell settings delete global hidden_api_policy_p_apps
 </code></pre>
 <p>表示设置在包名为 <code>com.package1</code> 和 <code>com.package2</code> 的应用里隐藏状态栏，在除了包名为 <code>com.package3</code> 的所有应用里隐藏导航栏。</p>
 <h2 id="实用功能">实用功能</h2><h3 id="屏幕截图">屏幕截图</h3><p>截图保存到电脑：</p>
-<pre><code class="lang-sh">adb exec-out screencap -p &gt; sc.png
+<pre><code class="lang-sh">adb <span class="hljs-built_in">exec</span>-out screencap -p &gt; sc.png
 </code></pre>
 <p>如果 adb 版本较老，无法使用 <code>exec-out</code> 命令，这时候建议更新 adb 版本。无法更新的话可以使用以下麻烦点的办法：</p>
 <p>先截图保存到设备里：</p>
@@ -2066,10 +2066,10 @@ adb shell settings delete global hidden_api_policy_p_apps
 <p>实测如果指定文件名以 <code>.png</code> 结尾时可以省略 -p 参数；否则需要使用 -p 参数。如果不指定文件名，截图文件的内容将直接输出到 stdout。</p>
 <p>另外一种一行命令截图并保存到电脑的方法：</p>
 <p><em>Linux 和 Windows</em></p>
-<pre><code class="lang-sh">adb shell screencap -p | sed <span class="hljs-string">&quot;s/\r$//&quot;</span> &gt; sc.png
+<pre><code class="lang-sh">adb shell screencap -p | sed <span class="hljs-string">"s/\r$//"</span> &gt; sc.png
 </code></pre>
 <p><em>Mac OS X</em></p>
-<pre><code class="lang-sh">adb shell screencap -p | gsed <span class="hljs-string">&quot;s/\r$//&quot;</span> &gt; sc.png
+<pre><code class="lang-sh">adb shell screencap -p | gsed <span class="hljs-string">"s/\r$//"</span> &gt; sc.png
 </code></pre>
 <p>这个方法需要用到 gnu sed 命令，在 Linux 下直接就有，在 Windows 下 Git 安装目录的 bin 文件夹下也有。如果确实找不到该命令，可以下载 <a href="http://gnuwin32.sourceforge.net/packages/sed.htm">sed for Windows</a> 并将 sed.exe 所在文件夹添加到 PATH 环境变量里。</p>
 <p>而在 Mac 下使用系统自带的 sed 命令会报错：</p>
@@ -2173,9 +2173,9 @@ cat /data/misc/wifi/*.conf
 </code></pre>
 <p>输出示例：</p>
 <pre><code class="lang-sh">network={
-    ssid=<span class="hljs-string">&quot;TP-LINK_9DFC&quot;</span>
+    ssid=<span class="hljs-string">"TP-LINK_9DFC"</span>
     scan_ssid=1
-    psk=<span class="hljs-string">&quot;123456789&quot;</span>
+    psk=<span class="hljs-string">"123456789"</span>
     key_mgmt=WPA-PSK
     group=CCMP TKIP
     auth_alg=OPEN
@@ -2184,8 +2184,8 @@ cat /data/misc/wifi/*.conf
 }
 
 network={
-    ssid=<span class="hljs-string">&quot;TP-LINK_F11E&quot;</span>
-    psk=<span class="hljs-string">&quot;987654321&quot;</span>
+    ssid=<span class="hljs-string">"TP-LINK_F11E"</span>
+    psk=<span class="hljs-string">"987654321"</span>
     key_mgmt=WPA-PSK
     sim_num=1
     priority=17293
@@ -2260,11 +2260,11 @@ adb shell setenforce 0
 </code></pre>
 <h3 id="启用/禁用 dm_verity">启用/禁用 dm_verity</h3><p>启用 dm_verity</p>
 <pre><code class="lang-sh">adb root
-adb enable-verity
+adb <span class="hljs-built_in">enable</span>-verity
 </code></pre>
 <p>禁用 dm_verity</p>
 <pre><code class="lang-sh">adb root
-adb disable-verity
+adb <span class="hljs-built_in">disable</span>-verity
 </code></pre>
 <h2 id="更多 adb shell 命令">更多 adb shell 命令</h2><p>Android 系统是基于 Linux 内核的，所以 Linux 里的很多命令在 Android 里也有相同或类似的实现，在 <code>adb shell</code> 里可以调用。本文档前面的部分内容已经用到了 <code>adb shell</code> 命令。</p>
 <h3 id="查看进程">查看进程</h3><p>命令：</p>
@@ -2465,7 +2465,7 @@ gemini:/ $
 </tbody>
 </table>
 <h2 id="常见问题">常见问题</h2><h3 id="启动 adb server 失败">启动 adb server 失败</h3><p><strong>出错提示</strong></p>
-<pre><code class="lang-sh">error: protocol fault (couldn<span class="hljs-string">&#x27;t read status): No error</span>
+<pre><code class="lang-sh">error: protocol fault (couldn<span class="hljs-string">'t read status): No error</span>
 </code></pre>
 <p><strong>可能原因</strong></p>
 <p>adb server 进程想使用的 5037 端口被占用。</p>
@@ -2483,8 +2483,8 @@ TCP    0.0.0.0:5037           0.0.0.0:0              LISTENING       1548
 <p>然后再启动 adb 就没问题了。</p>
 <h3 id="com-android-ddmlib-adbcommandrejectedexception">com.android.ddmlib.AdbCommandRejectedException</h3><p>在 Android Studio 里新建一个模拟器，但是用 adb 一直连接不上，提示：</p>
 <pre><code>com.android.ddmlib.AdbCommandRejectedException: device unauthorized.
-This adb server&#x27;s $ADB_VENDOR_KEYS is not set
-Try &#x27;adb kill-server&#x27; if that seems wrong.
+This adb server&#39;s $ADB_VENDOR_KEYS is not set
+Try &#39;adb kill-server&#39; if that seems wrong.
 Otherwise check for a confirmation dialog on your device.
 </code></pre><p>在手机上安装一个终端然后执行 su 提示没有该命令，这不正常。</p>
 <p>于是删除该模拟器后重新下载安装一次，这次就正常了。</p>
@@ -2551,8 +2551,8 @@ Otherwise check for a confirmation dialog on your device.
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433840"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433840"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414220"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414220"></script>
 </body>
 
 </html>

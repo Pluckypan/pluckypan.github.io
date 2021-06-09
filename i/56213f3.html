@@ -13,7 +13,7 @@
 			RenderScript - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433894">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414192">
 	</head>
 
 	<body>
@@ -151,9 +151,9 @@ defaultConfig {
         renderscriptSupportModeEnabled <span class="hljs-literal">true</span>
     }
 
-</code></pre><h3 id="自定义脚本">自定义脚本</h3><pre><code><span class="hljs-comment">// 与 res 、 java 同级目录下 新建 rs 文件夹 然后新建 ScaleScript.rs</span>
+</code></pre><h3 id="自定义脚本">自定义脚本</h3><pre><code>// 与 res 、 java 同级目录下 新建 rs 文件夹 然后新建 ScaleScript.rs
 
-#pragma version(<span class="hljs-number">1</span>)
+#pragma version(1)
 #pragma rs_fp_relaxed
 #pragma rs java_package_name(engineer.echo.render)
 
@@ -161,22 +161,22 @@ rs_allocation inputAllocation;
 uchar4 out;
 int wIn, hIn;
 int numTotalPixels;
-<span class="hljs-keyword">static</span> float scaleInv;
-<span class="hljs-keyword">static</span> int inputWidth, inputHeight, outputWidth, outputHeight;
+static float scaleInv;
+static int inputWidth, inputHeight, outputWidth, outputHeight;
 
-uchar4 __attribute__((kernel)) <span class="hljs-function"><span class="hljs-title">invert</span>(<span class="hljs-params">uchar4 <span class="hljs-keyword">in</span></span>)</span>
+uchar4 __attribute__((kernel)) invert(uchar4 in)
 {
-  uchar4 out = <span class="hljs-keyword">in</span>;
-  out.r =<span class="hljs-number">255</span>- <span class="hljs-keyword">in</span>.r;
-  out.g = <span class="hljs-number">255</span>-<span class="hljs-keyword">in</span>.g;
-  out.b = <span class="hljs-number">255</span>-<span class="hljs-keyword">in</span>.b;
-  <span class="hljs-keyword">return</span> out;
+  uchar4 out = in;
+  out.r =255- in.r;
+  out.g = 255-in.g;
+  out.b = 255-in.b;
+  return out;
 
 }
 
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">static</span> float3 gMonoMult1 = {<span class="hljs-number">0.</span>299f, <span class="hljs-number">0.</span>587f, <span class="hljs-number">0.</span>114f};
+const static float3 gMonoMult1 = {0.299f, 0.587f, 0.114f};
 
-<span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">RGBA2Gray</span>(<span class="hljs-params"><span class="hljs-keyword">const</span> uchar4 *v_in, uchar4 *v_out</span>)</span> {
+void RGBA2Gray(const uchar4 *v_in, uchar4 *v_out) {
     float4 f4 = rsUnpackColor8888(*v_in);
     float3 mono = dot(f4.rgb, gMonoMult1);
     *v_out = rsPackColorTo8888(mono);
@@ -184,8 +184,8 @@ uchar4 __attribute__((kernel)) <span class="hljs-function"><span class="hljs-tit
 
 
 
-<span class="hljs-comment">// Function to invoke before applying conversion</span>
-<span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">setInputImageSize</span>(<span class="hljs-params">int _w, int _h</span>)</span>
+// Function to invoke before applying conversion
+void setInputImageSize(int _w, int _h)
 {
     wIn = _w;
     hIn = _h;
@@ -193,8 +193,8 @@ uchar4 __attribute__((kernel)) <span class="hljs-function"><span class="hljs-tit
 }
 
 
-<span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">setInformation</span>(<span class="hljs-params">int _inputWidth, int _inputHeight,
-    int _outputWidth, int _outputHeight</span>)</span>{
+void setInformation(int _inputWidth, int _inputHeight,
+    int _outputWidth, int _outputHeight){
 
     inputWidth = _inputWidth;
     inputHeight = _inputHeight;
@@ -204,75 +204,75 @@ uchar4 __attribute__((kernel)) <span class="hljs-function"><span class="hljs-tit
 }
 
 
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">static</span> uchar <span class="hljs-function"><span class="hljs-title">Myclamp</span>(<span class="hljs-params">short x, uchar Mymin, uchar Mymax</span>)</span>{
+const static uchar Myclamp(short x, uchar Mymin, uchar Mymax){
 
-    <span class="hljs-keyword">if</span> (x &gt; Mymax)
-        <span class="hljs-keyword">return</span> Mymax;
-    <span class="hljs-keyword">if</span> (x &lt; Mymin)
-        <span class="hljs-keyword">return</span> Mymin;
-    <span class="hljs-keyword">return</span> (uchar)x;
+    if (x &gt; Mymax)
+        return Mymax;
+    if (x &lt; Mymin)
+        return Mymin;
+    return (uchar)x;
 }
 
-<span class="hljs-comment">// Kernel that converts a YUV element to a RGBA one</span>
-uchar4 __attribute__((kernel)) <span class="hljs-function"><span class="hljs-title">convert</span>(<span class="hljs-params">uint32_t x, uint32_t y</span>)</span>
+// Kernel that converts a YUV element to a RGBA one
+uchar4 __attribute__((kernel)) convert(uint32_t x, uint32_t y)
 {
 
     int baseIdx = x + y * wIn;
 
- int baseVYIndex = numTotalPixels + (y&gt;&gt;<span class="hljs-number">1</span>) * wIn + (x &amp; <span class="hljs-number">0xfffffe</span>);
- int baseUYIndex=baseVYIndex+<span class="hljs-number">1</span>;
+ int baseVYIndex = numTotalPixels + (y&gt;&gt;1) * wIn + (x &amp; 0xfffffe);
+ int baseUYIndex=baseVYIndex+1;
 
     uchar _y = rsGetElementAt_uchar(inputAllocation, baseIdx);
     uchar _u = rsGetElementAt_uchar(inputAllocation, baseUYIndex);
     uchar _v = rsGetElementAt_uchar(inputAllocation, baseVYIndex);
-    _y = _y &lt; <span class="hljs-number">16</span> ? <span class="hljs-number">16</span> : _y;
+    _y = _y &lt; 16 ? 16 : _y;
 
-    short Y = ((short)_y) - <span class="hljs-number">16</span>;
-    short U = ((short)_u) - <span class="hljs-number">128</span>;
-    short V = ((short)_v) - <span class="hljs-number">128</span>;
+    short Y = ((short)_y) - 16;
+    short U = ((short)_u) - 128;
+    short V = ((short)_v) - 128;
 
     uchar4 out;
 
-    out.r =  (uchar)Myclamp(((Y * <span class="hljs-number">298</span> + V * <span class="hljs-number">408</span> + <span class="hljs-number">128</span>) &gt;&gt; <span class="hljs-number">8</span>), <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
-    out.g =  (uchar)Myclamp(((Y * <span class="hljs-number">298</span> - U * <span class="hljs-number">100</span> - V * <span class="hljs-number">208</span> + <span class="hljs-number">128</span>) &gt;&gt; <span class="hljs-number">8</span>), <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
-    out.b =  (uchar)Myclamp(((Y * <span class="hljs-number">298</span> + U * <span class="hljs-number">516</span> + <span class="hljs-number">128</span>) &gt;&gt; <span class="hljs-number">8</span>), <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+    out.r =  (uchar)Myclamp(((Y * 298 + V * 408 + 128) &gt;&gt; 8), 0, 255);
+    out.g =  (uchar)Myclamp(((Y * 298 - U * 100 - V * 208 + 128) &gt;&gt; 8), 0, 255);
+    out.b =  (uchar)Myclamp(((Y * 298 + U * 516 + 128) &gt;&gt; 8), 0, 255);
 
-    out.a = <span class="hljs-number">255</span>;
+    out.a = 255;
 
-    <span class="hljs-keyword">return</span> out;
+    return out;
 }
 
 uchar4 __attribute__ ((kernel)) rotate_90_clockwise ( uint32_t x, uint32_t y) {
-    uint32_t inX  = wIn - <span class="hljs-number">1</span> - y;
+    uint32_t inX  = wIn - 1 - y;
     uint32_t inY = x;
     uchar4 out;
     out = rsGetElementAt_uchar4(inputAllocation,inX, inY);
-    <span class="hljs-keyword">return</span> out;
+    return out;
 }
 
 uchar4 __attribute__ ((kernel)) rotate_270_clockwise (uint32_t x, uint32_t y) {
     uint32_t inX = y;
-    uint32_t inY = hIn - <span class="hljs-number">1</span> - x;
+    uint32_t inY = hIn - 1 - x;
     uchar4 out;
      out = rsGetElementAt_uchar4(inputAllocation,inX, inY);
-    <span class="hljs-keyword">return</span> out;
+    return out;
 }
 
 
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">static</span> float <span class="hljs-function"><span class="hljs-title">Limit</span>(<span class="hljs-params">float x, float Mymin, float Mymax</span>)</span>{
-    <span class="hljs-keyword">if</span> (x &gt; Mymax)
-        <span class="hljs-keyword">return</span> Mymax;
-    <span class="hljs-keyword">if</span> (x &lt; Mymin)
-        <span class="hljs-keyword">return</span> Mymin;
-    <span class="hljs-keyword">return</span> x;
+const static float Limit(float x, float Mymin, float Mymax){
+    if (x &gt; Mymax)
+        return Mymax;
+    if (x &lt; Mymin)
+        return Mymin;
+    return x;
 }
 
-uchar4 __attribute__((kernel)) <span class="hljs-function"><span class="hljs-title">resizeNearest</span>(<span class="hljs-params">uint32_t x, uint32_t y</span>)</span> {
+uchar4 __attribute__((kernel)) resizeNearest(uint32_t x, uint32_t y) {
 
-    float fX = clamp(x*scaleInv, <span class="hljs-number">0.</span>0f, (float)inputWidth);
-    float fY = clamp(y*scaleInv, <span class="hljs-number">0.</span>0f, (float)inputHeight);
+    float fX = clamp(x*scaleInv, 0.0f, (float)inputWidth);
+    float fY = clamp(y*scaleInv, 0.0f, (float)inputHeight);
 
-    <span class="hljs-keyword">return</span> rsGetElementAt_uchar4(inputAllocation, fX, fY);
+    return rsGetElementAt_uchar4(inputAllocation, fX, fY);
 }
 </code></pre><h3 id="编译">编译</h3><p>直接 clean&amp;build 即可生成 JAVA 代码. 目录在 <code>app/build/generated/source/rs</code></p>
 <h3 id="使用">使用</h3><pre><code><span class="hljs-comment">// 缩放图片</span>
@@ -311,7 +311,7 @@ private fun scaleBitmap(context: Context, <span class="hljs-attr">bitmap</span>:
  * 通过 ffmpeg -i 708721762.png -s 176x44 -sws_flags gauss  -y 0.3.png 对比
  * 发现 gauss &amp; bilinear 缩小图片时 图片质量丢失最小
  * 参考链接：
- * https://medium.com/<span class="hljs-doctag">@petrakeas</span>/alias-free-resize-with-renderscript-5bf15a86ce3
+ * https://medium.com/@petrakeas/alias-free-resize-with-renderscript-5bf15a86ce3
  * https://blog.csdn.net/leixiaohua1020/article/details/84483277
  * http://www.echo.engineer/c/ffmpeg.html
  */</span>
@@ -319,15 +319,15 @@ fun Bitmap.gaussScale(scale: Float, <span class="hljs-attr">radiusOffset</span>:
     <span class="hljs-comment">// 创建 RenderScript 引擎</span>
     val renderScriptEngine = RenderScript.create(getApplicationContext())
 
-    val resizeRatio = 1f / scale
+    val resizeRatio = <span class="hljs-number">1</span>f / scale
     <span class="hljs-comment">/**
      * 计算高斯模糊半径,参考源代码
      * https://android.googlesource.com/platform/frameworks/rs/+/master/cpu_ref/rsCpuIntrinsicBlur.cpp
      */</span>
     val sigma = resizeRatio / <span class="hljs-built_in">Math</span>.PI.toFloat()
     <span class="hljs-comment">//+ radiusOffset 的目的是更柔和一点 否则字体容易出现锯齿</span>
-    <span class="hljs-keyword">var</span> radius = <span class="hljs-number">2.</span>5f * sigma - <span class="hljs-number">1.</span>5f + radiusOffset
-    radius = <span class="hljs-built_in">Math</span>.min(25f, <span class="hljs-built_in">Math</span>.max(<span class="hljs-number">0.</span>0001f, radius))
+    <span class="hljs-keyword">var</span> radius = <span class="hljs-number">2.5</span>f * sigma - <span class="hljs-number">1.5</span>f + radiusOffset
+    radius = <span class="hljs-built_in">Math</span>.min(<span class="hljs-number">25</span>f, <span class="hljs-built_in">Math</span>.max(<span class="hljs-number">0.0001</span>f, radius))
 
     <span class="hljs-comment">/**
      * 由于 gauss &amp; bilinear 两种缩放算法表现比较好且 Android 已经自带了 ScriptIntrinsicBlur (基于gauss)
@@ -337,7 +337,7 @@ fun Bitmap.gaussScale(scale: Float, <span class="hljs-attr">radiusOffset</span>:
      */</span>
 
     <span class="hljs-comment">// 输入流</span>
-    val allIn = Allocation.createFromBitmap(renderScriptEngine, <span class="hljs-built_in">this</span>)
+    val allIn = Allocation.createFromBitmap(renderScriptEngine, <span class="hljs-keyword">this</span>)
     val blurScript = ScriptIntrinsicBlur.create(renderScriptEngine, allIn.element)
     <span class="hljs-comment">// 输出暂存</span>
     val tmpAlloc = Allocation.createTyped(renderScriptEngine, allIn.type)
@@ -350,9 +350,9 @@ fun Bitmap.gaussScale(scale: Float, <span class="hljs-attr">radiusOffset</span>:
 
     <span class="hljs-comment">// 缩放</span>
     val srcAspect = width.toFloat() / height
-    val dstWidth = (width * scale + <span class="hljs-number">0.</span>5f).toInt()
+    val dstWidth = (width * scale + <span class="hljs-number">0.5</span>f).toInt()
     val dstHeight = (dstWidth / srcAspect).toInt()
-    val dstBitmap = Bitmap.createBitmap(dstWidth, dstHeight, <span class="hljs-built_in">this</span>.config)
+    val dstBitmap = Bitmap.createBitmap(dstWidth, dstHeight, <span class="hljs-keyword">this</span>.config)
     <span class="hljs-comment">// 输出流 在原有高斯编码的基础上做缩放</span>
     val allOut = Allocation.createTyped(renderScriptEngine, Type.createXY(renderScriptEngine, tmpAlloc.element, dstWidth, dstHeight))
     <span class="hljs-comment">// 缩放</span>
@@ -415,8 +415,8 @@ fun Bitmap.gaussScale(scale: Float, <span class="hljs-attr">radiusOffset</span>:
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433895"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433895"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414192"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414192"></script>
 </body>
 
 </html>

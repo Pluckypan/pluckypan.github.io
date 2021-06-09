@@ -13,7 +13,7 @@
 			iOS正则表达式RegexKitLite - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433890">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414341">
 	</head>
 
 	<body>
@@ -146,36 +146,36 @@
 <blockquote>
 <p>在iOS中系统自带的<strong> NSRegularExpression </strong>可用于正则表达式的匹配，但是使用相对麻烦，使用第三方框架RegexKitLite能大大简化对正则表达式的使用。具体使用方法如下：</p>
 </blockquote>
-<h3 id="常用方法">常用方法</h3><pre><code>NSString *searchString = @<span class="hljs-string">&quot;我正在#话题#吃饭@zhangsan 你@lisi 吃了没?&quot;</span>;
-NSString *regexString = @<span class="hljs-string">&quot;@\\w+&quot;</span>;
+<h3 id="常用方法">常用方法</h3><pre><code>NSString *searchString = @<span class="hljs-string">"我正在#话题#吃饭@zhangsan 你@lisi 吃了没?"</span>;
+NSString *regexString = @<span class="hljs-string">"@\\w+"</span>;
 
 <span class="hljs-comment">//1、返回所有匹配成功的结果，并存放到一个数组里</span>
 NSArray *array = [searchString componentsMatchedByRegex:regexString];
-NSLog(@<span class="hljs-string">&quot;array:%@&quot;</span>,array); <span class="hljs-comment">// 输出结果: (&quot;@zhangsan&quot;,&quot;@lisi&quot;)</span>
+NSLog(@<span class="hljs-string">"array:%@"</span>,array); <span class="hljs-comment">// 输出结果: ("@zhangsan","@lisi")</span>
 
 <span class="hljs-comment">//2、判断字符串是否与Regex配对</span>
-BOOL isMatched = [@<span class="hljs-string">&quot;@zhangsan&quot;</span> isMatchedByRegex:regexString];
+BOOL isMatched = [@<span class="hljs-string">"@zhangsan"</span> isMatchedByRegex:regexString];
 <span class="hljs-keyword">if</span> (isMatched) {
-   NSLog(@<span class="hljs-string">&quot;配对成功&quot;</span>);
+   NSLog(@<span class="hljs-string">"配对成功"</span>);
 }
 
 <span class="hljs-comment">//3、 取得配对出来的第一個完整字串</span>
 NSString *matchedString1 = [searchString stringByMatching:regexString];
-NSLog(@<span class="hljs-string">&quot;matchedString1:%@&quot;</span>,matchedString1); <span class="hljs-comment">// 输出结果: @zhangsan</span>
+NSLog(@<span class="hljs-string">"matchedString1:%@"</span>,matchedString1); <span class="hljs-comment">// 输出结果: @zhangsan</span>
 
 <span class="hljs-comment">//4、 将字符串中与Regex配对的结果进行替换</span>
-NSString *replaceString = @<span class="hljs-string">&quot;wangwu&quot;</span>;
+NSString *replaceString = @<span class="hljs-string">"wangwu"</span>;
 NSString *matchedString2 = [searchString stringByReplacingOccurrencesOfRegex:regexString withString:replaceString];
-NSLog(@<span class="hljs-string">&quot;matchedString2:%@&quot;</span>,matchedString2); <span class="hljs-comment">// 输出结果: 我正在#话题#吃饭wangwu 你wangwu 吃了没?</span>
+NSLog(@<span class="hljs-string">"matchedString2:%@"</span>,matchedString2); <span class="hljs-comment">// 输出结果: 我正在#话题#吃饭wangwu 你wangwu 吃了没?</span>
 
 <span class="hljs-comment">//5、 如果是NSMutableString，则可以直接替换，并返回替换的次数</span>
-NSMutableString *mutSearchString = [NSMutableString stringWithString:@<span class="hljs-string">&quot;我正在#话题#吃放@zhangsan 你@lisi 吃了没?&quot;</span>];
+NSMutableString *mutSearchString = [NSMutableString stringWithString:@<span class="hljs-string">"我正在#话题#吃放@zhangsan 你@lisi 吃了没?"</span>];
 NSInteger mutMatchedString2 = [mutSearchString replaceOccurrencesOfRegex:regexString withString:replaceString];
-NSLog(@<span class="hljs-string">&quot;mutMatchedString2:%ld&quot;</span>,mutMatchedString2); <span class="hljs-comment">// 输出结果: 2</span>
+NSLog(@<span class="hljs-string">"mutMatchedString2:%ld"</span>,mutMatchedString2); <span class="hljs-comment">// 输出结果: 2</span>
 
 <span class="hljs-comment">//6、 返回一个拆分后的字符串数组</span>
 NSArray *array3 = [searchString componentsSeparatedByRegex:regexString];
-NSLog(@<span class="hljs-string">&quot;array3:%@&quot;</span>,array3); <span class="hljs-comment">// 输出结果: (&quot;我正在#话题#吃饭&quot;,&quot; 你&quot;,&quot; 吃了没?&quot;)</span>
+NSLog(@<span class="hljs-string">"array3:%@"</span>,array3); <span class="hljs-comment">// 输出结果: ("我正在#话题#吃饭"," 你"," 吃了没?")</span>
 </code></pre><h3 id="正则参考">正则参考</h3><p><a href="http://www.runoob.com/regexp/regexp-tutorial.html">正则表达式学习参考</a></p>
 
 </div>
@@ -216,8 +216,8 @@ NSLog(@<span class="hljs-string">&quot;array3:%@&quot;</span>,array3); <span cla
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433890"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433890"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414342"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414342"></script>
 </body>
 
 </html>

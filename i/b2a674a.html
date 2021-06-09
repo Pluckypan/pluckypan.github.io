@@ -13,7 +13,7 @@
 			Hugo - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433792">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414254">
 	</head>
 
 	<body>
@@ -151,14 +151,14 @@
          jcenter()
      }
      dependencies {
-         classpath <span class="hljs-string">&#x27;com.android.tools.build:gradle:3.1.4&#x27;</span>
-         classpath <span class="hljs-string">&#x27;com.jakewharton.hugo:hugo-plugin:1.2.1&#x27;</span>
+         classpath <span class="hljs-string">'com.android.tools.build:gradle:3.1.4'</span>
+         classpath <span class="hljs-string">'com.jakewharton.hugo:hugo-plugin:1.2.1'</span>
      }
  }
 </code></pre></li>
 <li><p><code>module</code> 的 <code>build.gradle</code> 添加如下代码</p>
-<pre><code> apply plugin: <span class="hljs-string">&#x27;com.android.application&#x27;</span>
- apply plugin: <span class="hljs-string">&#x27;com.jakewharton.hugo&#x27;</span>
+<pre><code> apply plugin: <span class="hljs-string">'com.android.application'</span>
+ apply plugin: <span class="hljs-string">'com.jakewharton.hugo'</span>
 </code></pre></li>
 <li>添加 <code>@DebugLog</code> 注解,目前支持<ul>
 <li>支持 <code>TYPE</code> 注解: 类、接口、枚举</li>
@@ -179,19 +179,19 @@
 </ul>
 <h4 id="根目录 <code>build.gradle</code> 引用">根目录 <code>build.gradle</code> 引用</h4><pre><code>buildscript {
     dependencies {
-        classpath <span class="hljs-string">&#x27;com.android.tools.build:gradle:3.1.4&#x27;</span>
-        classpath <span class="hljs-string">&#x27;org.aspectj:aspectjtools:1.8.10&#x27;</span>
+        classpath <span class="hljs-string">'com.android.tools.build:gradle:3.1.4'</span>
+        classpath <span class="hljs-string">'org.aspectj:aspectjtools:1.8.10'</span>
     }
 }
-</code></pre><h4 id="<code>app module</code> 的 <code>build.gradle</code> 添加如下代码"><code>app module</code> 的 <code>build.gradle</code> 添加如下代码</h4><pre><code>apply plugin: <span class="hljs-string">&#x27;com.android.application&#x27;</span>
+</code></pre><h4 id="<code>app module</code> 的 <code>build.gradle</code> 添加如下代码"><code>app module</code> 的 <code>build.gradle</code> 添加如下代码</h4><pre><code>apply plugin: <span class="hljs-string">'com.android.application'</span>
 dependencies {
-    api <span class="hljs-string">&#x27;org.aspectj:aspectjrt:1.8.10&#x27;</span>
+    api <span class="hljs-string">'org.aspectj:aspectjrt:1.8.10'</span>
 }
 final def log = project.logger
 final def variants = project.android.applicationVariants
 variants.all { variant -&gt;
     <span class="hljs-keyword">if</span> (!variant.buildType.isDebuggable()) {
-        log.debug(<span class="hljs-string">&quot;Skipping non-debuggable build type &#x27;${variant.buildType.name}&#x27;.&quot;</span>)
+        log.debug(<span class="hljs-string">"Skipping non-debuggable build type '${variant.buildType.name}'."</span>)
         <span class="hljs-keyword">return</span>
     }
 
@@ -201,14 +201,14 @@ variants.all { variant -&gt;
      *在javaCompile任务的最后一步对.class文件进行aspectj处理。加上才可看到class文件注入的变化。
      */</span>
     javaCompile.doLast {
-        <span class="hljs-built_in">String</span>[] args = [<span class="hljs-string">&quot;-showWeaveInfo&quot;</span>,
-                         <span class="hljs-string">&quot;-1.8&quot;</span>,
-                         <span class="hljs-string">&quot;-inpath&quot;</span>, javaCompile.destinationDir.toString(),
-                         <span class="hljs-string">&quot;-aspectpath&quot;</span>, javaCompile.classpath.asPath,
-                         <span class="hljs-string">&quot;-d&quot;</span>, javaCompile.destinationDir.toString(),
-                         <span class="hljs-string">&quot;-classpath&quot;</span>, javaCompile.classpath.asPath,
-                         <span class="hljs-string">&quot;-bootclasspath&quot;</span>, project.android.bootClasspath.join(File.pathSeparator)]
-        log.debug <span class="hljs-string">&quot;args: &quot;</span> + Arrays.toString(args)
+        <span class="hljs-built_in">String</span>[] args = [<span class="hljs-string">"-showWeaveInfo"</span>,
+                         <span class="hljs-string">"-1.8"</span>,
+                         <span class="hljs-string">"-inpath"</span>, javaCompile.destinationDir.toString(),
+                         <span class="hljs-string">"-aspectpath"</span>, javaCompile.classpath.asPath,
+                         <span class="hljs-string">"-d"</span>, javaCompile.destinationDir.toString(),
+                         <span class="hljs-string">"-classpath"</span>, javaCompile.classpath.asPath,
+                         <span class="hljs-string">"-bootclasspath"</span>, project.android.bootClasspath.join(File.pathSeparator)]
+        log.debug <span class="hljs-string">"args: "</span> + Arrays.toString(args)
 
         MessageHandler handler = <span class="hljs-keyword">new</span> MessageHandler(<span class="hljs-literal">true</span>)
         <span class="hljs-keyword">new</span> Main().run(args, handler)
@@ -232,22 +232,22 @@ variants.all { variant -&gt;
         }
     }
 }
-</code></pre><h4 id="<code>library module</code> 的 <code>build.gradle</code> 类似"><code>library module</code> 的 <code>build.gradle</code> 类似</h4><pre><code>apply plugin: <span class="hljs-string">&#x27;com.android.library&#x27;</span>
+</code></pre><h4 id="<code>library module</code> 的 <code>build.gradle</code> 类似"><code>library module</code> 的 <code>build.gradle</code> 类似</h4><pre><code>apply plugin: <span class="hljs-string">'com.android.library'</span>
 dependencies {
-    api <span class="hljs-string">&#x27;org.aspectj:aspectjrt:1.8.10&#x27;</span>
+    api <span class="hljs-string">'org.aspectj:aspectjrt:1.8.10'</span>
 }
 android.libraryVariants.all { variant -&gt;
   JavaCompile javaCompile = variant.javaCompile
   javaCompile.doLast {
     def log = project.logger
     <span class="hljs-built_in">String</span>[] args = [
-        <span class="hljs-string">&quot;-showWeaveInfo&quot;</span>,
-        <span class="hljs-string">&quot;-1.8&quot;</span>,
-        <span class="hljs-string">&quot;-inpath&quot;</span>, javaCompile.destinationDir.toString(),
-        <span class="hljs-string">&quot;-aspectpath&quot;</span>, javaCompile.classpath.asPath,
-        <span class="hljs-string">&quot;-d&quot;</span>, javaCompile.destinationDir.toString(),
-        <span class="hljs-string">&quot;-classpath&quot;</span>, javaCompile.classpath.asPath,
-        <span class="hljs-string">&quot;-bootclasspath&quot;</span>, android.bootClasspath.join(File.pathSeparator)
+        <span class="hljs-string">"-showWeaveInfo"</span>,
+        <span class="hljs-string">"-1.8"</span>,
+        <span class="hljs-string">"-inpath"</span>, javaCompile.destinationDir.toString(),
+        <span class="hljs-string">"-aspectpath"</span>, javaCompile.classpath.asPath,
+        <span class="hljs-string">"-d"</span>, javaCompile.destinationDir.toString(),
+        <span class="hljs-string">"-classpath"</span>, javaCompile.classpath.asPath,
+        <span class="hljs-string">"-bootclasspath"</span>, android.bootClasspath.join(File.pathSeparator)
     ]
 
     MessageHandler handler = <span class="hljs-keyword">new</span> MessageHandler(<span class="hljs-literal">true</span>);
@@ -297,22 +297,22 @@ android.libraryVariants.all { variant -&gt;
 <li><p>根目录 <code>build.gradle</code> 引用</p>
 <pre><code>buildscript {
  dependencies {
-     classpath <span class="hljs-string">&#x27;com.android.tools.build:gradle:3.1.4&#x27;</span>
-     classpath <span class="hljs-string">&#x27;com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4&#x27;</span>
+     classpath <span class="hljs-string">'com.android.tools.build:gradle:3.1.4'</span>
+     classpath <span class="hljs-string">'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4'</span>
  }
 }
 </code></pre></li>
 <li><p>app <code>build.gradle</code> 引用</p>
-<pre><code>apply plugin: <span class="hljs-string">&#x27;com.android.application&#x27;</span>
-apply plugin: <span class="hljs-string">&#x27;android-aspectjx&#x27;</span>
+<pre><code>apply plugin: <span class="hljs-string">'com.android.application'</span>
+apply plugin: <span class="hljs-string">'android-aspectjx'</span>
 android {
  compileSdkVersion <span class="hljs-number">26</span>
- buildToolsVersion <span class="hljs-string">&quot;27.0.3&quot;</span>
+ buildToolsVersion <span class="hljs-string">"27.0.3"</span>
 }
 aspectjx {
  enabled <span class="hljs-literal">true</span>
- <span class="hljs-comment">//include &#x27;android.support&#x27;</span>
- <span class="hljs-comment">//exclude &#x27;android.support&#x27;</span>
+ <span class="hljs-comment">//include 'android.support'</span>
+ <span class="hljs-comment">//exclude 'android.support'</span>
 }
 </code></pre></li>
 </ol>
@@ -321,72 +321,72 @@ aspectjx {
     private int gender;
     private <span class="hljs-built_in">String</span> name;
 
-    public <span class="hljs-function"><span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span> {
+    public Person() {
     }
 
-    public <span class="hljs-function"><span class="hljs-title">Person</span>(<span class="hljs-params">int age, int gender, <span class="hljs-built_in">String</span> name</span>)</span> {
-        <span class="hljs-built_in">this</span>.age = age;
-        <span class="hljs-built_in">this</span>.gender = gender;
-        <span class="hljs-built_in">this</span>.name = name;
+    public Person(int age, int gender, <span class="hljs-built_in">String</span> name) {
+        <span class="hljs-keyword">this</span>.age = age;
+        <span class="hljs-keyword">this</span>.gender = gender;
+        <span class="hljs-keyword">this</span>.name = name;
     }
 
     @Override
-    public <span class="hljs-built_in">String</span> <span class="hljs-function"><span class="hljs-title">toString</span>(<span class="hljs-params"></span>)</span> {
+    public <span class="hljs-built_in">String</span> toString() {
         <span class="hljs-keyword">return</span> format(name, age, gender);
     }
 
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">setAge</span>(<span class="hljs-params">int age</span>)</span> {
-        <span class="hljs-built_in">this</span>.age = age;
+    public <span class="hljs-keyword">void</span> setAge(int age) {
+        <span class="hljs-keyword">this</span>.age = age;
     }
 
-    public int <span class="hljs-function"><span class="hljs-title">getAge</span>(<span class="hljs-params"></span>)</span> {
+    public int getAge() {
         <span class="hljs-keyword">return</span> age;
     }
 
-    public <span class="hljs-built_in">String</span> <span class="hljs-function"><span class="hljs-title">format</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> name, int age, int gender</span>)</span> {
-        <span class="hljs-built_in">String</span> result = <span class="hljs-built_in">String</span>.format(Locale.CHINA, <span class="hljs-string">&quot;姓名:%s 年龄:%d 性别:%s&quot;</span>, name, age, gender == <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;男&quot;</span> : <span class="hljs-string">&quot;女&quot;</span>);
-        Log.i(<span class="hljs-string">&quot;aop&quot;</span>, <span class="hljs-string">&quot;inner result=&quot;</span> + result);
+    public <span class="hljs-built_in">String</span> format(<span class="hljs-built_in">String</span> name, int age, int gender) {
+        <span class="hljs-built_in">String</span> result = <span class="hljs-built_in">String</span>.format(Locale.CHINA, <span class="hljs-string">"姓名:%s 年龄:%d 性别:%s"</span>, name, age, gender == <span class="hljs-number">0</span> ? <span class="hljs-string">"男"</span> : <span class="hljs-string">"女"</span>);
+        Log.i(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"inner result="</span> + result);
         <span class="hljs-keyword">return</span> result;
     }
 
     @Anno
-    public int <span class="hljs-function"><span class="hljs-title">add</span>(<span class="hljs-params">int a, int b</span>)</span> {
+    public int add(int a, int b) {
         <span class="hljs-keyword">return</span> a + b;
     }
 
-    @Anno(aTag = <span class="hljs-string">&quot;PY-AOP&quot;</span>, modify = <span class="hljs-literal">true</span>)
-    public int <span class="hljs-function"><span class="hljs-title">minus</span>(<span class="hljs-params">int a, int b</span>)</span> {
+    @Anno(aTag = <span class="hljs-string">"PY-AOP"</span>, modify = <span class="hljs-literal">true</span>)
+    public int minus(int a, int b) {
         <span class="hljs-keyword">return</span> a - b;
     }
 }
 </code></pre><h4 id="自定义注解">自定义注解</h4><pre><code>@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Anno {
-    <span class="hljs-built_in">String</span> aTag() <span class="hljs-keyword">default</span> <span class="hljs-string">&quot;AOP&quot;</span>;
+    <span class="hljs-built_in">String</span> aTag() <span class="hljs-keyword">default</span> <span class="hljs-string">"AOP"</span>;
 
     boolean modify() <span class="hljs-keyword">default</span> <span class="hljs-literal">false</span>;
 }
 </code></pre><h4 id="处理类">处理类</h4><pre><code>@Aspect
 public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Aspecter</span> </span>{
 
-    @After(<span class="hljs-string">&quot;call(* com.echo.camera.Person.toString())&quot;</span>)
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">aFunc</span>(<span class="hljs-params">JoinPoint joinPoint</span>)</span> {
-        Log.d(<span class="hljs-string">&quot;aop&quot;</span>, <span class="hljs-string">&quot;Aspecter aFunc exec&quot;</span>);
+    @After(<span class="hljs-string">"call(* com.echo.camera.Person.toString())"</span>)
+    public <span class="hljs-keyword">void</span> aFunc(JoinPoint joinPoint) {
+        Log.d(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"Aspecter aFunc exec"</span>);
     }
 
-    @After(<span class="hljs-string">&quot;call(* com.echo.camera.Person.format(..))&quot;</span>)
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">bFunc</span>(<span class="hljs-params">JoinPoint joinPoint</span>)</span> {
+    @After(<span class="hljs-string">"call(* com.echo.camera.Person.format(..))"</span>)
+    public <span class="hljs-keyword">void</span> bFunc(JoinPoint joinPoint) {
         <span class="hljs-built_in">String</span> args = Arrays.toString(joinPoint.getArgs());
-        Log.d(<span class="hljs-string">&quot;aop&quot;</span>, <span class="hljs-string">&quot;Aspecter bFunc exec args=&quot;</span> + args);
+        Log.d(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"Aspecter bFunc exec args="</span> + args);
     }
 
    <span class="hljs-comment">// 一般使用注解可以使用这种方式</span>
-    @Pointcut(<span class="hljs-string">&quot;execution(@com.echo.camera.Anno * *(..)) &amp;&amp; @annotation(ann)&quot;</span>)
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">testAnno</span>(<span class="hljs-params">Anno ann</span>)</span> {
-        Log.i(<span class="hljs-string">&quot;aop&quot;</span>, <span class="hljs-string">&quot;Aspecter testAnno&quot;</span>);
+    @Pointcut(<span class="hljs-string">"execution(@com.echo.camera.Anno * *(..)) &amp;&amp; @annotation(ann)"</span>)
+    public <span class="hljs-keyword">void</span> testAnno(Anno ann) {
+        Log.i(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"Aspecter testAnno"</span>);
     }
 
-    @Around(<span class="hljs-string">&quot;testAnno(ann)&quot;</span>)
+    @Around(<span class="hljs-string">"testAnno(ann)"</span>)
     public <span class="hljs-built_in">Object</span> check(ProceedingJoinPoint joinPoint, Anno ann) throws Throwable {
         <span class="hljs-built_in">String</span> args = Arrays.toString(joinPoint.getArgs());
         <span class="hljs-built_in">Object</span> result;
@@ -396,7 +396,7 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
         } <span class="hljs-keyword">else</span> {
             result = joinPoint.proceed();
         }
-        Log.i(<span class="hljs-string">&quot;aop&quot;</span>, <span class="hljs-string">&quot;Aspecter check args=&quot;</span> + args + <span class="hljs-string">&quot; result=&quot;</span> + result + <span class="hljs-string">&quot; aTag=&quot;</span> + ann.aTag() + <span class="hljs-string">&quot; modify=&quot;</span> + ann.modify());
+        Log.i(<span class="hljs-string">"aop"</span>, <span class="hljs-string">"Aspecter check args="</span> + args + <span class="hljs-string">" result="</span> + result + <span class="hljs-string">" aTag="</span> + ann.aTag() + <span class="hljs-string">" modify="</span> + ann.modify());
         <span class="hljs-keyword">return</span> result;
     }
 }
@@ -427,13 +427,13 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 </li>
 <li><p>获取自定义编译参数</p>
 <pre><code> <span class="hljs-comment">//Processor 中</span>
- <span class="hljs-built_in">String</span> version = processingEnvironment.getOptions().get(<span class="hljs-string">&quot;hugox.version&quot;</span>);
+ <span class="hljs-built_in">String</span> version = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.version"</span>);
  <span class="hljs-comment">//gradle 中</span>
  defaultConfig {
-     applicationId <span class="hljs-string">&#x27;com.echo.camera&#x27;</span>
+     applicationId <span class="hljs-string">'com.echo.camera'</span>
      javaCompileOptions {
          annotationProcessorOptions {
-             <span class="hljs-built_in">arguments</span> = [<span class="hljs-string">&#x27;hugox.version&#x27;</span>: <span class="hljs-string">&#x27;1.0.0&#x27;</span>]
+             <span class="hljs-built_in">arguments</span> = [<span class="hljs-string">'hugox.version'</span>: <span class="hljs-string">'1.0.0'</span>]
          }
      }
  }
@@ -451,10 +451,10 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 </ol>
 <h4 id="annotationprocessor 的使用">AnnotationProcessor 的使用</h4><ol>
 <li><p>新建一个Java Lib库 HugoXAnno，其gradle配置文件如下</p>
-<pre><code>   apply plugin: <span class="hljs-string">&#x27;java-library&#x27;</span>
+<pre><code>   apply plugin: <span class="hljs-string">'java-library'</span>
 
    dependencies {
-       implementation fileTree(dir: <span class="hljs-string">&#x27;libs&#x27;</span>, <span class="hljs-attr">include</span>: [<span class="hljs-string">&#x27;*.jar&#x27;</span>])
+       implementation fileTree(dir: <span class="hljs-string">'libs'</span>, <span class="hljs-attr">include</span>: [<span class="hljs-string">'*.jar'</span>])
    }
 
    sourceCompatibility = JavaVersion.VERSION_1_7
@@ -469,31 +469,31 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
    }
 </code></pre></li>
 <li><p>新建一个Java lib库 HugoXCompiler，并引用上面定义的annotations库,并引用上面自定义的注解</p>
-<pre><code>   apply plugin: <span class="hljs-string">&#x27;java-library&#x27;</span>
+<pre><code>   apply plugin: <span class="hljs-string">'java-library'</span>
 
    dependencies {
-     implementation fileTree(include: [<span class="hljs-string">&#x27;*.jar&#x27;</span>], <span class="hljs-attr">dir</span>: <span class="hljs-string">&#x27;libs&#x27;</span>)
-     implementation project(<span class="hljs-string">&#x27;:HugoXAnno&#x27;</span>)
-     implementation <span class="hljs-string">&#x27;com.google.auto.service:auto-service:1.0-rc4&#x27;</span>
-     implementation <span class="hljs-string">&#x27;com.squareup:javapoet:1.11.1&#x27;</span>
+     implementation fileTree(include: [<span class="hljs-string">'*.jar'</span>], <span class="hljs-attr">dir</span>: <span class="hljs-string">'libs'</span>)
+     implementation project(<span class="hljs-string">':HugoXAnno'</span>)
+     implementation <span class="hljs-string">'com.google.auto.service:auto-service:1.0-rc4'</span>
+     implementation <span class="hljs-string">'com.squareup:javapoet:1.11.1'</span>
    }
 
    sourceCompatibility = JavaVersion.VERSION_1_7
    targetCompatibility = JavaVersion.VERSION_1_7
 </code></pre></li>
-<li>用最原始的方式生成代码<pre><code>   public <span class="hljs-keyword">static</span> boolean <span class="hljs-function"><span class="hljs-title">testCreateFile</span>(<span class="hljs-params">Filer filer</span>)</span> {
+<li>用最原始的方式生成代码<pre><code>   public <span class="hljs-keyword">static</span> boolean testCreateFile(Filer filer) {
      <span class="hljs-keyword">try</span> {
-         JavaFileObject f = filer.createSourceFile(<span class="hljs-string">&quot;engineer.echo.HelloWorld&quot;</span>);
+         JavaFileObject f = filer.createSourceFile(<span class="hljs-string">"engineer.echo.HelloWorld"</span>);
          Writer w = f.openWriter();
          <span class="hljs-keyword">try</span> {
              PrintWriter pw = <span class="hljs-keyword">new</span> PrintWriter(w);
-             pw.println(<span class="hljs-string">&quot;//This codes are generated automatically. Do not modify!&quot;</span>);
-             pw.println(<span class="hljs-string">&quot;package engineer.echo;&quot;</span>);
-             pw.println(<span class="hljs-string">&quot;public class HelloWorld{&quot;</span>);
-             pw.println(<span class="hljs-string">&quot; public void print() {&quot;</span>);
-             pw.println(<span class="hljs-string">&quot;  System.out.println(\&quot;Hello Engineer!\&quot;);&quot;</span>);
-             pw.println(<span class="hljs-string">&quot; }&quot;</span>);
-             pw.println(<span class="hljs-string">&quot;}&quot;</span>);
+             pw.println(<span class="hljs-string">"//This codes are generated automatically. Do not modify!"</span>);
+             pw.println(<span class="hljs-string">"package engineer.echo;"</span>);
+             pw.println(<span class="hljs-string">"public class HelloWorld{"</span>);
+             pw.println(<span class="hljs-string">" public void print() {"</span>);
+             pw.println(<span class="hljs-string">"  System.out.println(\"Hello Engineer!\");"</span>);
+             pw.println(<span class="hljs-string">" }"</span>);
+             pw.println(<span class="hljs-string">"}"</span>);
              pw.flush();
          } <span class="hljs-keyword">finally</span> {
              w.close();
@@ -505,43 +505,43 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
    }
 </code></pre></li>
 <li><p>javapoet 生成代码</p>
-<pre><code>   public <span class="hljs-keyword">static</span> boolean <span class="hljs-function"><span class="hljs-title">testJavapoet</span>(<span class="hljs-params">Filer filer, <span class="hljs-built_in">String</span> name, int age</span>)</span> {
+<pre><code>   public <span class="hljs-keyword">static</span> boolean testJavapoet(Filer filer, <span class="hljs-built_in">String</span> name, int age) {
 
            <span class="hljs-comment">//创建main方法</span>
-           MethodSpec main = MethodSpec.methodBuilder(<span class="hljs-string">&quot;main&quot;</span>)
+           MethodSpec main = MethodSpec.methodBuilder(<span class="hljs-string">"main"</span>)
                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                    .returns(<span class="hljs-keyword">void</span>.class)
-                   .addParameter(<span class="hljs-built_in">String</span>[].class, <span class="hljs-string">&quot;args&quot;</span>)
-                   .addStatement(<span class="hljs-string">&quot;$T.out.println($S)&quot;</span>, System.class, <span class="hljs-string">&quot;Hello, JavaPoet!&quot;</span>)
+                   .addParameter(<span class="hljs-built_in">String</span>[].class, <span class="hljs-string">"args"</span>)
+                   .addStatement(<span class="hljs-string">"$T.out.println($S)"</span>, System.class, <span class="hljs-string">"Hello, JavaPoet!"</span>)
                    .build();
            <span class="hljs-comment">//创建成员变量 TAG</span>
-           FieldSpec tag = FieldSpec.builder(<span class="hljs-built_in">String</span>.class, <span class="hljs-string">&quot;TAG&quot;</span>)
+           FieldSpec tag = FieldSpec.builder(<span class="hljs-built_in">String</span>.class, <span class="hljs-string">"TAG"</span>)
                    .addModifiers(Modifier.FINAL, Modifier.STATIC, Modifier.PRIVATE)
-                   .initializer(<span class="hljs-string">&quot;$S&quot;</span>, <span class="hljs-string">&quot;Engineer&quot;</span>)
+                   .initializer(<span class="hljs-string">"$S"</span>, <span class="hljs-string">"Engineer"</span>)
                    .build();
            <span class="hljs-comment">//创建成员变量 name</span>
-           FieldSpec aName = FieldSpec.builder(<span class="hljs-built_in">String</span>.class, <span class="hljs-string">&quot;name&quot;</span>)
+           FieldSpec aName = FieldSpec.builder(<span class="hljs-built_in">String</span>.class, <span class="hljs-string">"name"</span>)
                    .addModifiers(Modifier.PRIVATE)
-                   .initializer(<span class="hljs-string">&quot;$S&quot;</span>, name)
+                   .initializer(<span class="hljs-string">"$S"</span>, name)
                    .build();
            <span class="hljs-comment">//创建成员变量 age</span>
-           FieldSpec aAge = FieldSpec.builder(int.class, <span class="hljs-string">&quot;age&quot;</span>)
+           FieldSpec aAge = FieldSpec.builder(int.class, <span class="hljs-string">"age"</span>)
                    .addModifiers(Modifier.PRIVATE)
-                   .initializer(<span class="hljs-string">&quot;$L&quot;</span>, age)
+                   .initializer(<span class="hljs-string">"$L"</span>, age)
                    .build();
            <span class="hljs-comment">//创建方法 method</span>
-           MethodSpec say = MethodSpec.methodBuilder(<span class="hljs-string">&quot;say&quot;</span>)
+           MethodSpec say = MethodSpec.methodBuilder(<span class="hljs-string">"say"</span>)
                    .addModifiers(Modifier.PUBLIC)
                    .returns(<span class="hljs-built_in">String</span>.class)
-                   .addParameter(<span class="hljs-built_in">String</span>.class, <span class="hljs-string">&quot;content&quot;</span>)
-                   .addStatement(<span class="hljs-string">&quot;String result= $N + $S + $N + $S +$N + $S+$S&quot;</span>,
-                           <span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot; -&gt; I Am &quot;</span>, <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;,I&#x27;m &quot;</span>, <span class="hljs-string">&quot;age&quot;</span>, <span class="hljs-string">&quot;years old.\n&quot;</span>, <span class="hljs-string">&quot;content&quot;</span>)
-                   .addStatement(<span class="hljs-string">&quot;System.out.println(result)&quot;</span>)
-                   .addStatement(<span class="hljs-string">&quot;return $S&quot;</span>, <span class="hljs-string">&quot;result&quot;</span>)
+                   .addParameter(<span class="hljs-built_in">String</span>.class, <span class="hljs-string">"content"</span>)
+                   .addStatement(<span class="hljs-string">"String result= $N + $S + $N + $S +$N + $S+$S"</span>,
+                           <span class="hljs-string">"TAG"</span>, <span class="hljs-string">" -&gt; I Am "</span>, <span class="hljs-string">"name"</span>, <span class="hljs-string">",I'm "</span>, <span class="hljs-string">"age"</span>, <span class="hljs-string">"years old.\n"</span>, <span class="hljs-string">"content"</span>)
+                   .addStatement(<span class="hljs-string">"System.out.println(result)"</span>)
+                   .addStatement(<span class="hljs-string">"return $S"</span>, <span class="hljs-string">"result"</span>)
                    .build();
 
            <span class="hljs-comment">// 创建 HiWorld 类</span>
-           TypeSpec hiWorld = TypeSpec.classBuilder(<span class="hljs-string">&quot;HiWorld&quot;</span>)
+           TypeSpec hiWorld = TypeSpec.classBuilder(<span class="hljs-string">"HiWorld"</span>)
                    .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                    .addMethod(main)
                    .addMethod(say)
@@ -549,8 +549,8 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
                    .addField(aName)
                    .addField(aAge)
                    .build();
-           JavaFile javaFile = JavaFile.builder(<span class="hljs-string">&quot;engineer.echo&quot;</span>, hiWorld)
-                   .addFileComment(<span class="hljs-string">&quot;This codes are generated automatically. Do not modify!&quot;</span>)
+           JavaFile javaFile = JavaFile.builder(<span class="hljs-string">"engineer.echo"</span>, hiWorld)
+                   .addFileComment(<span class="hljs-string">"This codes are generated automatically. Do not modify!"</span>)
                    .build();
            <span class="hljs-keyword">try</span> {
                javaFile.writeTo(filer);
@@ -568,38 +568,38 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 
       private Filer mFiler;
       private Messager mMessage;
-      private <span class="hljs-built_in">String</span> version = <span class="hljs-string">&quot;0.0.0&quot;</span>;
-      private <span class="hljs-built_in">String</span> name = <span class="hljs-string">&quot;xxx&quot;</span>;
+      private <span class="hljs-built_in">String</span> version = <span class="hljs-string">"0.0.0"</span>;
+      private <span class="hljs-built_in">String</span> name = <span class="hljs-string">"xxx"</span>;
       private int age = <span class="hljs-number">0</span>;
 
       @Override
-      public synchronized <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">init</span>(<span class="hljs-params">ProcessingEnvironment processingEnvironment</span>)</span> {
-          <span class="hljs-built_in">super</span>.init(processingEnvironment);
+      public synchronized <span class="hljs-keyword">void</span> init(ProcessingEnvironment processingEnvironment) {
+          <span class="hljs-keyword">super</span>.init(processingEnvironment);
           <span class="hljs-comment">//日志打印</span>
           mMessage = processingEnvironment.getMessager();
           <span class="hljs-comment">//文件生成器</span>
           mFiler = processingEnvironment.getFiler();
           <span class="hljs-comment">//获取项目配置的编译参数</span>
-          version = processingEnvironment.getOptions().get(<span class="hljs-string">&quot;hugox.version&quot;</span>);
-          name = processingEnvironment.getOptions().get(<span class="hljs-string">&quot;hugox.name&quot;</span>);
-          <span class="hljs-built_in">String</span> ageX = processingEnvironment.getOptions().get(<span class="hljs-string">&quot;hugox.age&quot;</span>);
+          version = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.version"</span>);
+          name = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.name"</span>);
+          <span class="hljs-built_in">String</span> ageX = processingEnvironment.getOptions().get(<span class="hljs-string">"hugox.age"</span>);
           <span class="hljs-keyword">try</span> {
               age = Integer.valueOf(ageX);
           } <span class="hljs-keyword">catch</span> (NumberFormatException e) {
 
           }
-          printLn(<span class="hljs-string">&quot;init version=&quot;</span> + version + <span class="hljs-string">&quot; name=&quot;</span> + name + <span class="hljs-string">&quot; age=&quot;</span> + age, <span class="hljs-literal">true</span>);
+          printLn(<span class="hljs-string">"init version="</span> + version + <span class="hljs-string">" name="</span> + name + <span class="hljs-string">" age="</span> + age, <span class="hljs-literal">true</span>);
       }
 
       @Override
-      public boolean <span class="hljs-function"><span class="hljs-title">process</span>(<span class="hljs-params"><span class="hljs-built_in">Set</span>&lt;? <span class="hljs-keyword">extends</span> TypeElement&gt; set, RoundEnvironment roundEnvironment</span>)</span> {
+      public boolean process(<span class="hljs-built_in">Set</span>&lt;? extends TypeElement&gt; <span class="hljs-keyword">set</span>, RoundEnvironment roundEnvironment) {
           <span class="hljs-keyword">for</span> (Element element : roundEnvironment.getElementsAnnotatedWith(DebugLog.class)) {
               <span class="hljs-keyword">if</span> (element.getKind() == ElementKind.METHOD) {
-                  printLn(<span class="hljs-string">&quot;------------------------------&quot;</span>, <span class="hljs-literal">true</span>);
-                  printLn(<span class="hljs-string">&quot;方法名：&quot;</span> + element.getSimpleName(), <span class="hljs-literal">true</span>);
+                  printLn(<span class="hljs-string">"------------------------------"</span>, <span class="hljs-literal">true</span>);
+                  printLn(<span class="hljs-string">"方法名："</span> + element.getSimpleName(), <span class="hljs-literal">true</span>);
                   DebugLog ano = element.getAnnotation(DebugLog.class);
-                  printLn(<span class="hljs-string">&quot;注解信息：&quot;</span> + ano.showSpendTime(), <span class="hljs-literal">true</span>);
-                  printLn(<span class="hljs-string">&quot;------------------------------&quot;</span>, <span class="hljs-literal">true</span>);
+                  printLn(<span class="hljs-string">"注解信息："</span> + ano.showSpendTime(), <span class="hljs-literal">true</span>);
+                  printLn(<span class="hljs-string">"------------------------------"</span>, <span class="hljs-literal">true</span>);
               }
           }
           <span class="hljs-comment">//原始方法生成java类</span>
@@ -610,11 +610,11 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
       }
 
       @Override
-      public <span class="hljs-built_in">Set</span>&lt;<span class="hljs-built_in">String</span>&gt; <span class="hljs-function"><span class="hljs-title">getSupportedAnnotationTypes</span>(<span class="hljs-params"></span>)</span> {
+      public <span class="hljs-built_in">Set</span>&lt;<span class="hljs-built_in">String</span>&gt; getSupportedAnnotationTypes() {
           <span class="hljs-comment">/**
            * 指定将要扫描并处理被注解标记的类 有两种方式
            * 1. 重写 public Set&lt;String&gt; getSupportedAnnotationTypes()
-           * 2. 在 HugoXCompiler 类头部使用注解 <span class="hljs-doctag">@SupportedAnnotationTypes</span>(&quot;engineer.echo.hugox.DebugLog&quot;)
+           * 2. 在 HugoXCompiler 类头部使用注解 @SupportedAnnotationTypes("engineer.echo.hugox.DebugLog")
            */</span>
           <span class="hljs-keyword">return</span> Collections.singleton(DebugLog.class.getCanonicalName());
       }
@@ -623,14 +623,14 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
       <span class="hljs-comment">/**
        * 指明支持的源码版本(JAVA版本) 支持两种方式
        * 1. 重写 public SourceVersion getSupportedSourceVersion()
-       * 2. 在 HugoXCompiler 类头部使用注解 <span class="hljs-doctag">@SupportedSourceVersion</span>(SourceVersion.RELEASE_7)
+       * 2. 在 HugoXCompiler 类头部使用注解 @SupportedSourceVersion(SourceVersion.RELEASE_7)
        */</span>
       <span class="hljs-comment">/*
       @Override
       public SourceVersion getSupportedSourceVersion() {
           return SourceVersion.latestSupported();
       }*/</span>
-      private <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">printLn</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> note, boolean system</span>)</span> {
+      private <span class="hljs-keyword">void</span> printLn(<span class="hljs-built_in">String</span> note, boolean system) {
           <span class="hljs-keyword">if</span> (system) {
               System.out.println(note);
           } <span class="hljs-keyword">else</span> {
@@ -655,7 +655,7 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 <li>def hasApp = project.plugins.findPlugin(&quot;com.android.application&quot;)</li>
 <li>def ext=project.rootProject.ext<h4 id="示例代码">示例代码</h4></li>
 <li><p>build.gradle代码</p>
-<pre><code> apply plugin: <span class="hljs-string">&#x27;groovy&#x27;</span>
+<pre><code> apply plugin: <span class="hljs-string">'groovy'</span>
 
  dependencies {
      compile gradleApi()
@@ -667,21 +667,21 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
  }
 
  <span class="hljs-comment">//打包HugoX</span>
- apply plugin: <span class="hljs-string">&#x27;maven&#x27;</span>
+ apply plugin: <span class="hljs-string">'maven'</span>
  uploadArchives {
      repositories {
          mavenDeployer {
-             pom.groupId = <span class="hljs-string">&#x27;engineer.echo&#x27;</span>
-             pom.artifactId = <span class="hljs-string">&#x27;hugox-plugin&#x27;</span>
-             pom.version = <span class="hljs-string">&#x27;1.1.0&#x27;</span>
+             pom.groupId = <span class="hljs-string">'engineer.echo'</span>
+             pom.artifactId = <span class="hljs-string">'hugox-plugin'</span>
+             pom.version = <span class="hljs-string">'1.1.0'</span>
 
              <span class="hljs-comment">//方式一：发布到 指定文件夹 比如 绝对路径`D:/repos` 相对路径`../localPublish`</span>
-             repository(url: uri(<span class="hljs-string">&#x27;../localPublish&#x27;</span>))
+             repository(url: uri(<span class="hljs-string">'../localPublish'</span>))
 
              <span class="hljs-comment">//方式二：发布到 Maven仓库 比如 Sonatype Nexus</span>
              <span class="hljs-comment">/*
-             repository(url: uri(&#x27;http://localhost:8081/nexus/content/repositories/thirdparty/&#x27;)) {
-                 authentication(userName: &quot;admin&quot;, password: &quot;admin123&quot;)
+             repository(url: uri('http://localhost:8081/nexus/content/repositories/thirdparty/')) {
+                 authentication(userName: "admin", password: "admin123")
              }
              */</span>
              <span class="hljs-comment">//发布插件:打开 Gradle 窗口,展开指定的 Library Module,展开 Tasks,展开 upload,双击运行 uploadArchives</span>
@@ -695,7 +695,7 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HugoXExtension</span> </span>{
      <span class="hljs-comment">//开关</span>
      boolean enable = <span class="hljs-literal">false</span>
-     <span class="hljs-built_in">String</span> version = <span class="hljs-string">&quot;1.0.0&quot;</span>
+     <span class="hljs-built_in">String</span> version = <span class="hljs-string">"1.0.0"</span>
  }
 </code></pre></li>
 <li><p>自定义Plugin <code>HugoXPlugin.groovy</code></p>
@@ -706,20 +706,20 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 
  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HugoXPlugin</span> <span class="hljs-title">implements</span> <span class="hljs-title">Plugin</span>&lt;<span class="hljs-title">Project</span>&gt; </span>{
 
-     <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">apply</span>(<span class="hljs-params">Project project</span>)</span> {
+     <span class="hljs-keyword">void</span> apply(Project project) {
        <span class="hljs-comment">//创建HugoX扩展,可以配置开关</span>
-       project.extensions.create(<span class="hljs-string">&quot;HugoX&quot;</span>, HugoXExtension)
-       def enable = <span class="hljs-literal">false</span>, ver = <span class="hljs-string">&quot;xxx&quot;</span>
+       project.extensions.create(<span class="hljs-string">"HugoX"</span>, HugoXExtension)
+       def enable = <span class="hljs-literal">false</span>, ver = <span class="hljs-string">"xxx"</span>
        project.afterEvaluate {
            <span class="hljs-comment">//获取HugoX配置的参数</span>
            def extension = project.HugoX
            enable = extension.enable
            ver = extension.version
-           println(<span class="hljs-string">&quot;HugoXPlugin enable=$enable ver=$ver&quot;</span>)
+           println(<span class="hljs-string">"HugoXPlugin enable=$enable ver=$ver"</span>)
        }
        <span class="hljs-comment">//创建任务</span>
-       project.task(<span class="hljs-string">&#x27;showHugoXInfo&#x27;</span>) &lt;&lt; {
-           println <span class="hljs-string">&quot;HugoX switch on= $enable ver=$ver&quot;</span>
+       project.task(<span class="hljs-string">'showHugoXInfo'</span>) &lt;&lt; {
+           println <span class="hljs-string">"HugoX switch on= $enable ver=$ver"</span>
        }
      }
  }
@@ -730,21 +730,21 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
      repositories {
          maven {
              <span class="hljs-comment">//方式一：本地文件夹</span>
-             url <span class="hljs-string">&#x27;file:../localPublish&#x27;</span>
+             url <span class="hljs-string">'file:../localPublish'</span>
 
              <span class="hljs-comment">//Maven仓库地址</span>
-             <span class="hljs-comment">//url &#x27;http://localhost:8081/nexus/content/repositories/thirdparty/&#x27;</span>
+             <span class="hljs-comment">//url 'http://localhost:8081/nexus/content/repositories/thirdparty/'</span>
          }
      }
      dependencies {
-         classpath <span class="hljs-string">&#x27;engineer.echo:hugox-plugin:1.1.0&#x27;</span>
+         classpath <span class="hljs-string">'engineer.echo:hugox-plugin:1.1.0'</span>
      }
  }
 
- apply plugin: <span class="hljs-string">&#x27;hugox-plugin&#x27;</span>
+ apply plugin: <span class="hljs-string">'hugox-plugin'</span>
  HugoX {
      enable = <span class="hljs-literal">true</span>
-     version = <span class="hljs-string">&quot;1.0.2&quot;</span>
+     version = <span class="hljs-string">"1.0.2"</span>
  }
 </code></pre></li>
 </ol>
@@ -797,8 +797,8 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433793"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433793"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414255"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414255"></script>
 </body>
 
 </html>

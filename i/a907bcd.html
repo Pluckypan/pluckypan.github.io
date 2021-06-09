@@ -13,7 +13,7 @@
 			Holly Transition - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433913">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414370">
 	</head>
 
 	<body>
@@ -188,20 +188,20 @@ fragmentTransaction.commit();
 </blockquote>
 <pre><code><span class="hljs-comment">// 改造需要了解Transition的三大核心方法如下。</span>
 @Override
-public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">captureStartValues</span>(<span class="hljs-params">TransitionValues transitionValues</span>)</span> {
-    <span class="hljs-built_in">super</span>.captureStartValues(transitionValues);
-    Log.d(TAG, <span class="hljs-string">&quot;captureStartValues: transitionValues=&quot;</span> + transitionValues);
+public <span class="hljs-keyword">void</span> captureStartValues(TransitionValues transitionValues) {
+    <span class="hljs-keyword">super</span>.captureStartValues(transitionValues);
+    Log.d(TAG, <span class="hljs-string">"captureStartValues: transitionValues="</span> + transitionValues);
 }
 
 @Override
-public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">captureEndValues</span>(<span class="hljs-params">TransitionValues transitionValues</span>)</span> {
-    <span class="hljs-built_in">super</span>.captureEndValues(transitionValues);
-    Log.d(TAG, <span class="hljs-string">&quot;captureEndValues: transitionValues=&quot;</span> + transitionValues);
+public <span class="hljs-keyword">void</span> captureEndValues(TransitionValues transitionValues) {
+    <span class="hljs-keyword">super</span>.captureEndValues(transitionValues);
+    Log.d(TAG, <span class="hljs-string">"captureEndValues: transitionValues="</span> + transitionValues);
 }
 
 @Override
-public Animator <span class="hljs-function"><span class="hljs-title">createAnimator</span>(<span class="hljs-params">ViewGroup sceneRoot, TransitionValues startValues, TransitionValues endValues</span>)</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.createAnimator(sceneRoot, startValues, endValues);
+public Animator createAnimator(ViewGroup sceneRoot, TransitionValues startValues, TransitionValues endValues) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.createAnimator(sceneRoot, startValues, endValues);
 }
 </code></pre><h4 id="三(2)、内容动画">三(2)、内容动画</h4><blockquote>
 <p>如上面图片中，设置页面的<strong>背景渐变</strong>、<strong>动起来 SlideUp</strong>、<strong>功能说明 SlideUp</strong>;拍摄页面的<strong>进度条封面 Slide Left&amp;Right</strong>。这里所说的<code>内容动画</code>，指的是Fragment布局中除共享元素外的View执行的动画，主要是为了区分<code>共享元素动画</code>。对内容过场动画比较重要的几个函数,下面这种图比较形象地描述这个关系。Activity和Fragment的意思是一样的。这里以Activity的示意图来说明。</p>
@@ -454,8 +454,8 @@ fragment.setAllowReturnTransitionOverlap(<span class="hljs-keyword">false</span>
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433913"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433913"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414370"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414370"></script>
 </body>
 
 </html>

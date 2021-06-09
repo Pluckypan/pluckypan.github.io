@@ -13,7 +13,7 @@
 			jQuery观察者模式 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433906">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414360">
 	</head>
 
 	<body>
@@ -162,15 +162,15 @@
 }(jQuery));
 </code></pre><h3 id="示例">示例</h3><pre><code>$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">//订阅购物车结算事件</span>
-    $.subscribe(<span class="hljs-string">&quot;CartCalculate&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e, data</span>) </span>{
-         alert(<span class="hljs-string">&quot;购物车金额:&quot;</span> + data);
+    $.subscribe(<span class="hljs-string">"CartCalculate"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e, data</span>) </span>{
+         alert(<span class="hljs-string">"购物车金额:"</span> + data);
     });
 
-    alert(<span class="hljs-string">&quot;开始!&quot;</span>);
+    alert(<span class="hljs-string">"开始!"</span>);
   <span class="hljs-comment">//模拟通知事件</span>
-    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
       <span class="hljs-keyword">var</span> money=<span class="hljs-number">520</span>*<span class="hljs-number">250</span>;
-         $.publish(<span class="hljs-string">&quot;CartCalculate&quot;</span>, money);
+         $.publish(<span class="hljs-string">"CartCalculate"</span>, money);
     }, <span class="hljs-number">3000</span>);
 });
 </code></pre>
@@ -212,8 +212,8 @@
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433906"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433906"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414360"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414360"></script>
 </body>
 
 </html>

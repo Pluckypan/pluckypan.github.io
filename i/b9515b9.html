@@ -13,7 +13,7 @@
 			gradle jcenter - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433926">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414388">
 	</head>
 
 	<body>
@@ -149,42 +149,42 @@
 <h3 id="local-properties">local.properties</h3><pre><code>bintray.user=xxx
 bintray.apikey=xxx
 </code></pre><h3 id="project 中 build.gradle 设置">project 中 build.gradle 设置</h3><pre><code>dependencies {
-        classpath <span class="hljs-string">&#x27;com.android.tools.build:gradle:2.2.3&#x27;</span>
+        classpath <span class="hljs-string">'com.android.tools.build:gradle:2.2.3'</span>
 
         <span class="hljs-comment">//需要额外添加的</span>
-        classpath <span class="hljs-string">&#x27;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0&#x27;</span>
-        classpath <span class="hljs-string">&#x27;com.github.dcendents:android-maven-gradle-plugin:1.4.1&#x27;</span>
+        classpath <span class="hljs-string">'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'</span>
+        classpath <span class="hljs-string">'com.github.dcendents:android-maven-gradle-plugin:1.4.1'</span>
     }
 </code></pre><h3 id="library 中 build.gradle 设置">library 中 build.gradle 设置</h3><pre><code><span class="hljs-comment">//需要用到的插件</span>
-apply plugin: <span class="hljs-string">&#x27;com.github.dcendents.android-maven&#x27;</span>
-apply plugin: <span class="hljs-string">&#x27;com.jfrog.bintray&#x27;</span>
+apply plugin: <span class="hljs-string">'com.github.dcendents.android-maven'</span>
+apply plugin: <span class="hljs-string">'com.jfrog.bintray'</span>
 
 def vercode = <span class="hljs-number">1</span>
-def vername = <span class="hljs-string">&quot;1.0.0&quot;</span>
+def vername = <span class="hljs-string">"1.0.0"</span>
 
-def siteUrl = <span class="hljs-string">&#x27;https://github.com/Pluckypan/&#x27;</span>  <span class="hljs-comment">// 项目的主页</span>
-def gitUrl = <span class="hljs-string">&#x27;https://github.com/Pluckypan/EE-PullToRefresh.git&#x27;</span> <span class="hljs-comment">// Git仓库</span>
-group = <span class="hljs-string">&quot;engineer.echo.pulltorefresh.library&quot;</span> <span class="hljs-comment">// 类库包名</span>
+def siteUrl = <span class="hljs-string">'https://github.com/Pluckypan/'</span>  <span class="hljs-comment">// 项目的主页</span>
+def gitUrl = <span class="hljs-string">'https://github.com/Pluckypan/EE-PullToRefresh.git'</span> <span class="hljs-comment">// Git仓库</span>
+group = <span class="hljs-string">"engineer.echo.pulltorefresh.library"</span> <span class="hljs-comment">// 类库包名</span>
 version = vername
 
 install {
     repositories.mavenInstaller {
         pom {
             project {
-                packaging <span class="hljs-string">&#x27;aar&#x27;</span>
-                name <span class="hljs-string">&#x27;Base on Android-PullToRefresh(com.handmark.pulltorefresh),support gradle&#x27;</span><span class="hljs-comment">//项目描述</span>
+                packaging <span class="hljs-string">'aar'</span>
+                name <span class="hljs-string">'Base on Android-PullToRefresh(com.handmark.pulltorefresh),support gradle'</span><span class="hljs-comment">//项目描述</span>
                 url siteUrl
                 licenses {
                     license {
-                        name <span class="hljs-string">&#x27;The Apache Software License, Version 2.0&#x27;</span>
-                        url <span class="hljs-string">&#x27;http://www.apache.org/licenses/LICENSE-2.0.txt&#x27;</span>
+                        name <span class="hljs-string">'The Apache Software License, Version 2.0'</span>
+                        url <span class="hljs-string">'http://www.apache.org/licenses/LICENSE-2.0.txt'</span>
                     }
                 }
                 developers {
                     developer {
-                        id <span class="hljs-string">&#x27;pluckypan&#x27;</span>
-                        name <span class="hljs-string">&#x27;Plucky&#x27;</span>
-                        email <span class="hljs-string">&#x27;pluckypan@126.com&#x27;</span>
+                        id <span class="hljs-string">'pluckypan'</span>
+                        name <span class="hljs-string">'Plucky'</span>
+                        email <span class="hljs-string">'pluckypan@126.com'</span>
                     }
                 }
                 scm {
@@ -197,17 +197,17 @@ install {
     }
 }
 
-task <span class="hljs-function"><span class="hljs-title">javadoc</span>(<span class="hljs-params">type: Javadoc</span>)</span> {
+task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
-task <span class="hljs-function"><span class="hljs-title">javadocJar</span>(<span class="hljs-params">type: Jar, dependsOn: javadoc</span>)</span> {
-    classifier = <span class="hljs-string">&#x27;javadoc&#x27;</span>
+task javadocJar(type: Jar, <span class="hljs-attr">dependsOn</span>: javadoc) {
+    classifier = <span class="hljs-string">'javadoc'</span>
     <span class="hljs-keyword">from</span> javadoc.destinationDir
 }
-task <span class="hljs-function"><span class="hljs-title">sourcesJar</span>(<span class="hljs-params">type: Jar</span>)</span> {
+task sourcesJar(type: Jar) {
     <span class="hljs-keyword">from</span> android.sourceSets.main.java.srcDirs
-    classifier = <span class="hljs-string">&#x27;sources&#x27;</span>
+    classifier = <span class="hljs-string">'sources'</span>
 }
 artifacts {
     archives javadocJar
@@ -217,26 +217,26 @@ artifacts {
 javadoc {
     options{
         <span class="hljs-comment">//如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码</span>
-        encoding <span class="hljs-string">&quot;UTF-8&quot;</span>
-        charSet <span class="hljs-string">&#x27;UTF-8&#x27;</span>
+        encoding <span class="hljs-string">"UTF-8"</span>
+        charSet <span class="hljs-string">'UTF-8'</span>
         author <span class="hljs-literal">true</span>
         version <span class="hljs-literal">true</span>
-        links <span class="hljs-string">&quot;http://docs.oracle.com/javase/7/docs/api&quot;</span>
+        links <span class="hljs-string">"http://docs.oracle.com/javase/7/docs/api"</span>
     }
 }
 
 Properties properties = <span class="hljs-keyword">new</span> Properties()
-properties.load(project.rootProject.file(<span class="hljs-string">&#x27;local.properties&#x27;</span>).newDataInputStream())
+properties.load(project.rootProject.file(<span class="hljs-string">'local.properties'</span>).newDataInputStream())
 bintray {
-    user = properties.getProperty(<span class="hljs-string">&quot;bintray.user&quot;</span>) <span class="hljs-comment">//读取 local.properties 文件里面的 bintray.user</span>
-    key = properties.getProperty(<span class="hljs-string">&quot;bintray.apikey&quot;</span>) <span class="hljs-comment">//读取 local.properties 文件里面的 bintray.apikey</span>
-    configurations = [<span class="hljs-string">&#x27;archives&#x27;</span>]
+    user = properties.getProperty(<span class="hljs-string">"bintray.user"</span>) <span class="hljs-comment">//读取 local.properties 文件里面的 bintray.user</span>
+    key = properties.getProperty(<span class="hljs-string">"bintray.apikey"</span>) <span class="hljs-comment">//读取 local.properties 文件里面的 bintray.apikey</span>
+    configurations = [<span class="hljs-string">'archives'</span>]
     pkg {
-        repo = <span class="hljs-string">&quot;maven&quot;</span>
-        name = <span class="hljs-string">&quot;EE-PullToRefresh&quot;</span>
+        repo = <span class="hljs-string">"maven"</span>
+        name = <span class="hljs-string">"EE-PullToRefresh"</span>
         websiteUrl = siteUrl
         vcsUrl = gitUrl
-        licenses = [<span class="hljs-string">&quot;Apache-2.0&quot;</span>]
+        licenses = [<span class="hljs-string">"Apache-2.0"</span>]
         publish = <span class="hljs-literal">true</span>
     }
 }
@@ -285,8 +285,8 @@ chmod 755 gradlew
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433927"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433927"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414388"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414388"></script>
 </body>
 
 </html>

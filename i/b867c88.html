@@ -13,7 +13,7 @@
 			Deepfakes - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433854">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414262">
 	</head>
 
 	<body>
@@ -224,7 +224,7 @@ $ python faceswap.py train -A _data/out/frames/  -B _data/out/lyf  -m _data/out/
 <pre><code>$ python faceswap.py convert -i ~/faceswap/photo/trump/ -o ~/faceswap/output/ -m ~/faceswap/models/
 # my work
 $ python faceswap.py convert -i _data/in/video/frames_in/  -o  _data/in/video/frames_out/  -m  _data/out/model/ -t LowMem
-</code></pre><h3 id="八、将图片转换成视频">八、将图片转换成视频</h3><pre><code>$ ffmpeg -i video-frame-%0d.png -c:v libx264 -vf <span class="hljs-string">&quot;fps=25,format=yuv420p&quot;</span> out.mp4
+</code></pre><h3 id="八、将图片转换成视频">八、将图片转换成视频</h3><pre><code>$ ffmpeg -i video-frame-%<span class="hljs-number">0</span>d.png -c:v libx264 -vf <span class="hljs-string">"fps=25,format=yuv420p"</span> out.mp4
 </code></pre><h3 id="参考链接">参考链接</h3><ol>
 <li><a href="https://github.com/deepfakes/faceswap/blob/master/INSTALL.md">建议使用前先阅读并完全理解</a></li>
 <li><a href="https://github.com/deepfakes/faceswap/blob/master/USAGE.md">环境配置成功之后的基本操作</a></li>
@@ -268,8 +268,8 @@ $ python faceswap.py convert -i _data/in/video/frames_in/  -o  _data/in/video/fr
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433854"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433854"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414263"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414263"></script>
 </body>
 
 </html>

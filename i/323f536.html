@@ -13,7 +13,7 @@
 			gradle使用日记 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433820">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414297">
 	</head>
 
 	<body>
@@ -150,17 +150,17 @@
 $ /Users/{user-name}/.gradle/caches/modules-2/files-2.1
 </code></pre><h2 id="android-studio-prettify">Android Studio Prettify</h2><h2 id="加入想剔除掉某个第三方类库中的 so">加入想剔除掉某个第三方类库中的 so</h2><pre><code>android{}
     packagingOptions {
-            <span class="hljs-comment">// pickFirst &#x27;**/xxx.so&#x27;</span>
-            <span class="hljs-comment">// exclude &#x27;lib/arm64-v8a/xxx.so&#x27;</span>
+            <span class="hljs-comment">// pickFirst '**/xxx.so'</span>
+            <span class="hljs-comment">// exclude 'lib/arm64-v8a/xxx.so'</span>
         }
 </code></pre><h2 id="gradle 编译结束+执行可执行程序">gradle 编译结束+执行可执行程序</h2><pre><code>gradle.buildFinished {
     project.exec {
-        commandLine <span class="hljs-string">&quot;git&quot;</span>, <span class="hljs-string">&quot;log&quot;</span>, <span class="hljs-string">&quot;-p&quot;</span>, <span class="hljs-string">&quot;-1&quot;</span>
+        commandLine <span class="hljs-string">"git"</span>, <span class="hljs-string">"log"</span>, <span class="hljs-string">"-p"</span>, <span class="hljs-string">"-1"</span>
     }
 
     project.exec {
-        executable <span class="hljs-string">&quot;echo&quot;</span>
-        args <span class="hljs-string">&quot;hello gradle&quot;</span>
+        executable <span class="hljs-string">"echo"</span>
+        args <span class="hljs-string">"hello gradle"</span>
     }
 }
 </code></pre><h2 id="使用so">使用so</h2><h4 id="app目录结构">app目录结构</h4><pre><code>├── build
@@ -182,12 +182,12 @@ $ /Users/{user-name}/.gradle/caches/modules-2/files-2.1
 
     packagingOptions {
         <span class="hljs-comment">//优先使用该so</span>
-        pickFirst <span class="hljs-string">&#x27;libs/armeabi-v7a/libfiltergl.so&#x27;</span>
+        pickFirst <span class="hljs-string">'libs/armeabi-v7a/libfiltergl.so'</span>
     }
     <span class="hljs-comment">//声明jni目录</span>
     sourceSets {
         main {
-            jniLibs.srcDirs = [<span class="hljs-string">&#x27;libs&#x27;</span>]
+            jniLibs.srcDirs = [<span class="hljs-string">'libs'</span>]
         }
     }
 }
@@ -197,7 +197,7 @@ $ /Users/{user-name}/.gradle/caches/modules-2/files-2.1
 </ol>
 <h3 id="warning-api-39-variant-getjavacompile-39-is-obsolete-and-has-been-replaced-with-39-variant-getjavacompileprovider-39-">WARNING: API &#39;variant.getJavaCompile()&#39; is obsolete and has been replaced with &#39;variant.getJavaCompileProvider()&#39;.</h3><pre><code>def variant=project.android.libraryVariants.toList().first()
 Task javaCompileTask
-<span class="hljs-keyword">if</span> (variant.hasProperty(<span class="hljs-string">&#x27;javaCompileProvider&#x27;</span>)) {
+<span class="hljs-keyword">if</span> (variant.hasProperty(<span class="hljs-string">'javaCompileProvider'</span>)) {
     <span class="hljs-comment">// Android 3.3.0+</span>
     javaCompileTask = variant.javaCompileProvider.get()
 } <span class="hljs-keyword">else</span> {
@@ -247,8 +247,8 @@ Task javaCompileTask
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433820"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433820"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414298"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414298"></script>
 </body>
 
 </html>

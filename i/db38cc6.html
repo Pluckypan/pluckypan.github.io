@@ -13,7 +13,7 @@
 			git指令大全 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433773">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414169">
 	</head>
 
 	<body>
@@ -157,7 +157,7 @@ $ git pull --all
 </blockquote>
 <pre><code>$ git rm -r --cached .
 $ git add .
-$ git commit -m <span class="hljs-string">&quot;.gitignore is now working&quot;</span>
+$ git commit -m <span class="hljs-string">".gitignore is now working"</span>
 </code></pre><h3 id="撤销操作">撤销操作</h3><pre><code>撤销未提交的修改
 撤销对xxx.java的修改
 $ git checkout xxx.java
@@ -192,8 +192,8 @@ git push origin :branch_name  (注意origin后面的空格)
 git branch -D branch_name
 git branch -r -D origin/branch_name
 </code></pre><h3 id="tag">tag</h3><pre><code># 列出现有标签的命令非常简单，直接运行 git tag 即可
-# git tag -l &#x27;v1.4.2.*&#x27; 特定搜索
-# git tag -a v1.4 -m &#x27;my version 1.4&#x27;  创建含附注annotated的标签
+# git tag -l &#39;v1.4.2.*&#39; 特定搜索
+# git tag -a v1.4 -m &#39;my version 1.4&#39;  创建含附注annotated的标签
 # git show v1.4-lw 查看标签
 # git push origin --tags 推送本地所有标签
 # git push origin v1.5   推送制定标签
@@ -205,8 +205,8 @@ annotated
 reachable (an ancestor) from the pushed commits
 </code></pre><h3 id="从某个tag迁出代码">从某个tag迁出代码</h3><pre><code>$ git checkout -b branch_name tag_name
 </code></pre><h3 id="从某个 commit 切出分支">从某个 commit 切出分支</h3><pre><code>$ git checkout -b branch_name commit_id
-</code></pre><h3 id="git 设置推送至远端的分支">git 设置推送至远端的分支</h3><pre><code>git push --set-upstream origin develop
-</code></pre><h3 id="git统计某人提交次数">git统计某人提交次数</h3><pre><code>git log --author=<span class="hljs-string">&quot;plucky&quot;</span> --oneline | wc -l
+</code></pre><h3 id="git 设置推送至远端的分支">git 设置推送至远端的分支</h3><pre><code>git push --<span class="hljs-keyword">set</span>-upstream origin develop
+</code></pre><h3 id="git统计某人提交次数">git统计某人提交次数</h3><pre><code>git log --author=<span class="hljs-string">"plucky"</span> --oneline | wc -l
 </code></pre><h3 id="git 查看单个文件提交记录">git 查看单个文件提交记录</h3><pre><code>git log adb.md
 git shortlog adb.md
 git log --pretty=oneline adb.md
@@ -258,7 +258,7 @@ git log --grep=&quot;JRA-224&quot;
 %%: a raw %
 %x00: print a byte <span class="hljs-keyword">from</span> a hex code
 %w([[,[,]]]): <span class="hljs-keyword">switch</span> line wrapping, like the -w option <span class="hljs-keyword">of</span> git-shortlog(<span class="hljs-number">1</span>).
-</code></pre><h3 id="查看某个文件第一次提交时间  <code>--reverse</code>">查看某个文件第一次提交时间  <code>--reverse</code></h3><pre><code>git log --pretty=format:<span class="hljs-string">&quot;%ct&quot;</span> --reverse -<span class="hljs-number">1</span> adb.md
+</code></pre><h3 id="查看某个文件第一次提交时间  <code>--reverse</code>">查看某个文件第一次提交时间  <code>--reverse</code></h3><pre><code>git log --pretty=format:<span class="hljs-string">"%ct"</span> --reverse <span class="hljs-number">-1</span> adb.md
 </code></pre><h3 id="撤销文件夹下所有的md格式文件的修改">撤销文件夹下所有的md格式文件的修改</h3><pre><code>git checkout command<span class="hljs-comment">/*.md</span>
 </code></pre><h3 id="git-remote">git remote</h3><p>作用，设置多个代码源；在不同代码源更新或推送代码。常见场景为 github fork 代码后 及时更新源项目代码</p>
 <pre><code># 查看代码源
@@ -315,7 +315,7 @@ $ git checkout develop
 $ git cherry-pick 05cd5tf
 # 推至远程
 $ git push
-</code></pre><h3 id="git status 乱码">git status 乱码</h3><pre><code>$ git config --<span class="hljs-built_in">global</span> core.quotepath <span class="hljs-literal">false</span>
+</code></pre><h3 id="git status 乱码">git status 乱码</h3><pre><code>$ git config --global core.quotepath <span class="hljs-literal">false</span>
 </code></pre><h3 id="别名">别名</h3><pre><code>$ git config --global alias.st status
 $ git config --global alias.co checkout
 $ git config --global alias.br branch
@@ -324,11 +324,11 @@ $ git config --global alias.cf config
 $ git config --global alias.fc fetch
 
 # git log 输出样式
-$ git config --global pretty.graph &#x27;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#x27;
-$ git config --global alias.lg &#x27;log --pretty=graph --graph --abbrev-commit --&#x27;
+$ git config --global pretty.graph '%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset'
+$ git config --global alias.lg 'log --pretty=graph --graph --abbrev-commit --'
 
 # 添加 git last 指令
-$ git config --global alias.last &#x27;log -1 HEAD&#x27;
+$ git config --global alias.last 'log -1 HEAD'
 
 # 清除别名
 $ git config --global --unset alias.last 
@@ -336,14 +336,14 @@ $ git config --global --unset alias.last
 # 函数带参数 `!f() { git rebase -i HEAD~$1; }; f`
 
 # 切新分支
-$ git config --global alias.cbf &#x27;!f(){ git checkout -b feature/&quot;$1&quot;; }; f&#x27;
+$ git config --global alias.cbf '!f(){ git checkout -b feature/"$1"; }; f'
 
 # 统计commit
-$ git log --since &#x27;7 days ago&#x27; --oneline --author xxx | awk &#x27;BEGIN{FS=OFS=&quot; &quot;}{$1=&quot;*&quot;;print}&#x27;
+$ git log --since '7 days ago' --oneline --author xxx | awk 'BEGIN{FS=OFS=" "}{$1="*";print}'
 
 </code></pre><h3 id="使用系统别名">使用系统别名</h3><p>比如想实现 Android Studio 中拉取代码的功能,可以</p>
 <pre><code>$ vim ~/.bash_profile
-# 在 .bash_profile 中最后一行添加 alias gps=&quot;git stash save xx &amp;&amp; git pull --rebase &amp;&amp; git stash pop&quot;
+# 在 .bash_profile 中最后一行添加 alias gps="git stash save xx &amp;&amp; git pull --rebase &amp;&amp; git stash pop"
 $ source ~/.bash_profile
 # 这样只需要在终端输入  gps 即可拉取代码了
 </code></pre><h2 id="gitignore">gitignore</h2><pre><code>/.idea<span class="hljs-comment">/*
@@ -388,8 +388,8 @@ $ source ~/.bash_profile
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433774"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433774"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414170"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414170"></script>
 </body>
 
 </html>

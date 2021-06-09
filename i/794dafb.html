@@ -13,7 +13,7 @@
 			Pip - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433778">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414276">
 	</head>
 
 	<body>
@@ -147,10 +147,10 @@
 <p>你可以通过以下命令来判断是否已安装：</p>
 <pre><code>$ pip --version
 </code></pre><p>如果你还未安装，则可以使用以下方法来安装：</p>
-<pre><code>$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py   # 下载安装脚本
-$ sudo python get-pip.py    # 运行安装脚本
+<pre><code>$ curl https:<span class="hljs-comment">//bootstrap.pypa.io/get-pip.py -o get-pip.py   # 下载安装脚本</span>
+$ sudo python <span class="hljs-keyword">get</span>-pip.py    # 运行安装脚本
 </code></pre><p>注意：用哪个版本的 Python 运行安装脚本，pip 就被关联到哪个版本，一般情况 pip 对应的是 Python 2.7，pip3 对应的是 Python 3.x。如果是 Python3 则执行以下命令：</p>
-<pre><code>$ sudo python3 get-pip.py    # 运行安装脚本。
+<pre><code>$ sudo python3 <span class="hljs-keyword">get</span>-pip.py    # 运行安装脚本。
 </code></pre><h3 id="pip常用命令">Pip常用命令</h3><pre><code>$ pip --version
 $ pip --help
 # 升级 pip
@@ -159,7 +159,7 @@ $ pip install -U pip
 $ sudo easy_install --upgrade pip
 $ pip install SomePackage              # 最新版本
 $ pip install SomePackage==1.0.4       # 指定版本
-$ pip install &#x27;SomePackage&gt;=1.0.4&#x27;     # 最小版本
+$ pip install 'SomePackage&gt;=1.0.4'     # 最小版本
 $ pip install --upgrade SomePackage
 $ pip uninstall SomePackage
 $ pip search SomePackage
@@ -218,8 +218,8 @@ $ sudo pip uninstall pip
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433779"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433779"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414277"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414277"></script>
 </body>
 
 </html>

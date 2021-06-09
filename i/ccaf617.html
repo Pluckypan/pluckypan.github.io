@@ -13,7 +13,7 @@
 			ffmpeg基础 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433818">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414228">
 	</head>
 
 	<body>
@@ -192,11 +192,11 @@
 <li>-acodec codec 使用codec编解码</li>
 <li>-an 不使能音频纪录</li>
 </ul>
-<h4 id="示例代码">示例代码</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\<span class="hljs-number">1</span>-<span class="hljs-number">1.</span>mp4 -s 300X300 -t <span class="hljs-number">3</span> -ss <span class="hljs-number">5</span> -r <span class="hljs-number">26</span> D:\work\video\ffmpeg\<span class="hljs-number">1</span>-300x300.mp4
-</code></pre><h4 id="设置关键帧间隔">设置关键帧间隔</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\<span class="hljs-number">1</span>-<span class="hljs-number">1.</span>mp4 -s 300X300 -t <span class="hljs-number">3</span> -ss <span class="hljs-number">5</span> -r <span class="hljs-number">26</span> -g <span class="hljs-number">1</span> -keyint_min <span class="hljs-number">6</span> D:\work\video\ffmpeg\<span class="hljs-number">1</span>-300x300-keyframe.mp4
+<h4 id="示例代码">示例代码</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\<span class="hljs-number">1</span><span class="hljs-number">-1.</span>mp4 -s <span class="hljs-number">300</span>X300 -t <span class="hljs-number">3</span> -ss <span class="hljs-number">5</span> -r <span class="hljs-number">26</span> D:\work\video\ffmpeg\<span class="hljs-number">1</span><span class="hljs-number">-300</span>x300.mp4
+</code></pre><h4 id="设置关键帧间隔">设置关键帧间隔</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\<span class="hljs-number">1</span><span class="hljs-number">-1.</span>mp4 -s <span class="hljs-number">300</span>X300 -t <span class="hljs-number">3</span> -ss <span class="hljs-number">5</span> -r <span class="hljs-number">26</span> -g <span class="hljs-number">1</span> -keyint_min <span class="hljs-number">6</span> D:\work\video\ffmpeg\<span class="hljs-number">1</span><span class="hljs-number">-300</span>x300-keyframe.mp4
 </code></pre><h4 id="获取第一帧">获取第一帧</h4><pre><code>$ ffmpeg -i input.wmv -vframes <span class="hljs-number">1</span> input.jpg
 </code></pre><h4 id="获取第3s的帧">获取第3s的帧</h4><pre><code>ffmpeg -i o.mp4 -ss <span class="hljs-number">3</span> -vframes <span class="hljs-number">1</span> <span class="hljs-number">3.</span>jpg
-</code></pre><h4 id="提取关键帧">提取关键帧</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\<span class="hljs-number">1</span>-300x300.mp4 -vf select=<span class="hljs-string">&#x27;eq(pict_type\,I)&#x27;</span> -vsync <span class="hljs-number">2</span> -s 300X300 -f image2 <span class="hljs-number">1</span>-300x300-thumb-%02d.jpeg
+</code></pre><h4 id="提取关键帧">提取关键帧</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\<span class="hljs-number">1</span><span class="hljs-number">-300</span>x300.mp4 -vf select=<span class="hljs-string">'eq(pict_type\,I)'</span> -vsync <span class="hljs-number">2</span> -s <span class="hljs-number">300</span>X300 -f image2 <span class="hljs-number">1</span><span class="hljs-number">-300</span>x300-thumb-%<span class="hljs-number">02</span>d.jpeg
 </code></pre><h4 id="添加水印、文字">添加水印、文字</h4><pre><code>$ ffmpeg -i changzheng.mp4 -i logo.png -filter_complex &quot;overlay=10:10&quot; -y water.mp4
 # main_h – 传入的视频的高度
 # main_w – 传入的视频的宽度
@@ -207,12 +207,12 @@ $ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;overlay=x=(main_w-overlay_w
 # pad filter 额外添加视频区域
 $ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;pad=height=ih+40:color=#000000,overlay=x=(main_w-overlay_w)/2:y=(main_h-overlay_h)/2&quot; -t 10 -y water.mp4
 # 自左向右跑马灯
-$ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;&#x27;if(gte(t,1), -w+(t-1)*200, NAN)&#x27;:(main_h-overlay_h)/2&quot; -t 10 -y water.mp4
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;&#39;if(gte(t,1), -w+(t-1)*200, NAN)&#39;:(main_h-overlay_h)/2&quot; -t 10 -y water.mp4
 # 水印大小缩小(原来 488x210)
 $ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;[1:v]scale=232:100[s];[0:v][s]overlay=x=(main_w-overlay_w)/2:y=(main_h-overlay_h)/2&quot; -t 10 -y water.mp4
 
-ffmpeg -i ALARM2.mp4 -i watermark.png -filter_complex &quot;overlay=x=&#x27;if(gte(t,22),1164,NAN)&#x27;:y=&#x27;if(gte(t,22),20,NAN)&#x27;&quot; ALARM2-1.mp4 -y
-</code></pre><h3 id="添加水印高级篇">添加水印高级篇</h3><pre><code>$ ffmpeg -i cz.mp4 -i logo1.png -i logo2.png -filter_complex <span class="hljs-string">&quot;[1:v]scale=116:50[logo1];[2:v]scale=122:53[logo2];[0:v][logo1]overlay=x=main_w-overlay_w-20:y=20[step1];[step1][logo2]overlay=&#x27;if(gte(t,3),-w+(t-3)*100,NAN)&#x27;:(main_h-overlay_h)/2&quot;</span> -y -t <span class="hljs-number">20</span> water.mp4
+ffmpeg -i ALARM2.mp4 -i watermark.png -filter_complex &quot;overlay=x=&#39;if(gte(t,22),1164,NAN)&#39;:y=&#39;if(gte(t,22),20,NAN)&#39;&quot; ALARM2-1.mp4 -y
+</code></pre><h3 id="添加水印高级篇">添加水印高级篇</h3><pre><code>$ ffmpeg -i cz.mp4 -i logo1.png -i logo2.png -filter_complex <span class="hljs-string">"[1:v]scale=116:50[logo1];[2:v]scale=122:53[logo2];[0:v][logo1]overlay=x=main_w-overlay_w-20:y=20[step1];[step1][logo2]overlay='if(gte(t,3),-w+(t-3)*100,NAN)':(main_h-overlay_h)/2"</span> -y -t <span class="hljs-number">20</span> water.mp4
 </code></pre><h4 id="指令解析">指令解析</h4><p>以上指令展示结果为：视频右上角有一个常驻的Logo1;第三秒开始Logo2从视频左边水平平移到视频右边(垂直居中)。主要几点：</p>
 <ul>
 <li>复合滤镜 filter_complex</li>
@@ -233,13 +233,13 @@ ffmpeg -i changzheng.mp4 -vf crop=iw:iw/2.35:0:72 -y cz.mp4
 <h4 id="音视频合成命令">音视频合成命令</h4><p>ffmpeg -i video.avi -i audio.mp3 -vcodec copy -acodec copy output.avi</p>
 <h4 id="视频旋转90 方案一">视频旋转90 方案一</h4><p>ffmpeg -i input.mp4 -metadata:s:v:0 rotate=&quot;90&quot; -codec copy output.mp4</p>
 <h4 id="旋转视频">旋转视频</h4><pre><code>顺时针旋转画面<span class="hljs-number">90</span>度
-ffmpeg -i test.mp4 -vf <span class="hljs-string">&quot;transpose=1&quot;</span> out.mp4
+ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=1"</span> out.mp4
 逆时针旋转画面<span class="hljs-number">90</span>度
-ffmpeg -i test.mp4 -vf <span class="hljs-string">&quot;transpose=2&quot;</span> out.mp4
+ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=2"</span> out.mp4
 顺时针旋转画面<span class="hljs-number">90</span>度再水平翻转
-ffmpeg -i test.mp4 -vf <span class="hljs-string">&quot;transpose=3&quot;</span> out.mp4
+ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=3"</span> out.mp4
 逆时针旋转画面<span class="hljs-number">90</span>度水平翻转
-ffmpeg -i test.mp4 -vf <span class="hljs-string">&quot;transpose=0&quot;</span> out.mp4
+ffmpeg -i test.mp4 -vf <span class="hljs-string">"transpose=0"</span> out.mp4
 水平翻转视频画面
 ffmpeg -i test.mp4 -vf hflip out.mp4
 垂直翻转视频画面
@@ -248,17 +248,17 @@ ffmpeg -i test.mp4 -vf vflip out.mp4
 ffmpeg -i mum.mov -vcodec libx264 -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2&quot; -r 30  mum.mp4
 # 方式二
 ffmpeg -i 寂静之声.mov -vcodec libx264 -s 1268X540  -r 30 jijing.mp4
-</code></pre><h4 id="截取音乐片段">截取音乐片段</h4><pre><code>ffmpeg -i Sound\ Of\ Silence.mp3 -ss <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">07</span><span class="hljs-number">.500</span> -t <span class="hljs-number">20</span> bg.mp3
+</code></pre><h4 id="截取音乐片段">截取音乐片段</h4><pre><code>ffmpeg -i Sound\ Of\ Silence.mp3 -ss <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">07.500</span> -t <span class="hljs-number">20</span> bg.mp3
 </code></pre><h4 id="查看ffmpeg支持格式">查看ffmpeg支持格式</h4><pre><code>ffmpeg -formats
-</code></pre><h4 id="mp4转gif">MP4转gif</h4><pre><code>ffmpeg -i device-<span class="hljs-number">2018</span>-<span class="hljs-number">10</span>-<span class="hljs-number">10</span>-<span class="hljs-number">160142.</span>mp4  -r <span class="hljs-number">3</span> <span class="hljs-number">3.</span>gif
+</code></pre><h4 id="mp4转gif">MP4转gif</h4><pre><code>ffmpeg -i device<span class="hljs-number">-2018</span><span class="hljs-number">-10</span><span class="hljs-number">-10</span><span class="hljs-number">-160142.</span>mp4  -r <span class="hljs-number">3</span> <span class="hljs-number">3.</span>gif
 </code></pre><h4 id="mac终端for循环">Mac终端for循环</h4><pre><code> <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> {<span class="hljs-number">0.</span><span class="hljs-number">.76</span>}; <span class="hljs-keyword">do</span> (echo $a) done;
 </code></pre><h4 id="mac终端批量旋转图片 强大的 <strong>sips</strong> 指令">Mac终端批量旋转图片 强大的 <strong>sips</strong> 指令</h4><pre><code>sips -r <span class="hljs-number">90</span> *.png
 </code></pre><h4 id="ffmpeg 读取pcm 信息">ffmpeg 读取PCM 信息</h4><pre><code>ffmpeg -f s16be -ar <span class="hljs-number">44100</span> -ac <span class="hljs-number">2</span> -acodec pcm_s16be -i <span class="hljs-number">1540403885057.</span>pcm
 </code></pre><h4 id="mac自带lame终端  pcm 转 mp3">Mac自带Lame终端  PCM 转 MP3</h4><pre><code>lame -r -s <span class="hljs-number">44.1</span> -m m -a <span class="hljs-number">1540403885057.</span>pcm xxx.mp3
 <span class="hljs-comment">//如果没有安装 lame  执行以下指令</span>
 brew install
-</code></pre><h4 id="mp3转pcm">mp3转pcm</h4><pre><code>ffmpeg -y -i test.mp3 -acodec pcm_s16le -f s16le -ac <span class="hljs-number">2</span> -ar <span class="hljs-number">16000</span> 16k.pcm
-</code></pre><h4 id="pcm转mp3">pcm转mp3</h4><pre><code>ffmpeg -y -f s16be -ac <span class="hljs-number">2</span> -ar <span class="hljs-number">16000</span> -acodec pcm_s16le -i 16k.pcm new_mp3.mp3
+</code></pre><h4 id="mp3转pcm">mp3转pcm</h4><pre><code>ffmpeg -y -i test.mp3 -acodec pcm_s16le -f s16le -ac <span class="hljs-number">2</span> -ar <span class="hljs-number">16000</span> <span class="hljs-number">16</span>k.pcm
+</code></pre><h4 id="pcm转mp3">pcm转mp3</h4><pre><code>ffmpeg -y -f s16be -ac <span class="hljs-number">2</span> -ar <span class="hljs-number">16000</span> -acodec pcm_s16le -i <span class="hljs-number">16</span>k.pcm new_mp3.mp3
 </code></pre><h4 id="播放pcm">播放PCM</h4><pre><code>ffplay -i audio_original.pcm  -f s16be -ac <span class="hljs-number">1</span> -ar <span class="hljs-number">44100</span> -acodec pcm_s16le
 </code></pre><h4 id="参数说明">参数说明</h4><table>
 <thead>
@@ -290,25 +290,25 @@ brew install
 </tr>
 </tbody>
 </table>
-<h4 id="获取音视频时长">获取音视频时长</h4><pre><code>ffmpeg -i ~<span class="hljs-regexp">/Movies/</span>a.3gp  <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span> | grep <span class="hljs-string">&#x27;Duration&#x27;</span> | cut -d <span class="hljs-string">&#x27; &#x27;</span> -f <span class="hljs-number">4</span> | sed s/,<span class="hljs-comment">//</span>
-</code></pre><h4 id="调节视频音量">调节视频音量</h4><pre><code>ffmpeg -i input.mp4  -af <span class="hljs-string">&#x27;volume=0.01&#x27;</span> -y  output.mp4
+<h4 id="获取音视频时长">获取音视频时长</h4><pre><code>ffmpeg -i ~<span class="hljs-regexp">/Movies/</span>a<span class="hljs-number">.3</span>gp  <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span> | grep <span class="hljs-string">'Duration'</span> | cut -d <span class="hljs-string">' '</span> -f <span class="hljs-number">4</span> | sed s/,<span class="hljs-comment">//</span>
+</code></pre><h4 id="调节视频音量">调节视频音量</h4><pre><code>ffmpeg -i input.mp4  -af <span class="hljs-string">'volume=0.01'</span> -y  output.mp4
 </code></pre><h4 id="调节音量">调节音量</h4><pre><code>ffmpeg -i&lt;input&gt; -vol X &lt;output&gt;
 </code></pre><h4 id="查看支持的编码格式">查看支持的编码格式</h4><pre><code>ffmpeg -codecs
 </code></pre><h4 id="查看输出文件格式">查看输出文件格式</h4><pre><code>ffmpeg -formats
 </code></pre><h4 id="多线程">多线程</h4><pre><code>ffmpeg -threads n
-</code></pre><h4 id="crf 压缩视频">crf 压缩视频</h4><pre><code>ffmpeg -i MVI_7274.MOV -vcodec libx264 -preset fast -crf <span class="hljs-number">20</span> -y -vf <span class="hljs-string">&quot;scale=1920:-1&quot;</span> -acodec libmp3lame -ab 128k a.mp4
+</code></pre><h4 id="crf 压缩视频">crf 压缩视频</h4><pre><code>ffmpeg -i MVI_7274.MOV -vcodec libx264 -preset fast -crf <span class="hljs-number">20</span> -y -vf <span class="hljs-string">"scale=1920:-1"</span> -acodec libmp3lame -ab <span class="hljs-number">128</span>k a.mp4
 
 -preset：指定编码的配置。x264编码算法有很多可供配置的参数，不同的参数值会导致编码的速度大相径庭，甚至可能影响质量。为了免去用户了解算法，然后手工配置参数的麻烦。x264提供了一些预设值，而这些预设值可以通过preset指定。这些预设值有包括：ultrafast，superfast，veryfast，faster，fast，medium，slow，slower，veryslow和placebo。ultrafast编码速度最快，但压缩率低，生成的文件更大，placebo则正好相反。x264所取的默认值为medium。需要说明的是，preset主要是影响编码的速度，并不会很大的影响编码出来的结果的质量。压缩高清电影时，我一般用slow或者slower，当你的机器性能很好时也可以使用veryslow，不过一般并不会带来很大的好处。
 
--crf：这是最重要的一个选项，用于指定输出视频的质量，取值范围是<span class="hljs-number">0</span>-<span class="hljs-number">51</span>，默认值为<span class="hljs-number">23</span>，数字越小输出视频的质量越高。这个选项会直接影响到输出视频的码率。一般来说，压制480p我会用<span class="hljs-number">20</span>左右，压制720p我会用<span class="hljs-number">16</span>-<span class="hljs-number">18</span>，1080p我没尝试过。个人觉得，一般情况下没有必要低于<span class="hljs-number">16</span>。最好的办法是大家可以多尝试几个值，每个都压几分钟，看看最后的输出质量和文件大小，自己再按需选择。
+-crf：这是最重要的一个选项，用于指定输出视频的质量，取值范围是<span class="hljs-number">0</span><span class="hljs-number">-51</span>，默认值为<span class="hljs-number">23</span>，数字越小输出视频的质量越高。这个选项会直接影响到输出视频的码率。一般来说，压制<span class="hljs-number">480</span>p我会用<span class="hljs-number">20</span>左右，压制<span class="hljs-number">720</span>p我会用<span class="hljs-number">16</span><span class="hljs-number">-18</span>，<span class="hljs-number">1080</span>p我没尝试过。个人觉得，一般情况下没有必要低于<span class="hljs-number">16</span>。最好的办法是大家可以多尝试几个值，每个都压几分钟，看看最后的输出质量和文件大小，自己再按需选择。
 
-其实还有-b 1024k这样的参数，但是我发现-crf设置上后-b就不管用了。根据我自己的简单尝试，压制5D2拍摄的一段<span class="hljs-number">18</span>秒1920x1080的视频（下午自然光、图像简单、大面积白墙、只有一扇黑门）crf和压出来的文件大小关系如下：
+其实还有-b <span class="hljs-number">1024</span>k这样的参数，但是我发现-crf设置上后-b就不管用了。根据我自己的简单尝试，压制<span class="hljs-number">5</span>D2拍摄的一段<span class="hljs-number">18</span>秒<span class="hljs-number">1920</span>x1080的视频（下午自然光、图像简单、大面积白墙、只有一扇黑门）crf和压出来的文件大小关系如下：
 
-</code></pre><h4 id="播放时视频色彩不断变换：">播放时视频色彩不断变换：</h4><pre><code>ffplay -i D:\work\yyy2642.mp4 -vf hue=<span class="hljs-string">&quot;H=2*PI*t:s=sin(2*PI*t)+1&quot;</span>
+</code></pre><h4 id="播放时视频色彩不断变换：">播放时视频色彩不断变换：</h4><pre><code>ffplay -i D:\work\yyy2642.mp4 -vf hue=<span class="hljs-string">"H=2*PI*t:s=sin(2*PI*t)+1"</span>
 </code></pre><h4 id="视频转码为原来的播放速度的两倍：">视频转码为原来的播放速度的两倍：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4 -vf setpts=PTS/<span class="hljs-number">2</span> -af atempo=<span class="hljs-number">2</span> D:\work\outputfile.mp4
 </code></pre><h4 id="视频锐化处理，一定程度可以让视频变清晰：">视频锐化处理，一定程度可以让视频变清晰：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4  -vf unsharp=<span class="hljs-number">5</span>:<span class="hljs-number">5</span>:<span class="hljs-number">1.0</span>:<span class="hljs-number">5</span>:<span class="hljs-number">5</span>:<span class="hljs-number">0.0</span> D:\work\outputfile.mp4
 </code></pre><h4 id="视频模糊处理（注意参数），可以让视频变模糊：">视频模糊处理（注意参数），可以让视频变模糊：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4  -vf  boxblur=<span class="hljs-number">1</span>:<span class="hljs-number">10</span>:<span class="hljs-number">4</span>:<span class="hljs-number">10</span>  D:\work\outputfile.mp4
-</code></pre><h4 id="彩色视频转变为黑白视频：">彩色视频转变为黑白视频：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4 -vf lutyuv=<span class="hljs-string">&quot;u=128:v=128&quot;</span> D:\work\outputfile.mp4
+</code></pre><h4 id="彩色视频转变为黑白视频：">彩色视频转变为黑白视频：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4 -vf lutyuv=<span class="hljs-string">"u=128:v=128"</span> D:\work\outputfile.mp4
 </code></pre><h4 id="把音频的左右声道分别保存为两个文件：">把音频的左右声道分别保存为两个文件：</h4><pre><code>ffmpeg -i d:\work\yyy.mp3 -map_channel <span class="hljs-number">0.0</span><span class="hljs-number">.0</span> d:\work\ch1.mp3 -map_channel <span class="hljs-number">0.0</span><span class="hljs-number">.1</span> d:\work\ch2.mp3
 </code></pre><h4 id="知道了视频流地址如何保存出本地文件">知道了视频流地址如何保存出本地文件</h4><pre><code>ffmpeg -i rtmp:<span class="hljs-comment">//122.202.129.136:1935/live/ch4 -map 0 d:\work\yyy.mp4</span>
 </code></pre><h4 id="知道了流地址，播放视频文件">知道了流地址，播放视频文件</h4><pre><code>ffplay -rtsp_transport tcp rtsp:<span class="hljs-comment">//192.168.201.133:554/stream1.sdp</span>
@@ -356,8 +356,8 @@ $ ffmpeg -i 708721762.png -s 176x44 -sws_flags gauss  -y 0.3.png
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433818"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433818"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414229"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414229"></script>
 </body>
 
 </html>

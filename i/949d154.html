@@ -13,7 +13,7 @@
 			Android自定义侧滑按钮 - 无忧杂货铺
 		</title>
 		<link rel="shortcut icon" href="../img/favicon.ico">
-		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1617502433866">
+		<link rel="stylesheet" type="text/css" href="../css/index.css?v=1623240414309">
 	</head>
 
 	<body>
@@ -165,30 +165,30 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
     private final double AUTO_OPEN_SPEED_LIMIT = <span class="hljs-number">800.0</span>;
     private int draggedX;
 
-    public <span class="hljs-function"><span class="hljs-title">FHSwipeLayout</span>(<span class="hljs-params">Context context</span>)</span> {
-        <span class="hljs-built_in">this</span>(context, <span class="hljs-literal">null</span>);
+    public FHSwipeLayout(Context context) {
+        <span class="hljs-keyword">this</span>(context, <span class="hljs-literal">null</span>);
     }
 
-    public <span class="hljs-function"><span class="hljs-title">FHSwipeLayout</span>(<span class="hljs-params">Context context, AttributeSet attrs</span>)</span> {
-        <span class="hljs-built_in">this</span>(context, attrs, -<span class="hljs-number">1</span>);
+    public FHSwipeLayout(Context context, AttributeSet attrs) {
+        <span class="hljs-keyword">this</span>(context, attrs, <span class="hljs-number">-1</span>);
     }
 
-    public <span class="hljs-function"><span class="hljs-title">FHSwipeLayout</span>(<span class="hljs-params">Context context, AttributeSet attrs, int defStyleAttr</span>)</span> {
-        <span class="hljs-built_in">super</span>(context, attrs, defStyleAttr);
-        viewDragHelper = ViewDragHelper.create(<span class="hljs-built_in">this</span>, <span class="hljs-keyword">new</span> DragHelperCallback());
+    public FHSwipeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        <span class="hljs-keyword">super</span>(context, attrs, defStyleAttr);
+        viewDragHelper = ViewDragHelper.create(<span class="hljs-keyword">this</span>, <span class="hljs-keyword">new</span> DragHelperCallback());
     }
 
     @Override
-    protected <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">onFinishInflate</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">super</span>.onFinishInflate();
+    protected <span class="hljs-keyword">void</span> onFinishInflate() {
+        <span class="hljs-keyword">super</span>.onFinishInflate();
         contentView = getChildAt(<span class="hljs-number">0</span>);
         actionView = getChildAt(<span class="hljs-number">1</span>);
         actionView.setVisibility(GONE);
     }
 
     @Override
-    protected <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">onMeasure</span>(<span class="hljs-params">int widthMeasureSpec, int heightMeasureSpec</span>)</span> {
-        <span class="hljs-built_in">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    protected <span class="hljs-keyword">void</span> onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        <span class="hljs-keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         dragDistance = actionView.getMeasuredWidth();
     }
@@ -196,12 +196,12 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
     private <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DragHelperCallback</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ViewDragHelper</span>.<span class="hljs-title">Callback</span> </span>{
 
         @Override
-        public boolean <span class="hljs-function"><span class="hljs-title">tryCaptureView</span>(<span class="hljs-params">View view, int i</span>)</span> {
+        public boolean tryCaptureView(View view, int i) {
             <span class="hljs-keyword">return</span> view == contentView || view == actionView;
         }
 
         @Override
-        public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">onViewPositionChanged</span>(<span class="hljs-params">View changedView, int left, int top, int dx, int dy</span>)</span> {
+        public <span class="hljs-keyword">void</span> onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             draggedX = left;
             <span class="hljs-keyword">if</span> (changedView == contentView) {
                 actionView.offsetLeftAndRight(dx);
@@ -215,7 +215,7 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
         }
 
         @Override
-        public int <span class="hljs-function"><span class="hljs-title">clampViewPositionHorizontal</span>(<span class="hljs-params">View child, int left, int dx</span>)</span> {
+        public int clampViewPositionHorizontal(View child, int left, int dx) {
             <span class="hljs-keyword">if</span> (child == contentView) {
                 final int leftBound = getPaddingLeft();
                 final int minLeftBound = -leftBound - dragDistance;
@@ -230,13 +230,13 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
         }
 
         @Override
-        public int <span class="hljs-function"><span class="hljs-title">getViewHorizontalDragRange</span>(<span class="hljs-params">View child</span>)</span> {
+        public int getViewHorizontalDragRange(View child) {
             <span class="hljs-keyword">return</span> dragDistance;
         }
 
         @Override
-        public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">onViewReleased</span>(<span class="hljs-params">View releasedChild, float xvel, float yvel</span>)</span> {
-            <span class="hljs-built_in">super</span>.onViewReleased(releasedChild, xvel, yvel);
+        public <span class="hljs-keyword">void</span> onViewReleased(View releasedChild, float xvel, float yvel) {
+            <span class="hljs-keyword">super</span>.onViewReleased(releasedChild, xvel, yvel);
             boolean settleToOpen = <span class="hljs-literal">false</span>;
             <span class="hljs-keyword">if</span> (xvel &gt; AUTO_OPEN_SPEED_LIMIT) {
                 settleToOpen = <span class="hljs-literal">false</span>;
@@ -255,50 +255,50 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
     }
 
     @Override
-    public boolean <span class="hljs-function"><span class="hljs-title">onInterceptTouchEvent</span>(<span class="hljs-params">MotionEvent ev</span>)</span> {
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
         <span class="hljs-keyword">if</span> (viewDragHelper.shouldInterceptTouchEvent(ev)) {
             <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.onInterceptTouchEvent(ev);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onInterceptTouchEvent(ev);
     }
 
     @Override
-    public boolean <span class="hljs-function"><span class="hljs-title">onTouchEvent</span>(<span class="hljs-params">MotionEvent event</span>)</span> {
+    public boolean onTouchEvent(MotionEvent event) {
         viewDragHelper.processTouchEvent(event);
         <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
 
     @Override
-    public <span class="hljs-keyword">void</span> <span class="hljs-function"><span class="hljs-title">computeScroll</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">super</span>.computeScroll();
+    public <span class="hljs-keyword">void</span> computeScroll() {
+        <span class="hljs-keyword">super</span>.computeScroll();
         <span class="hljs-keyword">if</span> (viewDragHelper.continueSettling(<span class="hljs-literal">true</span>)) {
-            ViewCompat.postInvalidateOnAnimation(<span class="hljs-built_in">this</span>);
+            ViewCompat.postInvalidateOnAnimation(<span class="hljs-keyword">this</span>);
         }
     }
 }
 </code></pre><h3 id="使用案例">使用案例</h3><pre><code>&lt;com.fanglin.fhui.FHSwipeLayout
-        <span class="hljs-attr">android</span>:layout_width=<span class="hljs-string">&quot;match_parent&quot;</span>
-        <span class="hljs-attr">android</span>:layout_height=<span class="hljs-string">&quot;wrap_content&quot;</span>&gt;
+        android:layout_width=<span class="hljs-string">"match_parent"</span>
+        android:layout_height=<span class="hljs-string">"wrap_content"</span>&gt;
 
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span>
-        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
-        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;106dp&quot;</span>
-        <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
-        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#333333&quot;</span>
-        <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span>&gt;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"106dp"</span>
+        <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">"center"</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">"#333333"</span>
+        <span class="hljs-attr">android:orientation</span>=<span class="hljs-string">"horizontal"</span>&gt;</span>
 
     <span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span></span>
 
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
-        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/tvDelete&quot;</span>
-        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;75dp&quot;</span>
-        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;106dp&quot;</span>
-        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FA2855&quot;</span>
-        <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
-        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;delete&quot;</span>
-        <span class="hljs-attr">android:textColor</span>=<span class="hljs-string">&quot;#FFFFFF&quot;</span>
-        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">&quot;16sp&quot;</span> /&gt;</span></span>
-&lt;/com.fanglin.fhui.FHSwipeLayout&gt;
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/tvDelete"</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"75dp"</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"106dp"</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">"#FA2855"</span>
+        <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">"center"</span>
+        <span class="hljs-attr">android:text</span>=<span class="hljs-string">"delete"</span>
+        <span class="hljs-attr">android:textColor</span>=<span class="hljs-string">"#FFFFFF"</span>
+        <span class="hljs-attr">android:textSize</span>=<span class="hljs-string">"16sp"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">com.fanglin.fhui.FHSwipeLayout</span>&gt;</span></span>
 </code></pre>
 </div>
 
@@ -338,8 +338,8 @@ public <span class="hljs-class"><span class="hljs-keyword">class</span> <span cl
 
 
 
-<script type="text/javascript" src="../js/dt.js?v=1617502433866"></script>
-<script type="text/javascript" src="../js/index.js?v=1617502433866"></script>
+<script type="text/javascript" src="../js/dt.js?v=1623240414310"></script>
+<script type="text/javascript" src="../js/index.js?v=1623240414310"></script>
 </body>
 
 </html>
