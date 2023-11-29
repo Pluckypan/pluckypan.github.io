@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+        Holly Transition - 东方回声
+    </title>
+    <meta name="description" content="**HollyTransition** 深入解读Android过渡动画Transition">
+    <meta name="author" content="plucky">
+    <meta vmid="keywords" name="keywords" content="来自东方的声音">
+    <link rel="shortcut icon" href="../assets/favicon.ico"
+        type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.ico"
+        type="image/x-icon">
+    <script src="../js/dt.js"></script>
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/jquery.svg.js"></script>
+    <link rel="stylesheet"
+        href="../css/bytedesign.min.css">
+    <link rel="stylesheet"
+        href="../css/app.css">
+    <link rel="stylesheet"
+        href="../css/default.css">
+    <link rel="stylesheet"
+        href="../css/jj.css">
+    
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4347461_grtef501c9h.css">
+    
+    <style>
+            .footer-tag.width-limited{
+                max-width: 120px !important;
+            }
+        </style>
+</head>
+    <body>
+        <link rel="stylesheet" href="../css/plugins.css">
+        <link rel="stylesheet" href="../css/post.css">
+        <script src="../js/plugins.js"></script>
+        <link
+            href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+            rel="stylesheet">
+        <script
+            src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+        <link rel="stylesheet"
+            href="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/11.3be290f.css">
+        <div data-server-rendered="true" id="__nuxt">
+            <div id="__layout">
+                <div id="juejin">
+                    <div class="view-container" data-v-5762947c data-v-125fc212>
+                        <div class="main-header-box" data-v-5762947c>
+    <header data-fetch-key="0"
+        class="main-header main-header visible"
+        data-v-0bba9d46 data-v-5762947c>
+        <div class="container" data-v-0bba9d46>
+            <a href="../index.html" class="logo" data-v-0bba9d46>
+                <img
+                    src="../assets/logo.svg"
+                    alt="稀土掘金" class="logo-img" data-v-0bba9d46>
+                <img
+                    src="../assets/logo_mini.svg"
+                    alt="稀土掘金" class="mobile" data-v-0bba9d46>
+            </a>
+            <!---->
+            <nav role="navigation" class="main-nav" data-v-0bba9d46>
+                <ul class="nav-list" data-v-0bba9d46>
+                    <!---->
+                    <li class="main-nav-list" data-v-0bba9d46>
+                        <div class="phone-show-menu" data-v-0bba9d46>
+                            <span data-v-0bba9d46 id="active_title">
+                                首页
+                            </span>
+                            <svg width="12" height="12" viewBox="0 0 12 12"
+                                fill="none" xmlns="http://www.w3.org/2000/svg"
+                                class="unfold16-icon" data-v-0bba9d46
+                                data-v-0bba9d46>
+                                <path
+                                    d="M2.45025 4.82431C2.17422 4.49957 2.40501 4.00049 2.83122 4.00049H9.16878C9.59498 4.00049 9.82578 4.49957 9.54975 4.82431L6.38097 8.55229C6.1813 8.78719 5.8187 8.78719 5.61903 8.55229L2.45025 4.82431Z"
+                                    data-v-0bba9d46 data-v-0bba9d46>
+                                </path>
+                            </svg>
+                        </div>
+                        <ul class="phone-hide" data-v-0bba9d46>
+                            <li
+                                class="nav-item link-item "
+                                data-v-0bba9d46>
+                                <a href="../index.html"
+                                    data-v-0bba9d46>
+                                    首页
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item link-item activities "
+                                data-v-0bba9d46>
+                                <a href="../hollow.html"
+                                    data-v-0bba9d46>
+                                    树洞
+                                    <span class="text" data-v-0bba9d46>
+                                        <!---->
+                                    </span>
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item link-item "
+                                data-v-0bba9d46>
+                                <a href="../events.html"
+                                    data-v-0bba9d46>
+                                    活动
+                                </a>
+                            </li>
+
+                            <nav
+                                class="nav-item link-item download-icon "
+                                data-v-0bba9d46>
+                                <a href="../app.html"
+                                    class="download-app no-border"
+                                    data-v-0bba9d46>
+                                    APP
+                                </a>
+                            </nav>
+                            <nav
+                                class="nav-item link-item extension-icon "
+                                data-v-0bba9d46>
+                                <a
+                                    href="../plugins.html"
+                                    rel="nofollow noopener noreferrer"
+                                    class="broswer-extension no-border"
+                                    data-v-0bba9d46>
+                                    <span data-v-0bba9d46>
+                                        插件
+                                    </span>
+                                </a>
+                            </nav>
+                            <!---->
+                        </ul>
+                    </li>
+                    <ul class="right-side-nav" data-v-0bba9d46>
+                        <li class="search-add" data-v-0bba9d46>
+                            <ul class="search-add-ul" data-v-0bba9d46>
+                                <li class="nav-item search" data-v-0bba9d46
+                                    id="li_search">
+                                    <form role="search" class="search-form"
+                                        data-v-0bba9d46>
+                                        <input type="search" maxlength="64"
+                                            placeholder
+                                            value class="search-input"
+                                            data-v-0bba9d46>
+                                        <div class="seach-icon-container"
+                                            data-v-0bba9d46>
+                                            <svg width="18" height="18"
+                                                viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="search-icon"
+                                                id="search_icon_x"
+                                                data-v-0bba9d46
+                                                data-v-0bba9d46>
+                                                <path
+                                                    d="M12.4008 12.4008C14.744 10.0577 14.744 6.25871 12.4008 3.91556C10.0577 1.57242 6.25871 1.57242 3.91556 3.91556C1.57242 6.25871 1.57242 10.0577 3.91556 12.4008C6.25871 14.744 10.0577 14.744 12.4008 12.4008ZM12.4008 12.4008L15.5828 15.5828"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    data-v-0bba9d46
+                                                    data-v-0bba9d46>
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <!---->
+                                        <div class="typehead"
+                                            style="display:none;"
+                                            data-v-0bba9d46>
+                                            <!---->
+                                            <div class="title" data-v-0bba9d46>
+                                                <span data-v-0bba9d46>
+                                                    搜索历史
+                                                </span>
+                                                <span class="clear"
+                                                    data-v-0bba9d46>
+                                                    清空
+                                                </span>
+                                            </div>
+                                            <div class="list" data-v-0bba9d46>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </li>
+                                <li class="nav-item add creator-item"
+                                    id="li_add"
+                                    data-v-0bba9d46>
+                                    <div class="add-group" data-v-17cc1c49
+                                        data-v-0bba9d46>
+                                        <!---->
+                                        <button class="add-btn" data-v-17cc1c49>
+                                            创作者中心
+                                        </button>
+                                        <div class="more" data-v-17cc1c49>
+                                            <svg width="12" height="12"
+                                                viewBox="0 0 12 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="unfold12-icon"
+                                                data-v-17cc1c49
+                                                data-v-17cc1c49>
+                                                <path
+                                                    d="M2.45025 4.82383C2.17422 4.49908 2.40501 4 2.83122 4H9.16878C9.59499 4 9.82578 4.49908 9.54975 4.82382L6.38097 8.5518C6.1813 8.7867 5.8187 8.7867 5.61903 8.5518L2.45025 4.82383Z"
+                                                    fill="white" data-v-17cc1c49
+                                                    data-v-17cc1c49>
+                                                </path>
+                                            </svg>
+                                            <div class="more-mask"
+                                                data-v-17cc1c49>
+                                            </div>
+                                            <div class="more-list"
+                                                data-v-17cc1c49><ul
+                                                    class="menu" data-v-17cc1c49><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon write-article"
+                                                            data-v-17cc1c49></div>
+                                                        <div
+                                                            class="title"
+                                                            data-v-17cc1c49>写文章</div></li><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon issue-points"
+                                                            data-v-17cc1c49></div>
+                                                        <div
+                                                            class="title"
+                                                            data-v-17cc1c49>发沸点</div></li><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon write-note"
+                                                            data-v-17cc1c49></div>
+                                                        <div
+                                                            class="title"
+                                                            data-v-17cc1c49>写笔记</div></li><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon create-jcode"
+                                                            data-v-17cc1c49></div>
+                                                        <div
+                                                            class="title"
+                                                            data-v-17cc1c49>写代码</div></li><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon drafts"
+                                                            data-v-17cc1c49></div>
+                                                        <div class="title"
+                                                            data-v-17cc1c49>草稿箱</div></li></ul>
+                                                <div class="divider"
+                                                    data-v-17cc1c49></div>
+                                                <div class="inspiration"
+                                                    data-v-17cc1c49><div
+                                                        class="info"
+                                                        data-v-17cc1c49><span
+                                                            class="title"
+                                                            data-v-17cc1c49>创作灵感</span>
+                                                        <span class="more-info"
+                                                            data-v-17cc1c49>
+                                                            查看更多
+                                                            <i
+                                                                class="icon byte-icon byte-icon--right"
+                                                                data-v-17cc1c49><svg
+                                                                    t="1561636167146"
+                                                                    class="icon"
+                                                                    viewBox="0 0 1024 1024"
+                                                                    version="1.1"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    p-id="404349"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"><path
+                                                                        d="M630.4 512L283.52 165.12a21.12 21.12 0 0 1 0-30.08l30.08-30.08a21.12 21.12 0 0 1 30.08 0l377.6 376.96a42.24 42.24 0 0 1 0 60.16l-377.6 376.96a21.12 21.12 0 0 1-30.08 0l-30.08-30.08a21.12 21.12 0 0 1 0-30.08z"
+                                                                        p-id="404350"></path></svg></i></span></div>
+                                                    <div class="list"
+                                                        data-v-17cc1c49><div
+                                                            data-v-17cc1c49
+                                                            class="item"><span
+                                                                data-v-17cc1c49
+                                                                class="icon icon-activity">热门</span>
+                                                            <span
+                                                                data-v-17cc1c49
+                                                                class="title">写原创好文，瓜分万元现金大奖
+                                                                💰 </span></div><div
+                                                            data-v-17cc1c49
+                                                            class="item"><span
+                                                                data-v-17cc1c49
+                                                                class="icon icon-activity">热门</span>
+                                                            <span
+                                                                data-v-17cc1c49
+                                                                class="title">快速搬家，掘金写作之旅即刻启航！</span></div>
+                                                        <div data-v-17cc1c49
+                                                            class="item"><span
+                                                                data-v-17cc1c49
+                                                                class="icon icon-topic">话题</span>
+                                                            <span
+                                                                data-v-17cc1c49
+                                                                class="title topic-title">1024一起掘金</span></div>
+                                                        <div class="item"
+                                                            data-v-090682e2
+                                                            data-v-17cc1c49></div></div></div></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <script type="text/javascript">
+        $(".search-input").focus(()=>{
+            $("#li_search").addClass("active");
+            $(".search-form").addClass("active");
+            $("#search_icon_x").attr('class',"active search-icon");
+            $("#li_add").addClass("hide");
+        });
+        $(".search-input").focusout(()=>{
+            $("#li_search").removeClass("active");
+            $("#li_add").removeClass("hide");
+            $(".search-form").removeClass("active");
+            $("#search_icon_x").attr('class',"search-icon");
+        });
+        $(".phone-show-menu").click(()=>{
+            $(".phone-hide").addClass("show");
+        });
+        $("body").click((e)=>{
+            let ele = $(".phone-show-menu");
+            if (!ele.is(e.target) && ele.has(e.target).length==0) {
+                $(".phone-hide").removeClass("show");    
+            }
+        });
+        $(()=>{
+            $("#active_title").text($(".phone-hide>.nav-item.active").text());
+        });
+    </script>
+</div>
+                        <main class="container main-container"
+                            style="max-width:1140px;"
+                            data-v-5762947c>
+                            <div class="view column-view"
+                                data-v-5762947c
+                                data-v-125fc212> <div
+                                    class="main-area article-area"
+                                    data-v-5762947c data-v-125fc212>
+                                    <article itemscope="itemscope"
+                                        itemtype="http://schema.org/Article"
+                                        data-entry-id="7022606372126588941"
+                                        data-draft-id="7022605269393735717"
+                                        data-original-type="0"
+                                        class="article"
+                                        data-v-125fc212 data-v-5762947c>
+                                        <h1 class="article-title"
+                                            data-v-125fc212>
+                                            Holly Transition
+                                        </h1>
+                                        <div class="author-info-block"
+    data-v-125fc212>
+    <div class="author-info-box"
+        data-v-125fc212>
+        <div class="author-name"
+            data-v-125fc212>
+            <a
+                href="/user/2190663523246765/posts"
+                target="_blank"
+                rel
+                class="username username ellipsis"
+                data-v-1800aadb
+                data-v-125fc212>
+                <span class="name"
+                    style="max-width:160px;"
+                    data-v-1800aadb>
+                    Android
+                </span>
+
+            </a>
+        </div>
+        <div class="meta-box"
+            data-v-125fc212>
+            <time
+                class="time"
+                data-v-125fc212>
+                2022-12-15 21:14:27
+            </time>
+            <svg width="16" height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="read-icon"
+                data-v-125fc212>
+                <path
+                    d="M7.90078 2.80078C4.49278 2.80078 1.74745 6.11672 0.800781 7.77469C1.74745 9.58339 4.49278 13.2008 7.90078 13.2008C11.3088 13.2008 14.0541 9.58339 15.0008 7.77469C14.0541 6.11672 11.3088 2.80078 7.90078 2.80078Z"
+                    stroke="currentColor"
+                    data-v-125fc212>
+                </path>
+                <circle cx="7.89922"
+                    cy="8.00078" r="2.2"
+                    stroke="currentColor"
+                    data-v-125fc212>
+                </circle>
+            </svg>
+            
+            <script async
+                src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_value_page_pv" class="views-count"
+                data-v-125fc212>
+                0
+            </span>
+            
+        </div>
+    </div>
+    <div style="flex:1;" data-v-125fc212>
+    </div>
+</div>
+                                        <div id="article-root"
+                                            itemprop="articleBody"
+                                            class="article-viewer markdown-body cache result"
+                                            data-v-125fc212>
+                                            <h3 id="零、导读">零、导读</h3><p>深入解读Android过渡动画Transition:</p>
+<ol>
+<li><strong>页面切换动画(过场动画)</strong></li><li><strong>共享元素动画</strong></li><li><strong>延时动画</strong></li><li><strong>场景动画</strong></li></ol>
+<h3 id="一、transition前世今生">一、Transition前世今生</h3><blockquote>
+<p>为了支持各种交互视觉设计的不断更新，Android对于开发者提供了越来越多的动画API支持。从API 1就存在的Drawable Animation和View Animation，以及API 11(Android 3.0)以后加入的Property Animation。而过渡动画Transition是在API 19(Android 4.4.2)中加入的。说道炫酷的动画，很多人首先想到的是Android5.0开发流行起来的共享元素动画。然而共享元素动画只是Transition的冰山一角。今天就让我们来一一揭开。</p>
+</blockquote>
+<h3 id="二、为什么要引入transition">二、为什么要引入Transition</h3><blockquote>
+<p>那为什么要引入Transition动画呢？由于在Android引入了Metrial Desigon之后，动画的场面越来越大，比如以前我们制作一个动画可能涉及到的View就一个，或者就那么几个，如果我们一个动画中涉及到了当前Activity视图树中的各个View，那么情况就复杂了。比如我们要一次针对视图树中的10个View进行动画，这些View的效果都不同，可能有的是平移，有的是旋转，有的是淡入淡出，那么不管是使用之前哪种方式的动画，我们都需要为每个View定义一个开始状态和结束状态【关键帧，比如放缩，我们得设置fromXScale和toXScale 】，随着View个数的增加，这个情况会越来越复杂。这个时候如果使用一堆Animator去实现这一连串动画，代码将会又臭又长，Transition的出现大大减轻了开发的工作。</p>
+</blockquote>
+<h3 id="三、页面切换动画(过场动画)">三、页面切换动画(过场动画)</h3><blockquote>
+<p>以前使用过场动画时，实现共享元素，主要是使用Activity，但是有遇到很多坑：比如最严重的一个是在某些机型上出现做返场动画时，第二个页面的画面还残留在页面上；第二个问题是，在存在虚拟导航栏的手机上，由于不同Activity是在不同的Window上绘制的，在Activity切换时界面存在闪烁的情况。而Fragment的切换则不存在这样的问题。综合考虑，决定使用Fragment。</p>
+</blockquote>
+<h4 id="示例图1：入场动画">示例图1：入场动画</h4><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/transition_in.gif' alt='入场动画' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<h4 id="示例图2：返场动画">示例图2：返场动画</h4><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/transition_out.gif' alt='返场动画' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<h4 id="三(1)、共享元素动画">三(1)、共享元素动画</h4><blockquote>
+<p>如上图中 <strong>画廊按钮</strong>、<strong>拍摄按钮</strong>、<strong>设置按钮</strong> ;页面切换时，对共享元素动画来讲，重要的函数有以下几个。共享元素执行的动画主要是针对将要进入的页面的。一个是入场动画 EnterTransition,另一个是返场 ReturnTransition。在做共享元素动画时，需要在前后两个页面对共享元素设定TransitionName，且对应的两个View，TransitionName需要相同。</p>
+</blockquote>
+<pre><code>//在第二个页面(即要进入的那个页面)设置共享元素TransitionName  ViewCompat可兼容5.0以下版本，不报错
+ViewCompat.setTransitionName(mFakeLeft, SHARE_NAME_LEFT);
+ViewCompat.setTransitionName(mPhotoBtn, SHARE_NAME_MIDDLE);
+ViewCompat.setTransitionName(mFakeRight, SHARE_NAME_RIGHT);
+
+//设定入场动画和返场动画
+fragment.setSharedElementEnterTransition(new ChangeBounds());
+fragment.setSharedElementReturnTransition(new ChangeBounds());
+
+//添加共享元素
+FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+fragmentTransaction.replace(R.id.app_ctrl_view, fragment);
+fragmentTransaction.addToBackStack(null);
+if (shareViews != null &amp;&amp; shareViews.length &gt; 0) {
+    for (Pair&lt;View, String&gt; shareView : shareViews) {
+        fragmentTransaction.addSharedElement(shareView.first, shareView.second);
+    }
+}
+fragmentTransaction.commit();
+</code></pre><h5 id="疑问：上图的共享元素是如何实现形变的过程中发生alpha变化的？">疑问：上图的共享元素是如何实现形变的过程中发生alpha变化的？</h5><blockquote>
+<p>刚开始，准备直接使用 xml 定制动画，一个changeBounds(左中右三个按钮同时形变) + 一个 fade (左右按钮在形变的同时 fadeout),但是发现只有形变生效。于是尝试使用自定义ChangeBounds来改造共享元素动画，在createAnimator中拿到Animator，从而可以拿到Animator变化的过程 <code>ValueAnimator.AnimatorUpdateListener</code>,这样就可以实现形变的同时，发生alpha的变化。 <a href='https://github.com/Pluckypan/HollyTransition/blob/master/app/src/main/java/engineer/echo/transition/cmpts/widget/transition/BoundsAndAlpha.java' title='' target='_blank'>示例代码</a></p>
+</blockquote>
+<pre><code>// 改造需要了解Transition的三大核心方法如下。
+@Override
+public void captureStartValues(TransitionValues transitionValues) {
+    super.captureStartValues(transitionValues);
+    Log.d(TAG, &quot;captureStartValues: transitionValues=&quot; + transitionValues);
+}
+
+@Override
+public void captureEndValues(TransitionValues transitionValues) {
+    super.captureEndValues(transitionValues);
+    Log.d(TAG, &quot;captureEndValues: transitionValues=&quot; + transitionValues);
+}
+
+@Override
+public Animator createAnimator(ViewGroup sceneRoot, TransitionValues startValues, TransitionValues endValues) {
+    return super.createAnimator(sceneRoot, startValues, endValues);
+}
+</code></pre><h4 id="三(2)、内容动画">三(2)、内容动画</h4><blockquote>
+<p>如上面图片中，设置页面的<strong>背景渐变</strong>、<strong>动起来 SlideUp</strong>、<strong>功能说明 SlideUp</strong>;拍摄页面的<strong>进度条封面 Slide Left&amp;Right</strong>。这里所说的<code>内容动画</code>，指的是Fragment布局中除共享元素外的View执行的动画，主要是为了区分<code>共享元素动画</code>。对内容过场动画比较重要的几个函数,下面这种图比较形象地描述这个关系。Activity和Fragment的意思是一样的。这里以Activity的示意图来说明。</p>
+</blockquote>
+<h5 id="示例图3：入场动画对应关系">示例图3：入场动画对应关系</h5><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/transition-0.png' alt='入场动画' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<h5 id="示例图4：返场动画对应关系">示例图4：返场动画对应关系</h5><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/transition-1.png' alt='返场动画' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<pre><code class="lang-java">TransitionSet transitionSet=new TransitionSet();
+//从 A Fragment 进入 B Fragment,A会执行 ExitTransition,B 会执行EnterTransition
+fragment.setEnterTransition(transitionSet);
+fragment.setExitTransition(transitionSet);
+//按返回键时，B Fragment 会pop出栈，执行ReturnTransition，此时 A Fragment 重新回到栈顶，执行ReEnterTransition.
+fragment.setReenterTransition(transitionSet);
+fragment.setReturnTransition(transitionSet);
+</code></pre>
+<h3 id="四、延时动画(transitionmanager.begindelayedtransition)">四、延时动画(TransitionManager.beginDelayedTransition)</h3><h4 id="四(1)、进度条平滑过渡">四(1)、进度条平滑过渡</h4><blockquote>
+<p>iOS进度条有个方法：- (void)setProgress:(float)progress animated:(BOOL)animated; 如果animated=true 那么，设置进度时，会从当前进度平滑过渡到目标进度，大大提升了用户体验。Android进度条并不具备这种功能，只能设定一个progress,控件就僵硬地跳到对应的位置。但是借助Transition，可实现这个功能。 <a href='https://github.com/Pluckypan/HollyTransition/blob/master/app/src/main/java/engineer/echo/transition/cmpts/widget/transition/ProgressTransition.java' title='' target='_blank'>示例代码</a></p>
+</blockquote>
+<h5 id="示例图5：实现进度条平滑过渡">示例图5：实现进度条平滑过渡</h5><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/progress.gif' alt='进度条' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<h4 id="四(2)、放大缩小效果">四(2)、放大缩小效果</h4><h5 id="示例图6：实现同一viewgroup中两个view之间协调放大与缩小效果">示例图6：实现同一ViewGroup中两个View之间协调放大与缩小效果</h5><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/scale.gif' alt='放大缩小' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<h4 id="四(3)、slide与fade组合动画">四(3)、Slide与Fade组合动画</h4><h5 id="示例图7：从上滑入从下滑出并且渐入渐出">示例图7：从上滑入从下滑出并且渐入渐出</h5><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/slide_fade.gif' alt='渐入渐出' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<h3 id="五、路径动画">五、路径动画</h3><blockquote>
+<p>路径动画在日常APP中使用的场景很多，比如京东、天猫 添加商品至购物车的动画。实现起来非常简单。直接使用Transition.setPathMotion(new ArcMotion());然后结合延时动画TransitionManager.beginDelayedTransition()即可。</p>
+</blockquote>
+<h5 id="示例图片8：普通路径动画">示例图片8：普通路径动画</h5><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/path_normal.gif' alt='路径动画-普通' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<h5 id="示例图片9：路径动画在共享元素中的运用">示例图片9：路径动画在共享元素中的运用</h5><p><img src='https://github.com/Pluckypan/HollyTransition/raw/master/images/path_share_element.gif' alt='路径动画-普通' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+<h3 id="六、源码解析">六、源码解析</h3><blockquote>
+<p>入场动画时，是直接拿着 进入页面的View进行动画的，返场动画时，不直接拿着View进行动画，而是在Overlap上，创建与Targets对应的ImageView，然后截取Targets的画面，显示在ImageView上，返场动画主要是在Overlap上进行的。</p>
+</blockquote>
+<pre><code class="lang-java">    public Animator onDisappear(ViewGroup sceneRoot,
+                                TransitionValues startValues, int startVisibility,
+                                TransitionValues endValues, int endVisibility) {
+        if ((mMode &amp; MODE_OUT) != MODE_OUT) {
+            return null;
+        }
+
+        View startView = (startValues != null) ? startValues.view : null;
+        View endView = (endValues != null) ? endValues.view : null;
+        /**
+         * 说明几点：
+         * #1 onDisappear方法位于android.transition.Visibility类中
+         * #2 在返场动画时，场景中每个被添加进Transition的Target都会执行该方法
+         * #3 这里定义了一个overlayView，先标记下，后面会用得到
+         */
+        View overlayView = null;
+        View viewToKeep = null;
+        if (endView == null || endView.getParent() == null) {
+            if (endView != null) {
+                // endView was removed from its parent - add it to the overlay
+                overlayView = endView;
+            } else if (startView != null) {
+                // endView does not exist. Use startView only under certain
+                // conditions, because placing a view in an overlay necessitates
+                // it being removed from its current parent
+                if (startView.getParent() == null) {
+                    // no parent - safe to use
+                    overlayView = startView;
+                } else if (startView.getParent() instanceof View) {
+                    /**
+                     * 如果StartView存在父布局
+                     */
+                    View startParent = (View) startView.getParent();
+                    TransitionValues startParentValues = getTransitionValues(startParent, true);
+                    TransitionValues endParentValues = getMatchedTransitionValues(startParent,
+                            true);
+                    VisibilityInfo parentVisibilityInfo =
+                            getVisibilityChangeInfo(startParentValues, endParentValues);
+                    if (!parentVisibilityInfo.visibilityChange) {
+                        /**
+                         * 如果StartView父布局在动画过程中未参与Visibility变化的话，那么就会
+                         * 创建一个ImageView，并将StartView 画布Canvas上的内容转换为Bitmap设置到新创建的ImageView上
+                         */
+                        overlayView = TransitionUtils.copyViewImage(sceneRoot, startView,
+                                startParent);
+                    } else if (startParent.getParent() == null) {
+                        int id = startParent.getId();
+                        if (id != View.NO_ID &amp;&amp; sceneRoot.findViewById(id) != null
+                                &amp;&amp; mCanRemoveViews) {
+                            // no parent, but its parent is unparented  but the parent
+                            // hierarchy has been replaced by a new hierarchy with the same id
+                            // and it is safe to un-parent startView
+                            overlayView = startView;
+                        }
+                    }
+                }
+            }
+        } else {
+            // visibility change
+            if (endVisibility == View.INVISIBLE) {
+                viewToKeep = endView;
+            } else {
+                // Becoming GONE
+                if (startView == endView) {
+                    viewToKeep = endView;
+                } else {
+                    overlayView = startView;
+                }
+            }
+        }
+        final int finalVisibility = endVisibility;
+        final ViewGroup finalSceneRoot = sceneRoot;
+
+        if (overlayView != null) {
+            // TODO: Need to do this for general case of adding to overlay
+            int[] screenLoc = (int[]) startValues.values.get(PROPNAME_SCREEN_LOCATION);
+            int screenX = screenLoc[0];
+            int screenY = screenLoc[1];
+            int[] loc = new int[2];
+            sceneRoot.getLocationOnScreen(loc);
+            overlayView.offsetLeftAndRight((screenX - loc[0]) - overlayView.getLeft());
+            overlayView.offsetTopAndBottom((screenY - loc[1]) - overlayView.getTop());
+            /**
+             * 通过上面一系列的判断，最终会将得到的overlayView添加到 场景一（及A页面）根部局的Overlap上
+             * 也就是说，其实在做返场动画时，所有的动画都是在 A页面的Overlap上进行的。做完动画再将其从Overlap上移除。
+             * 这里的overlayView可能是 B页面的控件，也有可能是B页面控件的画面（new了一个ImageView的形式展示）
+             * 什么是Overlap,可参考文章：http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0130/2384.html
+             */
+            sceneRoot.getOverlay().add(overlayView);
+            Animator animator = onDisappear(sceneRoot, overlayView, startValues, endValues);
+            if (animator == null) {
+                sceneRoot.getOverlay().remove(overlayView);
+            } else {
+                final View finalOverlayView = overlayView;
+                addListener(new TransitionListenerAdapter() {
+                    @Override
+                    public void onTransitionEnd(Transition transition) {
+                        finalSceneRoot.getOverlay().remove(finalOverlayView);
+                    }
+                });
+            }
+            return animator;
+        }
+
+        if (viewToKeep != null) {
+            int originalVisibility = viewToKeep.getVisibility();
+            viewToKeep.setTransitionVisibility(View.VISIBLE);
+            Animator animator = onDisappear(sceneRoot, viewToKeep, startValues, endValues);
+            if (animator != null) {
+                DisappearListener disappearListener = new DisappearListener(viewToKeep,
+                        finalVisibility, mSuppressLayout);
+                animator.addListener(disappearListener);
+                animator.addPauseListener(disappearListener);
+                addListener(disappearListener);
+            } else {
+                viewToKeep.setTransitionVisibility(originalVisibility);
+            }
+            return animator;
+        }
+        return null;
+    }
+
+</code></pre>
+<h3 id="七、遇到的问题">七、遇到的问题</h3><ol>
+<li>Scene切换时会RemoveAllView 导致之前设置点击事件消失</li><li>退场动画时，会截取View的canvas，并在A页面rootview的overlap上添加ImageView,如果自定义控件有影响canvas的绘制过程，则添加到ImageView上的Bitmap可能不正确</li><li>共享元素必须是RootView的直接子View</li><li>做页面间的过渡动画时，两个页面尽量简单，比如加载网络图片时，可以先使用前一个页面的图片做动画，等动画做完后再去加载图片。不可以一边儿做动画，一边儿加载图片，会造成动画很闪烁。</li><li>Fragment设置TransitionOverlap无效，还需要研究下。<pre><code class="lang-java">fragment.setAllowEnterTransitionOverlap(false);
+fragment.setAllowReturnTransitionOverlap(false);
+</code></pre>
+</li><li>在Fragment中使用 <strong>共享元素动画</strong> 时，需要两个Fragment基于同一个<code>layout_id</code>,然后通过<code>replace</code>的形式打开。</li></ol>
+<h3 id="八、todo">八、TODO</h3><ul>
+<li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> 图片切换平滑过渡效果</li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> 颜色变化平滑过渡</li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> 文字变化平滑过渡</li></ul>
+<h3 id="九、参考项目">九、参考项目</h3><ul>
+<li><p><a href='https://github.com/andkulikov/Transitions-Everywhere' title='' target='_blank'>Transitions-Everywhere</a></p>
+<blockquote>
+<p>Transitions-Everywhere 可支持Transiton动画到 Android 4.O ,并且兼容 Android 2.2 +（无动画但保证运行）.</p>
+</blockquote>
+</li><li><p><a href='https://github.com/lgvalle/Material-Animations' title='' target='_blank'>Material-Animations</a></p>
+<blockquote>
+<p>详细解读Fragment与Fragment Activity与Activity Activity与Fragment之间的切换动画</p>
+</blockquote>
+</li><li><p><a href='https://github.com/WakeHao/TransitionExample' title='' target='_blank'>TransitionExample</a></p>
+<blockquote>
+<p>早在Android 4.4，Transition 就已经引入，但在5.0才得以真正的实现。而究竟Transition是用来干嘛的呢?这个Demo可以带你熟悉基本的操作。特点是比较熟练的使用xml来定义动画，动画衔接做得比较好。</p>
+</blockquote>
+</li><li><p><a href='https://github.com/saulmm/Android-Material-Examples' title='' target='_blank'>Android-Material-Examples</a></p>
+<blockquote>
+<p>主要特点是介绍ViewPager中实现的一些Transition动画</p>
+</blockquote>
+</li><li><p><a href='http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0130/2384.html' title='' target='_blank'>ViewOverlay与animation介绍</a></p>
+<blockquote>
+<p>ViewOverlay与animation介绍。Transition在ReturnTransition动画时，会在第一个页面rootView的overlap上添加ImageView来执行动画。这篇文章详细介绍了Android中ViewOverlay的用处和原理。</p>
+</blockquote>
+</li></ul>
+<h3 id="十、动画相关">十、动画相关</h3><ul>
+<li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://medium.com/@andkulikov/animate-all-the-things-transitions-in-android-914af5477d50#.4exs3bozi' title='' target='_blank'>https://medium.com/@andkulikov/animate-all-the-things-transitions-in-android-914af5477d50#.4exs3bozi</a> TransitionManager</li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://material.io/design/motion/speed.html#duration' title='' target='_blank'>https://material.io/design/motion/speed.html#duration</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://github.com/daimajia/AndroidViewAnimations' title='' target='_blank'>https://github.com/daimajia/AndroidViewAnimations</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://medium.com/@evanchen76/android-animation-30%E5%A4%A9%E4%B8%8A%E6%89%8B-day29-%E5%9F%BA%E6%96%BC%E7%89%A9%E7%90%86%E7%9A%84%E5%8B%95%E7%95%AB-spring-animation-flinganimation-1eceeddeddb6' title='' target='_blank'>https://medium.com/@evanchen76/android-animation-30%E5%A4%A9%E4%B8%8A%E6%89%8B-day29-%E5%9F%BA%E6%96%BC%E7%89%A9%E7%90%86%E7%9A%84%E5%8B%95%E7%95%AB-spring-animation-flinganimation-1eceeddeddb6</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://medium.com/@evanchen76/android-animation-30%E5%A4%A9%E4%B8%8A%E6%89%8B-day30-android-animation-%E7%B8%BD%E7%B5%90-88cd00d1957d' title='' target='_blank'>https://medium.com/@evanchen76/android-animation-30%E5%A4%A9%E4%B8%8A%E6%89%8B-day30-android-animation-%E7%B8%BD%E7%B5%90-88cd00d1957d</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://medium.com/@evanchen76' title='' target='_blank'>https://medium.com/@evanchen76</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://github.com/florent37/ViewAnimator' title='' target='_blank'>https://github.com/florent37/ViewAnimator</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://github.com/airbnb/lottie-android' title='' target='_blank'>https://github.com/airbnb/lottie-android</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://github.com/OCNYang/Android-Animation-Set' title='' target='_blank'>https://github.com/OCNYang/Android-Animation-Set</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://github.com/Pluckypan/DDU' title='' target='_blank'>https://github.com/Pluckypan/DDU</a> 贝舍尔曲线</li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://mp.weixin.qq.com/s/PEBYvK0m4V53lPpzEPL2OA?utm_source=androidweekly.io&amp;utm_medium=website' title='' target='_blank'>https://mp.weixin.qq.com/s/PEBYvK0m4V53lPpzEPL2OA?utm_source=androidweekly.io&amp;utm_medium=website</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://kaixue.io/kotlin-coroutines-1/?utm_source=androidweekly.io&amp;utm_medium=website' title='' target='_blank'>https://kaixue.io/kotlin-coroutines-1/?utm_source=androidweekly.io&amp;utm_medium=website</a></li><li style="list-style: none"><input class="eedoc_todo" type="checkbox" disabled=""> <a href='https://www.cnblogs.com/dasusu/p/8647702.html' title='' target='_blank'>https://www.cnblogs.com/dasusu/p/8647702.html</a> View.animate();  </li></ul>
+<h3 id="十一、结尾">十一、结尾</h3><p><a href='https://github.com/Pluckypan/HollyTransition' title='' target='_blank'><img src='https://img.shields.io/github/forks/pluckypan/HollyTransition.svg?style=social' alt='' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></a>
+<a href='https://github.com/Pluckypan/HollyTransition' title='' target='_blank'><img src='https://img.shields.io/github/stars/pluckypan/HollyTransition.svg?style=social' alt='' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></a>
+<a href='https://github.com/pluckypan/followers' title='' target='_blank'><img src='https://img.shields.io/github/followers/pluckypan.svg?style=social' alt='' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></a></p>
+<p>本文示例代码: <a href='mailto:`git@github.com' title='' target='_blank'>`git@github.com</a>:Pluckypan/HollyTransition.git` <a href='https://github.com/Pluckypan/HollyTransition' title='' target='_blank'>预览</a> 欢迎Star、Fork</p>
+
+                                        </div>
+                                    </article>
+                                    <div class="article-end"
+                                        data-v-5762947c data-v-125fc212>
+                                        
+                                    </div>
+                                    <div
+    data-v-738d100d
+    data-v-125fc212
+    data-jj-helper="comment-container"
+    class="post-comment" data-v-5762947c>
+    <link rel="stylesheet" href="../css/gitalk.css">
+    
+    <div class="message-card add-top" id="comment-card">
+	<div class="gitalk_container">
+		<div id="gitalk-container"></div>
+		<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css"
+			async>
+		<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js" async></script>
+		<script type="text/javascript">
+			let initGitalk = ()=> {
+				if (typeof(Gitalk) == 'undefined') {
+                    setTimeout(initGitalk, 20);
+                    return;
+                } 
+				let gitalk = new Gitalk({
+				clientID: "7e48ff7dd55f15c9f051",
+				clientSecret: "a5a35f0a17ee770eabd97358255ec6839486a7dd",
+				repo: "gitalk.echo.engineer",
+				owner: "Pluckypan",
+				admin: "Pluckypan",
+				distractionFreeMode: "true",
+				labels: ['post']
+			});
+				gitalk.render('gitalk-container');
+			}
+			$(()=>{
+				initGitalk();
+			})
+		</script>
+	</div>
+</div>
+    
+</div>
+                                </div>
+                                <div id="sidebar-container"
+                                    class="sidebar article-sidebar"
+                                    data-v-5a150454 data-v-125fc212
+                                    data-v-5762947c>
+                                    <div
+    data-v-7e7e812a
+    data-v-05741537
+    data-v-5a150454
+    class="sidebar-block wechat-sidebar-block pure wechat-ad">
+    <div data-v-05741537 data-v-7e7e812a class="ad-container">
+        <div data-v-05741537 data-v-7e7e812a class="text-container">
+            <div data-v-05741537 data-v-7e7e812a class="text-description">
+                找对属于你的技术圈子
+            </div>
+
+            <div data-v-05741537 data-v-7e7e812a class="text-reply">
+                回复「进群」加入官方微信群
+            </div>
+        </div>
+        <img
+            data-v-05741537
+            data-v-7e7e812a
+            src="../assets/qrcode.png"
+            loading="lazy"
+            class="qr-code" />
+    </div>
+</div>
+
+                                    <div class data-v-5a150454 id="jj_post_nav">
+    <nav
+        class="article-catalog catalog-block"
+        data-v-6239701c
+        data-v-16ed86c3
+        data-v-5a150454>
+        <div class="catalog-title" data-v-6239701c>
+            <div data-v-6239701c>目录</div>
+            <div class="direction" data-v-6239701c>
+                <div class="word" data-v-6239701c>收起</div>
+                <svg
+                    id="icon_expand_toogle"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon-rotate"
+                    data-v-6239701c>
+                    <g
+                        id="&amp;#229;&amp;#177;&amp;#149;&amp;#229;&amp;#188;&amp;#128;"
+                        data-v-6239701c>
+                        <path
+                            id="&amp;#232;&amp;#183;&amp;#175;&amp;#229;&amp;#190;&amp;#132;"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M5.99854 7.93206L10.0644 3.86619C10.162 3.76856 10.3203 3.76856 10.418 3.86619L10.7715 4.21975C10.8691 4.31738 10.8691 4.47567 10.7715 4.5733L6.35209 8.99272C6.15683 9.18798 5.84025 9.18798 5.64498 8.99272L1.22557 4.5733C1.12794 4.47567 1.12794 4.31738 1.22557 4.21975L1.57912 3.86619C1.67675 3.76856 1.83504 3.76856 1.93267 3.86619L5.99854 7.93206Z"
+                            fill="#8A919F"
+                            data-v-6239701c></path>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="catalog-body unfold" data-v-6239701c>
+            <ul class="catalog-list" style="margin-top: 0px" data-v-6239701c>
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+
+    <script type="text/javascript">
+        $(".catalog-aTag").click(function(){
+            let id = $(this).attr("target_id");
+            $('html, body').animate({
+                scrollTop: ($(id).offset().top-80)
+            }, 798);
+        });
+        $(".direction").click(function(){
+            $(".catalog-title").removeClass("collapse");
+            $("#icon_expand_toogle").attr('class', "");
+            if ($(".catalog-body").hasClass("fold")) {
+                $(".catalog-body").removeClass("fold");
+                $(".catalog-body").addClass("unfold");
+                $(".direction>.word").text("收起");
+                $("#icon_expand_toogle").attr('class', "icon-rotate");
+            }else{
+                $(".catalog-body").removeClass("unfold");
+                $(".catalog-body").addClass("fold");
+                $(".catalog-title").addClass("collapse");
+                $(".direction>.word").text("展开");
+            }
+        });
+        $(()=>{
+            let tocArray = "";
+            let fixedTop = $("#jj_post_nav").offset().top;
+            let stickyNav = ()=> {
+                let scrollTop = $(window).scrollTop();
+                // console.log(`scrollTop=${scrollTop} fixedTop=${fixedTop}`);
+                if (scrollTop>fixedTop) {
+                    $("#jj_post_nav").addClass("jj_sticky");
+                } else {
+                    $("#jj_post_nav").removeClass("jj_sticky");
+                }
+            };
+            stickyNav();
+            $(window).scroll(()=>{
+                stickyNav();
+            });
+            $("#jj_post_nav").css("display",tocArray.length==0?"none":"");
+        });
+    </script>
+
+</div>
+
+                                </div>
+                                <div data-v-125fc212
+    class="article-suspended-panel dynamic-data-ready">
+    <svg
+        data-v-45561e54
+        xmlns="http://www.w3.org/2000/svg"
+        class
+        style="display: none;">
+        <symbol
+            data-v-45561e54
+            id="icon-comment"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M4.62739 1.25C2.9347 1.25 1.5625 2.6222 1.5625 4.31489L1.56396 12.643C1.56403 14.3356 2.9362 15.7078 4.62885 15.7078H6.48326L6.93691 17.6869L6.93884 17.6948C7.16894 18.6441 8.28598 19.0599 9.08073 18.4921L12.7965 15.7078H15.5001C17.1928 15.7078 18.565 14.3355 18.565 12.6428L18.5635 4.31477C18.5635 2.62213 17.1913 1.25 15.4986 1.25H4.62739ZM5.98265 9.89255C6.68783 9.89255 7.2595 9.32089 7.2595 8.61571C7.2595 7.91053 6.68783 7.33887 5.98265 7.33887C5.27747 7.33887 4.70581 7.91053 4.70581 8.61571C4.70581 9.32089 5.27747 9.89255 5.98265 9.89255ZM9.95604 9.89255C10.6612 9.89255 11.2329 9.32089 11.2329 8.61571C11.2329 7.91053 10.6612 7.33887 9.95604 7.33887C9.25086 7.33887 8.6792 7.91053 8.6792 8.61571C8.6792 9.32089 9.25086 9.89255 9.95604 9.89255ZM15.2124 8.61571C15.2124 9.32089 14.6407 9.89255 13.9355 9.89255C13.2304 9.89255 12.6587 9.32089 12.6587 8.61571C12.6587 7.91053 13.2304 7.33887 13.9355 7.33887C14.6407 7.33887 15.2124 7.91053 15.2124 8.61571Z"></path>
+        </symbol>
+        <symbol
+            data-v-45561e54 id="icon-zan"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10.4167 6.40399C5.35406 6.40399 1.25 10.5675 1.25 15.7035C1.25 16.0225 1.28448 16.4512 1.35344 16.9898C1.36807 17.1039 1.47243 17.1846 1.58655 17.17C1.6483 17.1621 1.70328 17.127 1.73643 17.0743L1.86865 16.8676C1.99553 16.6731 2.10644 16.5147 2.20137 16.3925C3.69554 14.4692 6.13777 13.3823 9.35515 13.3378L10.4167 13.3364V17.0757C10.4167 17.3101 10.6086 17.5 10.8453 17.5C10.959 17.5 11.068 17.4553 11.1483 17.3757L18.145 10.45C18.3961 10.2015 18.3961 9.79853 18.145 9.55L11.1483 2.62426C10.981 2.45858 10.7096 2.45858 10.5422 2.62426C10.4618 2.70383 10.4167 2.81174 10.4167 2.92426V6.40399Z"></path>
+        </symbol>
+        <symbol
+            data-v-45561e54
+            id="icon-immerse"
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M535.466667 241.066667c-12.8-8.533333-27.733333-8.533333-40.533334 0L183.466667 488.533333c-6.4 6.4-12.8 14.933333-12.8 23.466667 0 2.133333 0 6.4 2.133333 8.533333 2.133333 12.8 14.933333 21.333333 27.733333 21.333334h155.733334v322.133333c0 19.2 12.8 29.866667 32 29.866667h249.6c21.333333 0 34.133333-12.8 34.133333-29.866667v-320h151.466667c12.8 0 25.6-8.533333 27.733333-21.333333s0-25.6-8.533333-34.133334L535.466667 241.066667zM864 96h-704C142.933333 96 128 110.933333 128 128s14.933333 32 32 32h704c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"></path>
+        </symbol>
+    </svg>
+    <div data-v-45561e54 badge="222"
+        class="panel-btn with-badge-x">
+        <svg
+            data-v-6e70c50a
+            data-v-45561e54
+            class="sprite-icon icon-zan">
+            <use
+                data-v-6e70c50a
+                xlink:href="#icon-zan">
+            </use>
+        </svg>
+    </div>
+    <div data-v-45561e54 badge="109"
+        class="panel-btn with-badge-x" id="toolbar_btn_comment">
+        <svg
+            data-v-6e70c50a data-v-45561e54
+            class="sprite-icon icon-comment">
+            <use
+                data-v-6e70c50a
+                xlink:href="#icon-comment">
+            </use>
+        </svg>
+    </div>
+    <div data-v-45561e54 class="panel-btn" id="toolbar_btn_top">
+        <svg
+            data-v-6e70c50a
+            data-v-45561e54
+            class="sprite-icon icon-report">
+            <use
+                data-v-6e70c50a
+                xlink:href="#icon-immerse">
+            </use>
+        </svg>
+    </div>
+    <script type="text/javascript">
+        $("#toolbar_btn_comment").click(()=>{
+            $('html, body').animate({
+                scrollTop: ($('#comment-card').offset().top - 120)
+            }, 798);
+        });
+        $("#toolbar_btn_top").click(()=>{
+            $('html, body').animate({
+                scrollTop: 0
+            }, 798);
+        });
+    </script>
+</div>
+                            </div>
+                        </main>
+                    </div>
+                    <div class="global-component-box">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

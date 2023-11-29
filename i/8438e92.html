@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+        ffmpeg基础 - 东方回声
+    </title>
+    <meta name="description" content="学习ffmpeg各种姿势">
+    <meta name="author" content="plucky">
+    <meta vmid="keywords" name="keywords" content="来自东方的声音">
+    <link rel="shortcut icon" href="../assets/favicon.ico"
+        type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.ico"
+        type="image/x-icon">
+    <script src="../js/dt.js"></script>
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/jquery.svg.js"></script>
+    <link rel="stylesheet"
+        href="../css/bytedesign.min.css">
+    <link rel="stylesheet"
+        href="../css/app.css">
+    <link rel="stylesheet"
+        href="../css/default.css">
+    <link rel="stylesheet"
+        href="../css/jj.css">
+    
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4347461_grtef501c9h.css">
+    
+    <style>
+            .footer-tag.width-limited{
+                max-width: 120px !important;
+            }
+        </style>
+</head>
+    <body>
+        <link rel="stylesheet" href="../css/plugins.css">
+        <link rel="stylesheet" href="../css/post.css">
+        <script src="../js/plugins.js"></script>
+        <link
+            href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+            rel="stylesheet">
+        <script
+            src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+        <link rel="stylesheet"
+            href="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/11.3be290f.css">
+        <div data-server-rendered="true" id="__nuxt">
+            <div id="__layout">
+                <div id="juejin">
+                    <div class="view-container" data-v-5762947c data-v-125fc212>
+                        <div class="main-header-box" data-v-5762947c>
+    <header data-fetch-key="0"
+        class="main-header main-header visible"
+        data-v-0bba9d46 data-v-5762947c>
+        <div class="container" data-v-0bba9d46>
+            <a href="../index.html" class="logo" data-v-0bba9d46>
+                <img
+                    src="../assets/logo.svg"
+                    alt="稀土掘金" class="logo-img" data-v-0bba9d46>
+                <img
+                    src="../assets/logo_mini.svg"
+                    alt="稀土掘金" class="mobile" data-v-0bba9d46>
+            </a>
+            <!---->
+            <nav role="navigation" class="main-nav" data-v-0bba9d46>
+                <ul class="nav-list" data-v-0bba9d46>
+                    <!---->
+                    <li class="main-nav-list" data-v-0bba9d46>
+                        <div class="phone-show-menu" data-v-0bba9d46>
+                            <span data-v-0bba9d46 id="active_title">
+                                首页
+                            </span>
+                            <svg width="12" height="12" viewBox="0 0 12 12"
+                                fill="none" xmlns="http://www.w3.org/2000/svg"
+                                class="unfold16-icon" data-v-0bba9d46
+                                data-v-0bba9d46>
+                                <path
+                                    d="M2.45025 4.82431C2.17422 4.49957 2.40501 4.00049 2.83122 4.00049H9.16878C9.59498 4.00049 9.82578 4.49957 9.54975 4.82431L6.38097 8.55229C6.1813 8.78719 5.8187 8.78719 5.61903 8.55229L2.45025 4.82431Z"
+                                    data-v-0bba9d46 data-v-0bba9d46>
+                                </path>
+                            </svg>
+                        </div>
+                        <ul class="phone-hide" data-v-0bba9d46>
+                            <li
+                                class="nav-item link-item "
+                                data-v-0bba9d46>
+                                <a href="../index.html"
+                                    data-v-0bba9d46>
+                                    首页
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item link-item activities "
+                                data-v-0bba9d46>
+                                <a href="../hollow.html"
+                                    data-v-0bba9d46>
+                                    树洞
+                                    <span class="text" data-v-0bba9d46>
+                                        <!---->
+                                    </span>
+                                </a>
+                            </li>
+                            <li
+                                class="nav-item link-item "
+                                data-v-0bba9d46>
+                                <a href="../events.html"
+                                    data-v-0bba9d46>
+                                    活动
+                                </a>
+                            </li>
+
+                            <nav
+                                class="nav-item link-item download-icon "
+                                data-v-0bba9d46>
+                                <a href="../app.html"
+                                    class="download-app no-border"
+                                    data-v-0bba9d46>
+                                    APP
+                                </a>
+                            </nav>
+                            <nav
+                                class="nav-item link-item extension-icon "
+                                data-v-0bba9d46>
+                                <a
+                                    href="../plugins.html"
+                                    rel="nofollow noopener noreferrer"
+                                    class="broswer-extension no-border"
+                                    data-v-0bba9d46>
+                                    <span data-v-0bba9d46>
+                                        插件
+                                    </span>
+                                </a>
+                            </nav>
+                            <!---->
+                        </ul>
+                    </li>
+                    <ul class="right-side-nav" data-v-0bba9d46>
+                        <li class="search-add" data-v-0bba9d46>
+                            <ul class="search-add-ul" data-v-0bba9d46>
+                                <li class="nav-item search" data-v-0bba9d46
+                                    id="li_search">
+                                    <form role="search" class="search-form"
+                                        data-v-0bba9d46>
+                                        <input type="search" maxlength="64"
+                                            placeholder
+                                            value class="search-input"
+                                            data-v-0bba9d46>
+                                        <div class="seach-icon-container"
+                                            data-v-0bba9d46>
+                                            <svg width="18" height="18"
+                                                viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="search-icon"
+                                                id="search_icon_x"
+                                                data-v-0bba9d46
+                                                data-v-0bba9d46>
+                                                <path
+                                                    d="M12.4008 12.4008C14.744 10.0577 14.744 6.25871 12.4008 3.91556C10.0577 1.57242 6.25871 1.57242 3.91556 3.91556C1.57242 6.25871 1.57242 10.0577 3.91556 12.4008C6.25871 14.744 10.0577 14.744 12.4008 12.4008ZM12.4008 12.4008L15.5828 15.5828"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    data-v-0bba9d46
+                                                    data-v-0bba9d46>
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <!---->
+                                        <div class="typehead"
+                                            style="display:none;"
+                                            data-v-0bba9d46>
+                                            <!---->
+                                            <div class="title" data-v-0bba9d46>
+                                                <span data-v-0bba9d46>
+                                                    搜索历史
+                                                </span>
+                                                <span class="clear"
+                                                    data-v-0bba9d46>
+                                                    清空
+                                                </span>
+                                            </div>
+                                            <div class="list" data-v-0bba9d46>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </li>
+                                <li class="nav-item add creator-item"
+                                    id="li_add"
+                                    data-v-0bba9d46>
+                                    <div class="add-group" data-v-17cc1c49
+                                        data-v-0bba9d46>
+                                        <!---->
+                                        <button class="add-btn" data-v-17cc1c49>
+                                            创作者中心
+                                        </button>
+                                        <div class="more" data-v-17cc1c49>
+                                            <svg width="12" height="12"
+                                                viewBox="0 0 12 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="unfold12-icon"
+                                                data-v-17cc1c49
+                                                data-v-17cc1c49>
+                                                <path
+                                                    d="M2.45025 4.82383C2.17422 4.49908 2.40501 4 2.83122 4H9.16878C9.59499 4 9.82578 4.49908 9.54975 4.82382L6.38097 8.5518C6.1813 8.7867 5.8187 8.7867 5.61903 8.5518L2.45025 4.82383Z"
+                                                    fill="white" data-v-17cc1c49
+                                                    data-v-17cc1c49>
+                                                </path>
+                                            </svg>
+                                            <div class="more-mask"
+                                                data-v-17cc1c49>
+                                            </div>
+                                            <div class="more-list"
+                                                data-v-17cc1c49><ul
+                                                    class="menu" data-v-17cc1c49><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon write-article"
+                                                            data-v-17cc1c49></div>
+                                                        <div
+                                                            class="title"
+                                                            data-v-17cc1c49>写文章</div></li><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon issue-points"
+                                                            data-v-17cc1c49></div>
+                                                        <div
+                                                            class="title"
+                                                            data-v-17cc1c49>发沸点</div></li><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon write-note"
+                                                            data-v-17cc1c49></div>
+                                                        <div
+                                                            class="title"
+                                                            data-v-17cc1c49>写笔记</div></li><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon create-jcode"
+                                                            data-v-17cc1c49></div>
+                                                        <div
+                                                            class="title"
+                                                            data-v-17cc1c49>写代码</div></li><li
+                                                        class="item"
+                                                        data-v-17cc1c49><div
+                                                            class="icon drafts"
+                                                            data-v-17cc1c49></div>
+                                                        <div class="title"
+                                                            data-v-17cc1c49>草稿箱</div></li></ul>
+                                                <div class="divider"
+                                                    data-v-17cc1c49></div>
+                                                <div class="inspiration"
+                                                    data-v-17cc1c49><div
+                                                        class="info"
+                                                        data-v-17cc1c49><span
+                                                            class="title"
+                                                            data-v-17cc1c49>创作灵感</span>
+                                                        <span class="more-info"
+                                                            data-v-17cc1c49>
+                                                            查看更多
+                                                            <i
+                                                                class="icon byte-icon byte-icon--right"
+                                                                data-v-17cc1c49><svg
+                                                                    t="1561636167146"
+                                                                    class="icon"
+                                                                    viewBox="0 0 1024 1024"
+                                                                    version="1.1"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    p-id="404349"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"><path
+                                                                        d="M630.4 512L283.52 165.12a21.12 21.12 0 0 1 0-30.08l30.08-30.08a21.12 21.12 0 0 1 30.08 0l377.6 376.96a42.24 42.24 0 0 1 0 60.16l-377.6 376.96a21.12 21.12 0 0 1-30.08 0l-30.08-30.08a21.12 21.12 0 0 1 0-30.08z"
+                                                                        p-id="404350"></path></svg></i></span></div>
+                                                    <div class="list"
+                                                        data-v-17cc1c49><div
+                                                            data-v-17cc1c49
+                                                            class="item"><span
+                                                                data-v-17cc1c49
+                                                                class="icon icon-activity">热门</span>
+                                                            <span
+                                                                data-v-17cc1c49
+                                                                class="title">写原创好文，瓜分万元现金大奖
+                                                                💰 </span></div><div
+                                                            data-v-17cc1c49
+                                                            class="item"><span
+                                                                data-v-17cc1c49
+                                                                class="icon icon-activity">热门</span>
+                                                            <span
+                                                                data-v-17cc1c49
+                                                                class="title">快速搬家，掘金写作之旅即刻启航！</span></div>
+                                                        <div data-v-17cc1c49
+                                                            class="item"><span
+                                                                data-v-17cc1c49
+                                                                class="icon icon-topic">话题</span>
+                                                            <span
+                                                                data-v-17cc1c49
+                                                                class="title topic-title">1024一起掘金</span></div>
+                                                        <div class="item"
+                                                            data-v-090682e2
+                                                            data-v-17cc1c49></div></div></div></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <script type="text/javascript">
+        $(".search-input").focus(()=>{
+            $("#li_search").addClass("active");
+            $(".search-form").addClass("active");
+            $("#search_icon_x").attr('class',"active search-icon");
+            $("#li_add").addClass("hide");
+        });
+        $(".search-input").focusout(()=>{
+            $("#li_search").removeClass("active");
+            $("#li_add").removeClass("hide");
+            $(".search-form").removeClass("active");
+            $("#search_icon_x").attr('class',"search-icon");
+        });
+        $(".phone-show-menu").click(()=>{
+            $(".phone-hide").addClass("show");
+        });
+        $("body").click((e)=>{
+            let ele = $(".phone-show-menu");
+            if (!ele.is(e.target) && ele.has(e.target).length==0) {
+                $(".phone-hide").removeClass("show");    
+            }
+        });
+        $(()=>{
+            $("#active_title").text($(".phone-hide>.nav-item.active").text());
+        });
+    </script>
+</div>
+                        <main class="container main-container"
+                            style="max-width:1140px;"
+                            data-v-5762947c>
+                            <div class="view column-view"
+                                data-v-5762947c
+                                data-v-125fc212> <div
+                                    class="main-area article-area"
+                                    data-v-5762947c data-v-125fc212>
+                                    <article itemscope="itemscope"
+                                        itemtype="http://schema.org/Article"
+                                        data-entry-id="7022606372126588941"
+                                        data-draft-id="7022605269393735717"
+                                        data-original-type="0"
+                                        class="article"
+                                        data-v-125fc212 data-v-5762947c>
+                                        <h1 class="article-title"
+                                            data-v-125fc212>
+                                            ffmpeg基础
+                                        </h1>
+                                        <div class="author-info-block"
+    data-v-125fc212>
+    <div class="author-info-box"
+        data-v-125fc212>
+        <div class="author-name"
+            data-v-125fc212>
+            <a
+                href="/user/2190663523246765/posts"
+                target="_blank"
+                rel
+                class="username username ellipsis"
+                data-v-1800aadb
+                data-v-125fc212>
+                <span class="name"
+                    style="max-width:160px;"
+                    data-v-1800aadb>
+                    前端
+                </span>
+
+            </a>
+        </div>
+        <div class="meta-box"
+            data-v-125fc212>
+            <time
+                class="time"
+                data-v-125fc212>
+                2022-12-15 21:14:27
+            </time>
+            <svg width="16" height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="read-icon"
+                data-v-125fc212>
+                <path
+                    d="M7.90078 2.80078C4.49278 2.80078 1.74745 6.11672 0.800781 7.77469C1.74745 9.58339 4.49278 13.2008 7.90078 13.2008C11.3088 13.2008 14.0541 9.58339 15.0008 7.77469C14.0541 6.11672 11.3088 2.80078 7.90078 2.80078Z"
+                    stroke="currentColor"
+                    data-v-125fc212>
+                </path>
+                <circle cx="7.89922"
+                    cy="8.00078" r="2.2"
+                    stroke="currentColor"
+                    data-v-125fc212>
+                </circle>
+            </svg>
+            
+            <script async
+                src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_value_page_pv" class="views-count"
+                data-v-125fc212>
+                0
+            </span>
+            
+        </div>
+    </div>
+    <div style="flex:1;" data-v-125fc212>
+    </div>
+</div>
+                                        <div id="article-root"
+                                            itemprop="articleBody"
+                                            class="article-viewer markdown-body cache result"
+                                            data-v-125fc212>
+                                            <h3 id="安装 mac">安装 Mac</h3><pre><code>$ brew install ffmpeg
+</code></pre><h3 id="各种常用参数">各种常用参数</h3><blockquote>
+<p>参考链接: <a href='http://blog.csdn.net/leixiaohua1020/article/details/12751349' title='' target='_blank'>ffmpeg各种参数</a></p>
+</blockquote>
+<h4 id="通用选项">通用选项</h4><ul>
+<li>-h 帮助</li><li>-fromats 显示可用的格式，编解码的，协议的...</li><li>-f fmt 强迫采用格式fmt</li><li>-I filename 输入文件</li><li>-y 覆盖输出文件</li><li>-t duration 设置纪录时间 hh:mm:ss[.xxx]格式的记录时间也支持</li><li>-ss position 搜索到指定的时间 [-]hh:mm:ss[.xxx]的格式也支持</li><li>-title string 设置标题</li><li>-author string 设置作者</li><li>-copyright string 设置版权</li><li>-comment string 设置评论</li><li>-target type 设置目标文件类型(vcd,svcd,dvd) 所有的格式选项（比特率，编解码以及缓冲区大小）自动设置，只需要输入如下的就可以了：ffmpeg -i myfile.avi -target vcd /tmp/vcd.mpg</li><li>-hq 激活高质量设置</li><li>-itsoffset offset 设置以秒为基准的时间偏移，该选项影响所有后面的输入文件。该偏移被加到输入文件的时戳，定义一个正偏移意味着相应的流被延迟了 offset秒。 [-]hh:mm:ss[.xxx]的格式也支持</li></ul>
+<h4 id="视频选项">视频选项</h4><ul>
+<li>-b bitrate 设置比特率，缺省200kb/s</li><li>-r fps 设置帧频 缺省25</li><li>-s size 设置帧大小 格式为WXH 缺省160X128</li><li>-aspect aspect 设置横纵比 4:3 16:9 或 1.3333 1.7777</li><li>~-croptop size 设置顶部切除带大小 像素单位~ cropxxx 已经废弃</li><li>~-cropbottom size~</li><li>~–cropleft size~</li><li>~–cropright size~</li><li>-vf (videofilter)</li><li>-vf crop (crop=ow[:oh[:x[:y[:keep_aspect]]]])</li><li>crop 参数说明 iw 输入的宽度  ih 输入的高度  ow 输出(裁剪)宽度，默认值= iw  oh 输出(裁剪)高度，默认值= ih a 纵横比，与iw/ih相同</li><li>-vf drawtext=fontfile=arial.ttf:fontsize=16:fontcolor=white:shadowcolor=black:shadowx=6:shadowy=6:text=&quot;hello&quot;:x=(w-tw)/2:y=(h-th)/2:box=1:boxcolor=0x00000088</li><li>drawtext 参数说明 fontcolor(RGBA格式颜色) tw是文本的宽度 th是文本的高度 w是帧的宽度 h是帧的高度. 如果报No such filter: &#39;drawtext&#39;。说明编译选项是该filter并未被编译进库里面，所以重新再编译ffmpeg，并且在执行&quot;./configure ......&quot;时加上“--enable-libfreetype”</li><li>-padtop size 设置顶部补齐的大小 像素单位</li><li>-padbottom size</li><li>–padleft size</li><li>–padright size</li><li>–padcolor color 设置补齐条颜色(比如 000000代表黑色)</li><li>-vcodec codec 强制使用codec编解码方式。如果用copy表示原始编解码数据必须被拷贝</li><li>-g 关键帧间隔控制</li><li>-bf B帧数目控制</li><li>-vn 不做视频记录<h4 id="音频选项">音频选项</h4></li><li>-ab bitrate 设置音频码率</li><li>-ar freq 设置音频采样率</li><li>-ac channels 设置通道 缺省为1</li><li>-acodec codec 使用codec编解码</li><li>-an 不使能音频纪录</li></ul>
+<h4 id="示例代码">示例代码</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\1-1.mp4 -s 300X300 -t 3 -ss 5 -r 26 D:\work\video\ffmpeg\1-300x300.mp4
+</code></pre><h4 id="设置关键帧间隔">设置关键帧间隔</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\1-1.mp4 -s 300X300 -t 3 -ss 5 -r 26 -g 1 -keyint_min 6 D:\work\video\ffmpeg\1-300x300-keyframe.mp4
+</code></pre><h4 id="获取第一帧">获取第一帧</h4><pre><code>$ ffmpeg -i input.wmv -vframes 1 input.jpg
+</code></pre><h4 id="获取第3s的帧">获取第3s的帧</h4><pre><code>ffmpeg -i o.mp4 -ss 3 -vframes 1 3.jpg
+</code></pre><h4 id="提取关键帧">提取关键帧</h4><pre><code>ffmpeg -i D:\work\video\ffmpeg\1-300x300.mp4 -vf select=&#39;eq(pict_type\,I)&#39; -vsync 2 -s 300X300 -f image2 1-300x300-thumb-%02d.jpeg
+</code></pre><h4 id="添加水印、文字">添加水印、文字</h4><pre><code>$ ffmpeg -i changzheng.mp4 -i logo.png -filter_complex &quot;overlay=10:10&quot; -y water.mp4
+# main_h – 传入的视频的高度
+# main_w – 传入的视频的宽度
+# overlay_h – 传入的覆盖水印的高度
+# overlay_w – 传入的覆盖水印的宽度
+# 在视频中间位置放置水印
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;overlay=x=(main_w-overlay_w)/2:(main_h-overlay_h)/2&quot; -y water.mp4
+# pad filter 额外添加视频区域
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;pad=height=ih+40:color=#000000,overlay=x=(main_w-overlay_w)/2:y=(main_h-overlay_h)/2&quot; -t 10 -y water.mp4
+# 自左向右跑马灯
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;&#39;if(gte(t,1), -w+(t-1)*200, NAN)&#39;:(main_h-overlay_h)/2&quot; -t 10 -y water.mp4
+# 水印大小缩小(原来 488x210)
+$ ffmpeg -i cz.mp4 -i logo.png -filter_complex &quot;[1:v]scale=232:100[s];[0:v][s]overlay=x=(main_w-overlay_w)/2:y=(main_h-overlay_h)/2&quot; -t 10 -y water.mp4
+
+ffmpeg -i ALARM2.mp4 -i watermark.png -filter_complex &quot;overlay=x=&#39;if(gte(t,22),1164,NAN)&#39;:y=&#39;if(gte(t,22),20,NAN)&#39;&quot; ALARM2-1.mp4 -y
+</code></pre><h3 id="添加水印高级篇">添加水印高级篇</h3><pre><code>$ ffmpeg -i cz.mp4 -i logo1.png -i logo2.png -filter_complex &quot;[1:v]scale=116:50[logo1];[2:v]scale=122:53[logo2];[0:v][logo1]overlay=x=main_w-overlay_w-20:y=20[step1];[step1][logo2]overlay=&#39;if(gte(t,3),-w+(t-3)*100,NAN)&#39;:(main_h-overlay_h)/2&quot; -y -t 20 water.mp4
+</code></pre><h4 id="指令解析">指令解析</h4><p>以上指令展示结果为：视频右上角有一个常驻的Logo1;第三秒开始Logo2从视频左边水平平移到视频右边(垂直居中)。主要几点：</p>
+<ul>
+<li>复合滤镜 filter_complex</li><li><code>[x:v]</code> x代表当前操作对象编号,v表示操作对象里的视频信息,本例中[0:v]代表的是第一层输入流cz.mp4,同理[1:v]代表logo1.png,[2:v]代表logo2.png</li><li><code>[1:v]scale=116:50[logo1]</code> 的意思是指将logo1.png拉伸至116*20,并将当前操作起个别名[logo1];同理<code>[2:v]scale=122:53[logo2]</code>缩放logo2.png</li><li><code>[0:v][logo1]overlay=x=main_w-overlay_w-20:y=20[step1]</code> 的意思是将[logo1]的操作覆叠到 <code>[0:v]</code> 视频上,一般由后者覆盖前者</li><li><code>overlay</code> 为覆叠滤镜，一般参数为 <code>overlay=x=10:y=10;</code></li><li>表达式 <code>if(gte(t,3),-w+(t-3)*100,NAN)</code>, <code>gte</code> 表示大于或等于,同理 <code>lte</code> 表示小于或等于,条件表达式的一般结构 <code>if(条件,条件为true时的值,条件为false时的值)</code></li><li>变量 <code>if(gte(t,3),-w+(t-3)*100,NAN)</code> <strong>t</strong> 表示当前时间点,单位为秒</li><li>常用复合滤镜 crop(裁切),flip(翻转),overlay(覆叠),scale(缩放),transpose(旋转),pad(加黑边)</li></ul>
+<h4 id="抽取音频命令">抽取音频命令</h4><pre><code>ffmpeg -i 3.mp4 -vn -y -acodec copy 3.aac
+ffmpeg -i 3.mp4 -vn -y -acodec copy 3.m4a
+</code></pre><h4 id="裁切视频">裁切视频</h4><pre><code># 按2.35:1 裁切视频(原视频 853:480)
+ffmpeg -i changzheng.mp4 -vf crop=iw:iw/2.35:0:72 -y cz.mp4        
+</code></pre><h3 id="ffplay 播放测试视频源">ffplay 播放测试视频源</h3><pre><code>ffplay -f lavfi -i testsrc
+</code></pre><h4 id="提取视频">提取视频</h4><p>ffmpeg -i input.mkv -vcodec copy –an  output.mp4</p>
+<h4 id="音视频合成命令">音视频合成命令</h4><p>ffmpeg -i video.avi -i audio.mp3 -vcodec copy -acodec copy output.avi</p>
+<h4 id="视频旋转90 方案一">视频旋转90 方案一</h4><p>ffmpeg -i input.mp4 -metadata:s:v:0 rotate=&quot;90&quot; -codec copy output.mp4</p>
+<h4 id="旋转视频">旋转视频</h4><pre><code>顺时针旋转画面90度
+ffmpeg -i test.mp4 -vf &quot;transpose=1&quot; out.mp4
+逆时针旋转画面90度
+ffmpeg -i test.mp4 -vf &quot;transpose=2&quot; out.mp4
+顺时针旋转画面90度再水平翻转
+ffmpeg -i test.mp4 -vf &quot;transpose=3&quot; out.mp4
+逆时针旋转画面90度水平翻转
+ffmpeg -i test.mp4 -vf &quot;transpose=0&quot; out.mp4
+水平翻转视频画面
+ffmpeg -i test.mp4 -vf hflip out.mp4
+垂直翻转视频画面
+ffmpeg -i test.mp4 -vf vflip out.mp4
+</code></pre><h4 id="压缩视频">压缩视频</h4><pre><code># 方式一
+ffmpeg -i mum.mov -vcodec libx264 -vf &quot;scale=trunc(iw/2)*2:trunc(ih/2)*2&quot; -r 30  mum.mp4
+# 方式二
+ffmpeg -i 寂静之声.mov -vcodec libx264 -s 1268X540  -r 30 jijing.mp4
+</code></pre><h4 id="截取音乐片段">截取音乐片段</h4><pre><code>ffmpeg -i Sound\ Of\ Silence.mp3 -ss 00:00:07.500 -t 20 bg.mp3
+</code></pre><h4 id="查看ffmpeg支持格式">查看ffmpeg支持格式</h4><pre><code>ffmpeg -formats
+</code></pre><h4 id="mp4转gif">MP4转gif</h4><pre><code>ffmpeg -i device-2018-10-10-160142.mp4  -r 3 3.gif
+</code></pre><h4 id="mac终端for循环">Mac终端for循环</h4><pre><code> for a in {0..76}; do (echo $a) done;
+</code></pre><h4 id="mac终端批量旋转图片 强大的 <strong>sips</strong> 指令">Mac终端批量旋转图片 强大的 <strong>sips</strong> 指令</h4><pre><code>sips -r 90 *.png
+</code></pre><h4 id="ffmpeg 读取pcm 信息">ffmpeg 读取PCM 信息</h4><pre><code>ffmpeg -f s16be -ar 44100 -ac 2 -acodec pcm_s16be -i 1540403885057.pcm
+</code></pre><h4 id="mac自带lame终端  pcm 转 mp3">Mac自带Lame终端  PCM 转 MP3</h4><pre><code>lame -r -s 44.1 -m m -a 1540403885057.pcm xxx.mp3
+//如果没有安装 lame  执行以下指令
+brew install
+</code></pre><h4 id="mp3转pcm">mp3转pcm</h4><pre><code>ffmpeg -y -i test.mp3 -acodec pcm_s16le -f s16le -ac 2 -ar 16000 16k.pcm
+</code></pre><h4 id="pcm转mp3">pcm转mp3</h4><pre><code>ffmpeg -y -f s16be -ac 2 -ar 16000 -acodec pcm_s16le -i 16k.pcm new_mp3.mp3
+</code></pre><h4 id="播放pcm">播放PCM</h4><pre><code>ffplay -i audio_original.pcm  -f s16be -ac 1 -ar 44100 -acodec pcm_s16le
+</code></pre><h4 id="参数说明">参数说明</h4><div class='table-responsive'><table><thead><tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead><tr>
+<td style="text-align:center">-y</td>
+<td style="text-align:center">允许覆盖</td>
+</tr>
+<tr>
+<td style="text-align:center">-f s16le</td>
+<td style="text-align:center">强制文件格式</td>
+</tr>
+<tr>
+<td style="text-align:center">-ac 2</td>
+<td style="text-align:center">双声道</td>
+</tr>
+<tr>
+<td style="text-align:center">-ar 16000</td>
+<td style="text-align:center">采样率</td>
+</tr>
+<tr>
+<td style="text-align:center">-acodec pcm_s16le</td>
+<td style="text-align:center">编码器</td>
+</tr>
+</table></div><h4 id="获取音视频时长">获取音视频时长</h4><pre><code>ffmpeg -i ~/Movies/a.3gp  2&gt;&amp;1 | grep &#39;Duration&#39; | cut -d &#39; &#39; -f 4 | sed s/,//
+</code></pre><h4 id="调节视频音量">调节视频音量</h4><pre><code>ffmpeg -i input.mp4  -af &#39;volume=0.01&#39; -y  output.mp4
+</code></pre><h4 id="调节音量">调节音量</h4><pre><code>ffmpeg -i&lt;input&gt; -vol X &lt;output&gt;
+</code></pre><h4 id="查看支持的编码格式">查看支持的编码格式</h4><pre><code>ffmpeg -codecs
+</code></pre><h4 id="查看输出文件格式">查看输出文件格式</h4><pre><code>ffmpeg -formats
+</code></pre><h4 id="多线程">多线程</h4><pre><code>ffmpeg -threads n
+</code></pre><h4 id="crf 压缩视频">crf 压缩视频</h4><pre><code>ffmpeg -i MVI_7274.MOV -vcodec libx264 -preset fast -crf 20 -y -vf &quot;scale=1920:-1&quot; -acodec libmp3lame -ab 128k a.mp4
+
+-preset：指定编码的配置。x264编码算法有很多可供配置的参数，不同的参数值会导致编码的速度大相径庭，甚至可能影响质量。为了免去用户了解算法，然后手工配置参数的麻烦。x264提供了一些预设值，而这些预设值可以通过preset指定。这些预设值有包括：ultrafast，superfast，veryfast，faster，fast，medium，slow，slower，veryslow和placebo。ultrafast编码速度最快，但压缩率低，生成的文件更大，placebo则正好相反。x264所取的默认值为medium。需要说明的是，preset主要是影响编码的速度，并不会很大的影响编码出来的结果的质量。压缩高清电影时，我一般用slow或者slower，当你的机器性能很好时也可以使用veryslow，不过一般并不会带来很大的好处。
+
+-crf：这是最重要的一个选项，用于指定输出视频的质量，取值范围是0-51，默认值为23，数字越小输出视频的质量越高。这个选项会直接影响到输出视频的码率。一般来说，压制480p我会用20左右，压制720p我会用16-18，1080p我没尝试过。个人觉得，一般情况下没有必要低于16。最好的办法是大家可以多尝试几个值，每个都压几分钟，看看最后的输出质量和文件大小，自己再按需选择。
+
+其实还有-b 1024k这样的参数，但是我发现-crf设置上后-b就不管用了。根据我自己的简单尝试，压制5D2拍摄的一段18秒1920x1080的视频（下午自然光、图像简单、大面积白墙、只有一扇黑门）crf和压出来的文件大小关系如下：
+
+</code></pre><h4 id="播放时视频色彩不断变换：">播放时视频色彩不断变换：</h4><pre><code>ffplay -i D:\work\yyy2642.mp4 -vf hue=&quot;H=2*PI*t:s=sin(2*PI*t)+1&quot;
+</code></pre><h4 id="视频转码为原来的播放速度的两倍：">视频转码为原来的播放速度的两倍：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4 -vf setpts=PTS/2 -af atempo=2 D:\work\outputfile.mp4
+</code></pre><h4 id="视频锐化处理，一定程度可以让视频变清晰：">视频锐化处理，一定程度可以让视频变清晰：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4  -vf unsharp=5:5:1.0:5:5:0.0 D:\work\outputfile.mp4
+</code></pre><h4 id="视频模糊处理（注意参数），可以让视频变模糊：">视频模糊处理（注意参数），可以让视频变模糊：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4  -vf  boxblur=1:10:4:10  D:\work\outputfile.mp4
+</code></pre><h4 id="彩色视频转变为黑白视频：">彩色视频转变为黑白视频：</h4><pre><code>ffmpeg -i D:\work\yyy2642.mp4 -vf lutyuv=&quot;u=128:v=128&quot; D:\work\outputfile.mp4
+</code></pre><h4 id="把音频的左右声道分别保存为两个文件：">把音频的左右声道分别保存为两个文件：</h4><pre><code>ffmpeg -i d:\work\yyy.mp3 -map_channel 0.0.0 d:\work\ch1.mp3 -map_channel 0.0.1 d:\work\ch2.mp3
+</code></pre><h4 id="知道了视频流地址如何保存出本地文件">知道了视频流地址如何保存出本地文件</h4><pre><code>ffmpeg -i rtmp://122.202.129.136:1935/live/ch4 -map 0 d:\work\yyy.mp4
+</code></pre><h4 id="知道了流地址，播放视频文件">知道了流地址，播放视频文件</h4><pre><code>ffplay -rtsp_transport tcp rtsp://192.168.201.133:554/stream1.sdp
+</code></pre><h3 id="ffmpeg 缩放图片">ffmpeg 缩放图片</h3><p><a href='https://blog.csdn.net/leixiaohua1020/article/details/84483277' title='' target='_blank'>sws_flags缩放算法对比</a></p>
+<pre><code># 以下两种缩放算法比较理想
+$ ffmpeg -i 708721762.png -s 176x44 -sws_flags bilinear  -y 0.3.png
+$ ffmpeg -i 708721762.png -s 176x44 -sws_flags gauss  -y 0.3.png
+</code></pre><h3 id="打印 packet 信息">打印 packet 信息</h3><pre><code>$ ffprobe -i in.mp4 -show_packets
+</code></pre>
+                                        </div>
+                                    </article>
+                                    <div class="article-end"
+                                        data-v-5762947c data-v-125fc212>
+                                        
+                                    </div>
+                                    <div
+    data-v-738d100d
+    data-v-125fc212
+    data-jj-helper="comment-container"
+    class="post-comment" data-v-5762947c>
+    <link rel="stylesheet" href="../css/gitalk.css">
+    
+    <div class="message-card add-top" id="comment-card">
+	<div class="gitalk_container">
+		<div id="gitalk-container"></div>
+		<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css"
+			async>
+		<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js" async></script>
+		<script type="text/javascript">
+			let initGitalk = ()=> {
+				if (typeof(Gitalk) == 'undefined') {
+                    setTimeout(initGitalk, 20);
+                    return;
+                } 
+				let gitalk = new Gitalk({
+				clientID: "7e48ff7dd55f15c9f051",
+				clientSecret: "a5a35f0a17ee770eabd97358255ec6839486a7dd",
+				repo: "gitalk.echo.engineer",
+				owner: "Pluckypan",
+				admin: "Pluckypan",
+				distractionFreeMode: "true",
+				labels: ['post']
+			});
+				gitalk.render('gitalk-container');
+			}
+			$(()=>{
+				initGitalk();
+			})
+		</script>
+	</div>
+</div>
+    
+</div>
+                                </div>
+                                <div id="sidebar-container"
+                                    class="sidebar article-sidebar"
+                                    data-v-5a150454 data-v-125fc212
+                                    data-v-5762947c>
+                                    <div
+    data-v-7e7e812a
+    data-v-05741537
+    data-v-5a150454
+    class="sidebar-block wechat-sidebar-block pure wechat-ad">
+    <div data-v-05741537 data-v-7e7e812a class="ad-container">
+        <div data-v-05741537 data-v-7e7e812a class="text-container">
+            <div data-v-05741537 data-v-7e7e812a class="text-description">
+                找对属于你的技术圈子
+            </div>
+
+            <div data-v-05741537 data-v-7e7e812a class="text-reply">
+                回复「进群」加入官方微信群
+            </div>
+        </div>
+        <img
+            data-v-05741537
+            data-v-7e7e812a
+            src="../assets/qrcode.png"
+            loading="lazy"
+            class="qr-code" />
+    </div>
+</div>
+
+                                    <div class data-v-5a150454 id="jj_post_nav">
+    <nav
+        class="article-catalog catalog-block"
+        data-v-6239701c
+        data-v-16ed86c3
+        data-v-5a150454>
+        <div class="catalog-title" data-v-6239701c>
+            <div data-v-6239701c>目录</div>
+            <div class="direction" data-v-6239701c>
+                <div class="word" data-v-6239701c>收起</div>
+                <svg
+                    id="icon_expand_toogle"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon-rotate"
+                    data-v-6239701c>
+                    <g
+                        id="&amp;#229;&amp;#177;&amp;#149;&amp;#229;&amp;#188;&amp;#128;"
+                        data-v-6239701c>
+                        <path
+                            id="&amp;#232;&amp;#183;&amp;#175;&amp;#229;&amp;#190;&amp;#132;"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M5.99854 7.93206L10.0644 3.86619C10.162 3.76856 10.3203 3.76856 10.418 3.86619L10.7715 4.21975C10.8691 4.31738 10.8691 4.47567 10.7715 4.5733L6.35209 8.99272C6.15683 9.18798 5.84025 9.18798 5.64498 8.99272L1.22557 4.5733C1.12794 4.47567 1.12794 4.31738 1.22557 4.21975L1.57912 3.86619C1.67675 3.76856 1.83504 3.76856 1.93267 3.86619L5.99854 7.93206Z"
+                            fill="#8A919F"
+                            data-v-6239701c></path>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div class="catalog-body unfold" data-v-6239701c>
+            <ul class="catalog-list" style="margin-top: 0px" data-v-6239701c>
+                
+                
+                
+            </ul>
+        </div>
+    </nav>
+
+    <script type="text/javascript">
+        $(".catalog-aTag").click(function(){
+            let id = $(this).attr("target_id");
+            $('html, body').animate({
+                scrollTop: ($(id).offset().top-80)
+            }, 798);
+        });
+        $(".direction").click(function(){
+            $(".catalog-title").removeClass("collapse");
+            $("#icon_expand_toogle").attr('class', "");
+            if ($(".catalog-body").hasClass("fold")) {
+                $(".catalog-body").removeClass("fold");
+                $(".catalog-body").addClass("unfold");
+                $(".direction>.word").text("收起");
+                $("#icon_expand_toogle").attr('class', "icon-rotate");
+            }else{
+                $(".catalog-body").removeClass("unfold");
+                $(".catalog-body").addClass("fold");
+                $(".catalog-title").addClass("collapse");
+                $(".direction>.word").text("展开");
+            }
+        });
+        $(()=>{
+            let tocArray = "";
+            let fixedTop = $("#jj_post_nav").offset().top;
+            let stickyNav = ()=> {
+                let scrollTop = $(window).scrollTop();
+                // console.log(`scrollTop=${scrollTop} fixedTop=${fixedTop}`);
+                if (scrollTop>fixedTop) {
+                    $("#jj_post_nav").addClass("jj_sticky");
+                } else {
+                    $("#jj_post_nav").removeClass("jj_sticky");
+                }
+            };
+            stickyNav();
+            $(window).scroll(()=>{
+                stickyNav();
+            });
+            $("#jj_post_nav").css("display",tocArray.length==0?"none":"");
+        });
+    </script>
+
+</div>
+
+                                </div>
+                                <div data-v-125fc212
+    class="article-suspended-panel dynamic-data-ready">
+    <svg
+        data-v-45561e54
+        xmlns="http://www.w3.org/2000/svg"
+        class
+        style="display: none;">
+        <symbol
+            data-v-45561e54
+            id="icon-comment"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M4.62739 1.25C2.9347 1.25 1.5625 2.6222 1.5625 4.31489L1.56396 12.643C1.56403 14.3356 2.9362 15.7078 4.62885 15.7078H6.48326L6.93691 17.6869L6.93884 17.6948C7.16894 18.6441 8.28598 19.0599 9.08073 18.4921L12.7965 15.7078H15.5001C17.1928 15.7078 18.565 14.3355 18.565 12.6428L18.5635 4.31477C18.5635 2.62213 17.1913 1.25 15.4986 1.25H4.62739ZM5.98265 9.89255C6.68783 9.89255 7.2595 9.32089 7.2595 8.61571C7.2595 7.91053 6.68783 7.33887 5.98265 7.33887C5.27747 7.33887 4.70581 7.91053 4.70581 8.61571C4.70581 9.32089 5.27747 9.89255 5.98265 9.89255ZM9.95604 9.89255C10.6612 9.89255 11.2329 9.32089 11.2329 8.61571C11.2329 7.91053 10.6612 7.33887 9.95604 7.33887C9.25086 7.33887 8.6792 7.91053 8.6792 8.61571C8.6792 9.32089 9.25086 9.89255 9.95604 9.89255ZM15.2124 8.61571C15.2124 9.32089 14.6407 9.89255 13.9355 9.89255C13.2304 9.89255 12.6587 9.32089 12.6587 8.61571C12.6587 7.91053 13.2304 7.33887 13.9355 7.33887C14.6407 7.33887 15.2124 7.91053 15.2124 8.61571Z"></path>
+        </symbol>
+        <symbol
+            data-v-45561e54 id="icon-zan"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10.4167 6.40399C5.35406 6.40399 1.25 10.5675 1.25 15.7035C1.25 16.0225 1.28448 16.4512 1.35344 16.9898C1.36807 17.1039 1.47243 17.1846 1.58655 17.17C1.6483 17.1621 1.70328 17.127 1.73643 17.0743L1.86865 16.8676C1.99553 16.6731 2.10644 16.5147 2.20137 16.3925C3.69554 14.4692 6.13777 13.3823 9.35515 13.3378L10.4167 13.3364V17.0757C10.4167 17.3101 10.6086 17.5 10.8453 17.5C10.959 17.5 11.068 17.4553 11.1483 17.3757L18.145 10.45C18.3961 10.2015 18.3961 9.79853 18.145 9.55L11.1483 2.62426C10.981 2.45858 10.7096 2.45858 10.5422 2.62426C10.4618 2.70383 10.4167 2.81174 10.4167 2.92426V6.40399Z"></path>
+        </symbol>
+        <symbol
+            data-v-45561e54
+            id="icon-immerse"
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M535.466667 241.066667c-12.8-8.533333-27.733333-8.533333-40.533334 0L183.466667 488.533333c-6.4 6.4-12.8 14.933333-12.8 23.466667 0 2.133333 0 6.4 2.133333 8.533333 2.133333 12.8 14.933333 21.333333 27.733333 21.333334h155.733334v322.133333c0 19.2 12.8 29.866667 32 29.866667h249.6c21.333333 0 34.133333-12.8 34.133333-29.866667v-320h151.466667c12.8 0 25.6-8.533333 27.733333-21.333333s0-25.6-8.533333-34.133334L535.466667 241.066667zM864 96h-704C142.933333 96 128 110.933333 128 128s14.933333 32 32 32h704c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"></path>
+        </symbol>
+    </svg>
+    <div data-v-45561e54 badge="222"
+        class="panel-btn with-badge-x">
+        <svg
+            data-v-6e70c50a
+            data-v-45561e54
+            class="sprite-icon icon-zan">
+            <use
+                data-v-6e70c50a
+                xlink:href="#icon-zan">
+            </use>
+        </svg>
+    </div>
+    <div data-v-45561e54 badge="109"
+        class="panel-btn with-badge-x" id="toolbar_btn_comment">
+        <svg
+            data-v-6e70c50a data-v-45561e54
+            class="sprite-icon icon-comment">
+            <use
+                data-v-6e70c50a
+                xlink:href="#icon-comment">
+            </use>
+        </svg>
+    </div>
+    <div data-v-45561e54 class="panel-btn" id="toolbar_btn_top">
+        <svg
+            data-v-6e70c50a
+            data-v-45561e54
+            class="sprite-icon icon-report">
+            <use
+                data-v-6e70c50a
+                xlink:href="#icon-immerse">
+            </use>
+        </svg>
+    </div>
+    <script type="text/javascript">
+        $("#toolbar_btn_comment").click(()=>{
+            $('html, body').animate({
+                scrollTop: ($('#comment-card').offset().top - 120)
+            }, 798);
+        });
+        $("#toolbar_btn_top").click(()=>{
+            $('html, body').animate({
+                scrollTop: 0
+            }, 798);
+        });
+    </script>
+</div>
+                            </div>
+                        </main>
+                    </div>
+                    <div class="global-component-box">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

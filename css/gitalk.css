@@ -1,0 +1,100 @@
+/* gitalk */
+.gitalk_container {
+	margin: 0 auto;
+	padding-bottom: 60px;
+	max-width: 85%;
+	color: #111 !important;
+	font-family: "PingFang SC", Helvetica, "Microsoft YaHei", Arial, sans-serif;
+}
+
+@media only screen and (max-width: 720px) {
+	.gitalk_container {
+		width: 90%;
+	}
+}
+
+.gt-container .gt-user {
+	color: #111 !important;
+}
+
+.gt-container a {
+	color: #111 !important;
+}
+
+.gt-container a.is--active {
+	color: #111 !important;
+}
+
+.gt-container .gt-popup .gt-action.is--active:before {
+	top: 0.55em !important;
+	background: #111 !important;
+}
+
+.gt-container .gt-svg svg {
+	fill: #111 !important;
+	margin-bottom: 1px;
+}
+
+.gt-container .gt-counts {
+	color: #111 !important;
+}
+
+.gt-container .gt-header-textarea {
+	font-size: 1.55rem !important;
+	letter-spacing: 0.2rem !important;
+}
+
+.gt-container .gt-comments {
+	color: #333 !important;
+	padding-top: 5rem !important;
+}
+
+.gt-container .gt-link {
+	border-bottom: 0px solid #111 !important;
+	color: #111;
+}
+
+.gt-container .gt-btn {
+	border: 0px solid #f2f2f2 !important;
+	padding: 0px 10px 0px 10px !important;
+	border-radius: 0px !important;
+	background-color: #111 !important;
+	min-width: 100px;
+	height: 3.2rem;
+	font-size: 1.2rem !important;
+	line-height: 2.4rem !important;
+	color: #FFF !important;
+}
+
+.gt-container .gt-btn-loading {
+	margin-top: 14px !important;
+}
+
+.gt-container .gt-comment-admin .gt-comment-content {
+	background-color: #f4f4f4 !important;
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+
+.gt-container .gt-no-init p {
+	margin-bottom: 2rem !important;
+	color: #666 !important;
+}
+
+.gt-container .gt-header-controls-tip {
+	display: none;
+}
+
+.gt-container blockquote p {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 16px;
+	margin-top: 0;
+	box-sizing: border-box;
+	padding: 0px;
+	color: #6a737d;
+}
+
+.gt-container blockquote:before {
+	display: none;
+}
