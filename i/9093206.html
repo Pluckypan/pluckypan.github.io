@@ -18,18 +18,16 @@
     <script src="../js/dt.js"></script>
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/jquery.svg.js"></script>
+    <script src="../js/purl.min.js"></script>
+    <script src="../js/jquery.ext.js"></script>
     <script type="text/javascript"
-    src="../js/nodetpl.client.min.js"></script>
-    <link rel="stylesheet"
-        href="../css/bytedesign.min.css">
-    <link rel="stylesheet"
-        href="../css/app.css">
-    <link rel="stylesheet"
-        href="../css/default.css">
-    <link rel="stylesheet"
-        href="../css/jj.css">
+        src="../js/nodetpl.client.min.js"></script>
+    <link rel="stylesheet" href="../css/bytedesign.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/jj.css">
     
-    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4347461_mewt2x1zc88.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4347461_hjvtrhvder6.css">
     
     <style>
             .footer-tag.width-limited{
@@ -305,6 +303,20 @@
                                 </li>
                             </ul>
                         </li>
+                        
+                        
+                        
+                        <li class="nav-item auth" data-v-0bba9d46>
+                            <div class="login-button-wrap"
+                                data-v-0bba9d46>
+                                <button id="btn_theme_switch"
+                                    class="login-button" data-v-0bba9d46>
+                                    <span id="icon_theme_switch"
+                                        class="jin icon-theme-light"></span>
+                                </button>
+                            </div>
+                        </li>
+                        
                     </ul>
                 </ul>
             </nav>
@@ -332,6 +344,25 @@
                 $(".phone-hide").removeClass("show");    
             }
         });
+        let t = localStorage.getItem("jj-data-theme");
+        $("body").attr("data-theme",t);
+        let family = config?.iconfont?.family;
+        let theme = config?.jin?.theme;
+        if (family && theme) {
+            $("#icon_theme_switch").attr("class",`${family} ${theme[t].icon}`);
+            $("#btn_theme_switch").click(function(){
+                let t = $("body").attr("data-theme");
+                if (t=="dark") {
+                    localStorage.setItem("jj-data-theme","light");
+                    $("body").attr("data-theme","light");
+                    $("#icon_theme_switch").attr("class",`${family} ${theme["light"].icon}`);
+                }else{
+                    $("body").attr("data-theme","dark");
+                    localStorage.setItem("jj-data-theme","dark");
+                    $("#icon_theme_switch").attr("class",`${family} ${theme["dark"].icon}`);
+                }
+            });            
+        }
         $(()=>{
             $("#active_title").text($(".phone-hide>.nav-item.active").text());
         });
@@ -402,9 +433,7 @@
                 </circle>
             </svg>
             
-            <script async
-                src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_value_page_pv" class="views-count"
+            <span class="views-count"
                 data-v-125fc212>
                 0
             </span>
