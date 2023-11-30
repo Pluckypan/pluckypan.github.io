@@ -16,28 +16,35 @@
     <link rel="icon" href="../assets/favicon.ico"
         type="image/x-icon">
     <script src="../js/dt.js"></script>
-    <script src="../js/jquery-2.1.3.min.js"></script>
-    <script src="../js/jquery.svg.js"></script>
     <link rel="stylesheet"
-        href="../css/bytedesign.min.css">
+        href="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/static/bytedesign.min.css">
     <link rel="stylesheet"
-        href="../css/app.css">
+        href="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/app.50eb57e.css">
     <link rel="stylesheet"
-        href="../css/default.css">
+        href="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/layouts/default.846c2b6.css">
     <link rel="stylesheet"
-        href="../css/jj.css">
-    
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1427835_zgyohh6l1si.css">
-    
+        href="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/9.c9a765e.css">
     <style>
-            .footer-tag.width-limited{
-                max-width: 120px !important;
-            }
+            /* gitalk */
+.gitalk_container {
+	margin: 0 auto;
+	padding-bottom: 60px;
+	max-width: 85%;
+	color: #111 !important;
+	font-family: "PingFang SC", Helvetica, "Microsoft YaHei", Arial, sans-serif;
+}
+
+@media only screen and (max-width: 720px) {
+	.gitalk_container {
+		width: 90%;
+	}
+}
         </style>
 </head>
     <body>
         <link rel="stylesheet" href="../css/plugins.css">
         <link rel="stylesheet" href="../css/post.css">
+        <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/plugins.js"></script>
         <link
             href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
@@ -56,12 +63,12 @@
         class="main-header main-header visible"
         data-v-0bba9d46 data-v-5762947c>
         <div class="container" data-v-0bba9d46>
-            <a href="../index.html" class="logo" data-v-0bba9d46>
+            <a href="index.html" class="logo" data-v-0bba9d46>
                 <img
-                    src="../assets/logo.svg"
+                    src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg"
                     alt="稀土掘金" class="logo-img" data-v-0bba9d46>
                 <img
-                    src="../assets/logo_mini.svg"
+                    src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/6c61ae65d1c41ae8221a670fa32d05aa.svg"
                     alt="稀土掘金" class="mobile" data-v-0bba9d46>
             </a>
             <!---->
@@ -70,7 +77,7 @@
                     <!---->
                     <li class="main-nav-list" data-v-0bba9d46>
                         <div class="phone-show-menu" data-v-0bba9d46>
-                            <span data-v-0bba9d46 id="active_title">
+                            <span data-v-0bba9d46>
                                 首页
                             </span>
                             <svg width="12" height="12" viewBox="0 0 12 12"
@@ -87,16 +94,14 @@
                             <li
                                 class="nav-item link-item "
                                 data-v-0bba9d46>
-                                <a href="../index.html"
-                                    data-v-0bba9d46>
+                                <a href="index.html" data-v-0bba9d46>
                                     首页
                                 </a>
                             </li>
                             <li
                                 class="nav-item link-item activities "
                                 data-v-0bba9d46>
-                                <a href="../hollow.html"
-                                    data-v-0bba9d46>
+                                <a href="hollow.html" data-v-0bba9d46>
                                     树洞
                                     <span class="text" data-v-0bba9d46>
                                         <!---->
@@ -106,8 +111,7 @@
                             <li
                                 class="nav-item link-item "
                                 data-v-0bba9d46>
-                                <a href="../events.html"
-                                    data-v-0bba9d46>
+                                <a href="events.html" data-v-0bba9d46>
                                     活动
                                 </a>
                             </li>
@@ -115,7 +119,7 @@
                             <nav
                                 class="nav-item link-item download-icon "
                                 data-v-0bba9d46>
-                                <a href="../app.html"
+                                <a href="app.html"
                                     class="download-app no-border"
                                     data-v-0bba9d46>
                                     APP
@@ -125,7 +129,7 @@
                                 class="nav-item link-item extension-icon "
                                 data-v-0bba9d46>
                                 <a
-                                    href="../plugins.html"
+                                    href="plugins.html"
                                     rel="nofollow noopener noreferrer"
                                     class="broswer-extension no-border"
                                     data-v-0bba9d46>
@@ -140,8 +144,7 @@
                     <ul class="right-side-nav" data-v-0bba9d46>
                         <li class="search-add" data-v-0bba9d46>
                             <ul class="search-add-ul" data-v-0bba9d46>
-                                <li class="nav-item search" data-v-0bba9d46
-                                    id="li_search">
+                                <li class="nav-item search" data-v-0bba9d46>
                                     <form role="search" class="search-form"
                                         data-v-0bba9d46>
                                         <input type="search" maxlength="64"
@@ -154,7 +157,6 @@
                                                 viewBox="0 0 18 18" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 class="search-icon"
-                                                id="search_icon_x"
                                                 data-v-0bba9d46
                                                 data-v-0bba9d46>
                                                 <path
@@ -187,7 +189,6 @@
                                     </form>
                                 </li>
                                 <li class="nav-item add creator-item"
-                                    id="li_add"
                                     data-v-0bba9d46>
                                     <div class="add-group" data-v-17cc1c49
                                         data-v-0bba9d46>
@@ -276,7 +277,7 @@
                                                             data-v-17cc1c49
                                                             class="item"><span
                                                                 data-v-17cc1c49
-                                                                class="icon icon-activity">热门</span>
+                                                                class="icon icon-activity">活动</span>
                                                             <span
                                                                 data-v-17cc1c49
                                                                 class="title">写原创好文，瓜分万元现金大奖
@@ -284,7 +285,7 @@
                                                             data-v-17cc1c49
                                                             class="item"><span
                                                                 data-v-17cc1c49
-                                                                class="icon icon-activity">热门</span>
+                                                                class="icon icon-activity">活动</span>
                                                             <span
                                                                 data-v-17cc1c49
                                                                 class="title">快速搬家，掘金写作之旅即刻启航！</span></div>
@@ -299,41 +300,48 @@
                                                             data-v-090682e2
                                                             data-v-17cc1c49></div></div></div></div>
                                         </div>
+                                        <!---->
                                     </div>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item vip-entry" data-v-0bba9d46>
+                            <div class="vip-title" data-v-0bba9d46>
+                                <div class="vip-entry-img" data-v-0bba9d46>
+                                    <img
+                                        src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/24127194d5b158d7eaf8f09a256c5d01.svg"
+                                        alt="vip" class="vip-img"
+                                        data-v-0bba9d46>
+                                    <!---->
+                                </div>
+                                <div class="vip-words" data-v-0bba9d46>
+                                    会员
+                                </div>
+                            </div>
+                        </li>
+                        <!---->
+                        <!---->
+                        <!---->
+                        <li class="nav-item auth" data-v-0bba9d46>
+                            <div class="login-button-wrap" data-v-0bba9d46>
+                                <button class="login-button" data-v-0bba9d46>
+                                    登录
+                                    <div class="login-button-inner"
+                                        data-v-0bba9d46>
+                                        <div class="login-button-line"
+                                            data-v-0bba9d46>
+                                        </div>
+                                        注册
+                                    </div>
+                                </button>
+                                <!---->
+                            </div>
                         </li>
                     </ul>
                 </ul>
             </nav>
         </div>
     </header>
-    <script type="text/javascript">
-        $(".search-input").focus(()=>{
-            $("#li_search").addClass("active");
-            $(".search-form").addClass("active");
-            $("#search_icon_x").attr('class',"active search-icon");
-            $("#li_add").addClass("hide");
-        });
-        $(".search-input").focusout(()=>{
-            $("#li_search").removeClass("active");
-            $("#li_add").removeClass("hide");
-            $(".search-form").removeClass("active");
-            $("#search_icon_x").attr('class',"search-icon");
-        });
-        $(".phone-show-menu").click(()=>{
-            $(".phone-hide").addClass("show");
-        });
-        $("body").click((e)=>{
-            let ele = $(".phone-show-menu");
-            if (!ele.is(e.target) && ele.has(e.target).length==0) {
-                $(".phone-hide").removeClass("show");    
-            }
-        });
-        $(()=>{
-            $("#active_title").text($(".phone-hide>.nav-item.active").text());
-        });
-    </script>
 </div>
                         <main class="container main-container"
                             style="max-width:1140px;"
@@ -380,7 +388,7 @@
             <time
                 class="time"
                 data-v-125fc212>
-                2023-11-26 20:01:00
+                2019-07-18 21:45:00
             </time>
             <svg width="16" height="16"
                 viewBox="0 0 16 16"
@@ -417,21 +425,21 @@
                                             class="article-viewer markdown-body cache result"
                                             data-v-125fc212>
                                             <!-- eedoc {
-    "banner":true,
-    "create_time":"2022-07-18 21:45",
-    "update_time":"2023-11-26 20:01",
+    "banner":false,
+    "create_time":"2019-07-18 21:45",
+    "update_time":"2019-10-07 20:01",
     "category":"样板",
     "cover":"http://img.1991.wiki/tuchongeter/statics/single-gallery-01.jpg",
     "tags":["画廊","示例","表格","自定义参数","引用","封面","代码","视频"]
 } eedoc -->
 <h2 id="每日精选">每日精选</h2><blockquote>
-<p>没有不可治愈的伤痛，没有不能结束的沉沦，所有失去的，会以另一种方式归来。<cite>约翰.肖尔斯《许愿树》</cite></p>
+<p>没有不可治愈的伤痛，没有不能结束的沉沦，所有失去的，会以另一种方式归来。<cite>约翰•肖尔斯《许愿树》</cite></p>
 </blockquote>
 <h2 id="文字">文字</h2><p>时间能检验你对爱情的忠诚；时间能证明你口若旋河的真理；当然你完全可以伴着时间一脚步完成你预谋已久的所谓完美华丽的蜕变；时间的累积让我们从幼稚走向成熟；时间让你想明白真正属于自己的一切诸如生活,思考,处理事情的方式,还有归属爱情；时间会让你思考身边的人值不值得相处；时间会判断对与错；时间能驱赶孤独,因为总有一天它会带来宽容理解和爱；天知道,这些美好的时光悄悄溜走的时候我们却毫无知觉也从来不曾感知它；不要叹息,从现在开始,你只要好好珍惜。时间真是个好东西...</p>
 <p>所有的伟大,都源于一个勇敢的开始!</p>
 <h2 id="本地图片">本地图片</h2><p><img src='../assets/tuchong.png' alt='assets' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
 <h2 id="网络图片">网络图片</h2><p><img src='http://img.1991.wiki/tuchongeter/statics/single-gallery-03.jpg' alt='web' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
-<h2 id="链接">链接</h2><p><a href='https://www.baidu.com' title='' target='_blank'>天空之城</a> 以另一种视角看世界 <strong>我去看世界</strong> <strong>风之谷</strong> <a href='https://www.baidu.com?target=blank' title='' target='blank'>在新页面打开</a></p>
+<h2 id="链接">链接</h2><p><a href='#' title='' target='_blank'>天空之城</a>以另一种视角看世界 <strong>我去看世界</strong> <strong>风之谷</strong> <a href='http://www.baidu.com?target=blank' title='' target='blank'>在新页面打开</a></p>
 <h2 id="列表">列表</h2><div class='table-responsive'><table><thead><tr>
 <th style="text-align:center">Name</th>
 <th style="text-align:right">Age</th>
@@ -654,67 +662,13 @@
     class="post-comment" data-v-5762947c>
     <link rel="stylesheet" href="../css/gitalk.css">
     
-    <div class="message-card add-top" id="comment-card">
-	<div class="gitalk_container">
-		<div id="gitalk-container"></div>
-		<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css"
-			async>
-		<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js" async></script>
-		<script type="text/javascript">
-			let initGitalk = ()=> {
-				if (typeof(Gitalk) == 'undefined') {
-                    setTimeout(initGitalk, 20);
-                    return;
-                } 
-				let gitalk = new Gitalk({
-				clientID: "7e48ff7dd55f15c9f051",
-				clientSecret: "a5a35f0a17ee770eabd97358255ec6839486a7dd",
-				repo: "gitalk.echo.engineer",
-				owner: "Pluckypan",
-				admin: "Pluckypan",
-				distractionFreeMode: "true",
-				labels: ['post']
-			});
-				gitalk.render('gitalk-container');
-			}
-			$(()=>{
-				initGitalk();
-			})
-		</script>
-	</div>
-</div>
-    
 </div>
                                 </div>
                                 <div id="sidebar-container"
                                     class="sidebar article-sidebar"
                                     data-v-5a150454 data-v-125fc212
                                     data-v-5762947c>
-                                    <div
-    data-v-7e7e812a
-    data-v-05741537
-    data-v-5a150454
-    class="sidebar-block wechat-sidebar-block pure wechat-ad">
-    <div data-v-05741537 data-v-7e7e812a class="ad-container">
-        <div data-v-05741537 data-v-7e7e812a class="text-container">
-            <div data-v-05741537 data-v-7e7e812a class="text-description">
-                找对属于你的技术圈子
-            </div>
-
-            <div data-v-05741537 data-v-7e7e812a class="text-reply">
-                回复「进群」加入官方微信群
-            </div>
-        </div>
-        <img
-            data-v-05741537
-            data-v-7e7e812a
-            src="../assets/qrcode.png"
-            loading="lazy"
-            class="qr-code" />
-    </div>
-</div>
-
-                                    <div class data-v-5a150454 id="jj_post_nav">
+                                    <div class data-v-5a150454>
     <nav
         class="article-catalog catalog-block"
         data-v-6239701c
@@ -725,7 +679,6 @@
             <div class="direction" data-v-6239701c>
                 <div class="word" data-v-6239701c>收起</div>
                 <svg
-                    id="icon_expand_toogle"
                     width="12"
                     height="12"
                     viewBox="0 0 12 12"
@@ -753,141 +706,155 @@
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#每日精选"
+                        <a
+                            href="#每日精选"
+                            title="每日精选"
                             class="catalog-aTag d1-aTag-title">
                             每日精选
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#文字"
+                        <a
+                            href="#文字"
+                            title="文字"
                             class="catalog-aTag d1-aTag-title">
                             文字
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#本地图片"
+                        <a
+                            href="#本地图片"
+                            title="本地图片"
                             class="catalog-aTag d1-aTag-title">
                             本地图片
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#网络图片"
+                        <a
+                            href="#网络图片"
+                            title="网络图片"
                             class="catalog-aTag d1-aTag-title">
                             网络图片
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#链接"
+                        <a
+                            href="#链接"
+                            title="链接"
                             class="catalog-aTag d1-aTag-title">
                             链接
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#列表"
+                        <a
+                            href="#列表"
+                            title="列表"
                             class="catalog-aTag d1-aTag-title">
                             列表
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#代码"
+                        <a
+                            href="#代码"
+                            title="代码"
                             class="catalog-aTag d1-aTag-title">
                             代码
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#示例文案"
+                        <a
+                            href="#示例文案"
+                            title="示例文案"
                             class="catalog-aTag d1-aTag-title">
                             示例文案
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#有序列表"
+                        <a
+                            href="#有序列表"
+                            title="有序列表"
                             class="catalog-aTag d1-aTag-title">
                             有序列表
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#无序列表"
+                        <a
+                            href="#无序列表"
+                            title="无序列表"
                             class="catalog-aTag d1-aTag-title">
                             无序列表
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#视频"
+                        <a
+                            href="#视频"
+                            title="视频"
                             class="catalog-aTag d1-aTag-title">
                             视频
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#美拍"
+                        <a
+                            href="#美拍"
+                            title="美拍"
                             class="catalog-aTag d1-aTag-title">
                             美拍
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#画廊"
+                        <a
+                            href="#画廊"
+                            title="画廊"
                             class="catalog-aTag d1-aTag-title">
                             画廊
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
                 <li class="item d1" data-v-6239701c>
                     <div class="a-container">
-                        <span
-                            target_id="#本地画廊"
+                        <a
+                            href="#本地画廊"
+                            title="本地画廊"
                             class="catalog-aTag d1-aTag-title">
                             本地画廊
-                        </span>
+                        </a>
                     </div>
                 </li>
                 
@@ -896,52 +863,97 @@
         </div>
     </nav>
 
-    <script type="text/javascript">
-        $(".catalog-aTag").click(function(){
-            let id = $(this).attr("target_id");
-            $('html, body').animate({
-                scrollTop: ($(id).offset().top-80)
-            }, 798);
-        });
-        $(".direction").click(function(){
-            $(".catalog-title").removeClass("collapse");
-            $("#icon_expand_toogle").attr('class', "");
-            if ($(".catalog-body").hasClass("fold")) {
-                $(".catalog-body").removeClass("fold");
-                $(".catalog-body").addClass("unfold");
-                $(".direction>.word").text("收起");
-                $("#icon_expand_toogle").attr('class', "icon-rotate");
-            }else{
-                $(".catalog-body").removeClass("unfold");
-                $(".catalog-body").addClass("fold");
-                $(".catalog-title").addClass("collapse");
-                $(".direction>.word").text("展开");
-            }
-        });
-        $(()=>{
-            let tocArray = "每日精选,文字,本地图片,网络图片,链接,列表,代码,示例文案,有序列表,无序列表,视频,美拍,画廊,本地画廊";
-            let fixedTop = $("#jj_post_nav").offset().top;
-            let stickyNav = ()=> {
-                let scrollTop = $(window).scrollTop();
-                // console.log(`scrollTop=${scrollTop} fixedTop=${fixedTop}`);
-                if (scrollTop>fixedTop) {
-                    $("#jj_post_nav").addClass("jj_sticky");
-                } else {
-                    $("#jj_post_nav").removeClass("jj_sticky");
-                }
-            };
-            stickyNav();
-            $(window).scroll(()=>{
-                stickyNav();
-            });
-            $("#jj_post_nav").css("display",tocArray.length==0?"none":"");
-        });
-    </script>
-
 </div>
 
+                                    <div
+    data-v-7e7e812a
+    data-v-05741537
+    data-v-5a150454
+    class="sidebar-block wechat-sidebar-block pure wechat-ad">
+    <div data-v-05741537 data-v-7e7e812a class="ad-container">
+        <div data-v-05741537 data-v-7e7e812a class="text-container">
+            <div data-v-05741537 data-v-7e7e812a class="text-description">
+                找对属于你的技术圈子
+            </div>
+
+            <div data-v-05741537 data-v-7e7e812a class="text-reply">
+                回复「进群」加入官方微信群
+            </div>
+        </div>
+        <img
+            data-v-05741537
+            data-v-7e7e812a
+            src="//lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/qr-code.4e391ff.png"
+            loading="lazy"
+            class="qr-code" />
+    </div>
+</div>
+
+                                    <div
+    class="sidebar-block shadow"
+    data-v-7e7e812a
+    data-v-79d288d1
+    data-v-5a150454>
+    <div class="block-title" data-v-7e7e812a>相关推荐</div>
+    <div class="block-body" data-v-7e7e812a>
+        <div class="entry-list" data-v-7e7e812a data-v-79d288d1>
+            <a
+                href="/post/7173809617846140941"
+                target="_blank"
+                rel
+                title="老板：你为什么要选择 Vue？"
+                class="item"
+                data-v-79d288d1
+                data-v-7e7e812a>
+                <div class="entry-title" data-v-79d288d1>
+                    老板：你为什么要选择 Vue？
+                </div>
+                <div class="entry-meta-box" data-v-79d288d1>
+                    <div class="entry-meta" data-v-79d288d1>25k阅读</div>
+                    <div class="entry-meta" data-v-79d288d1>&nbsp;·&nbsp;</div>
+                    <div class="entry-meta" data-v-79d288d1>164点赞</div>
+                </div>
+            </a>
+            <a
+                href="/post/7268844150233219107"
+                target="_blank"
+                rel
+                title="只会Vue的我，用两天学会了react，这个方法您也可以"
+                class="item"
+                data-v-79d288d1
+                data-v-7e7e812a><div class="entry-title" data-v-79d288d1>
+                    只会Vue的我，用两天学会了react，这个方法您也可以
+                </div>
+                <div class="entry-meta-box" data-v-79d288d1>
+                    <!---->
+                    <div class="entry-meta" data-v-79d288d1>49k阅读</div>
+                    <div class="entry-meta" data-v-79d288d1>&nbsp;·&nbsp;</div>
+                    <div class="entry-meta" data-v-79d288d1>758点赞</div>
+                </div></a>
+            <a
+                href="/post/7203531923691831354"
+                target="_blank"
+                rel
+                title="ChatGPT会如何影响我们的工作生活和人力资源需求"
+                class="item"
+                data-v-79d288d1
+                data-v-7e7e812a><div class="entry-title" data-v-79d288d1>
+                    ChatGPT会如何影响我们的工作生活和人力资源需求
+                </div>
+                <div class="entry-meta-box" data-v-79d288d1>
+                    <!---->
+                    <div class="entry-meta" data-v-79d288d1>1.8k阅读</div>
+                    <div class="entry-meta" data-v-79d288d1>&nbsp;·&nbsp;</div>
+                    <div class="entry-meta" data-v-79d288d1>2点赞</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
                                 </div>
-                                <div data-v-125fc212
+                                <div data-v-45561e54 data-v-125fc212
     class="article-suspended-panel dynamic-data-ready">
     <svg
         data-v-45561e54
@@ -967,22 +979,89 @@
                 data-v-45561e54
                 fill-rule="evenodd"
                 clip-rule="evenodd"
-                d="M10.4167 6.40399C5.35406 6.40399 1.25 10.5675 1.25 15.7035C1.25 16.0225 1.28448 16.4512 1.35344 16.9898C1.36807 17.1039 1.47243 17.1846 1.58655 17.17C1.6483 17.1621 1.70328 17.127 1.73643 17.0743L1.86865 16.8676C1.99553 16.6731 2.10644 16.5147 2.20137 16.3925C3.69554 14.4692 6.13777 13.3823 9.35515 13.3378L10.4167 13.3364V17.0757C10.4167 17.3101 10.6086 17.5 10.8453 17.5C10.959 17.5 11.068 17.4553 11.1483 17.3757L18.145 10.45C18.3961 10.2015 18.3961 9.79853 18.145 9.55L11.1483 2.62426C10.981 2.45858 10.7096 2.45858 10.5422 2.62426C10.4618 2.70383 10.4167 2.81174 10.4167 2.92426V6.40399Z"></path>
+                d="M13.0651 3.25923C12.6654 2.21523 12.1276 1.60359 11.4633 1.40559C10.8071 1.21 10.2539 1.48626 9.97848 1.67918C9.43962 2.05668 9.17297 2.64897 9.0009 3.12662C8.93522 3.30893 8.87504 3.50032 8.82077 3.67291L8.82077 3.67292C8.80276 3.73019 8.78541 3.78539 8.76872 3.8375C8.6974 4.06017 8.63455 4.23905 8.56561 4.38315C8.07104 5.41687 7.64014 6.034 7.2617 6.43277C6.89154 6.8228 6.5498 7.0275 6.18413 7.21038C5.8887 7.35813 5.69369 7.66144 5.69365 8.00211L5.69237 17.3908C5.6923 17.8783 6.08754 18.2736 6.57511 18.2736H14.8382C15.2621 18.2736 15.5829 18.1393 15.8149 17.9421C15.9234 17.8497 15.9985 17.7554 16.0484 17.6856C16.0695 17.6561 16.088 17.6282 16.0983 17.6126L16.1017 17.6075L16.1033 17.6051L16.1194 17.5857L16.1428 17.5478C16.913 16.3019 17.4472 15.3088 17.8659 14.1183C18.3431 12.7613 18.5849 11.5853 18.6874 10.6685C18.7871 9.77617 18.7612 9.07318 18.6558 8.68779C18.5062 8.14118 18.138 7.82653 17.7668 7.66617C17.4231 7.51771 17.0763 7.49836 16.8785 7.49807L13.1134 7.44551C13.662 5.19751 13.31 3.89889 13.0651 3.25923ZM1.251 8.0848C1.22726 7.5815 1.62891 7.16046 2.13277 7.16046H3.4408C3.92832 7.16046 4.32354 7.55568 4.32354 8.04321V17.4303C4.32354 17.9178 3.92832 18.313 3.4408 18.313H2.57554C2.10419 18.313 1.71599 17.9427 1.69378 17.4718L1.251 8.0848Z"></path>
         </symbol>
         <symbol
-            data-v-45561e54
-            id="icon-immerse"
-            viewBox="0 0 1024 1024"
+            data-v-45561e54 id="icon-share"
+            viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
             <path
                 data-v-45561e54
                 fill-rule="evenodd"
                 clip-rule="evenodd"
-                d="M535.466667 241.066667c-12.8-8.533333-27.733333-8.533333-40.533334 0L183.466667 488.533333c-6.4 6.4-12.8 14.933333-12.8 23.466667 0 2.133333 0 6.4 2.133333 8.533333 2.133333 12.8 14.933333 21.333333 27.733333 21.333334h155.733334v322.133333c0 19.2 12.8 29.866667 32 29.866667h249.6c21.333333 0 34.133333-12.8 34.133333-29.866667v-320h151.466667c12.8 0 25.6-8.533333 27.733333-21.333333s0-25.6-8.533333-34.133334L535.466667 241.066667zM864 96h-704C142.933333 96 128 110.933333 128 128s14.933333 32 32 32h704c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"></path>
+                d="M10.4167 6.40399C5.35406 6.40399 1.25 10.5675 1.25 15.7035C1.25 16.0225 1.28448 16.4512 1.35344 16.9898C1.36807 17.1039 1.47243 17.1846 1.58655 17.17C1.6483 17.1621 1.70328 17.127 1.73643 17.0743L1.86865 16.8676C1.99553 16.6731 2.10644 16.5147 2.20137 16.3925C3.69554 14.4692 6.13777 13.3823 9.35515 13.3378L10.4167 13.3364V17.0757C10.4167 17.3101 10.6086 17.5 10.8453 17.5C10.959 17.5 11.068 17.4553 11.1483 17.3757L18.145 10.45C18.3961 10.2015 18.3961 9.79853 18.145 9.55L11.1483 2.62426C10.981 2.45858 10.7096 2.45858 10.5422 2.62426C10.4618 2.70383 10.4167 2.81174 10.4167 2.92426V6.40399Z"></path>
+        </symbol>
+        <symbol
+            data-v-45561e54
+            id="icon-immerse"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M0.25 1C0.25 0.585786 0.585786 0.25 1 0.25H4C4.41421 0.25 4.75 0.585786 4.75 1C4.75 1.41421 4.41421 1.75 4 1.75H1.75V4C1.75 4.41421 1.41421 4.75 1 4.75C0.585786 4.75 0.25 4.41421 0.25 4V1ZM0.25 19C0.25 19.4142 0.585786 19.75 1 19.75H4C4.41421 19.75 4.75 19.4142 4.75 19C4.75 18.5858 4.41421 18.25 4 18.25H1.75V16C1.75 15.5858 1.41421 15.25 1 15.25C0.585786 15.25 0.25 15.5858 0.25 16V19ZM19 0.25C19.4142 0.25 19.75 0.585786 19.75 1V4C19.75 4.41421 19.4142 4.75 19 4.75C18.5858 4.75 18.25 4.41421 18.25 4V1.75H16C15.5858 1.75 15.25 1.41421 15.25 1C15.25 0.585786 15.5858 0.25 16 0.25H19ZM19.75 19C19.75 19.4142 19.4142 19.75 19 19.75H16C15.5858 19.75 15.25 19.4142 15.25 19C15.25 18.5858 15.5858 18.25 16 18.25H18.25V16C18.25 15.5858 18.5858 15.25 19 15.25C19.4142 15.25 19.75 15.5858 19.75 16V19ZM7 5C5.89543 5 5 5.89543 5 7V13C5 14.1046 5.89543 15 7 15H13C14.1046 15 15 14.1046 15 13V7C15 5.89543 14.1046 5 13 5H7Z"></path>
+        </symbol>
+        <symbol
+            data-v-45561e54 id="icon-wechat"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.5578 5.34061C12.0476 2.85722 8.90911 1.73257 6.11813 2.05358C4.56413 2.23231 3.0449 2.85861 1.88463 3.92471C1.00689 4.72863 0.354462 5.78486 0.109889 6.95889C-0.187864 8.37395 0.125815 9.85314 0.957723 11.0298C1.28982 11.4994 1.68479 11.9193 2.11951 12.2941C2.25136 12.4079 2.38694 12.5172 2.52543 12.6228C2.59301 12.6742 2.66115 12.7249 2.73011 12.7745C2.74195 12.7831 2.75392 12.7902 2.76512 12.7969C2.80389 12.8201 2.83351 12.8378 2.81653 12.8887L2.67458 13.3177C2.53986 13.7252 2.40492 14.1325 2.26998 14.5399C2.22084 14.6883 2.17169 14.8366 2.12256 14.985L2.61572 14.7368C2.85714 14.6151 3.09863 14.4935 3.34012 14.3719C3.58099 14.2507 3.82186 14.1294 4.06266 14.0081L4.40902 13.8337C4.42474 13.8257 4.44104 13.8164 4.45775 13.8069C4.51759 13.7728 4.58265 13.7356 4.64501 13.7481C4.76613 13.7723 4.88708 13.7972 5.00801 13.8221C5.08094 13.8372 5.15386 13.8522 5.22681 13.867C6.06287 14.0373 6.88508 14.1348 7.73859 14.0675C7.4486 13.0669 7.44915 12.0016 7.7559 11.0045C8.09853 9.88624 8.81438 8.89831 9.74448 8.19773C11.0171 7.23915 12.6431 6.81493 14.2212 6.99199C14.0895 6.4081 13.8688 5.85148 13.5578 5.34061ZM4.77922 5.02147C4.28094 5.02147 3.71299 5.35514 3.71299 5.90829C3.71299 6.46088 4.28066 6.79844 4.77922 6.79844C5.29233 6.79844 5.66293 6.42291 5.66293 5.90829C5.66293 5.39311 5.29205 5.02147 4.77922 5.02147ZM10.6158 5.90829C10.6158 6.42444 10.2434 6.79844 9.7296 6.79844C9.23076 6.79844 8.66641 6.46032 8.66641 5.90829C8.66641 5.3557 9.23104 5.02147 9.7296 5.02147C10.2431 5.02147 10.6158 5.39158 10.6158 5.90829ZM17.7911 8.53846C15.3552 6.80489 11.734 6.93368 9.53048 9.01108C8.77779 9.72181 8.22909 10.6485 8.04061 11.6744C7.78288 13.0799 8.22536 14.5441 9.17304 15.605C10.0674 16.6063 11.2889 17.2564 12.5986 17.5166C13.4216 17.6806 14.2559 17.6931 15.0799 17.5344C15.2863 17.4948 15.4911 17.4481 15.6954 17.3986C15.7826 17.3774 15.8697 17.3559 15.9568 17.334C15.9655 17.3319 15.9784 17.3272 15.9934 17.3219C16.0359 17.3068 16.0949 17.2858 16.118 17.2984C16.2476 17.3695 16.3771 17.4408 16.5066 17.5122L17.0557 17.8142L17.0577 17.8153L17.0598 17.8164C17.3912 17.9986 17.7227 18.1809 18.054 18.3634C17.9748 18.0977 17.895 17.832 17.8153 17.5664L17.8146 17.5641L17.6749 17.0981L17.5814 16.7863L17.5332 16.6257C17.5159 16.5675 17.5927 16.5183 17.6556 16.4779C17.6753 16.4653 17.6937 16.4535 17.7073 16.4426C18.0608 16.1622 18.3952 15.8558 18.6963 15.5191C19.1832 14.9747 19.5895 14.3498 19.8161 13.6505C20.0122 13.039 20.0488 12.392 19.9377 11.7604C19.7098 10.438 18.8643 9.30511 17.7911 8.53846ZM15.2396 11.0049C15.1595 10.6088 15.5334 10.1787 15.931 10.1787C16.3063 10.1787 16.7409 10.3931 16.8096 10.7989C16.8724 11.1695 16.556 11.4696 16.227 11.5617C15.8032 11.6802 15.3326 11.4649 15.2396 11.0049ZM12.0348 10.1787C11.6369 10.1787 11.2573 10.6064 11.3385 11.0049C11.4325 11.4667 11.9081 11.68 12.3327 11.5617C12.6626 11.4696 12.9753 11.1695 12.9134 10.7989C12.8453 10.3914 12.4112 10.1787 12.0348 10.1787Z"></path>
+        </symbol>
+        <symbol
+            data-v-45561e54 id="icon-weibo"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M-0.000244141 13.0984C-0.000244141 8.70757 6.6145 3.5004 9.18008 4.57052C10.1717 4.98415 9.97381 6.1693 9.85415 6.88576C9.8069 7.16863 9.77186 7.37844 9.82705 7.43887C9.92921 7.55074 10.2955 7.42054 10.7994 7.2414C11.8362 6.87286 13.4557 6.2972 14.5566 7.19617C15.2665 7.77576 14.9657 8.72382 14.7905 9.27603C14.7289 9.4701 14.6829 9.61528 14.7017 9.6784C14.741 9.81053 14.9858 9.91133 15.317 10.0477C15.926 10.2984 16.8269 10.6692 17.2784 11.5759C18.3716 13.7713 15.2036 18.2504 8.62234 18.2504C3.25024 18.2504 -0.000244141 15.6688 -0.000244141 13.0984ZM8.45309 17.057C11.7733 16.7393 14.2944 14.7397 14.0842 12.5908C13.874 10.4418 11.012 8.95732 7.69179 9.27503C4.37159 9.59274 1.85045 11.5924 2.06068 13.7413C2.2709 15.8902 5.13288 17.3747 8.45309 17.057Z"></path>
+            <path
+                data-v-45561e54
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10.7098 12.7012C11.1162 14.1374 10.0604 15.6852 8.35157 16.1581C6.64275 16.6311 4.92801 15.8502 4.5216 14.4139C4.11518 12.9777 5.171 11.4299 6.87982 10.957C8.58865 10.484 10.3034 11.2649 10.7098 12.7012ZM7.67026 13.6265C7.89619 14.1072 7.61751 14.7092 7.04779 14.9711C6.47808 15.2331 5.83308 15.0558 5.60715 14.5751C5.38122 14.0945 5.6599 13.4925 6.22962 13.2306C6.79933 12.9686 7.44433 13.1459 7.67026 13.6265ZM8.41746 13.3766C8.63945 13.2745 8.74804 13.0399 8.66001 12.8526C8.57197 12.6654 8.32065 12.5963 8.09866 12.6984C7.87667 12.8004 7.76808 13.035 7.85612 13.2223C7.94415 13.4095 8.19547 13.4786 8.41746 13.3766Z"></path>
+            <path
+                data-v-45561e54
+                d="M13.648 3.54836C13.9523 3.47388 14.2712 3.43418 14.6004 3.43418C16.7813 3.43418 18.5492 5.18267 18.5492 7.33955C18.5492 7.81593 18.4633 8.27085 18.3066 8.69104C18.168 9.06261 18.3602 9.47493 18.7359 9.61199C19.1116 9.74904 19.5285 9.55894 19.6671 9.18737C19.8822 8.61063 19.9993 7.98781 19.9993 7.33955C19.9993 4.3906 17.5822 2 14.6004 2C14.1528 2 13.717 2.05403 13.2996 2.15619C12.9109 2.25133 12.6738 2.64011 12.77 3.02455C12.8662 3.40899 13.2593 3.6435 13.648 3.54836Z"></path>
+            <path
+                data-v-45561e54
+                d="M14.2887 6.05162C14.388 6.02824 14.4923 6.01569 14.6004 6.01569C15.3397 6.01569 15.939 6.6084 15.939 7.33955C15.939 7.49914 15.9108 7.65062 15.8596 7.7904C15.7232 8.16277 15.9179 8.57396 16.2944 8.70881C16.6709 8.84366 17.0867 8.65112 17.2231 8.27875C17.3307 7.98466 17.3891 7.66805 17.3891 7.33955C17.3891 5.81633 16.1406 4.58152 14.6004 4.58152C14.3784 4.58152 14.1614 4.60734 13.9529 4.65643C13.5633 4.74813 13.3227 5.1348 13.4154 5.52008C13.5082 5.90535 13.8991 6.14333 14.2887 6.05162Z"></path>
+        </symbol>
+        <symbol
+            data-v-45561e54 id="icon-qq"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                data-v-45561e54
+                d="M11.8841 17.1943C11.1815 17.1943 10.5625 17.2136 10.0541 17.26C9.44625 17.2112 8.8365 17.1898 8.22671 17.1956C6.20498 17.1956 4.40588 17.9613 4.40588 18.5263C4.40588 19.0681 5.89998 19.0076 7.91657 18.987C8.64426 18.985 9.3699 18.9096 10.0824 18.7618C10.6796 18.8879 11.4079 18.9677 12.193 18.9741C14.2095 18.9947 15.7024 19.0552 15.7024 18.5173C15.7024 17.9549 13.9045 17.1943 11.8841 17.1943V17.1943Z"></path>
+            <path
+                data-v-45561e54
+                d="M16.9138 11.6311C16.5346 10.6112 16.1212 9.60428 15.6745 8.61206C15.6951 8.37141 15.7054 8.12818 15.7054 7.8811C15.7054 4.08086 13.7622 1 10.0649 1C6.36759 1 4.42307 4.08086 4.42307 7.8811C4.42307 8.11274 4.43208 8.34052 4.45138 8.56573C3.99804 9.5756 3.57913 10.6006 3.19536 11.6389C2.41678 13.7494 2.38203 15.6566 2.65357 15.7982C2.84661 15.8985 3.54797 15.1611 4.21845 13.9669C4.66115 16.7801 6.53102 18.8842 10.0649 18.8842C13.5871 18.8842 15.457 16.7916 15.9074 13.99C16.5728 15.1611 17.2664 15.8818 17.4569 15.7814C17.7284 15.6399 17.6937 13.7365 16.9138 11.6311V11.6311Z"></path>
+            <path
+                data-v-45561e54
+                d="M8.5542 3.2522C8.00598 3.26507 7.57358 3.90981 7.58902 4.69739C7.60447 5.48369 8.06132 6.11299 8.60954 6.1027C9.15776 6.0924 9.59016 5.44637 9.57472 4.65879C9.56056 3.87249 9.10243 3.24319 8.5542 3.25348V3.2522ZM11.5862 3.26764C11.0315 3.25734 10.5695 3.88278 10.5541 4.66651C10.5386 5.44895 10.9749 6.0924 11.5308 6.1027C12.0842 6.11299 12.5475 5.48755 12.5629 4.70512C12.5784 3.92139 12.1408 3.27794 11.5862 3.26764V3.26764Z"></path>
+            <path
+                data-v-45561e54
+                d="M13.6704 9.57861C12.5971 9.76521 11.354 9.87074 10.0285 9.87074C8.7287 9.87074 7.50742 9.76779 6.44959 9.58762C5.71605 10.4962 5.65942 11.8307 5.65942 13.3184C5.65942 16.0505 7.20371 18.2665 10.0645 18.2665C12.924 18.2665 14.4696 16.0505 14.4696 13.3184C14.4696 11.8243 14.4104 10.4859 13.6704 9.57861V9.57861Z"></path>
+            <path
+                data-v-45561e54
+                d="M10.0628 6.56616C8.14273 6.56616 6.58557 6.95223 6.58557 7.26238C6.58557 7.57124 8.62146 8.42188 10.0641 8.42188C11.5054 8.42188 13.5413 7.55065 13.5413 7.26238C13.5413 6.97411 11.9842 6.56745 10.0641 6.56745L10.0628 6.56616Z"></path>
+            <path
+                data-v-45561e54
+                d="M15.6744 8.6121L15.6757 8.59151C14.264 9.05866 12.2718 9.35078 10.0648 9.35078C7.8513 9.35078 5.85402 9.05737 4.441 8.58765C4.14115 9.25684 3.85546 9.93375 3.58521 10.6171C4.45644 10.9054 5.43192 11.1357 6.48332 11.2992V13.8858C6.48332 13.8858 7.22715 14.0235 7.92981 14.0531C8.42784 14.0737 8.95676 13.9888 8.95676 13.9888V11.5398C9.32095 11.5565 9.6903 11.5656 10.0635 11.5656C12.4919 11.5656 14.7311 11.2142 16.5251 10.6222C16.2566 9.94593 15.9729 9.27571 15.6744 8.6121V8.6121Z"></path>
+            <path
+                data-v-45561e54
+                d="M8.87981 4.24829C8.63787 4.24829 8.44226 4.53656 8.44226 4.89174C8.44226 5.24693 8.63787 5.5352 8.87981 5.5352C9.12046 5.5352 9.31736 5.24693 9.31736 4.89174C9.31736 4.53656 9.12046 4.24829 8.87981 4.24829V4.24829ZM12.0997 4.65624C12.0997 4.65624 11.9246 4.41816 11.4819 4.48122C11.0444 4.54428 10.8745 4.83126 10.8423 4.86215C10.8423 4.86215 10.7381 5.0243 10.8115 5.12467C10.8848 5.22505 11.0174 5.06676 11.0174 5.06676C11.0174 5.06676 11.2194 4.78364 11.4806 4.77335C11.6273 4.76349 11.7729 4.80489 11.8925 4.89046C11.8925 4.89046 12.0211 4.99856 12.0984 4.89046C12.1769 4.78364 12.0997 4.65624 12.0997 4.65624V4.65624Z"></path>
         </symbol>
     </svg>
     <div data-v-45561e54 badge="222"
-        class="panel-btn with-badge-x">
+        class="panel-btn with-badge">
         <svg
             data-v-6e70c50a
             data-v-45561e54
@@ -994,7 +1073,7 @@
         </svg>
     </div>
     <div data-v-45561e54 badge="109"
-        class="panel-btn with-badge-x" id="toolbar_btn_comment">
+        class="panel-btn with-badge">
         <svg
             data-v-6e70c50a data-v-45561e54
             class="sprite-icon icon-comment">
@@ -1004,7 +1083,80 @@
             </use>
         </svg>
     </div>
-    <div data-v-45561e54 class="panel-btn" id="toolbar_btn_top">
+
+    <div
+        data-v-45561e54
+        class="share-btn panel-btn">
+        <svg
+            data-v-6e70c50a
+            data-v-45561e54
+            class="sprite-icon icon-share">
+            <use
+                data-v-6e70c50a
+                xlink:href="#icon-share">
+            </use>
+        </svg>
+        <div data-v-45561e54
+            class="share-popup">
+            <ul
+                data-v-45561e54>
+                <li
+                    data-v-45561e54
+                    class="share-item wechat">
+                    <svg
+                        data-v-6e70c50a
+                        data-v-45561e54
+                        class="sprite-icon share-icon icon-wechat">
+                        <use
+                            data-v-6e70c50a
+                            xlink:href="#icon-wechat">
+                        </use>
+                    </svg>
+                    <span data-v-45561e54
+                        class="share-item-title">微信</span>
+                    <div data-v-45561e54
+                        class="wechat-qrcode">
+                        <img
+                            data-v-45561e54
+                            src
+                            class="wechat-qrcode-img"
+                            style="display: none;">
+                        <span
+                            data-v-45561e54
+                            class="wechat-qrcode-title">微信扫码分享</span>
+                    </div></li>
+                <li data-v-45561e54
+                    class="share-item weibo">
+                    <svg
+                        data-v-6e70c50a
+                        data-v-45561e54
+                        class="sprite-icon share-icon icon-weibo">
+                        <use
+                            data-v-6e70c50a
+                            xlink:href="#icon-weibo">
+                        </use>
+                    </svg>
+                    <span data-v-45561e54
+                        class="share-item-title">新浪微博</span>
+                </li>
+                <li data-v-45561e54
+                    class="share-item qq">
+                    <svg
+                        data-v-6e70c50a
+                        data-v-45561e54
+                        class="sprite-icon share-icon icon-qq">
+                        <use
+                            data-v-6e70c50a
+                            xlink:href="#icon-qq">
+                        </use>
+                    </svg>
+                    <span data-v-45561e54
+                        class="share-item-title">QQ</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div data-v-45561e54 class="panel-btn">
         <svg
             data-v-6e70c50a
             data-v-45561e54
@@ -1015,18 +1167,6 @@
             </use>
         </svg>
     </div>
-    <script type="text/javascript">
-        $("#toolbar_btn_comment").click(()=>{
-            $('html, body').animate({
-                scrollTop: ($('#comment-card').offset().top - 120)
-            }, 798);
-        });
-        $("#toolbar_btn_top").click(()=>{
-            $('html, body').animate({
-                scrollTop: 0
-            }, 798);
-        });
-    </script>
 </div>
                             </div>
                         </main>
