@@ -15,6 +15,14 @@ Array.prototype.shuffle = function () {
     return array;
 };
 
+String.prototype.inPost = function (itm) {
+    let key = `${this}`;
+    return itm.name.indexOf(key) >= 0 ||
+        itm.desc.indexOf(key) >= 0 ||
+        itm.category.indexOf(key) >= 0 ||
+        $.inArray(key, itm.tags) >= 0
+}
+
 Array.prototype.postSortBy = function (hot) {
     let array = [];
     if (hot) {
