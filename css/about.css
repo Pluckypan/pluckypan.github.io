@@ -1,3 +1,48 @@
+.poem-wrap {
+    position: relative;
+    width: 720px;
+    max-width: 80%;
+    border: 1px solid #bbb;
+    border-top: none;
+    text-align: center;
+    margin: 40px auto 40px auto;
+    padding-bottom: 10px;
+}
+
+.poem-left {
+    left: 0;
+}
+
+.poem-border {
+    position: absolute;
+    height: 1px;
+    width: 27%;
+    background-color: #bbb;
+}
+
+.poem-right {
+    right: 0;
+}
+
+.poem-wrap p#poem {
+    font-size: 18px;
+}
+
+.poem-wrap h1 {
+    color: #666;
+    font-size: 20px !important;
+}
+
+.poem-wrap p {
+    width: 70%;
+    color: #797979;
+    margin: 10px auto;
+}
+
+.poem-wrap p#info {
+    font-size: 14px;
+}
+
 @-webkit-keyframes skeleton-keyframes-data-v-ee6960ac {
     0% {
         background-position: 0 0
@@ -19,7 +64,6 @@
 }
 
 .wrapper[data-v-ee6960ac] {
-    background: url(app.png) no-repeat;
     background-size: cover
 }
 
@@ -72,4 +116,38 @@
     margin-top: 30px;
     margin-right: -5%;
     filter: drop-shadow(40px 40px 100px rgba(0, 0, 0, .15))
+}
+
+.author-profile h4 {
+    margin-top: 10px;
+}
+
+.author-profile a {
+    color: #666;
+}
+
+.author-profile {
+    text-align: center;
+}
+
+.author-profile .social-icons {
+    margin-top: 10px;
+}
+
+.author-profile .social-icons a {
+    margin: 4px;
+}
+
+.author-profile .intro {
+    color: #999;
+    font-weight: 320;
+    font-size: 12px !important;
+    display: block;
+}
+
+.author-profile img {
+    margin: 0.6rem 0 0 0 !important;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
 }

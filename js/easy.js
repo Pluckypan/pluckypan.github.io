@@ -15,11 +15,17 @@ Array.prototype.shuffle = function () {
     return array;
 };
 
+String.prototype.containsIf = function (target, ignoreCase) {
+    let str = ignoreCase ? this.toLowerCase() : this;
+    let tar = ignoreCase ? target.toLowerCase() : target;
+    return str.indexOf(tar) >= 0;
+}
+
 String.prototype.inPost = function (itm) {
     let key = `${this}`;
-    return itm.name.indexOf(key) >= 0 ||
-        itm.desc.indexOf(key) >= 0 ||
-        itm.category.indexOf(key) >= 0 ||
+    return itm.name.containsIf(key, true) ||
+        itm.desc.containsIf(key, true) ||
+        itm.category.containsIf(key, true) ||
         $.inArray(key, itm.tags) >= 0
 }
 
