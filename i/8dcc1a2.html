@@ -254,7 +254,7 @@
     </div>
     <div class="meta-box" data-v-125fc212>
       <time class="time" data-v-125fc212>
-        2023-11-30 10:09:02
+        2023-12-04 13:54:17
       </time>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-icon" data-v-125fc212>
         <path
@@ -275,11 +275,11 @@
   </div>
 </div>
                           <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
-                            <h2 id="图片处理">图片处理</h2><h3 id="一、qrcode.js二维码">一、qrcode.js二维码</h3><pre><code class='lang-javascript'><script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+                            <h2 id="图片处理">图片处理</h2><h3 id="一、二维码">一、二维码</h3><pre><code class='lang-javascript'><script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
 <script src="http://jqweui.com/assets/js/qrcode.js"></script>
 var qrcode=document.getElementById("qrcode");
 var coder = new QRCode(qrcode, {width: 200,height: 200,});
-coder.makeCode("hello");</code></pre><h3 id="二、holder.js占位图">二、holder.js占位图</h3><blockquote>
+coder.makeCode("hello");</code></pre><h3 id="二、占位图">二、占位图</h3><blockquote>
 <p>html5中，input标-签可以根据placeholder来设定默认占位文字，但是img标签并没有该属性。由于img图片的渲染是一个耗时操作，在网络状态较差的情况下，可能长时间显示不出图片来。使用holder.js给图片添加
 占位图能提高用户体验。</p>
 </blockquote>
@@ -295,11 +295,12 @@ Holder.run({
     }
   },
   images: "#new"
-});</code></pre><h2 id="360x180度全景图预览插件photo sphere viewer">360X180度全景图预览插件Photo Sphere Viewer</h2><p><img src='http://assets.jq22.com/plugin/2016-11-20-22-11-19.jpg' alt='img' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+});</code></pre><h2 id="全景图预览插件">全景图预览插件</h2><p><img src='http://assets.jq22.com/plugin/2016-11-20-22-11-19.jpg' alt='img' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
 <blockquote>
 <p>Photo Sphere Viewer是一款基于Three.js的360X180度全景图预览js插件。该js插件可以360度旋转查看全景图，也可以上下180度查看图片。使用该插件的唯一要求是浏览器支持canvas或WebGL。<a href='http://www.jq22.com/demo/Photo-Sphere-Viewer20161120/' title='' target='_blank'>预览</a></p>
 </blockquote>
-<h2 id="在 chrome console 中引入 jquery">在 chrome console 中引入 jquery</h2><pre><code class='lang-javascript'>var jqueryJs=document.createElement('script');
+<h2 id="在控制台使用<code>jquery</code>">在控制台使用<code>jQuery</code></h2><p>在 chrome console 中引入 jquery</p>
+<pre><code class='lang-javascript'>var jqueryJs=document.createElement('script');
 jqueryJs.setAttribute("type","text/JavaScript");
 jqueryJs.setAttribute("src", 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js');
 document.getElementsByTagName('head')[0].appendChild(jqueryJs);
@@ -390,16 +391,16 @@ document.getElementsByTagName('head')[0].appendChild(jqueryJs);
             
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
-                <span target_id="#360x180度全景图预览插件photo sphere viewer" class="catalog-aTag d1-aTag-title">
-                  360x180度全景图预览插件photo sphere viewer
+                <span target_id="#全景图预览插件" class="catalog-aTag d1-aTag-title">
+                  全景图预览插件
                 </span>
               </div>
             </li>
             
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
-                <span target_id="#在 chrome console 中引入 jquery" class="catalog-aTag d1-aTag-title">
-                  在 chrome console 中引入 jquery
+                <span target_id="#在控制台使用&lt;code&gt;jquery&lt;/code&gt;" class="catalog-aTag d1-aTag-title">
+                  在控制台使用&lt;code&gt;jquery&lt;/code&gt;
                 </span>
               </div>
             </li>
@@ -432,7 +433,7 @@ document.getElementsByTagName('head')[0].appendChild(jqueryJs);
       }
     });
     $(() => {
-      let tocArray = "图片处理,360x180度全景图预览插件photo sphere viewer,在 chrome console 中引入 jquery";
+      let tocArray = "图片处理,全景图预览插件,在控制台使用&lt;code&gt;jquery&lt;/code&gt;";
       let fixedTop = $("#jj_post_nav").offset().top;
       let stickyNav = () => {
         let scrollTop = $(window).scrollTop();

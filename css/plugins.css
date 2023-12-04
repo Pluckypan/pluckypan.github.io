@@ -405,3 +405,74 @@ html[xmlns] .flexslider .slides {
 .poem-wrap p#info {
     font-size: 14px !important;
 }
+
+/* new_words */
+
+.new_words {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(170, 170, 170) 0px 0px 15px 1px;
+    padding: 50px;
+    margin: 20px;
+}
+
+.new_words .nameChar {
+    display: flex;
+}
+
+.new_words .square {
+    flex: 1 1 0%;
+}
+
+.new_words .square .wrap {
+    position: relative;
+}
+
+.new_words .square .content {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.char {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-family: 楷体, 楷体, 楷体_GB2312, 楷体_GB2312, 华文楷体, 华文楷体, 标楷体, KaiTi, KaiTi_GB2312, "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", DFKai-SB, TW-Kai, "Noto Serif SC", serif;
+    background-size: cover;
+    flex: 1 1 0%;
+    background-repeat: no-repeat;
+    background-image: url('assets/images/mi_bg.new_words.svg');
+    font-size: 80px;
+}
+
+.pinyin {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.desc,
+.pinyin {
+    margin-top: 60px;
+}
+
+.new_words .name {
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.new_words .desc {
+    font-family: 仿宋, 仿宋, 仿宋_GB2312, 仿宋_GB2312, 华文仿宋, 华文仿宋, FangSong, FangSong_GB2312, STFangsong, CWTEX-F, "Noto Serif SC", serif;
+    display: block;
+}
+
+.cite,
+.cite a {
+    color: rgb(204, 204, 204);
+}
+
+.cite {
+    margin-top: 50px;
+    font-size: 10px;
+    font-style: italic;
+}
