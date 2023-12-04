@@ -32,22 +32,40 @@
         }
       </style>
 </head>
+  <link rel="stylesheet" href="../css/plugins.css">
+<script src="../js/plugins.js"></script>
+<link rel="stylesheet" href="../css/post.css">
+<link rel="stylesheet" href="../css/post.min.css">
+<link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+    $(() => {
+        $(".markdown-body pre").each(function () {
+            $(this).append(`<span class="jj_pre_copy">复制</span>`);
+        });
+        $(".jj_pre_copy").click(async function () {
+            let code = $(this).parent().text();
+            let i = code.lastIndexOf("复制");
+            code = code.substring(0, i);
+            var tt = $('<textarea>');
+            $('body').append(tt);
+            tt.val(code).select();
+            document.execCommand('copy');
+            tt.remove();
+            $(this).text("已复制");
+            await sleep(750);
+            $(this).text("复制");
+        });
+    });
+</script>
 
-  <body>
-    <link rel="stylesheet" href="../css/plugins.css">
-    <script src="../js/plugins.js"></script>
-    <link rel="stylesheet" href="../css/post.css">
-    <link rel="stylesheet" href="../css/post.min.css">
-    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-      hljs.highlightAll();
-    </script>
-    <div data-server-rendered="true" id="__nuxt">
-      <div id="__layout">
-        <div id="juejin">
-          <div class="view-container" data-v-5762947c data-v-125fc212>
-            <div class="main-header-box" data-v-5762947c>
+    <body>
+      <div data-server-rendered="true" id="__nuxt">
+        <div id="__layout">
+          <div id="juejin">
+            <div class="view-container" data-v-5762947c data-v-125fc212>
+              <div class="main-header-box" data-v-5762947c>
   <header data-fetch-key="0" class="main-header main-header visible" data-v-0bba9d46 data-v-5762947c>
     <div class="container" data-v-0bba9d46>
       <a href="../index.html" class="logo" data-v-0bba9d46>
@@ -216,15 +234,15 @@
     });
   </script>
 </div>
-              <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
-                <div class="view column-view" data-v-5762947c data-v-125fc212>
-                  <div class="main-area article-area" data-v-5762947c data-v-125fc212>
-                    <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
-                      data-v-125fc212 data-v-5762947c>
-                      <h1 class="article-title" data-v-125fc212>
-                        DeepFaceLab
-                      </h1>
-                      <div class="author-info-block" data-v-125fc212>
+                <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
+                  <div class="view column-view" data-v-5762947c data-v-125fc212>
+                    <div class="main-area article-area" data-v-5762947c data-v-125fc212>
+                      <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
+                        data-v-125fc212 data-v-5762947c>
+                        <h1 class="article-title" data-v-125fc212>
+                          DeepFaceLab
+                        </h1>
+                        <div class="author-info-block" data-v-125fc212>
   <div class="author-info-box" data-v-125fc212>
     <div class="author-name" data-v-125fc212>
       <a href="/user/2190663523246765/posts" target="_blank" rel class="username username ellipsis" data-v-1800aadb data-v-125fc212>
@@ -236,7 +254,7 @@
     </div>
     <div class="meta-box" data-v-125fc212>
       <time class="time" data-v-125fc212>
-        2023-11-27 23:07:49
+        2023-11-30 10:09:02
       </time>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-icon" data-v-125fc212>
         <path
@@ -256,8 +274,8 @@
   <div style="flex:1;" data-v-125fc212>
   </div>
 </div>
-                        <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
-                          <h2 id="对导出的人脸进行权重排序">对导出的人脸进行权重排序</h2><p><code>blur</code> 按清晰度从低到高排序</p>
+                          <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
+                            <h2 id="对导出的人脸进行权重排序">对导出的人脸进行权重排序</h2><p><code>blur</code> 按清晰度从低到高排序</p>
 <p><code>hist</code> 按图片相似度直方图排序</p>
 <p><code>hist-dissim</code> 按图片不相似度直方图排序</p>
 <p><code>hist-blur</code> 相似度+清晰度排序</p>
@@ -276,12 +294,12 @@
 <p>1) 删除未识别标记的人脸图片,有标记的脸不要删除.
 2) <code>hist</code> -&gt; delete groups of similar and leave only target face</p>
 
-                        </div>
-                    </article>
-                    <div class="article-end" data-v-5762947c data-v-125fc212>
-                      
-                    </div>
-                    <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
+                          </div>
+                      </article>
+                      <div class="article-end" data-v-5762947c data-v-125fc212>
+                        
+                      </div>
+                      <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
   <link rel="stylesheet" href="../css/gitalk.css">
   
     <div class="message-card add-top" id="comment-card">
@@ -314,11 +332,11 @@
 </div>
       
 </div>
-                  </div>
-                  <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
-                    
+                    </div>
+                    <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
                       
-                        <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
+                        
+                          <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
   <div data-v-05741537 data-v-7e7e812a class="ad-container">
     <div data-v-05741537 data-v-7e7e812a class="text-container">
       <div data-v-05741537 data-v-7e7e812a class="text-description">
@@ -332,8 +350,8 @@
     <img data-v-05741537 data-v-7e7e812a src="https://img.1991.wiki/blog/qrcode.png" loading="lazy" class="qr-code" />
   </div>
 </div>
-                          
-                            <div class data-v-5a150454 id="jj_post_nav">
+                            
+                              <div class data-v-5a150454 id="jj_post_nav">
   <nav class="article-catalog catalog-block" data-v-6239701c data-v-16ed86c3 data-v-5a150454>
     <div class="catalog-title" data-v-6239701c>
       <div data-v-6239701c>目录</div>
@@ -408,8 +426,8 @@
   </script>
 
 </div>
-                  </div>
-                  <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
+                    </div>
+                    <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
   <svg data-v-45561e54 xmlns="http://www.w3.org/2000/svg" class style="display: none;">
     <symbol data-v-45561e54 id="icon-comment" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path data-v-45561e54 fill-rule="evenodd" clip-rule="evenodd"
@@ -458,16 +476,16 @@
     });
   </script>
 </div>
-                </div>
-              </main>
-          </div>
-          <div class="global-component-box">
+                  </div>
+                </main>
+            </div>
+            <div class="global-component-box">
+
+            </div>
 
           </div>
-
         </div>
       </div>
-    </div>
-  </body>
+    </body>
 
 </html>

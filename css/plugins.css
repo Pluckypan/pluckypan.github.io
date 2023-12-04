@@ -356,3 +356,52 @@ html[xmlns] .flexslider .slides {
         height: 16rem;
     }
 }
+
+
+/* 中国古诗 */
+
+.poem-wrap {
+    position: relative;
+    width: 720px;
+    max-width: 80%;
+    border: 1px solid #bbb;
+    border-top: none;
+    text-align: center;
+    margin: 40px auto 40px auto !important;
+    padding-bottom: 20px !important;
+}
+
+.poem-left {
+    left: 0;
+}
+
+.poem-border {
+    position: absolute;
+    height: 1px;
+    width: 27%;
+    background-color: #bbb;
+}
+
+.poem-right {
+    right: 0;
+}
+
+.poem-wrap p#poem {
+    font-size: 18px !important;
+}
+
+.poem-wrap h1 {
+    color: #666;
+    font-size: 20px !important;
+    border-bottom: none !important;
+}
+
+.poem-wrap p {
+    width: 70%;
+    color: #797979;
+    margin: 10px auto !important;
+}
+
+.poem-wrap p#info {
+    font-size: 14px !important;
+}

@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <title>
-    还不错的诗 - 东方回声
+    绝美的诗 - 东方回声
   </title>
-  <meta name="description" content="用过的几首诗">
+  <meta name="description" content="几首极具意境的古诗，星河璀璨、如沐春风、一眼万里、春意盎然、我自癫狂...">
   <meta name="author" content="Plucky.Pan">
   <meta vmid="keywords" name="keywords" content="来自东方的声音">
   <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
@@ -32,22 +32,40 @@
         }
       </style>
 </head>
+  <link rel="stylesheet" href="../css/plugins.css">
+<script src="../js/plugins.js"></script>
+<link rel="stylesheet" href="../css/post.css">
+<link rel="stylesheet" href="../css/post.min.css">
+<link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+    $(() => {
+        $(".markdown-body pre").each(function () {
+            $(this).append(`<span class="jj_pre_copy">复制</span>`);
+        });
+        $(".jj_pre_copy").click(async function () {
+            let code = $(this).parent().text();
+            let i = code.lastIndexOf("复制");
+            code = code.substring(0, i);
+            var tt = $('<textarea>');
+            $('body').append(tt);
+            tt.val(code).select();
+            document.execCommand('copy');
+            tt.remove();
+            $(this).text("已复制");
+            await sleep(750);
+            $(this).text("复制");
+        });
+    });
+</script>
 
-  <body>
-    <link rel="stylesheet" href="../css/plugins.css">
-    <script src="../js/plugins.js"></script>
-    <link rel="stylesheet" href="../css/post.css">
-    <link rel="stylesheet" href="../css/post.min.css">
-    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-      hljs.highlightAll();
-    </script>
-    <div data-server-rendered="true" id="__nuxt">
-      <div id="__layout">
-        <div id="juejin">
-          <div class="view-container" data-v-5762947c data-v-125fc212>
-            <div class="main-header-box" data-v-5762947c>
+    <body>
+      <div data-server-rendered="true" id="__nuxt">
+        <div id="__layout">
+          <div id="juejin">
+            <div class="view-container" data-v-5762947c data-v-125fc212>
+              <div class="main-header-box" data-v-5762947c>
   <header data-fetch-key="0" class="main-header main-header visible" data-v-0bba9d46 data-v-5762947c>
     <div class="container" data-v-0bba9d46>
       <a href="../index.html" class="logo" data-v-0bba9d46>
@@ -216,15 +234,15 @@
     });
   </script>
 </div>
-              <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
-                <div class="view column-view" data-v-5762947c data-v-125fc212>
-                  <div class="main-area article-area" data-v-5762947c data-v-125fc212>
-                    <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
-                      data-v-125fc212 data-v-5762947c>
-                      <h1 class="article-title" data-v-125fc212>
-                        还不错的诗
-                      </h1>
-                      <div class="author-info-block" data-v-125fc212>
+                <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
+                  <div class="view column-view" data-v-5762947c data-v-125fc212>
+                    <div class="main-area article-area" data-v-5762947c data-v-125fc212>
+                      <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
+                        data-v-125fc212 data-v-5762947c>
+                        <h1 class="article-title" data-v-125fc212>
+                          绝美的诗
+                        </h1>
+                        <div class="author-info-block" data-v-125fc212>
   <div class="author-info-box" data-v-125fc212>
     <div class="author-name" data-v-125fc212>
       <a href="/user/2190663523246765/posts" target="_blank" rel class="username username ellipsis" data-v-1800aadb data-v-125fc212>
@@ -236,7 +254,7 @@
     </div>
     <div class="meta-box" data-v-125fc212>
       <time class="time" data-v-125fc212>
-        2023-11-27 23:08:34
+        2023-12-04 09:59:18
       </time>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-icon" data-v-125fc212>
         <path
@@ -256,26 +274,256 @@
   <div style="flex:1;" data-v-125fc212>
   </div>
 </div>
-                        <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
-                          <h2 id="夜宿山寺">夜宿山寺</h2><pre><code class="lang-bash">李白
-危楼高百尺，手可摘星辰。
-不敢高声语，恐惊天上人。
-</code></pre>
-<h2 id="题都城南庄">题都城南庄</h2><pre><code class="lang-bash">崔护
-去年今日此门中，人面桃花相映红。
-人面只今何处去，桃花依旧笑春风。
-</code></pre>
-<h2 id="咏柳">咏柳</h2><pre><code class="lang-bash">贺知章
-碧玉妆成一树高，万条垂下绿丝绦。
-不知细叶谁裁出，二月春风似剪刀。
-</code></pre>
+                          <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
+                            <h2 id="诗文赏析">诗文赏析</h2><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        江雪
+    </h1>
+    <p id="info">
+        唐代：柳宗元
+    </p>
+    
+        
+            <p id="poem">
+                千山鸟飞绝，万径人踪灭
+            </p>
+            
+            <p id="poem">
+                孤舟蓑笠翁，独钓寒江雪
+            </p>
+            
 
-                        </div>
-                    </article>
-                    <div class="article-end" data-v-5762947c data-v-125fc212>
-                      
-                    </div>
-                    <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        相思
+    </h1>
+    <p id="info">
+        唐代：王维
+    </p>
+    
+        
+            <p id="poem">
+                红豆生南国，春来发几枝
+            </p>
+            
+            <p id="poem">
+                愿君多采撷，此物最相思
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        夜宿山寺
+    </h1>
+    <p id="info">
+        唐 李白
+    </p>
+    
+        
+            <p id="poem">
+                危楼高百尺，手可摘星辰
+            </p>
+            
+            <p id="poem">
+                不敢高声语，恐惊天上人
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        题都城南庄
+    </h1>
+    <p id="info">
+        崔护
+    </p>
+    
+        
+            <p id="poem">
+                去年今日此门中，人面桃花相映红
+            </p>
+            
+            <p id="poem">
+                人面只今何处去，桃花依旧笑春风
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        咏柳
+    </h1>
+    <p id="info">
+        贺知章
+    </p>
+    
+        
+            <p id="poem">
+                碧玉妆成一树高，万条垂下绿丝绦
+            </p>
+            
+            <p id="poem">
+                不知细叶谁裁出，二月春风似剪刀
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        泊船瓜洲
+    </h1>
+    <p id="info">
+        北宋 王安石
+    </p>
+    
+        
+            <p id="poem">
+                京口瓜洲一水间，钟山只隔数重山
+            </p>
+            
+            <p id="poem">
+                春风又绿江南岸，明月何时照我还
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        枫桥夜泊
+    </h1>
+    <p id="info">
+        唐代 张继
+    </p>
+    
+        
+            <p id="poem">
+                月落乌啼霜满天，江枫渔火对愁眠
+            </p>
+            
+            <p id="poem">
+                姑苏城外寒山寺，夜半钟声到客船
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        有友人怜予乏劝为黄山白岳之游
+    </h1>
+    <p id="info">
+        汤显祖〔明代〕
+    </p>
+    
+        
+            <p id="poem">
+                欲识金银气，多从黄白游
+            </p>
+            
+            <p id="poem">
+                一生痴绝处，无梦到徽州
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        题龙阳县青草湖
+    </h1>
+    <p id="info">
+        唐珙〔元代〕
+    </p>
+    
+        
+            <p id="poem">
+                西风吹老洞庭波，一夜湘君白发多
+            </p>
+            
+            <p id="poem">
+                醉后不知天在水，满船清梦压星河
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        黄鹤楼送孟浩然之广陵
+    </h1>
+    <p id="info">
+        李白〔唐代〕
+    </p>
+    
+        
+            <p id="poem">
+                故人西辞黄鹤楼，烟花三月下扬州
+            </p>
+            
+            <p id="poem">
+                孤帆远影碧空尽，唯见长江天际流
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        静夜思
+    </h1>
+    <p id="info">
+        李白〔唐代〕
+    </p>
+    
+        
+            <p id="poem">
+                床前明月光，疑是地上霜
+            </p>
+            
+            <p id="poem">
+                举头望明月，低头思故乡
+            </p>
+            
+
+</div><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        望庐山瀑布
+    </h1>
+    <p id="info">
+        李白〔唐代〕
+    </p>
+    
+        
+            <p id="poem">
+                日照香炉生紫烟，遥看瀑布挂前川
+            </p>
+            
+            <p id="poem">
+                飞流直下三千尺，疑是银河落九天
+            </p>
+            
+
+</div><h2 id="参考链接">参考链接</h2><ol>
+<li><a href='https://www.zgshige.com/' title='' target='_blank'>中国诗歌网</a></li><li><a href='https://shici.store/huajianji/' title='' target='_blank'>花间集</a></li><li><a href='https://github.com/chinese-poetry/chinese-poetry' title='' target='_blank'>最全中文诗歌古典文集数据库</a></li><li><a href='https://www.gushiwen.cn/' title='' target='_blank'>古诗文网</a></li></ol>
+
+                          </div>
+                      </article>
+                      <div class="article-end" data-v-5762947c data-v-125fc212>
+                        
+                      </div>
+                      <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
   <link rel="stylesheet" href="../css/gitalk.css">
   
     <div class="message-card add-top" id="comment-card">
@@ -308,11 +556,11 @@
 </div>
       
 </div>
-                  </div>
-                  <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
-                    
+                    </div>
+                    <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
                       
-                        <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
+                        
+                          <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
   <div data-v-05741537 data-v-7e7e812a class="ad-container">
     <div data-v-05741537 data-v-7e7e812a class="text-container">
       <div data-v-05741537 data-v-7e7e812a class="text-description">
@@ -326,8 +574,8 @@
     <img data-v-05741537 data-v-7e7e812a src="https://img.1991.wiki/blog/qrcode.png" loading="lazy" class="qr-code" />
   </div>
 </div>
-                          
-                            <div class data-v-5a150454 id="jj_post_nav">
+                            
+                              <div class data-v-5a150454 id="jj_post_nav">
   <nav class="article-catalog catalog-block" data-v-6239701c data-v-16ed86c3 data-v-5a150454>
     <div class="catalog-title" data-v-6239701c>
       <div data-v-6239701c>目录</div>
@@ -348,24 +596,16 @@
           
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
-                <span target_id="#夜宿山寺" class="catalog-aTag d1-aTag-title">
-                  夜宿山寺
+                <span target_id="#诗文赏析" class="catalog-aTag d1-aTag-title">
+                  诗文赏析
                 </span>
               </div>
             </li>
             
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
-                <span target_id="#题都城南庄" class="catalog-aTag d1-aTag-title">
-                  题都城南庄
-                </span>
-              </div>
-            </li>
-            
-            <li class="item d1" data-v-6239701c>
-              <div class="a-container">
-                <span target_id="#咏柳" class="catalog-aTag d1-aTag-title">
-                  咏柳
+                <span target_id="#参考链接" class="catalog-aTag d1-aTag-title">
+                  参考链接
                 </span>
               </div>
             </li>
@@ -398,7 +638,7 @@
       }
     });
     $(() => {
-      let tocArray = "夜宿山寺,题都城南庄,咏柳";
+      let tocArray = "诗文赏析,参考链接";
       let fixedTop = $("#jj_post_nav").offset().top;
       let stickyNav = () => {
         let scrollTop = $(window).scrollTop();
@@ -418,8 +658,8 @@
   </script>
 
 </div>
-                  </div>
-                  <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
+                    </div>
+                    <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
   <svg data-v-45561e54 xmlns="http://www.w3.org/2000/svg" class style="display: none;">
     <symbol data-v-45561e54 id="icon-comment" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path data-v-45561e54 fill-rule="evenodd" clip-rule="evenodd"
@@ -468,16 +708,16 @@
     });
   </script>
 </div>
-                </div>
-              </main>
-          </div>
-          <div class="global-component-box">
+                  </div>
+                </main>
+            </div>
+            <div class="global-component-box">
+
+            </div>
 
           </div>
-
         </div>
       </div>
-    </div>
-  </body>
+    </body>
 
 </html>

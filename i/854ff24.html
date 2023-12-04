@@ -32,22 +32,40 @@
         }
       </style>
 </head>
+  <link rel="stylesheet" href="../css/plugins.css">
+<script src="../js/plugins.js"></script>
+<link rel="stylesheet" href="../css/post.css">
+<link rel="stylesheet" href="../css/post.min.css">
+<link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+    $(() => {
+        $(".markdown-body pre").each(function () {
+            $(this).append(`<span class="jj_pre_copy">复制</span>`);
+        });
+        $(".jj_pre_copy").click(async function () {
+            let code = $(this).parent().text();
+            let i = code.lastIndexOf("复制");
+            code = code.substring(0, i);
+            var tt = $('<textarea>');
+            $('body').append(tt);
+            tt.val(code).select();
+            document.execCommand('copy');
+            tt.remove();
+            $(this).text("已复制");
+            await sleep(750);
+            $(this).text("复制");
+        });
+    });
+</script>
 
-  <body>
-    <link rel="stylesheet" href="../css/plugins.css">
-    <script src="../js/plugins.js"></script>
-    <link rel="stylesheet" href="../css/post.css">
-    <link rel="stylesheet" href="../css/post.min.css">
-    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-      hljs.highlightAll();
-    </script>
-    <div data-server-rendered="true" id="__nuxt">
-      <div id="__layout">
-        <div id="juejin">
-          <div class="view-container" data-v-5762947c data-v-125fc212>
-            <div class="main-header-box" data-v-5762947c>
+    <body>
+      <div data-server-rendered="true" id="__nuxt">
+        <div id="__layout">
+          <div id="juejin">
+            <div class="view-container" data-v-5762947c data-v-125fc212>
+              <div class="main-header-box" data-v-5762947c>
   <header data-fetch-key="0" class="main-header main-header visible" data-v-0bba9d46 data-v-5762947c>
     <div class="container" data-v-0bba9d46>
       <a href="../index.html" class="logo" data-v-0bba9d46>
@@ -216,15 +234,15 @@
     });
   </script>
 </div>
-              <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
-                <div class="view column-view" data-v-5762947c data-v-125fc212>
-                  <div class="main-area article-area" data-v-5762947c data-v-125fc212>
-                    <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
-                      data-v-125fc212 data-v-5762947c>
-                      <h1 class="article-title" data-v-125fc212>
-                        [模板]人生海海
-                      </h1>
-                      <div class="author-info-block" data-v-125fc212>
+                <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
+                  <div class="view column-view" data-v-5762947c data-v-125fc212>
+                    <div class="main-area article-area" data-v-5762947c data-v-125fc212>
+                      <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
+                        data-v-125fc212 data-v-5762947c>
+                        <h1 class="article-title" data-v-125fc212>
+                          [模板]人生海海
+                        </h1>
+                        <div class="author-info-block" data-v-125fc212>
   <div class="author-info-box" data-v-125fc212>
     <div class="author-name" data-v-125fc212>
       <a href="/user/2190663523246765/posts" target="_blank" rel class="username username ellipsis" data-v-1800aadb data-v-125fc212>
@@ -256,8 +274,8 @@
   <div style="flex:1;" data-v-125fc212>
   </div>
 </div>
-                        <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
-                          <!-- eedoc {
+                          <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
+                            <!-- eedoc {
     "banner":true,
     "create_time":"2022-07-18 21:45",
     "update_time":"2023-11-26 20:01",
@@ -291,7 +309,7 @@
 <td style="text-align:right">中国香港</td>
 </tr>
 </table></div><h2 id="代码">代码</h2><p>我是一串拥有有趣灵魂的代码<code>code</code>,飘荡在神的居所,那里被称作<code>天堂</code></p>
-<pre><code class="lang-css">code {
+<pre><code class='lang-css'>code {
    font-size: 1.4rem;
    margin: 0 .2rem;
    padding: .2rem .6rem;
@@ -299,9 +317,35 @@
    background: #F1F1F1;
    border: 1px solid #E1E1E1;
    border-radius: 3px;
-}
-</code></pre>
-<h2 id="示例文案">示例文案</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet consequuntur dicta dolor dolore eligendi inventore iste iusto, maiores natus numquam officiis perspiciatis praesentium quas quis ratione sit tenetur vitae! Adipisci animi aperiam atque, distinctio earum iure laboriosam laudantium, officia possimus quod quos repellendus unde voluptate? Autem cum eum possimus!</p>
+}</code></pre><h2 id="插件">插件</h2><h3 id="古诗">古诗</h3><h4 id="源码">源码</h4><pre><code class='lang-javascript'>{
+    "eplugin": "poem",
+    "title": "枫桥夜泊",
+    "intro": "唐代 张继",
+    "data": [
+        "月落乌啼霜满天，江枫渔火对愁眠",
+        "姑苏城外寒山寺，夜半钟声到客船"
+    ]
+}</code></pre><h4 id="效果">效果</h4><div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>
+        枫桥夜泊
+    </h1>
+    <p id="info">
+        唐代 张继
+    </p>
+    
+        
+            <p id="poem">
+                月落乌啼霜满天，江枫渔火对愁眠
+            </p>
+            
+            <p id="poem">
+                姑苏城外寒山寺，夜半钟声到客船
+            </p>
+            
+
+</div><h2 id="示例文案">示例文案</h2><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet consequuntur dicta dolor dolore eligendi inventore iste iusto, maiores natus numquam officiis perspiciatis praesentium quas quis ratione sit tenetur vitae! Adipisci animi aperiam atque, distinctio earum iure laboriosam laudantium, officia possimus quod quos repellendus unde voluptate? Autem cum eum possimus!</p>
 <h2 id="有序列表">有序列表</h2><ol>
 <li>调音师</li><li>我们的父辈</li><li>爆裂鼓手</li><li>狩猎</li></ol>
 <h2 id="无序列表">无序列表</h2><ul>
@@ -359,11 +403,11 @@
   </div>
 </div>
 
-                        </div>
-                    </article>
-                    <div class="article-end" data-v-5762947c data-v-125fc212>
-                      
-                        <div class="tag-list-box" data-v-5762947c data-v-125fc212>
+                          </div>
+                      </article>
+                      <div class="article-end" data-v-5762947c data-v-125fc212>
+                        
+                          <div class="tag-list-box" data-v-5762947c data-v-125fc212>
   <div data-v-125fc212 data-v-5762947c class="tag-list">
     <div data-v-125fc212 data-v-5762947c class="tag-list-title">标签：</div>
     <div data-v-125fc212 data-v-5762947c class="tag-list-container">
@@ -419,9 +463,9 @@
     </div>
   </div>
 </div>
-                          
-                    </div>
-                    <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
+                            
+                      </div>
+                      <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
   <link rel="stylesheet" href="../css/gitalk.css">
   
     <div class="message-card add-top" id="comment-card">
@@ -454,11 +498,11 @@
 </div>
       
 </div>
-                  </div>
-                  <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
-                    
+                    </div>
+                    <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
                       
-                        <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
+                        
+                          <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
   <div data-v-05741537 data-v-7e7e812a class="ad-container">
     <div data-v-05741537 data-v-7e7e812a class="text-container">
       <div data-v-05741537 data-v-7e7e812a class="text-description">
@@ -472,8 +516,8 @@
     <img data-v-05741537 data-v-7e7e812a src="https://img.1991.wiki/blog/qrcode.png" loading="lazy" class="qr-code" />
   </div>
 </div>
-                          
-                            <div class data-v-5a150454 id="jj_post_nav">
+                            
+                              <div class data-v-5a150454 id="jj_post_nav">
   <nav class="article-catalog catalog-block" data-v-6239701c data-v-16ed86c3 data-v-5a150454>
     <div class="catalog-title" data-v-6239701c>
       <div data-v-6239701c>目录</div>
@@ -544,6 +588,14 @@
               <div class="a-container">
                 <span target_id="#代码" class="catalog-aTag d1-aTag-title">
                   代码
+                </span>
+              </div>
+            </li>
+            
+            <li class="item d1" data-v-6239701c>
+              <div class="a-container">
+                <span target_id="#插件" class="catalog-aTag d1-aTag-title">
+                  插件
                 </span>
               </div>
             </li>
@@ -632,7 +684,7 @@
       }
     });
     $(() => {
-      let tocArray = "每日精选,文字,本地图片,网络图片,链接,列表,代码,示例文案,有序列表,无序列表,视频,美拍,画廊,本地画廊";
+      let tocArray = "每日精选,文字,本地图片,网络图片,链接,列表,代码,插件,示例文案,有序列表,无序列表,视频,美拍,画廊,本地画廊";
       let fixedTop = $("#jj_post_nav").offset().top;
       let stickyNav = () => {
         let scrollTop = $(window).scrollTop();
@@ -652,8 +704,8 @@
   </script>
 
 </div>
-                  </div>
-                  <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
+                    </div>
+                    <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
   <svg data-v-45561e54 xmlns="http://www.w3.org/2000/svg" class style="display: none;">
     <symbol data-v-45561e54 id="icon-comment" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path data-v-45561e54 fill-rule="evenodd" clip-rule="evenodd"
@@ -702,16 +754,16 @@
     });
   </script>
 </div>
-                </div>
-              </main>
-          </div>
-          <div class="global-component-box">
+                  </div>
+                </main>
+            </div>
+            <div class="global-component-box">
+
+            </div>
 
           </div>
-
         </div>
       </div>
-    </div>
-  </body>
+    </body>
 
 </html>

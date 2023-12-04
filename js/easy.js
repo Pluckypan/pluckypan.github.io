@@ -1,6 +1,7 @@
 function toTimestamp(t) {
     return new Date(t).getTime();
 }
+let sleep = ms => new Promise((resolve, reject) => setTimeout(resolve, ms));
 
 Array.prototype.shuffle = function () {
     let array = JSON.parse(JSON.stringify(this));

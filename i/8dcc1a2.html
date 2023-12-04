@@ -32,22 +32,40 @@
         }
       </style>
 </head>
+  <link rel="stylesheet" href="../css/plugins.css">
+<script src="../js/plugins.js"></script>
+<link rel="stylesheet" href="../css/post.css">
+<link rel="stylesheet" href="../css/post.min.css">
+<link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+    $(() => {
+        $(".markdown-body pre").each(function () {
+            $(this).append(`<span class="jj_pre_copy">复制</span>`);
+        });
+        $(".jj_pre_copy").click(async function () {
+            let code = $(this).parent().text();
+            let i = code.lastIndexOf("复制");
+            code = code.substring(0, i);
+            var tt = $('<textarea>');
+            $('body').append(tt);
+            tt.val(code).select();
+            document.execCommand('copy');
+            tt.remove();
+            $(this).text("已复制");
+            await sleep(750);
+            $(this).text("复制");
+        });
+    });
+</script>
 
-  <body>
-    <link rel="stylesheet" href="../css/plugins.css">
-    <script src="../js/plugins.js"></script>
-    <link rel="stylesheet" href="../css/post.css">
-    <link rel="stylesheet" href="../css/post.min.css">
-    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-      hljs.highlightAll();
-    </script>
-    <div data-server-rendered="true" id="__nuxt">
-      <div id="__layout">
-        <div id="juejin">
-          <div class="view-container" data-v-5762947c data-v-125fc212>
-            <div class="main-header-box" data-v-5762947c>
+    <body>
+      <div data-server-rendered="true" id="__nuxt">
+        <div id="__layout">
+          <div id="juejin">
+            <div class="view-container" data-v-5762947c data-v-125fc212>
+              <div class="main-header-box" data-v-5762947c>
   <header data-fetch-key="0" class="main-header main-header visible" data-v-0bba9d46 data-v-5762947c>
     <div class="container" data-v-0bba9d46>
       <a href="../index.html" class="logo" data-v-0bba9d46>
@@ -216,15 +234,15 @@
     });
   </script>
 </div>
-              <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
-                <div class="view column-view" data-v-5762947c data-v-125fc212>
-                  <div class="main-area article-area" data-v-5762947c data-v-125fc212>
-                    <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
-                      data-v-125fc212 data-v-5762947c>
-                      <h1 class="article-title" data-v-125fc212>
-                        jQuery插件
-                      </h1>
-                      <div class="author-info-block" data-v-125fc212>
+                <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
+                  <div class="view column-view" data-v-5762947c data-v-125fc212>
+                    <div class="main-area article-area" data-v-5762947c data-v-125fc212>
+                      <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
+                        data-v-125fc212 data-v-5762947c>
+                        <h1 class="article-title" data-v-125fc212>
+                          jQuery插件
+                        </h1>
+                        <div class="author-info-block" data-v-125fc212>
   <div class="author-info-box" data-v-125fc212>
     <div class="author-name" data-v-125fc212>
       <a href="/user/2190663523246765/posts" target="_blank" rel class="username username ellipsis" data-v-1800aadb data-v-125fc212>
@@ -236,7 +254,7 @@
     </div>
     <div class="meta-box" data-v-125fc212>
       <time class="time" data-v-125fc212>
-        2023-11-27 23:08:24
+        2023-11-30 10:09:02
       </time>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-icon" data-v-125fc212>
         <path
@@ -256,48 +274,42 @@
   <div style="flex:1;" data-v-125fc212>
   </div>
 </div>
-                        <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
-                          <h2 id="图片处理">图片处理</h2><h3 id="一、qrcode.js二维码">一、qrcode.js二维码</h3><pre><code class="lang-javascript">&lt;script src=&quot;http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://jqweui.com/assets/js/qrcode.js&quot;&gt;&lt;/script&gt;
-var qrcode=document.getElementById(&quot;qrcode&quot;);
+                          <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
+                            <h2 id="图片处理">图片处理</h2><h3 id="一、qrcode.js二维码">一、qrcode.js二维码</h3><pre><code class='lang-javascript'><script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script src="http://jqweui.com/assets/js/qrcode.js"></script>
+var qrcode=document.getElementById("qrcode");
 var coder = new QRCode(qrcode, {width: 200,height: 200,});
-coder.makeCode(&quot;hello&quot;);
-</code></pre>
-<h3 id="二、holder.js占位图">二、holder.js占位图</h3><blockquote>
+coder.makeCode("hello");</code></pre><h3 id="二、holder.js占位图">二、holder.js占位图</h3><blockquote>
 <p>html5中，input标-签可以根据placeholder来设定默认占位文字，但是img标签并没有该属性。由于img图片的渲染是一个耗时操作，在网络状态较差的情况下，可能长时间显示不出图片来。使用holder.js给图片添加
 占位图能提高用户体验。</p>
 </blockquote>
-<pre><code class="lang-javascript">&lt;script src=&quot;holder.js&quot;&gt;&lt;/script&gt;
-&lt;img data-src=&quot;example.com/100x100?theme=simple&quot; id=&quot;new&quot;&gt;
+<pre><code class='lang-javascript'><script src="holder.js"></script>
+<img data-src="example.com/100x100?theme=simple" id="new">
 Holder.run({
-  domain: &quot;example.com&quot;,
+  domain: "example.com",
   themes: {
-    &quot;simple&quot;: {
-      bg: &quot;#eee&quot;,
-      fg: &quot;#000&quot;,
+    "simple": {
+      bg: "#eee",
+      fg: "#000",
       size: 17
     }
   },
-  images: &quot;#new&quot;
-});
-</code></pre>
-<h2 id="360x180度全景图预览插件photo sphere viewer">360X180度全景图预览插件Photo Sphere Viewer</h2><p><img src='http://assets.jq22.com/plugin/2016-11-20-22-11-19.jpg' alt='img' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
+  images: "#new"
+});</code></pre><h2 id="360x180度全景图预览插件photo sphere viewer">360X180度全景图预览插件Photo Sphere Viewer</h2><p><img src='http://assets.jq22.com/plugin/2016-11-20-22-11-19.jpg' alt='img' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
 <blockquote>
 <p>Photo Sphere Viewer是一款基于Three.js的360X180度全景图预览js插件。该js插件可以360度旋转查看全景图，也可以上下180度查看图片。使用该插件的唯一要求是浏览器支持canvas或WebGL。<a href='http://www.jq22.com/demo/Photo-Sphere-Viewer20161120/' title='' target='_blank'>预览</a></p>
 </blockquote>
-<h2 id="在 chrome console 中引入 jquery">在 chrome console 中引入 jquery</h2><pre><code class="lang-javascript">var jqueryJs=document.createElement(&#39;script&#39;);
-jqueryJs.setAttribute(&quot;type&quot;,&quot;text/JavaScript&quot;);
-jqueryJs.setAttribute(&quot;src&quot;, &#39;https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js&#39;);
-document.getElementsByTagName(&#39;head&#39;)[0].appendChild(jqueryJs);
-//正则匹配 ^_\S* &quot;
-</code></pre>
-
-                        </div>
-                    </article>
-                    <div class="article-end" data-v-5762947c data-v-125fc212>
-                      
-                    </div>
-                    <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
+<h2 id="在 chrome console 中引入 jquery">在 chrome console 中引入 jquery</h2><pre><code class='lang-javascript'>var jqueryJs=document.createElement('script');
+jqueryJs.setAttribute("type","text/JavaScript");
+jqueryJs.setAttribute("src", 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js');
+document.getElementsByTagName('head')[0].appendChild(jqueryJs);
+//正则匹配 ^_\S* "</code></pre>
+                          </div>
+                      </article>
+                      <div class="article-end" data-v-5762947c data-v-125fc212>
+                        
+                      </div>
+                      <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
   <link rel="stylesheet" href="../css/gitalk.css">
   
     <div class="message-card add-top" id="comment-card">
@@ -330,11 +342,11 @@ document.getElementsByTagName(&#39;head&#39;)[0].appendChild(jqueryJs);
 </div>
       
 </div>
-                  </div>
-                  <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
-                    
+                    </div>
+                    <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
                       
-                        <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
+                        
+                          <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
   <div data-v-05741537 data-v-7e7e812a class="ad-container">
     <div data-v-05741537 data-v-7e7e812a class="text-container">
       <div data-v-05741537 data-v-7e7e812a class="text-description">
@@ -348,8 +360,8 @@ document.getElementsByTagName(&#39;head&#39;)[0].appendChild(jqueryJs);
     <img data-v-05741537 data-v-7e7e812a src="https://img.1991.wiki/blog/qrcode.png" loading="lazy" class="qr-code" />
   </div>
 </div>
-                          
-                            <div class data-v-5a150454 id="jj_post_nav">
+                            
+                              <div class data-v-5a150454 id="jj_post_nav">
   <nav class="article-catalog catalog-block" data-v-6239701c data-v-16ed86c3 data-v-5a150454>
     <div class="catalog-title" data-v-6239701c>
       <div data-v-6239701c>目录</div>
@@ -440,8 +452,8 @@ document.getElementsByTagName(&#39;head&#39;)[0].appendChild(jqueryJs);
   </script>
 
 </div>
-                  </div>
-                  <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
+                    </div>
+                    <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
   <svg data-v-45561e54 xmlns="http://www.w3.org/2000/svg" class style="display: none;">
     <symbol data-v-45561e54 id="icon-comment" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path data-v-45561e54 fill-rule="evenodd" clip-rule="evenodd"
@@ -490,16 +502,16 @@ document.getElementsByTagName(&#39;head&#39;)[0].appendChild(jqueryJs);
     });
   </script>
 </div>
-                </div>
-              </main>
-          </div>
-          <div class="global-component-box">
+                  </div>
+                </main>
+            </div>
+            <div class="global-component-box">
+
+            </div>
 
           </div>
-
         </div>
       </div>
-    </div>
-  </body>
+    </body>
 
 </html>

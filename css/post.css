@@ -2,6 +2,8 @@
     line-height: inherit;
     margin-top: 22px;
     margin-bottom: 22px;
+    letter-spacing: 2px;
+    line-height: 26px;
 }
 
 .markdown-body {
@@ -179,17 +181,17 @@ tbody {
     border-top: 0;
 }
 
-/* gitalk */
-.gitalk_container {
-    margin: 0 auto;
-    padding-bottom: 60px;
-    max-width: 85%;
-    color: #111 !important;
-    font-family: "PingFang SC", Helvetica, "Microsoft YaHei", Arial, sans-serif;
-}
+.jj_pre_copy {
 
-@media only screen and (max-width: 720px) {
-    .gitalk_container {
-        width: 90%;
-    }
+    color: #007fff;
+    padding: 4px 8px 4px 8px;
+    border: 1px #007fff solid;
+    border-radius: 6px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+    transition: color .1s;
+    line-height: 1;
+    display: block;
 }

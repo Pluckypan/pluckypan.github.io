@@ -32,22 +32,40 @@
         }
       </style>
 </head>
+  <link rel="stylesheet" href="../css/plugins.css">
+<script src="../js/plugins.js"></script>
+<link rel="stylesheet" href="../css/post.css">
+<link rel="stylesheet" href="../css/post.min.css">
+<link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+    $(() => {
+        $(".markdown-body pre").each(function () {
+            $(this).append(`<span class="jj_pre_copy">复制</span>`);
+        });
+        $(".jj_pre_copy").click(async function () {
+            let code = $(this).parent().text();
+            let i = code.lastIndexOf("复制");
+            code = code.substring(0, i);
+            var tt = $('<textarea>');
+            $('body').append(tt);
+            tt.val(code).select();
+            document.execCommand('copy');
+            tt.remove();
+            $(this).text("已复制");
+            await sleep(750);
+            $(this).text("复制");
+        });
+    });
+</script>
 
-  <body>
-    <link rel="stylesheet" href="../css/plugins.css">
-    <script src="../js/plugins.js"></script>
-    <link rel="stylesheet" href="../css/post.css">
-    <link rel="stylesheet" href="../css/post.min.css">
-    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-      hljs.highlightAll();
-    </script>
-    <div data-server-rendered="true" id="__nuxt">
-      <div id="__layout">
-        <div id="juejin">
-          <div class="view-container" data-v-5762947c data-v-125fc212>
-            <div class="main-header-box" data-v-5762947c>
+    <body>
+      <div data-server-rendered="true" id="__nuxt">
+        <div id="__layout">
+          <div id="juejin">
+            <div class="view-container" data-v-5762947c data-v-125fc212>
+              <div class="main-header-box" data-v-5762947c>
   <header data-fetch-key="0" class="main-header main-header visible" data-v-0bba9d46 data-v-5762947c>
     <div class="container" data-v-0bba9d46>
       <a href="../index.html" class="logo" data-v-0bba9d46>
@@ -216,15 +234,15 @@
     });
   </script>
 </div>
-              <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
-                <div class="view column-view" data-v-5762947c data-v-125fc212>
-                  <div class="main-area article-area" data-v-5762947c data-v-125fc212>
-                    <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
-                      data-v-125fc212 data-v-5762947c>
-                      <h1 class="article-title" data-v-125fc212>
-                        一些常用的API
-                      </h1>
-                      <div class="author-info-block" data-v-125fc212>
+                <main class="container main-container" style="max-width:1140px;" data-v-5762947c>
+                  <div class="view column-view" data-v-5762947c data-v-125fc212>
+                    <div class="main-area article-area" data-v-5762947c data-v-125fc212>
+                      <article itemscope="itemscope" itemtype="http://schema.org/Article" data-entry-id="7022606372126588941" data-draft-id="7022605269393735717" data-original-type="0" class="article"
+                        data-v-125fc212 data-v-5762947c>
+                        <h1 class="article-title" data-v-125fc212>
+                          一些常用的API
+                        </h1>
+                        <div class="author-info-block" data-v-125fc212>
   <div class="author-info-box" data-v-125fc212>
     <div class="author-name" data-v-125fc212>
       <a href="/user/2190663523246765/posts" target="_blank" rel class="username username ellipsis" data-v-1800aadb data-v-125fc212>
@@ -236,7 +254,7 @@
     </div>
     <div class="meta-box" data-v-125fc212>
       <time class="time" data-v-125fc212>
-        2023-11-27 23:08:03
+        2023-11-30 10:09:02
       </time>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-icon" data-v-125fc212>
         <path
@@ -256,20 +274,20 @@
   <div style="flex:1;" data-v-125fc212>
   </div>
 </div>
-                        <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
-                          <h2 id="常用api">常用API</h2><ul>
+                          <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
+                            <h2 id="常用api">常用API</h2><ul>
 <li><a href='http://api-weather.smartisan.com/v3/info.php?city_id=101010200&amp;fields=forecast,observe,air,forecast_hour&amp;key=a72095473d476eeded64ee4f8fadc301' title='' target='_blank'>锤子天气接口</a></li><li><a href='http://api.map.baidu.com/telematics/v3/weather?output=json&amp;ak=F1df490aae24d7a92cb9414d316b429eF&amp;&amp;location=beijing' title='' target='_blank'>百度</a></li><li><a href='https://link.zhihu.com/?target=http%3A//www.tan8.com/codeindex.php%3Fd%3Dclassroom%26c%3DclassRoom%26m%3DgetChapterInfo%26id%3D9%26muban_data_ver%3D10%26instrumentType%3D1%26apptype%3D3%26isInReview%3D0%26device%3Dandroid' title='' target='http%3A//www.tan8.com/codeindex.php%3Fd%3Dclassroom%26c%3DclassRoom%26m%3DgetChapterInfo%26id%3D9%26muban_data_ver%3D10%26instrumentType%3D1%26apptype%3D3%26isInReview%3D0%26device%3Dandroid'>小贝教你弹即兴</a></li><li><a href='https://link.zhihu.com/?target=http%3A//www.tan8.com/codeindex.php%3Fd%3Dclassroom%26c%3DclassRoom%26m%3DgetChapterInfo%26id%3D108%26muban_data_ver%3D10%26instrumentType%3D1%26apptype%3D3%26isInReview%3D0%26device%3Dandroid' title='' target='http%3A//www.tan8.com/codeindex.php%3Fd%3Dclassroom%26c%3DclassRoom%26m%3DgetChapterInfo%26id%3D108%26muban_data_ver%3D10%26instrumentType%3D1%26apptype%3D3%26isInReview%3D0%26device%3Dandroid'>小贝教你弹钢琴</a></li><li><a href='http://music.163.com/song/media/outer/url?id=437480735' title='' target='_blank'>网易云音乐</a></li></ul>
 <h2 id="开源社区免费api">开源社区免费API</h2><ul>
 <li><a href='https://www.apiopen.top/api.html#top' title='' target='_blank'>开源社区</a></li><li><a href='https://www.apiopen.top/journalismApi' title='' target='_blank'>新闻接口</a></li><li><a href='https://www.apiopen.top/satinApi?type=1&amp;page=1' title='' target='_blank'>随机推荐热门段子（包含文字、图片、GIF、视频）</a></li><li><a href='https://www.apiopen.top/satinGodApi?type=1&amp;page=1' title='' target='_blank'>随机推荐热门段子【神评版本】（包含文字、图片、GIF、视频）</a></li><li><a href='https://www.apiopen.top/satinCommentApi?id=27610708&amp;page=1' title='' target='_blank'>随机推荐热门段子【神评版本】评论列表</a></li><li><a href='https://www.apiopen.top/novelApi' title='' target='_blank'>热门小说推荐列表</a></li><li><a href='https://www.apiopen.top/novelSearchApi?name=盗墓笔记' title='' target='_blank'>小说搜索接口</a></li><li><a href='https://www.apiopen.top/novelInfoApi?name=盗墓笔记' title='' target='_blank'>小说详情接口</a></li><li><a href='https://www.apiopen.top/weatherApi?city=成都' title='' target='_blank'>天气获取接口</a></li><li><a href='https://www.apiopen.top/meituApi?page=1' title='' target='_blank'>美图获取接口</a></li><li><a href='https://www.apiopen.top/femaleNameApi?page=1' title='' target='_blank'>个性网名获取接口</a></li><li><a href='https://www.apiopen.top/createUserKey?appId=com.chat.peakchao&amp;passwd=123456' title='' target='_blank'>创建应用接口</a></li><li><a href='https://www.apiopen.top/addStatistics?appKey=00d91e8e0cca2b76f515926a36db68f5&amp;type=点击统计&amp;typeId=1&amp;count=2' title='' target='_blank'>增加统计信息接口</a></li><li><a href='https://www.apiopen.top/findStatistics?appKey=00d91e8e0cca2b76f515926a36db68f5' title='' target='_blank'>查询统计信息接口</a></li><li><a href='https://www.apiopen.top/createUser?key=00d91e8e0cca2b76f515926a36db68f5&amp;phone=13594347817&amp;passwd=123654' title='' target='_blank'>用户注册接口</a></li><li><a href='https://www.apiopen.top/login?key=00d91e8e0cca2b76f515926a36db68f5&amp;phone=13594347817&amp;passwd=123456' title='' target='_blank'>用户登陆接口</a></li><li><a href='http://ip-api.com/json' title='' target='_blank'>IP定位接口</a></li><li><a href='http://pv.sohu.com/cityjson' title='' target='_blank'>搜狐</a></li><li><a href='https://www.ipip.net/ip.html' title='' target='_blank'>IP</a></li></ul>
 <h2 id="视频大排档">视频大排档</h2><ol>
 <li><a href='http://spdpd.net/api/fcpfx?fxType=title&amp;page=1' title='' target='_blank'>标题</a></li><li><a href='http://spdpd.net/api/fcpfx?fxType=effect&amp;page=1' title='' target='_blank'>效果</a></li><li><a href='http://spdpd.net/api/fcpfx?fxType=transition&amp;page=1' title='' target='_blank'>转场</a></li></ol>
 
-                        </div>
-                    </article>
-                    <div class="article-end" data-v-5762947c data-v-125fc212>
-                      
-                    </div>
-                    <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
+                          </div>
+                      </article>
+                      <div class="article-end" data-v-5762947c data-v-125fc212>
+                        
+                      </div>
+                      <div data-v-738d100d data-v-125fc212 data-jj-helper="comment-container" class="post-comment" data-v-5762947c>
   <link rel="stylesheet" href="../css/gitalk.css">
   
     <div class="message-card add-top" id="comment-card">
@@ -302,11 +320,11 @@
 </div>
       
 </div>
-                  </div>
-                  <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
-                    
+                    </div>
+                    <div id="sidebar-container" class="sidebar article-sidebar" data-v-5a150454 data-v-125fc212 data-v-5762947c>
                       
-                        <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
+                        
+                          <div data-v-7e7e812a data-v-05741537 data-v-5a150454 class="sidebar-block wechat-sidebar-block pure wechat-ad">
   <div data-v-05741537 data-v-7e7e812a class="ad-container">
     <div data-v-05741537 data-v-7e7e812a class="text-container">
       <div data-v-05741537 data-v-7e7e812a class="text-description">
@@ -320,8 +338,8 @@
     <img data-v-05741537 data-v-7e7e812a src="https://img.1991.wiki/blog/qrcode.png" loading="lazy" class="qr-code" />
   </div>
 </div>
-                          
-                            <div class data-v-5a150454 id="jj_post_nav">
+                            
+                              <div class data-v-5a150454 id="jj_post_nav">
   <nav class="article-catalog catalog-block" data-v-6239701c data-v-16ed86c3 data-v-5a150454>
     <div class="catalog-title" data-v-6239701c>
       <div data-v-6239701c>目录</div>
@@ -412,8 +430,8 @@
   </script>
 
 </div>
-                  </div>
-                  <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
+                    </div>
+                    <div data-v-125fc212 class="article-suspended-panel dynamic-data-ready">
   <svg data-v-45561e54 xmlns="http://www.w3.org/2000/svg" class style="display: none;">
     <symbol data-v-45561e54 id="icon-comment" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path data-v-45561e54 fill-rule="evenodd" clip-rule="evenodd"
@@ -462,16 +480,16 @@
     });
   </script>
 </div>
-                </div>
-              </main>
-          </div>
-          <div class="global-component-box">
+                  </div>
+                </main>
+            </div>
+            <div class="global-component-box">
+
+            </div>
 
           </div>
-
         </div>
       </div>
-    </div>
-  </body>
+    </body>
 
 </html>
