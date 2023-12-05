@@ -39,7 +39,7 @@
 <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>
-    hljs.highlightAll();
+    // hljs.highlightAll();
     $(() => {
         $(".markdown-body pre").each(function () {
             $(this).append(`<span class="jj_pre_copy">复制</span>`);
@@ -290,17 +290,17 @@
 <li>github.com</li><li>assets-cdn.github.com</li><li>github.global.ssl.fastly.net</li><li>api.github.com</li></ol>
 <h2 id="打开 host 文件">打开 host 文件</h2><ol>
 <li>Mac <code>vim /private/etc/hosts</code> </li><li>Windows <code>vi C:\Windows\System32\drivers\etc\hosts</code> 刷新缓存 <code>ipconfig /flushdns</code></li></ol>
-<h2 id="参考配置">参考配置</h2><pre><code class='lang-bash'>##
-# Host Database
-#
-# localhost is used to configure the loopback interface
-# when the system is booting.  Do not change this entry.
-##
+<h2 id="参考配置">参考配置</h2><pre><code class='lang-bash'><span class="hljs-comment">##</span>
+<span class="hljs-comment"># Host Database</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># localhost is used to configure the loopback interface</span>
+<span class="hljs-comment"># when the system is booting.  Do not change this entry.</span>
+<span class="hljs-comment">##</span>
 127.0.0.1       localhost
 255.255.255.255 broadcasthost
 ::1             localhost
 
-# github
+<span class="hljs-comment"># github</span>
 151.101.44.249 github.global.ssl.fastly.net
 151.101.44.133 assets-cdn.github.com
 151.101.112.133 font-src.github.com
@@ -323,13 +323,13 @@
 151.101.184.133 avatars7.githubusercontent.com
 151.101.184.133 avatars8.githubusercontent.com
 140.82.113.6 api.github.com
-# google
+<span class="hljs-comment"># google</span>
 31.13.80.1 docs.google.com
 
-# Added by Docker Desktop
-# To allow the same kube context to work on the host and the container:
+<span class="hljs-comment"># Added by Docker Desktop</span>
+<span class="hljs-comment"># To allow the same kube context to work on the host and the container:</span>
 127.0.0.1 kubernetes.docker.internal
-# End of section</code></pre>
+<span class="hljs-comment"># End of section</span></code></pre>
                           </div>
                       </article>
                       <div class="article-end" data-v-5762947c data-v-125fc212>

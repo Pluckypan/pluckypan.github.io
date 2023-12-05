@@ -39,7 +39,7 @@
 <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>
-    hljs.highlightAll();
+    // hljs.highlightAll();
     $(() => {
         $(".markdown-body pre").each(function () {
             $(this).append(`<span class="jj_pre_copy">复制</span>`);
@@ -309,21 +309,21 @@
 <td style="text-align:right">中国香港</td>
 </tr>
 </table></div><h2 id="代码">代码</h2><p>我是一串拥有有趣灵魂的代码<code>code</code>,飘荡在神的居所,那里被称作<code>天堂</code></p>
-<pre><code class='lang-css'>code {
-   font-size: 1.4rem;
-   margin: 0 .2rem;
-   padding: .2rem .6rem;
-   white-space: nowrap;
-   background: #F1F1F1;
-   border: 1px solid #E1E1E1;
-   border-radius: 3px;
+<pre><code class='lang-css'><span class="hljs-selector-tag">code</span> {
+   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.4rem</span>;
+   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> .<span class="hljs-number">2rem</span>;
+   <span class="hljs-attribute">padding</span>: .<span class="hljs-number">2rem</span> .<span class="hljs-number">6rem</span>;
+   <span class="hljs-attribute">white-space</span>: nowrap;
+   <span class="hljs-attribute">background</span>: <span class="hljs-number">#F1F1F1</span>;
+   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#E1E1E1</span>;
+   <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;
 }</code></pre><h2 id="插件">插件</h2><h3 id="古诗">古诗</h3><h4 id="源码">源码</h4><pre><code class='lang-javascript'>{
-    "eplugin": "poem",
-    "title": "枫桥夜泊",
-    "intro": "唐代 张继",
-    "data": [
-        "月落乌啼霜满天，江枫渔火对愁眠",
-        "姑苏城外寒山寺，夜半钟声到客船"
+    <span class="hljs-string">&quot;eplugin&quot;</span>: <span class="hljs-string">&quot;poem&quot;</span>,
+    <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;枫桥夜泊&quot;</span>,
+    <span class="hljs-string">&quot;intro&quot;</span>: <span class="hljs-string">&quot;唐代 张继&quot;</span>,
+    <span class="hljs-string">&quot;data&quot;</span>: [
+        <span class="hljs-string">&quot;月落乌啼霜满天，江枫渔火对愁眠&quot;</span>,
+        <span class="hljs-string">&quot;姑苏城外寒山寺，夜半钟声到客船&quot;</span>
     ]
 }</code></pre><h4 id="效果">效果</h4><div class="poem-wrap">
     <div class="poem-border poem-left"></div>

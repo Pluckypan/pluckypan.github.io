@@ -39,7 +39,7 @@
 <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>
-    hljs.highlightAll();
+    // hljs.highlightAll();
     $(() => {
         $(".markdown-body pre").each(function () {
             $(this).append(`<span class="jj_pre_copy">复制</span>`);
@@ -275,32 +275,32 @@
   </div>
 </div>
                           <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
-                            <h2 id="扩展jquery">扩展jQuery</h2><pre><code class='lang-javascript'>(function($) {
-    var o = $({});
-    //订阅
-    $.subscribe = function() {
-        o.on.apply(o, arguments);
+                            <h2 id="扩展jquery">扩展jQuery</h2><pre><code class='lang-javascript'>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>) </span>{
+    <span class="hljs-keyword">var</span> o = $({});
+    <span class="hljs-comment">//订阅</span>
+    $.subscribe = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        o.on.apply(o, <span class="hljs-built_in">arguments</span>);
     };
-    //取消订阅
-    $.unsubscribe = function() {
-        o.off.apply(o, arguments);
+    <span class="hljs-comment">//取消订阅</span>
+    $.unsubscribe = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        o.off.apply(o, <span class="hljs-built_in">arguments</span>);
     };
-    //发布内容 通知
-    $.publish = function() {
-        o.trigger.apply(o, arguments);
+    <span class="hljs-comment">//发布内容 通知</span>
+    $.publish = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        o.trigger.apply(o, <span class="hljs-built_in">arguments</span>);
     };
 
-}(jQuery));</code></pre><h2 id="示例">示例</h2><pre><code class='lang-javascript'>$(function() {
-    //订阅购物车结算事件
-    $.subscribe("CartCalculate", function(e, data) {
-        alert("购物车金额:" + data);
+}(jQuery));</code></pre><h2 id="示例">示例</h2><pre><code class='lang-javascript'>$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">//订阅购物车结算事件</span>
+    $.subscribe(<span class="hljs-string">&quot;CartCalculate&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e, data</span>) </span>{
+        alert(<span class="hljs-string">&quot;购物车金额:&quot;</span> + data);
     });
-    alert("开始!");
-  //模拟通知事件
-    setTimeout(function() {
-      var money=520*250;
-         $.publish("CartCalculate", money);
-    }, 3000);
+    alert(<span class="hljs-string">&quot;开始!&quot;</span>);
+  <span class="hljs-comment">//模拟通知事件</span>
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">var</span> money=<span class="hljs-number">520</span>*<span class="hljs-number">250</span>;
+         $.publish(<span class="hljs-string">&quot;CartCalculate&quot;</span>, money);
+    }, <span class="hljs-number">3000</span>);
 });</code></pre>
                           </div>
                       </article>

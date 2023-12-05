@@ -39,7 +39,7 @@
 <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>
-    hljs.highlightAll();
+    // hljs.highlightAll();
     $(() => {
         $(".markdown-body pre").each(function () {
             $(this).append(`<span class="jj_pre_copy">复制</span>`);
@@ -254,7 +254,7 @@
     </div>
     <div class="meta-box" data-v-125fc212>
       <time class="time" data-v-125fc212>
-        2023-12-04 13:37:38
+        2023-12-05 08:46:44
       </time>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-icon" data-v-125fc212>
         <path
@@ -275,36 +275,35 @@
   </div>
 </div>
                           <div id="article-root" itemprop="articleBody" class="article-viewer markdown-body cache result" data-v-125fc212>
-                            <h2 id="图片处理">图片处理</h2><h3 id="一、二维码">一、二维码</h3><pre><code class='lang-javascript'><script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
-<script src="http://jqweui.com/assets/js/qrcode.js"></script>
-var qrcode=document.getElementById("qrcode");
-var coder = new QRCode(qrcode, {width: 200,height: 200,});
-coder.makeCode("hello");</code></pre><h3 id="二、占位图">二、占位图</h3><blockquote>
+                            <h2 id="图片处理">图片处理</h2><h3 id="一、二维码">一、二维码</h3><pre><code class='lang-javascript'>&lt;script src=<span class="hljs-string">&quot;http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js&quot;</span>&gt;&lt;/script&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://jqweui.com/assets/js/qrcode.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+<span class="hljs-keyword">let</span> qrcode=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;qrcode&quot;</span>);
+<span class="hljs-keyword">let</span> coder = <span class="hljs-keyword">new</span> QRCode(qrcode, {<span class="hljs-attr">width</span>: <span class="hljs-number">200</span>,<span class="hljs-attr">height</span>: <span class="hljs-number">200</span>,});
+coder.makeCode(<span class="hljs-string">&quot;hello&quot;</span>);</code></pre><h3 id="二、占位图">二、占位图</h3><blockquote>
 <p>html5中，input标-签可以根据placeholder来设定默认占位文字，但是img标签并没有该属性。由于img图片的渲染是一个耗时操作，在网络状态较差的情况下，可能长时间显示不出图片来。使用holder.js给图片添加
 占位图能提高用户体验。</p>
 </blockquote>
-<pre><code class='lang-javascript'><script src="holder.js"></script>
-<img data-src="example.com/100x100?theme=simple" id="new">
+<pre><code class='lang-javascript'>&lt;script src=<span class="hljs-string">&quot;holder.js&quot;</span>&gt;&lt;/script&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">data-src</span>=<span class="hljs-string">&quot;example.com/100x100?theme=simple&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;new&quot;</span>&gt;</span>
 Holder.run({
-  domain: "example.com",
+  domain: &quot;example.com&quot;,
   themes: {
-    "simple": {
-      bg: "#eee",
-      fg: "#000",
+    &quot;simple&quot;: {
+      bg: &quot;#eee&quot;,
+      fg: &quot;#000&quot;,
       size: 17
     }
   },
-  images: "#new"
-});</code></pre><h2 id="全景图预览插件">全景图预览插件</h2><p><img src='http://assets.jq22.com/plugin/2016-11-20-22-11-19.jpg' alt='img' width='auto' height='auto' style='width:autopx !important;height:autopx !important;'></p>
-<blockquote>
+  images: &quot;#new&quot;
+});</span></code></pre><h2 id="全景图预览插件">全景图预览插件</h2><blockquote>
 <p>Photo Sphere Viewer是一款基于Three.js的360X180度全景图预览js插件。该js插件可以360度旋转查看全景图，也可以上下180度查看图片。使用该插件的唯一要求是浏览器支持canvas或WebGL。<a href='http://www.jq22.com/demo/Photo-Sphere-Viewer20161120/' title='' target='_blank'>预览</a></p>
 </blockquote>
 <h2 id="在控制台使用<code>jquery</code>">在控制台使用<code>jQuery</code></h2><p>在 chrome console 中引入 jquery</p>
-<pre><code class='lang-javascript'>var jqueryJs=document.createElement('script');
-jqueryJs.setAttribute("type","text/JavaScript");
-jqueryJs.setAttribute("src", 'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js');
-document.getElementsByTagName('head')[0].appendChild(jqueryJs);
-//正则匹配 ^_\S* "</code></pre>
+<pre><code class='lang-javascript'><span class="hljs-keyword">let</span> jqueryJs=<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;script&#x27;</span>);
+jqueryJs.setAttribute(<span class="hljs-string">&quot;type&quot;</span>,<span class="hljs-string">&quot;text/JavaScript&quot;</span>);
+jqueryJs.setAttribute(<span class="hljs-string">&quot;src&quot;</span>, <span class="hljs-string">&#x27;https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js&#x27;</span>);
+<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&#x27;head&#x27;</span>)[<span class="hljs-number">0</span>].appendChild(jqueryJs);
+<span class="hljs-comment">//正则匹配 ^_\S* &quot;</span></code></pre>
                           </div>
                       </article>
                       <div class="article-end" data-v-5762947c data-v-125fc212>
@@ -400,7 +399,7 @@ document.getElementsByTagName('head')[0].appendChild(jqueryJs);
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
                 <span target_id="#在控制台使用&lt;code&gt;jquery&lt;/code&gt;" class="catalog-aTag d1-aTag-title">
-                  在控制台使用&lt;code&gt;jquery&lt;/code&gt;
+                  在控制台使用<code>jquery</code>
                 </span>
               </div>
             </li>
