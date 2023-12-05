@@ -237,42 +237,45 @@ var mejs = mejs || {}; mejs.version = "2.22.0", mejs.meIndex = 0, mejs.plugins =
 
 let ssFlexSlider = function () {
     $(window).on('load', function () {
-        $('#featured-post-slider').flexslider({
-            namespace: "flex-",
-            controlsContainer: "", // ".flex-content",
-            animation: 'fade',
-            controlNav: false,
-            directionNav: true,
-            smoothHeight: false,
-            slideshowSpeed: 7000,
-            animationSpeed: 600,
-            randomize: false,
-            touch: true,
-        });
+        if ($('#featured-post-slider').length > 0) {
+            $('#featured-post-slider').flexslider({
+                namespace: "flex-",
+                controlsContainer: "", // ".flex-content",
+                animation: 'fade',
+                controlNav: false,
+                directionNav: true,
+                smoothHeight: false,
+                slideshowSpeed: 7000,
+                animationSpeed: 600,
+                randomize: false,
+                touch: true,
+            });
+        }
+        if ($('.post-slider').length > 0) {
+            $('.post-slider').flexslider({
+                namespace: "flex-",
+                controlsContainer: "",
+                animation: 'fade',
+                controlNav: true,
+                directionNav: false,
+                smoothHeight: false,
+                slideshowSpeed: 7000,
+                animationSpeed: 600,
+                randomize: false,
+                touch: true,
+                start: function (slider) {
+                    if (typeof slider.container === 'object') {
+                        slider.container.on("click", function (e) {
+                            if (!slider.animating) {
+                                slider.flexAnimate(slider.getTarget('next'));
+                            }
+                        });
+                    }
 
-        $('.post-slider').flexslider({
-            namespace: "flex-",
-            controlsContainer: "",
-            animation: 'fade',
-            controlNav: true,
-            directionNav: false,
-            smoothHeight: false,
-            slideshowSpeed: 7000,
-            animationSpeed: 600,
-            randomize: false,
-            touch: true,
-            start: function (slider) {
-                if (typeof slider.container === 'object') {
-                    slider.container.on("click", function (e) {
-                        if (!slider.animating) {
-                            slider.flexAnimate(slider.getTarget('next'));
-                        }
-                    });
+                    $('.bricks-wrapper').masonry('layout');
                 }
-
-                $('.bricks-wrapper').masonry('layout');
-            }
-        });
+            });
+        }
 
     });
 };
@@ -391,8 +394,6 @@ let ssFlexSlider = function () {
         // listen for mouseenter and mouseleave
         return this.on({ 'mouseenter.hoverIntent': handleHover, 'mouseleave.hoverIntent': handleHover }, cfg.selector);
     };
-    if ($('#featured-post-slider').length > 0) {
-        ssFlexSlider();
-    }
+    ssFlexSlider();
 })(jQuery);
 

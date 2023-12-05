@@ -285,12 +285,12 @@
 <!-- write below -->
 <p>由于某些原因，国内访问 Github 会异常缓慢，在 clone 仓库时甚至只有10k以下的速度，下载半天有时还会失败需要从头再来，甚是让人恼火。
 本文介绍通过修改系统 hosts 文件的办法，绕过国内 dns 解析，直接访问 GitHub 的CDN节点，从而达到加速的目的。不需要科学上网，也不需要海外的服务器辅助。</p>
-<h2 id="获取github服务器地址">获取GitHub服务器地址</h2><p>打开 <a href='https://www.ipaddress.com/' title='' target='_blank'>https://www.ipaddress.com/</a> 输入域名查询</p>
-<h2 id="查询以下三个链接的dns解析地址">查询以下三个链接的DNS解析地址</h2><ol>
+<h2 id="1402501778">获取GitHub服务器地址</h2><p>打开 <a href='https://www.ipaddress.com/' title='' target='_blank'>https://www.ipaddress.com/</a> 输入域名查询</p>
+<h2 id="-1154577347">查询以下三个链接的DNS解析地址</h2><ol>
 <li>github.com</li><li>assets-cdn.github.com</li><li>github.global.ssl.fastly.net</li><li>api.github.com</li></ol>
-<h2 id="打开 host 文件">打开 host 文件</h2><ol>
+<h2 id="1366779780">打开 host 文件</h2><ol>
 <li>Mac <code>vim /private/etc/hosts</code> </li><li>Windows <code>vi C:\Windows\System32\drivers\etc\hosts</code> 刷新缓存 <code>ipconfig /flushdns</code></li></ol>
-<h2 id="参考配置">参考配置</h2><pre><code class='lang-bash'><span class="hljs-comment">##</span>
+<h2 id="-1106460206">参考配置</h2><pre><code class='lang-bash'><span class="hljs-comment">##</span>
 <span class="hljs-comment"># Host Database</span>
 <span class="hljs-comment">#</span>
 <span class="hljs-comment"># localhost is used to configure the loopback interface</span>
@@ -423,23 +423,23 @@
           
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
-                <span target_id="#获取github服务器地址" class="catalog-aTag d1-aTag-title">
-                  获取github服务器地址
+                <span target_id="#1402501778" class="catalog-aTag d1-aTag-title">
+                  获取GitHub服务器地址
                 </span>
               </div>
             </li>
             
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
-                <span target_id="#查询以下三个链接的dns解析地址" class="catalog-aTag d1-aTag-title">
-                  查询以下三个链接的dns解析地址
+                <span target_id="#-1154577347" class="catalog-aTag d1-aTag-title">
+                  查询以下三个链接的DNS解析地址
                 </span>
               </div>
             </li>
             
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
-                <span target_id="#打开 host 文件" class="catalog-aTag d1-aTag-title">
+                <span target_id="#1366779780" class="catalog-aTag d1-aTag-title">
                   打开 host 文件
                 </span>
               </div>
@@ -447,7 +447,7 @@
             
             <li class="item d1" data-v-6239701c>
               <div class="a-container">
-                <span target_id="#参考配置" class="catalog-aTag d1-aTag-title">
+                <span target_id="#-1106460206" class="catalog-aTag d1-aTag-title">
                   参考配置
                 </span>
               </div>
@@ -481,7 +481,7 @@
       }
     });
     $(() => {
-      let tocArray = "获取github服务器地址,查询以下三个链接的dns解析地址,打开 host 文件,参考配置";
+      let tocArray = "[object Object],[object Object],[object Object],[object Object]";
       let fixedTop = $("#jj_post_nav").offset().top;
       let stickyNav = () => {
         let scrollTop = $(window).scrollTop();

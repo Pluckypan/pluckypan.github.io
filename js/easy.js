@@ -16,6 +16,17 @@ Array.prototype.shuffle = function () {
     return array;
 };
 
+String.prototype.hashCode = function () {
+    var hash = 0, i, chr, len;
+    if (this.length === 0) return hash;
+    for (i = 0, len = this.length; i < len; i++) {
+        chr = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0;
+    }
+    return hash;
+};
+
 String.prototype.containsIf = function (target, ignoreCase) {
     let str = ignoreCase ? this.toLowerCase() : this;
     let tar = ignoreCase ? target.toLowerCase() : target;
