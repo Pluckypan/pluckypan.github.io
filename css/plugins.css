@@ -361,15 +361,15 @@ html[xmlns] .flexslider .slides {
 /* 中国古诗 */
 
 .poem-wrap {
-    position: relative;
-    width: 720px;
-    max-width: 80%;
-    border: 1px solid #bbb;
-    border-top: none;
-    text-align: center;
+    position: relative !important;
+    width: 720px !important;
+    max-width: 80% !important;
+    border: 1px solid #bbb !important;
+    border-top: none !important;
+    text-align: center !important;
     margin: 40px auto 40px auto !important;
     padding-bottom: 20px !important;
-    font-family: 仿宋, 仿宋, 仿宋_GB2312, 仿宋_GB2312, 华文仿宋, 华文仿宋, FangSong, FangSong_GB2312, STFangsong, CWTEX-F, "Noto Serif SC", serif;
+    font-family: 仿宋, 仿宋, 仿宋_GB2312, 仿宋_GB2312, 华文仿宋, 华文仿宋, FangSong, FangSong_GB2312, STFangsong, CWTEX-F, "Noto Serif SC", serif !important;
 }
 
 .poem-left {
@@ -392,19 +392,23 @@ html[xmlns] .flexslider .slides {
 }
 
 .poem-wrap h1 {
-    color: #666;
+    color: #666 !important;
     font-size: 20px !important;
     border-bottom: none !important;
+    text-align: center !important;
+    font-family: 仿宋, 仿宋, 仿宋_GB2312, 仿宋_GB2312, 华文仿宋, 华文仿宋, FangSong, FangSong_GB2312, STFangsong, CWTEX-F, "Noto Serif SC", serif !important;
 }
 
 .poem-wrap p {
-    width: 70%;
-    color: #797979;
+    width: 70% !important;
+    color: #797979 !important;
     margin: 10px auto !important;
+    text-align: center !important;
 }
 
 .poem-wrap p#info {
     font-size: 14px !important;
+    text-align: center !important;
 }
 
 /* new_words */
@@ -413,68 +417,73 @@ html[xmlns] .flexslider .slides {
     text-align: -webkit-center;
 }
 
+body[data-theme=dark] .new_words {
+    background-color: inherit !important;
+}
+
 .new_words {
-    max-width: 520px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgb(170, 170, 170) 0px 0px 15px 1px;
-    padding: 10px 50px 10px 50px;
+    max-width: 520px !important;
+    background-color: rgb(255, 255, 255) !important;
+    box-shadow: rgb(170, 170, 170) 0px 0px 15px 1px !important;
+    padding: 10px 50px 10px 50px !important;
     border-radius: 4px;
-    margin: 20px;
+    margin: 20px !important;
 }
 
 .new_words .pinyinContson {
-    clear: both;
-    overflow: hidden;
-    margin-top: 10px;
-    text-align: center;
+    clear: both !important;
+    overflow: hidden !important;
+    margin-top: 10px !important;
+    text-align: center !important;
 }
 
 .new_words .pinyinContson .pinyin {
-    clear: both;
-    line-height: 160%;
-    font-size: 14px;
-    font-weight: normal;
-    float: left;
-    width: 40px;
+    clear: both !important;
+    line-height: 160% !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    float: left !important;
+    width: 40px !important;
 }
 
 .new_words .pinyinContson .hanzi {
-    clear: both;
-    margin-bottom: 10px;
-    text-align: center;
-    float: left;
-    font-size: 24px;
-    height: 40px;
-    width: 40px;
-    line-height: 38px;
-    text-align: center;
+    clear: both !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+    float: left !important;
+    font-size: 24px !important;
+    height: 40px !important;
+    width: 40px !important;
+    line-height: 38px !important;
+    text-align: center !important;
     background: url(https://ziyuan.guwendao.net/siteimg/indexMibac.png) no-repeat 2px;
-    background-size: 38px 38px;
-    font-family: 楷体, 楷体, 楷体_GB2312, 楷体_GB2312, 华文楷体, 华文楷体, 标楷体, KaiTi, KaiTi_GB2312, "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", DFKai-SB, TW-Kai, "Noto Serif SC", serif;
+    background-size: 38px 38px !important;
+    font-family: 楷体, 楷体, 楷体_GB2312, 楷体_GB2312, 华文楷体, 华文楷体, 标楷体, KaiTi, KaiTi_GB2312, "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", DFKai-SB, TW-Kai, "Noto Serif SC", serif !important;
 }
 
 .new_words .pinyinContson span {
-    line-height: 100%;
-    width: 39px;
-    text-align: center;
-    display: inline-block;
+    line-height: 100% !important;
+    width: 39px !important;
+    text-align: center !important;
+    display: inline-block !important;
 }
 
 .new_words .desc {
     font-family: 仿宋, 仿宋, 仿宋_GB2312, 仿宋_GB2312, 华文仿宋, 华文仿宋, FangSong, FangSong_GB2312, STFangsong, CWTEX-F, "Noto Serif SC", serif;
-    display: block;
-    font-size: 16px;
-    text-align: left;
+    display: block !important;
+    font-size: 16px !important;
+    text-align: left !important;
+    margin: 0px !important;
 }
 
 .new_words .cite,
 .new_words .cite a {
-    color: rgb(204, 204, 204);
+    color: rgb(204, 204, 204) !important;
 }
 
 .new_words .cite {
-    margin-top: 0px;
-    font-size: 10px;
-    font-style: italic;
-    text-align: left;
+    margin-top: 6px !important;
+    font-size: 10px !important;
+    font-style: italic !important;
+    text-align: left !important;
 }

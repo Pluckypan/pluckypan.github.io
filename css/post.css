@@ -4,6 +4,7 @@
     margin-bottom: 22px;
     letter-spacing: 2px;
     line-height: 26px;
+    font-family: 仿宋, 仿宋, 仿宋_GB2312, 仿宋_GB2312, 华文仿宋, 华文仿宋, FangSong, FangSong_GB2312, STFangsong, CWTEX-F, "Noto Serif SC", serif !important;
 }
 
 .markdown-body {
@@ -41,21 +42,22 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-    line-height: 1.5;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
+    line-height: 1.5 !important;
+    margin-top: 25px !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 5px !important;
+    font-family: 仿宋, 仿宋, 仿宋_GB2312, 仿宋_GB2312, 华文仿宋, 华文仿宋, FangSong, FangSong_GB2312, STFangsong, CWTEX-F, "Noto Serif SC", serif !important;
 }
 
 .markdown-body code,
 .markdown-body pre {
-    font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+    font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
 }
 
 .markdown-body pre {
-    overflow: auto;
-    position: relative;
-    line-height: 1.75;
+    overflow: auto !important;
+    position: relative !important;
+    line-height: 1.75 !important;
 }
 
 .markdown-body pre,
@@ -65,7 +67,7 @@
 }
 
 .markdown-body pre {
-    position: relative;
+    position: relative !important;
 }
 
 .markdown-body pre>code {
@@ -142,7 +144,7 @@ tbody {
 }
 
 .markdown-body blockquote cite {
-    color: #373737;
+    color: #666;
 }
 
 .markdown-body blockquote cite:before {
@@ -183,7 +185,6 @@ tbody {
 }
 
 .jj_pre_copy {
-
     color: #007fff;
     padding: 4px 8px 4px 8px;
     border: 1px #007fff solid;
@@ -195,4 +196,13 @@ tbody {
     transition: color .1s;
     line-height: 1;
     display: block;
+}
+
+body[data-theme=dark] .jj_pre_copy {
+    right: 26px;
+    top: 26px;
+}
+
+body[data-theme=dark] .format-gallery .flex-control-paging li a {
+    border-radius: 0px;
 }

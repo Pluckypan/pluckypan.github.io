@@ -98,3 +98,16 @@
 .gt-container blockquote:before {
 	display: none;
 }
+
+.markdown-body table th,
+.markdown-body table td {
+	padding: 6px 13px !important;
+	border: 1px solid #dfe2e5 !important;
+	line-height: 18px !important;
+	min-width: 60px !important;
+}
+
+body[data-theme=dark] .markdown-body table th,
+body[data-theme=dark] .markdown-body table td {
+	border: none !important;
+}
