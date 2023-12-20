@@ -180,15 +180,17 @@
     let searches = sks && sks.length > 0 ? sks.split(",") : [];
     let serachDone = () => {
       let sk = $(".search-input").val().trim();
-      console.log(sk);
+      let url;
       if (sk && sk.length > 0) {
-        window.location.href = `articles?sk=${sk}`;
+        url = `articles?sk=${sk}`;
         searches.push(sk);
         searches = unique(searches);
         localStorage.setItem("jj_search_keys", searches.join(","))
       } else {
-        window.location.href = window.location.href.replace("sk=", "skp=");
+        url = window.location.href.replace("sk=", "skp=");
       }
+      console.log(url);
+      window.location.href = `../${url}`;
     };
     $(".search-input").keypress(function (e) {
       if (e.which == 13) {
@@ -254,7 +256,7 @@
     </div>
     <div class="meta-box" data-v-125fc212>
       <time class="time" data-v-125fc212>
-        2023-12-06 22:57:21
+        2023-12-19 16:24:58
       </time>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="read-icon" data-v-125fc212>
         <path

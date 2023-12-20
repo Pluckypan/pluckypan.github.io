@@ -152,15 +152,17 @@
     let searches = sks && sks.length > 0 ? sks.split(",") : [];
     let serachDone = () => {
       let sk = $(".search-input").val().trim();
-      console.log(sk);
+      let url;
       if (sk && sk.length > 0) {
-        window.location.href = `articles?sk=${sk}`;
+        url = `articles?sk=${sk}`;
         searches.push(sk);
         searches = unique(searches);
         localStorage.setItem("jj_search_keys", searches.join(","))
       } else {
-        window.location.href = window.location.href.replace("sk=", "skp=");
+        url = window.location.href.replace("sk=", "skp=");
       }
+      console.log(url);
+      window.location.href = `${url}`;
     };
     $(".search-input").keypress(function (e) {
       if (e.which == 13) {

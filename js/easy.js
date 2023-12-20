@@ -3,6 +3,10 @@ function toTimestamp(t) {
 }
 let sleep = ms => new Promise((resolve, reject) => setTimeout(resolve, ms));
 
+function unique(arr) {
+    return Array.from(new Set(arr))
+}
+
 Array.prototype.shuffle = function () {
     let array = JSON.parse(JSON.stringify(this));
     var m = array.length,

@@ -180,15 +180,17 @@
     let searches = sks && sks.length > 0 ? sks.split(",") : [];
     let serachDone = () => {
       let sk = $(".search-input").val().trim();
-      console.log(sk);
+      let url;
       if (sk && sk.length > 0) {
-        window.location.href = `articles?sk=${sk}`;
+        url = `articles?sk=${sk}`;
         searches.push(sk);
         searches = unique(searches);
         localStorage.setItem("jj_search_keys", searches.join(","))
       } else {
-        window.location.href = window.location.href.replace("sk=", "skp=");
+        url = window.location.href.replace("sk=", "skp=");
       }
+      console.log(url);
+      window.location.href = `../${url}`;
     };
     $(".search-input").keypress(function (e) {
       if (e.which == 13) {
@@ -314,7 +316,7 @@ $ docker run -v {{ migration dir }}:/migrations --network host migrate/migrate
 <p><div style='width:100%;text-align:left;'><img src='../assets/Ponymusic.webp?height=320' title='' alt='Ponymusic' width='auto' height='320'></div></p>
 <h2 id="1982838249">10、<a href='https://github.com/garywill/linux-router' title='' target='_blank'>Linux-Router</a></h2><p>将 Linux 作为路由器的脚本。这是一个 Linux 软路由器的 shell 脚本，它可以通过一条命令将 Linux 设备作为路由器，提供互联网共享、DNS 服务器、WiFi 热点等功能。</p>
 <h2 id="-631998151">11、<a href='https://github.com/cleanlab/cleanlab' title='' target='_blank'>cleanlab</a></h2><p>自动检测数据集中错误数据和标注的框架。该项目基于置信学习（confident learning，CL）算法，实现了自动检测出机器学习数据集中的各种问题，提高数据集质量训练出更好的模型，支持图像、文本、音频类型的数据。</p>
-<p><div style='width:100%;text-align:left;'><img src='../assets/cleanlab.webp?height=320' title='' alt='cleanlab' width='auto' height='320'></div></p>
+<p><div style='width:100%;text-align:left;'><img src='../assets/Cleanlab.webp?height=320' title='' alt='cleanlab' width='auto' height='320'></div></p>
 
                           </div>
                       </article>

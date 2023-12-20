@@ -54,6 +54,11 @@
     font-family: Menlo, Monaco, Consolas, Courier New, monospace !important;
 }
 
+.markdown-body code::-webkit-scrollbar,
+.markdown-body pre::-webkit-scrollbar {
+    display: none;
+}
+
 .markdown-body pre {
     overflow: auto !important;
     position: relative !important;
@@ -199,8 +204,8 @@ tbody {
 }
 
 body[data-theme=dark] .jj_pre_copy {
-    right: 26px;
-    top: 26px;
+    right: 12px;
+    top: 12px;
 }
 
 body[data-theme=dark] .format-gallery .flex-control-paging li a {
